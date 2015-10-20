@@ -1,0 +1,21 @@
+Idle play adventures guild game
+
+player starts with 1 adventurer
+player can manually make adventurer fight for xp by clicking "fight" (rapid click) when not away
+player can send adventurer to quest earning gold and xp (cooldown)
+player can send adventurer to adventure finding items (cooldown)
+Player can purchase tallent scouts which at intervals have the chance to find more heros, shit ones might be free, better ones might need one off payment?
+
+PVP
+player can group adventurers into partys of upto 6
+Partys can quest and adventure as per above
+Partys can also raid. Raid searches for other parties and attacks them potentially killing them, winners take the loot
+
+
+adventurer's
+Classes
+Bard - helps recruit new people
+Fighter - Attacks and defends in PVP
+Rogue - helps hide party from other partys and find other parties
+Wizard - Do DPS to "fight" and in PVP
+Cleric - Heals
