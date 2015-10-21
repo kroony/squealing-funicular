@@ -28,6 +28,28 @@ class adventurerController
     echo "<br />WeaponID: " . $Adventurer->WeaponID . "</p>";
   }
   
+  function outputInTable($Adventurer)
+  {
+    echo "<tr>";
+    echo "<td>" . $Adventurer->Name ."</td>";
+    echo "<td>" . $Adventurer->OwnerID ."</td>";
+    echo "<td>" . $Adventurer->PartyID ."</td>";
+    echo "<td>" . $Adventurer->Race ."</td>";
+    echo "<td>" . $Adventurer->AdvClass ."</td>";
+    echo "<td>" . $Adventurer->CurrentHP .'/'. $Adventurer->MaxHP ."</td>";
+    echo "<td>" . $Adventurer->Level ."</td>";
+    echo "<td>" . $Adventurer->CurrentXP .'/'. $Adventurer->LevelUpXP ."</td>";
+    echo "<td>" . $Adventurer->Str ."</td>";
+    echo "<td>" . $Adventurer->Dex ."</td>";
+    echo "<td>" . $Adventurer->Con ."</td>";
+    echo "<td>" . $Adventurer->Intel ."</td>";
+    echo "<td>" . $Adventurer->Wis ."</td>";
+    echo "<td>" . $Adventurer->Cha ."</td>";
+    echo "<td>" . $Adventurer->Fte ."</td>";
+    echo "<td>" . $Adventurer->WeaponID ."</td>";
+    echo "<td><a href='delete.php?ID=" . $Adventurer->ID . "'>Delete</a></td>";
+  }
+  
   function showAll()
   {
     $getQuery = "SELECT `ID` FROM `Adventurer`;";
@@ -36,16 +58,38 @@ class adventurerController
     $totalAdventurers=mysql_numrows($getResult); 
     echo "Showing " . $totalAdventurers . " results.<br />";
     
+    echo "<table>
+            <tr>
+              <td>Name</td>
+              <td>OwnerID</td>
+              <td>PartyID</td>
+              <td>Race</td>
+              <td>Class</td>
+              <td>HP</td>
+              <td>Level</td>
+              <td>XP</td>
+              <td>Str</td>
+              <td>Dex</td>
+              <td>Con</td>
+              <td>Int</td>
+              <td>Wis</td>
+              <td>Cha</td>
+              <td>Fte</td>
+              <td>WeaponID</td>
+              <td>Delete</td>
+            </tr>";
+              
     $i=0;
     while($i < $totalAdventurers)
     {
       $AdventurerID=mysql_result($getResult,$i,"ID");
       
       $Adventurer = new Adventurer();
-      $this->output($Adventurer->loadAdventurer($AdventurerID));
-      echo "<hr>";
+      $this->outputInTable($Adventurer->loadAdventurer($AdventurerID));
       $i++;
     }
+    
+    echo "</table>";
   }
 }
 

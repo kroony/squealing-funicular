@@ -6,7 +6,7 @@ include_once("includes/connect.php");
 include_once("adventurer/adventurer.php");
 $testAdventurer = new Adventurer();
 
-$testAdventurer->GenerateAdventurer(2); //generate lvl1 adventurer
+$testAdventurer->GenerateAdventurer($_REQUEST["level"]); //generate lvl1 adventurer
 
 //save adventurer
 $testAdventurer->SaveAdventurer();
@@ -14,6 +14,8 @@ $testAdventurer->SaveAdventurer();
 /***********end generate Adventurer *********/
 
 
-header("Location: index.php");
+//header("Location: index.php");
 
 ?>
+
+<a href="index.php">Return</a>
