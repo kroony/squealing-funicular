@@ -32,8 +32,8 @@ class adventurerController
   {
     echo "<tr>";
     echo "<td>" . $Adventurer->Name ."</td>";
-    echo "<td>" . $Adventurer->OwnerID ."</td>";
-    echo "<td>" . $Adventurer->PartyID ."</td>";
+    //echo "<td>" . $Adventurer->OwnerID ."</td>";
+    //echo "<td>" . $Adventurer->PartyID ."</td>";
     echo "<td>" . $Adventurer->Race ."</td>";
     echo "<td>" . $Adventurer->AdvClass ."</td>";
     echo "<td>" . $Adventurer->CurrentHP .'/'. $Adventurer->MaxHP ."</td>";
@@ -46,7 +46,7 @@ class adventurerController
     echo "<td>" . $Adventurer->Wis ."</td>";
     echo "<td>" . $Adventurer->Cha ."</td>";
     echo "<td>" . $Adventurer->Fte ."</td>";
-    echo "<td>" . $Adventurer->WeaponID ."</td>";
+    //echo "<td>" . $Adventurer->WeaponID ."</td>";
     echo "<td><a href='delete.php?ID=" . $Adventurer->ID . "'>Delete</a></td>";
   }
   
@@ -61,8 +61,8 @@ class adventurerController
     echo "<table>
             <tr>
               <td>Name</td>
-              <td>OwnerID</td>
-              <td>PartyID</td>
+              <!--<td>OwnerID</td>
+              <td>PartyID</td>-->
               <td>Race</td>
               <td>Class</td>
               <td>HP</td>
@@ -75,7 +75,7 @@ class adventurerController
               <td>Wis</td>
               <td>Cha</td>
               <td>Fte</td>
-              <td>WeaponID</td>
+              <!--<td>WeaponID</td>-->
               <td>Delete</td>
             </tr>";
               

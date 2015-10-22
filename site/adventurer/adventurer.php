@@ -45,22 +45,22 @@ class Adventurer
     $getResult=mysql_query($getQuery);//execute query
     $num=mysql_numrows($getResult);
     
-    $this->Race = mysql_result($getResult,$i,"Race");//load object
-    $this->Name = mysql_result($getResult,$i,"Name");
-    $this->AdvClass = mysql_result($getResult,$i,"Class");//load object
-    $this->MaxHP = mysql_result($getResult,$i,"MaxHP");
-    $this->CurrentHP = mysql_result($getResult,$i,"CurrentHP");
-    $this->Level = mysql_result($getResult,$i,"Level");
-    $this->CurrentXP = mysql_result($getResult,$i,"CurrentXP");
-    $this->LevelUpXP = mysql_result($getResult,$i,"LevelUpXP");
-    $this->Str = mysql_result($getResult,$i,"Str");
-    $this->Dex = mysql_result($getResult,$i,"Dex");
-    $this->Con = mysql_result($getResult,$i,"Con");
-    $this->Intel = mysql_result($getResult,$i,"Intel");
-    $this->Wis = mysql_result($getResult,$i,"Wis");
-    $this->Cha = mysql_result($getResult,$i,"Cha");
-    $this->Fte = mysql_result($getResult,$i,"Fte");
-    $this->WeaponID = mysql_result($getResult,$i,"WeaponID");
+    $this->Race = mysql_result($getResult,0,"Race");//load object
+    $this->Name = mysql_result($getResult,0,"Name");
+    $this->AdvClass = mysql_result($getResult,0,"Class");//load object
+    $this->MaxHP = mysql_result($getResult,0,"MaxHP");
+    $this->CurrentHP = mysql_result($getResult,0,"CurrentHP");
+    $this->Level = mysql_result($getResult,0,"Level");
+    $this->CurrentXP = mysql_result($getResult,0,"CurrentXP");
+    $this->LevelUpXP = mysql_result($getResult,0,"LevelUpXP");
+    $this->Str = mysql_result($getResult,0,"Str");
+    $this->Dex = mysql_result($getResult,0,"Dex");
+    $this->Con = mysql_result($getResult,0,"Con");
+    $this->Intel = mysql_result($getResult,0,"Intel");
+    $this->Wis = mysql_result($getResult,0,"Wis");
+    $this->Cha = mysql_result($getResult,0,"Cha");
+    $this->Fte = mysql_result($getResult,0,"Fte");
+    $this->WeaponID = mysql_result($getResult,0,"WeaponID");
     
     return $this;
   }
@@ -92,7 +92,7 @@ class Adventurer
     $this->Fte = $this->GenerateAtribute($this->Race->FteBon);
     
     //Class
-    $this->AdvClass = $this->GenerateAdvClass();//somehow match a good class based on attributes? perhaps some randomness based on fte for this matching??
+    $this->AdvClass = $this->GenerateAdvClass();
     echo "<br />Class: " . $this->AdvClass->Name . " HD: D" . $this->AdvClass->HD . "<br />";
     
     //HP
@@ -116,7 +116,28 @@ class Adventurer
       $i=0;
       while($i < $level - 1)
       {
-        $this->forceLevelUP();
+        if($this->Level == $this->AdvClass->LevelCap)
+        {
+          echo "<br />At " . $this->AdvClass->Name . " level cap, Trying to find new class<br />";
+          if($this->AdvClass->checkForNewClass($this))
+          {
+            //we found a new class and have applied it. now we can level
+            echo "Have chosen class: " . $this->AdvClass->Name . "<br />";
+            $this->forceLevelUP();
+          }
+          else
+          {
+            //no new class. have reached level cap.
+            echo "Dont meet the requirements for any classes. :(<br />";
+            //can break out of the loop here cause nothing is going to change, looping is a waste of time
+            break;
+          }
+          //search for new class
+        }
+        else
+        {
+          $this->forceLevelUP();
+        }
         $i++;
       }
     }
@@ -138,9 +159,13 @@ class Adventurer
     
     //add hp
     $extraHP = rand(1,$this->AdvClass->HD) + $this->calculateAttributeBonus($this->Con);
+    if($extraHP < 1)//minimum 1 hitpoint increase.
+    {
+      $extraHP = 1;
+    }
     $this->MaxHP += $extraHP;
     $this->CurrentHP = $this->MaxHP; //healed when leveled up?? could be exploited....
-    echo "Adding " . $extraHP . " HP<br />";
+    echo "Adding " . $extraHP . " HP. Rolled a d" . $this->AdvClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
     
     //increase XP cap
     $this->CurrentXP = $this->LevelUpXP;
@@ -183,7 +208,7 @@ class Adventurer
     $diceRolled = array(rand(1, 6), rand(1, 6), rand(1, 6), rand(1, 6));
     rsort($diceRolled);
     
-    echo "Attribute Dice: " . $diceRolled[0] . ", " . $diceRolled[1] . ", " . $diceRolled[2] . " +" . $bonus . " Drop: " . $diceRolled[3] . "<br />";
+    echo "Attribute Dice: " . $diceRolled[0] . ", " . $diceRolled[1] . ", " . $diceRolled[2] . " +" . $bonus . " Drop: " . $diceRolled[3] . " ";
     
     $attribute = $diceRolled[0] + $diceRolled[1] + $diceRolled[2] + $bonus;
     echo "<strong>Total: " . $attribute . " Bonus: " . $this->calculateAttributeBonus($attribute) . "</strong><br />";
@@ -192,16 +217,12 @@ class Adventurer
   }
   
   
-  function GenerateAdvClass()
+  function GenerateAdvClass()//all characters start as commoners
   {
-    $bard = new AdvClass("Bard", 6);
-    $fighter = new AdvClass("Fighter", 10);
-    $rouge = new AdvClass("Rouge", 8);
-    $wizard = new AdvClass("Wizard", 4);
-    $cleric = new AdvClass("Cleric", 8);
-    $classes = array($bard, $fighter, $rouge, $wizard, $cleric);
+    //change to load(by name "commoner")
+    $commoner = new AdvClass("Commoner", 4, 5, 0, "Str", 0, "A commoner come to start an exciting life in adventuring.");
     
-    return $classes[rand(0,4)];
+    return $commoner;
   }
   
   function GenerateRace()
@@ -225,7 +246,7 @@ class Adventurer
     
     //if $ID !== null, update
     $InsertQuery = "INSERT INTO `Adventurer` (`OwnerID`, `PartyID`, `Name`,            `Race`,                  `Class`,                     `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-                                    ) VALUES ('0',       '0',       '".$this->Name."', '".$this->Race->Name."', '".$this->AdvClass->Name."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Con."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
+                                    ) VALUES ('0',       '0',       '".$this->Name."', '".$this->Race->Name."', '".$this->AdvClass->Name."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
     
     mysql_query($InsertQuery);
     
