@@ -2,16 +2,19 @@
 
 include_once("includes/connect.php");
 
-/*********Generate Hero*********/
+/*********Add XP*********/
 include_once("hero/hero.php");
-$testHero = new Hero();
 
-$testHero->GenerateHero($_REQUEST["level"]); //generate lvl1 Hero
+
+$testHero = new Hero();
+$testHero = $testHero->loadHero($_REQUEST['ID']);
 
 //save adventurer
+$testHero->addXP(1000);
+
 $testHero->SaveHero();
 
-/***********end generate Hero *********/
+/***********end Add XP*********/
 
 
 //header("Location: index.php");

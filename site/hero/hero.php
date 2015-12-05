@@ -2,8 +2,9 @@
 
 include_once("race.php");
 include_once("advClass.php");
+//include weapon? should it be a child of this class?
 
-class Adventurer
+class Hero
 /*
 //////perhaps have 2 weapons and an armor or 3 items of some sort to make things more indepth, laters problem.
 /////// Death from old age? max age based on race? 1day IRL = 1 year
@@ -35,19 +36,21 @@ class Adventurer
   }
   
   //load Adventurer from DB 
-  function loadAdventurer($ID)
+  function loadHero($ID)
   {
-    
     $this->ID = $ID;
     //check ID is not blank and exists and such
-    $getQuery = "SELECT * FROM `Adventurer` WHERE `ID` = '".$this->ID."';";
+    $getQuery = "SELECT * FROM `Hero` WHERE `ID` = '" . $this->ID . "';";
 
     $getResult=mysql_query($getQuery);//execute query
     $num=mysql_numrows($getResult);
     
-    $this->Race = mysql_result($getResult,0,"Race");//load object
+    $this->OwnerID =  mysql_result($getResult,0,"OwnerID");
+    $this->PartyID =  mysql_result($getResult,0,"PartyID");
+    $this->Race = Race::loadRace(mysql_result($getResult,0,"Race"));
     $this->Name = mysql_result($getResult,0,"Name");
-    $this->AdvClass = mysql_result($getResult,0,"Class");//load object
+    $this->AdvClass = advClass::loadAdvClass(mysql_result($getResult,0,"Class"));
+    //$this->AdvClass = mysql_result($getResult,0,"Class");//load object
     $this->MaxHP = mysql_result($getResult,0,"MaxHP");
     $this->CurrentHP = mysql_result($getResult,0,"CurrentHP");
     $this->Level = mysql_result($getResult,0,"Level");
@@ -65,14 +68,14 @@ class Adventurer
     return $this;
   }
   
-  function GenerateAdventurer($level)// change to generate all characters at level 1 then call level up from a loop to add levels
+  function GenerateHero($level)// change to generate all characters at level 1 then call level up from a loop to add levels
   {
     //Race
     $this->Race = $this->GenerateRace();
     echo "Race: " . $this->Race->Name . "<br />";
     
     //Name
-    $this->Name = $this->Race->generateAdventurerName();
+    $this->Name = $this->Race->generateHeroName();
     echo "Name: " . $this->Name . "<br />";
     
     //Attributes
@@ -111,33 +114,13 @@ class Adventurer
     echo "XP: " . $this->CurrentXP . "/" . $this->LevelUpXP . " Luck Bonus: " . $XPBonus . "<br />";
     
     //check for levelup
-    if($level - 1 > 0)
+    if($level > 1)
     {
       $i=0;
       while($i < $level - 1)
       {
-        if($this->Level == $this->AdvClass->LevelCap)
-        {
-          echo "<br />At " . $this->AdvClass->Name . " level cap, Trying to find new class<br />";
-          if($this->AdvClass->checkForNewClass($this))
-          {
-            //we found a new class and have applied it. now we can level
-            echo "Have chosen class: " . $this->AdvClass->Name . "<br />";
-            $this->forceLevelUP();
-          }
-          else
-          {
-            //no new class. have reached level cap.
-            echo "Dont meet the requirements for any classes. :(<br />";
-            //can break out of the loop here cause nothing is going to change, looping is a waste of time
-            break;
-          }
-          //search for new class
-        }
-        else
-        {
-          $this->forceLevelUP();
-        }
+        $this->forceLevelUP();//add in try catch, make forceLevelUP throw error when reached class cap
+        
         $i++;
       }
     }
@@ -145,14 +128,56 @@ class Adventurer
     //generate weapon
   }
   
-  function levelUP()
+  function addXP($XP)
   {
-    //TBD XP checks
-    $this->forceLevelUP();
+    echo "Current XP: " . $this->CurrentXP . "<br />";
+    echo "Adding 1,000XP<br />";
+    $this->CurrentXP += $XP;//add the XP
+    
+    if($this->CurrentXP > $this->LevelUpXP)//if its more then the level up reduce it to the levelup amount
+    {
+      $this->CurrentXP = $this->LevelUpXP;
+    }
+    
+    echo "New XP: " . $this->CurrentXP . "<br />";
   }
   
-  function forceLevelUP()//same as level up without the checks
+  function levelUP()
   {
+    //returns true if it worked
+    if($this->CurrentXP == $this->LevelUpXP)//we have enough XP
+    {
+      $this->forceLevelUP();
+      return true;
+    }
+    else
+    {
+      echo "Not Enough XP to level UP!<br />";
+      return false;
+    }
+  }
+  
+  function forceLevelUP()//same as level up without the checks, used in character gen when XP shouldnt get in the way
+  {
+    if($this->Level == $this->AdvClass->LevelCap)//check if class is at Level cap
+    {
+      echo "<br />At " . $this->AdvClass->Name . " level cap, Trying to find new class<br />";
+      if(!$this->AdvClass->checkForNewClass($this))
+      {
+        //no new class. have reached level cap.
+        echo "Dont meet the requirements for any classes. :(<br />";
+        //cant levelup, we are done here.
+        return;
+      }
+      else
+      {
+        //we found a new class and have applied it. now we can level
+        echo "Have chosen class: " . $this->AdvClass->Name . "<br />";
+      }
+      //search for new class
+    }
+    //not at level cap, all good to continue
+    
     //increase level
     $this->Level += 1;
     echo "<br /><br /><strong>Leveling to " . $this->Level . "</strong><br />";
@@ -206,11 +231,11 @@ class Adventurer
   {  
     //shitty 4d6 drop 1
     $diceRolled = array(rand(1, 6), rand(1, 6), rand(1, 6), rand(1, 6));
-    rsort($diceRolled);
+    rsort($diceRolled);//Sort the 4d6
     
     echo "Attribute Dice: " . $diceRolled[0] . ", " . $diceRolled[1] . ", " . $diceRolled[2] . " +" . $bonus . " Drop: " . $diceRolled[3] . " ";
     
-    $attribute = $diceRolled[0] + $diceRolled[1] + $diceRolled[2] + $bonus;
+    $attribute = $diceRolled[0] + $diceRolled[1] + $diceRolled[2] + $bonus;//add the highest 3 and the bonus passed in
     echo "<strong>Total: " . $attribute . " Bonus: " . $this->calculateAttributeBonus($attribute) . "</strong><br />";
 
     return $attribute;
@@ -220,18 +245,19 @@ class Adventurer
   function GenerateAdvClass()//all characters start as commoners
   {
     //change to load(by name "commoner")
-    $commoner = new AdvClass("Commoner", 4, 5, 0, "Str", 0, "A commoner come to start an exciting life in adventuring.");
-    
+    $commoner = advClass::loadAdvClass(1);//1 is the ID of commoner. hacky!
+
     return $commoner;
   }
   
+  
   function GenerateRace()
   {
-    //races should put in DB
-    $human = new Race("Human",        0,  0,  0,  0,  0,  0,  2);
-    $dwarf = new Race("Dwarf",        0,  0,  2,  0,  2, -2,  0);
-    $elf = new Race("Elf",            0,  2, -2,  2,  0,  0,  0);
-    $halfling = new Race("Halfling", -2,  2,  0,  0,  0,  2,  0);
+    //This is pretty terrible but it matches the DB for now
+    $human = Race::loadRace(1);
+    $dwarf = Race::loadRace(2);
+    $elf = Race::loadRace(3);
+    $halfling = Race::loadRace(4);
     
     $races = array($human, $dwarf, $elf, $halfling);
     
@@ -240,46 +266,53 @@ class Adventurer
     return $newRace;
   }
   
-  function SaveAdventurer()
+  function SaveHero()//could be called just Save()??
   {
     //check shit is ok
     
     //if $ID !== null, update
-    $InsertQuery = "INSERT INTO `Adventurer` (`OwnerID`, `PartyID`, `Name`,            `Race`,                  `Class`,                     `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-                                    ) VALUES ('0',       '0',       '".$this->Name."', '".$this->Race->Name."', '".$this->AdvClass->Name."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
     
-    mysql_query($InsertQuery);
+    if($this->ID != null)
+    {
+      $updateQuery = "UPDATE `kr00ny_sf`.`Hero` SET 
+                               `OwnerID` = " . $this->OwnerID . ", 
+                               `PartyID` = " . $this->PartyID . ", 
+                               `Name` = '" . $this->Name . "',  
+                               `Race` = " . $this->Race->ID . ",          
+                               `Class` = " . $this->AdvClass->ID . ",    
+                               `MaxHP` = " . $this->MaxHP . ",
+                               `CurrentHP` = " . $this->CurrentHP . ",
+                               `Level` = " . $this->Level . ",
+                               `CurrentXP` = " . $this->CurrentXP . ",
+                               `LevelUpXP` = " . $this->LevelUpXP . ",
+                               `Str` = " . $this->Str . ",
+                               `Dex` = " . $this->Dex . ",
+                               `Con` = " . $this->Con . ",
+                               `Intel` = " . $this->Intel . ",
+                               `Wis` = " . $this->Wis . ",
+                               `Cha` = " . $this->Cha . ",
+                               `Fte` = " . $this->Fte . ",
+                               `WeaponID` = " . $this->WeaponID . "
+                               WHERE `Hero`.`ID` = " . $this->ID . ";";
+      echo "Updating Hero: " . $updateQuery . "<br />";
+      mysql_query($updateQuery);
+    }
+    else //no id, add new character
+    {
+      $InsertQuery = "INSERT INTO `Hero` (`OwnerID`, `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
+                                      ) VALUES ('0',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->AdvClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
+      echo "Inserting New Hero: " . $InsertQuery . "<br />";
+      mysql_query($InsertQuery);
+    }
     
-    //some sort of try catch
+    //some sort of try catch error detection
   }
   
-  function GetAllAdventurers()
+  function GetAllHeros()
   {
     //return array of all adventurers in DB
+    //NOT THIS CLASS JOB thats for the controller
   }
-  
-  /*function Adventurer($OwnerID, $PartyID, $Name, $Race, $Class, $MaxHP, $CurrentHP, $Level, $CurrentXP, $LevelUpXP, $Str, $Dex, $Con, $Intel, $Wis, $Cha, $Fte, $WeaponID)
-  {
-    this->$ID = $ID
-    this->$OwnerID = $OwnerID
-    this->$PartyID = $PartyID
-    this->$Name = $Name
-    this->$Race = $Race
-    this->$AdvClass = $AdvClass
-    this->$MaxHP = $MaxHP
-    this->$CurrentHP = $CurrentHP
-    this->$Level = $Level
-    this->$CurrentXP = $CurrentXP
-    this->$LevelUpXP = $LevelUpXP
-    this->$Str = $Str
-    this->$Dex = $Dex
-    this->$Con = $Con
-    this->$Intel = $Intel
-    this->$Wis = $Wis
-    this->$Cha = $Cha
-    this->$Fte = $Fte
-    this->$WeaponID = $WeaponID
-  }*/
   
 }
 

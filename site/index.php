@@ -51,14 +51,14 @@ echo '<p>
         <a href="addNew.php?level=100">100</a> 
       </p>';
 
-/*********  show all adventurers  ***********/
-include_once("adventurer/adventurerController.php");
+/*********  show all Hero  ***********/
+include_once("hero/heroController.php");
 
-$adventurerController = new adventurerController();
+$heroController = new heroController();
 
-$adventurerController->showAll();
+$heroController->showAll();
 
-/*********  end show all adventurers  ***********/
+/*********  end show all Hero  ***********/
 
 
 ?>

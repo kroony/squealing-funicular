@@ -38,7 +38,29 @@ class AdvClass
     $this->Description = $Description;
   }
   
-  function checkForNewClass($adventurer)
+  //load Adventurer from DB 
+  function loadAdvClass($ID)
+  {
+    //check ID is not blank and exists and such
+    
+    $getQuery = "SELECT * FROM `AdvClass` WHERE `ID` = '". $ID ."';";
+
+    $getResult=mysql_query($getQuery);//execute query
+    $num=mysql_numrows($getResult);
+    
+    $ReturnClass = new advClass(mysql_result($getResult,0,"Name"), 
+                                mysql_result($getResult,0,"HD"), 
+                                mysql_result($getResult,0,"LevelCap"), 
+                                mysql_result($getResult,0,"PrerequisiteLevel"), 
+                                mysql_result($getResult,0,"PrerequisiteAttribute"), 
+                                mysql_result($getResult,0,"PrerequisiteTarget"), 
+                                mysql_result($getResult,0,"Description"));
+    $ReturnClass->ID = $ID;
+    
+    return $ReturnClass;
+  }
+  
+  function checkForNewClass($Hero)
   {
     /*checks for classes we could move to.
     returns false if unsuccessful
@@ -47,7 +69,7 @@ class AdvClass
     */
     
     //get all classes where PrerequisiteLevel = current level
-    $getQuery = "SELECT * FROM `AdvClass` WHERE `PrerequisiteLevel` ='".$adventurer->Level."';";
+    $getQuery = "SELECT * FROM `AdvClass` WHERE `PrerequisiteLevel` ='".$Hero->Level."';";
 
     $getResult=mysql_query($getQuery);//execute query
     $num=mysql_numrows($getResult);
@@ -59,21 +81,23 @@ class AdvClass
     {
       $PrerequisiteAttribute = mysql_result($getResult,$i,"PrerequisiteAttribute");
       $PrerequisiteTarget = mysql_result($getResult,$i,"PrerequisiteTarget");
-      echo mysql_result($getResult,$i,"Name") . " a needs " . $PrerequisiteTarget . " in " . $PrerequisiteAttribute . " Hero has " . $adventurer->Str . " " . $adventurer->Dex . " " . $adventurer->Con . " " . $adventurer->Intel . " " . $adventurer->Wis . " " . $adventurer->Cha . " " . $adventurer->Fte . "<br />";
+      echo mysql_result($getResult,$i,"Name") . " a needs " . $PrerequisiteTarget . " in " . $PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
 
-      if(($PrerequisiteAttribute == "Str" && $PrerequisiteTarget <= $adventurer->Str) ||
-         ($PrerequisiteAttribute == "Dex" && $PrerequisiteTarget <= $adventurer->Dex) ||
-         ($PrerequisiteAttribute == "Con" && $PrerequisiteTarget <= $adventurer->Con) ||
-         ($PrerequisiteAttribute == "Intel" && $PrerequisiteTarget <= $adventurer->Intel) ||
-         ($PrerequisiteAttribute == "Wis" && $PrerequisiteTarget <= $adventurer->Wis) ||
-         ($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $adventurer->Cha) ||
-         ($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $adventurer->Fte))
+      if(($PrerequisiteAttribute == "Str" && $PrerequisiteTarget <= $Hero->Str) ||
+         ($PrerequisiteAttribute == "Dex" && $PrerequisiteTarget <= $Hero->Dex) ||
+         ($PrerequisiteAttribute == "Con" && $PrerequisiteTarget <= $Hero->Con) ||
+         ($PrerequisiteAttribute == "Intel" && $PrerequisiteTarget <= $Hero->Intel) ||
+         ($PrerequisiteAttribute == "Wis" && $PrerequisiteTarget <= $Hero->Wis) ||
+         ($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
+         ($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte))
       {
         $tmpClass = new AdvClass(mysql_result($getResult,$i,"Name"), mysql_result($getResult,$i,"HD"), mysql_result($getResult,$i,"LevelCap"), mysql_result($getResult,$i,"PrerequisiteLevel"), mysql_result($getResult,$i,"PrerequisiteAttribute"), mysql_result($getResult,$i,"PrerequisiteTarget"), mysql_result($getResult,$i,"Description"));
+        $tmpClass->ID = mysql_result($getResult,$i,"ID");
         array_push($possibleNewClasses, $tmpClass);
       }
       $i++;
     }
+    //check age prereqs
     
     //check if there are any new possible new classes
     if(!empty($possibleNewClasses))
@@ -83,7 +107,7 @@ class AdvClass
       $newClassIndex = rand(0,$newClassCount -1);
       $newClass = $possibleNewClasses[$newClassIndex];
       
-      //$this->ID       should load properly from DB or update the parent adventurer in db or something
+      $this->ID = $newClass->ID;  //should load properly from DB or update the parent adventurer in db or something
       $this->Name = $newClass->Name;
       $this->HD = $newClass->HD;
       $this->LevelCap = $newClass->LevelCap;
@@ -98,11 +122,6 @@ class AdvClass
     //no new class, return false
     return false;
     
-  }
-  
-  function loadAdvClass($ID)
-  {
-    //get data from DB given ID
   }
 }
 

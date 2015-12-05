@@ -4,12 +4,17 @@ include_once("includes/connect.php");
 
 /*********Generate Hero*********/
 include_once("hero/hero.php");
-$testHero = new Hero();
 
-$testHero->GenerateHero($_REQUEST["level"]); //generate lvl1 Hero
 
-//save adventurer
-$testHero->SaveHero();
+$testHero = new Adventurer();
+$testHero = $testAdventurer->loadHero($_REQUEST['ID']);
+
+
+if($testHero->LevelUP())
+{
+  // if we leveled up then we can save adventurer
+  $testHero->SaveHero();
+}
 
 /***********end generate Hero *********/
 
