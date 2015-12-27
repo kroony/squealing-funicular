@@ -21,20 +21,24 @@ class AdvClass
   public $ID;
   public $Name;
   public $HD;
+  public $FavouredAttribute;
   public $LevelCap;
-  public $PrerequisiteLevel;
+  public $NextClass;
   public $PrerequisiteAttribute;
   public $PrerequisiteTarget;
+  public $PrerequisiteAge;
   public $Description;
   
-  function __construct($Name, $HD, $LevelCap, $PrerequisiteLevel, $PrerequisiteAttribute, $PrerequisiteTarget, $Description)
+  function __construct($Name, $HD, $FavouredAttribute, $LevelCap, $NextClass, $PrerequisiteAttribute, $PrerequisiteTarget, $PrerequisiteAge, $Description)
   {
     $this->Name = $Name;
     $this->HD = $HD;
+    $this->FavouredAttribute = $FavouredAttribute;
     $this->LevelCap = $LevelCap;
-    $this->PrerequisiteLevel = $PrerequisiteLevel;
+    $this->NextClass = $NextClass;
     $this->PrerequisiteAttribute = $PrerequisiteAttribute;
     $this->PrerequisiteTarget = $PrerequisiteTarget;
+    $this->PrerequisiteAge = $PrerequisiteAge;
     $this->Description = $Description;
   }
   
@@ -50,10 +54,12 @@ class AdvClass
     
     $ReturnClass = new advClass(mysql_result($getResult,0,"Name"), 
                                 mysql_result($getResult,0,"HD"), 
+                                mysql_result($getResult,0,"FavouredAttribute"), 
                                 mysql_result($getResult,0,"LevelCap"), 
-                                mysql_result($getResult,0,"PrerequisiteLevel"), 
+                                mysql_result($getResult,0,"NextClass"), 
                                 mysql_result($getResult,0,"PrerequisiteAttribute"), 
                                 mysql_result($getResult,0,"PrerequisiteTarget"), 
+                                mysql_result($getResult,0,"PrerequisiteAge"), 
                                 mysql_result($getResult,0,"Description"));
     $ReturnClass->ID = $ID;
     
@@ -68,8 +74,14 @@ class AdvClass
     perhaps this shouldnt be called CHECK if it DOES something?
     */
     
-    //get all classes where PrerequisiteLevel = current level
-    $getQuery = "SELECT * FROM `AdvClass` WHERE `PrerequisiteLevel` ='".$Hero->Level."';";
+    if($Hero->AdvClass->NextClass == null || $Hero->AdvClass->NextClass == "")//check there is another class to go to
+    {
+      return false;
+    }
+    
+    $NextClassIDs = explode("|", $Hero->AdvClass->NextClass);
+    //Get all classes listed in next class
+    $getQuery = 'SELECT * FROM `AdvClass` WHERE `ID` IN (' . implode(',', array_map('intval', $NextClassIDs)) . ')';
 
     $getResult=mysql_query($getQuery);//execute query
     $num=mysql_numrows($getResult);
@@ -91,7 +103,15 @@ class AdvClass
          ($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
          ($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte))
       {
-        $tmpClass = new AdvClass(mysql_result($getResult,$i,"Name"), mysql_result($getResult,$i,"HD"), mysql_result($getResult,$i,"LevelCap"), mysql_result($getResult,$i,"PrerequisiteLevel"), mysql_result($getResult,$i,"PrerequisiteAttribute"), mysql_result($getResult,$i,"PrerequisiteTarget"), mysql_result($getResult,$i,"Description"));
+        $tmpClass = new AdvClass(mysql_result($getResult,$i,"Name"), 
+                                 mysql_result($getResult,$i,"HD"), 
+                                 mysql_result($getResult,$i,"FavouredAttribute"), 
+                                 mysql_result($getResult,$i,"LevelCap"), 
+                                 mysql_result($getResult,$i,"NextClass"), 
+                                 mysql_result($getResult,$i,"PrerequisiteAttribute"), 
+                                 mysql_result($getResult,$i,"PrerequisiteTarget"), 
+                                 mysql_result($getResult,$i,"PrerequisiteAge"), 
+                                 mysql_result($getResult,$i,"Description"));
         $tmpClass->ID = mysql_result($getResult,$i,"ID");
         array_push($possibleNewClasses, $tmpClass);
       }
@@ -110,10 +130,12 @@ class AdvClass
       $this->ID = $newClass->ID;  //should load properly from DB or update the parent adventurer in db or something
       $this->Name = $newClass->Name;
       $this->HD = $newClass->HD;
+      $this->FavouredAttribute = $newClass->FavouredAttribute;
       $this->LevelCap = $newClass->LevelCap;
-      $this->PrerequisiteLevel = $newClass->PrerequisiteLevel;
+      $this->NextClass = $newClass->NextClass;
       $this->PrerequisiteAttribute = $newClass->PrerequisiteAttribute;
       $this->PrerequisiteTarget = $newClass->PrerequisiteTarget;
+      $this->PrerequisiteAge = $newClass->PrerequisiteAge;
       $this->Description = $newClass->Description;
       //we changed the class, return true
       return true;
@@ -121,7 +143,6 @@ class AdvClass
       
     //no new class, return false
     return false;
-    
   }
 }
 

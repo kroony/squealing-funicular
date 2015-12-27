@@ -119,13 +119,24 @@ class Hero
       $i=0;
       while($i < $level - 1)
       {
-        $this->forceLevelUP();//add in try catch, make forceLevelUP throw error when reached class cap
-        
-        $i++;
+        if($this->forceLevelUP())//add in try catch, make forceLevelUP throw error when reached class cap
+        {
+          $i++;
+        }
+        else
+        {
+          break;
+        }
       }
     }
     
     //generate weapon
+  }
+  
+  function GiveToUser($UID)
+  {
+    //check user exists
+    $this->OwnerID = $UID;
   }
   
   function addXP($XP)
@@ -165,9 +176,9 @@ class Hero
       if(!$this->AdvClass->checkForNewClass($this))
       {
         //no new class. have reached level cap.
-        echo "Dont meet the requirements for any classes. :(<br />";
+        echo "Dont meet the requirements for any classes. :(<br /><br /><br />";
         //cant levelup, we are done here.
-        return;
+        return false;
       }
       else
       {
@@ -209,14 +220,26 @@ class Hero
         
     //increase 1 attribute
     $possibleAttribute = array("Str", "Dex", "Con", "Intel", "Wis", "Cha", "Fte");//dynamiclly create this array using a Class favoured Attribute, weighted with Fate
-    $pickAttribute = $possibleAttribute[rand(0, count($possibleAttribute)) -1];
-    if      ($pickAttribute == "Str") {$this->Str++; echo "Increase Str<br />";}
-    else if($pickAttribute == "Dex") {$this->Dex++; echo "Increase Dex<br />";}
-    else if($pickAttribute == "Con") {$this->Con++; echo "Increase Con<br />";}
-    else if($pickAttribute == "Intel") {$this->Intel++; echo "Increase Intel<br />";}
-    else if($pickAttribute == "Wis") {$this->Wis++; echo "Increase Wis<br />";}
-    else if($pickAttribute == "Cha") {$this->Cha++; echo "Increase Cha<br />";}
-    else if($pickAttribute == "Fte") {$this->Fte++; echo "Increase Fte<br />";}
+    if($this->calculateAttributeBonus($this->Fte) > 0)//add favoured bonus to array, for each fate bonus above 0
+    {
+      $i=0;
+      while($i < $this->calculateAttributeBonus($this->Fte))
+      {
+        array_push($possibleAttribute, $this->AdvClass->FavouredAttribute);
+        $i++;
+      }
+    }
+    print_r($possibleAttribute);
+    $pickAttribute = $possibleAttribute[rand(0, count($possibleAttribute) -1)];
+    if      ($pickAttribute == "Str") {$this->Str++; echo "<b>Increase Str</b><br />";}
+    else if($pickAttribute == "Dex") {$this->Dex++; echo "<b>Increase Dex</b><br />";}
+    else if($pickAttribute == "Con") {$this->Con++; echo "<b>Increase Con</b><br />";}
+    else if($pickAttribute == "Intel") {$this->Intel++; echo "<b>Increase Intel</b><br />";}
+    else if($pickAttribute == "Wis") {$this->Wis++; echo "<b>Increase Wis</b><br />";}
+    else if($pickAttribute == "Cha") {$this->Cha++; echo "<b>Increase Cha</b><br />";}
+    else if($pickAttribute == "Fte") {$this->Fte++; echo "<b>Increase Fte</b><br />";}
+    
+    return true;
   }
   
   function calculateAttributeBonus($attribute)
@@ -299,8 +322,8 @@ class Hero
     }
     else //no id, add new character
     {
-      $InsertQuery = "INSERT INTO `Hero` (`OwnerID`, `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-                                      ) VALUES ('0',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->AdvClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
+      $InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
+                                ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->AdvClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
       echo "Inserting New Hero: " . $InsertQuery . "<br />";
       mysql_query($InsertQuery);
     }

@@ -60,7 +60,7 @@ class heroController
     $totalHeros=mysql_numrows($getResult); 
     echo "Showing " . $totalHeros . " results.<br />";
     
-    echo "<table>
+    echo "<table style='width: 100%;'>
             <tr>
               <td>Name</td>
               <!--<td>OwnerID</td>
@@ -88,8 +88,52 @@ class heroController
     {
       $HeroID=mysql_result($getResult,$i,"ID");
       
-      $Hero = new Adventurer();
-      $this->outputInTable($Hero->loadAdventurer($HeroID));
+      $Hero = new Hero();
+      $this->outputInTable($Hero->loadHero($HeroID));
+      $i++;
+    }
+    
+    echo "</table>";
+  }
+  
+  function showAllForUser($id)
+  {
+    $getQuery = "SELECT `ID` FROM `Hero` WHERE `OwnerID` = $id;";
+
+    $getResult=mysql_query($getQuery);//execute query
+    $totalHeros=mysql_numrows($getResult); 
+    echo "Showing " . $totalHeros . " results.<br />";
+    
+    echo "<table style='width: 100%;'>
+            <tr>
+              <td>Name</td>
+              <!--<td>OwnerID</td>
+              <td>PartyID</td>-->
+              <td>Race</td>
+              <td>Class</td>
+              <td>HP</td>
+              <td>Level</td>
+              <td>XP</td>
+              <td>Str</td>
+              <td>Dex</td>
+              <td>Con</td>
+              <td>Int</td>
+              <td>Wis</td>
+              <td>Cha</td>
+              <td>Fte</td>
+              <!--<td>WeaponID</td>-->
+              <td>Delete</td>
+              <td>Level UP</td>
+              <td>Add XP</td>
+            </tr>";
+              
+    $i=0;
+    while($i < $totalHeros)
+    {
+      $HeroID=mysql_result($getResult,$i,"ID");
+      
+      $Hero = new Hero();
+      $this->outputInTable($Hero->loadHero($HeroID));
       $i++;
     }
     

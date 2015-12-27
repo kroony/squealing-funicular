@@ -21,4 +21,4 @@ $testHero->SaveHero();
 
 ?>
 
-<a href="index.php">Return</a>
+<a href="home.php">Return</a>

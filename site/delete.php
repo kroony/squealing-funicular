@@ -6,6 +6,6 @@ $DeleteQuery = "DELETE FROM `kr00ny_sf`.`Hero` WHERE `Hero`.`ID` = " . $_REQUEST
     
 mysql_query($DeleteQuery);
 
-header("Location: index.php");
+header("Location: home.php");
 
 ?>

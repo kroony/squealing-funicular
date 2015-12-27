@@ -6,8 +6,8 @@ include_once("includes/connect.php");
 include_once("hero/hero.php");
 
 
-$testHero = new Adventurer();
-$testHero = $testAdventurer->loadHero($_REQUEST['ID']);
+$testHero = new Hero();
+$testHero = $testHero->loadHero($_REQUEST['ID']);
 
 
 if($testHero->LevelUP())
@@ -23,4 +23,4 @@ if($testHero->LevelUP())
 
 ?>
 
-<a href="index.php">Return</a>
+<a href="home.php">Return</a>
