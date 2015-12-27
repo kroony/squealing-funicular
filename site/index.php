@@ -1,14 +1,24 @@
 <?php
 
-include_once("includes/connect.php");
+echo "Rolling 100 d6<br />";
+$i=0;
+$rolls = array();
+while($i<600)
+{
+  array_push($rolls, rand(1,6));
+  $i++;
+}
 
-//get email config
-$configQuery = "SELECT `ConfigValue` FROM Config WHERE `ConfigKey` = 'notification_email';";
-
-$configResult=mysql_query($configQuery);//execute query
-$notificationEmail=mysql_result($configResult,$i,"ConfigValue");
-
-echo $notificationEmail;
-
+$occurences = array_count_values($rolls);
+ksort($occurences);
+print_r($occurences);
 
 ?>
+<br />
+<hr>
+<br />
+<form action="login.php">
+  Username: <input name="username" type="text"><br />
+  password: <input name="password" type="password"><br />
+  <input type="submit" value="Submit">
+</form>
