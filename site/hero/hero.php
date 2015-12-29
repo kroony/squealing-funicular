@@ -1,7 +1,7 @@
 <?php
 
 include_once("race.php");
-include_once("advClass.php");
+include_once("heroClass.php");
 //include weapon? should it be a child of this class?
 
 class Hero
@@ -15,7 +15,7 @@ class Hero
   public $PartyID;
   public $Name;
   public $Race;
-  public $AdvClass;
+  public $HeroClass;
   public $MaxHP;
   public $CurrentHP;
   public $Level;
@@ -49,8 +49,8 @@ class Hero
     $this->PartyID =  mysql_result($getResult,0,"PartyID");
     $this->Race = Race::loadRace(mysql_result($getResult,0,"Race"));
     $this->Name = mysql_result($getResult,0,"Name");
-    $this->AdvClass = advClass::loadAdvClass(mysql_result($getResult,0,"Class"));
-    //$this->AdvClass = mysql_result($getResult,0,"Class");//load object
+    $this->HeroClass = HeroClass::loadHeroClass(mysql_result($getResult,0,"Class"));
+    //$this->HeroClass = mysql_result($getResult,0,"Class");//load object
     $this->MaxHP = mysql_result($getResult,0,"MaxHP");
     $this->CurrentHP = mysql_result($getResult,0,"CurrentHP");
     $this->Level = mysql_result($getResult,0,"Level");
@@ -95,11 +95,11 @@ class Hero
     $this->Fte = $this->GenerateAtribute($this->Race->FteBon);
     
     //Class
-    $this->AdvClass = $this->GenerateAdvClass();
-    echo "<br />Class: " . $this->AdvClass->Name . " HD: D" . $this->AdvClass->HD . "<br />";
+    $this->HeroClass = $this->GenerateHeroClass();
+    echo "<br />Class: " . $this->HeroClass->Name . " HD: D" . $this->HeroClass->HD . "<br />";
     
     //HP
-    $this->MaxHP = $this->AdvClass->HD + $this->calculateAttributeBonus($this->Con);  //base the multiplyer on HD and con
+    $this->MaxHP = $this->HeroClass->HD + $this->calculateAttributeBonus($this->Con);  //base the multiplyer on HD and con
     $this->CurrentHP = $this->MaxHP;
     echo "Hit Points: " . $this->CurrentHP . "/" . $this->MaxHP . "<br />";
     
@@ -170,10 +170,10 @@ class Hero
   
   function forceLevelUP()//same as level up without the checks, used in character gen when XP shouldnt get in the way
   {
-    if($this->Level == $this->AdvClass->LevelCap)//check if class is at Level cap
+    if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
     {
-      echo "<br />At " . $this->AdvClass->Name . " level cap, Trying to find new class<br />";
-      if(!$this->AdvClass->checkForNewClass($this))
+      echo "<br />At " . $this->HeroClass->Name . " level cap, Trying to find new class<br />";
+      if(!$this->HeroClass->checkForNewClass($this))
       {
         //no new class. have reached level cap.
         echo "Dont meet the requirements for any classes. :(<br /><br /><br />";
@@ -183,7 +183,7 @@ class Hero
       else
       {
         //we found a new class and have applied it. now we can level
-        echo "Have chosen class: " . $this->AdvClass->Name . "<br />";
+        echo "Have chosen class: " . $this->HeroClass->Name . "<br />";
       }
       //search for new class
     }
@@ -194,14 +194,14 @@ class Hero
     echo "<br /><br /><strong>Leveling to " . $this->Level . "</strong><br />";
     
     //add hp
-    $extraHP = rand(1,$this->AdvClass->HD) + $this->calculateAttributeBonus($this->Con);
+    $extraHP = rand(1,$this->HeroClass->HD) + $this->calculateAttributeBonus($this->Con);
     if($extraHP < 1)//minimum 1 hitpoint increase.
     {
       $extraHP = 1;
     }
     $this->MaxHP += $extraHP;
     $this->CurrentHP = $this->MaxHP; //healed when leveled up?? could be exploited....
-    echo "Adding " . $extraHP . " HP. Rolled a d" . $this->AdvClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
+    echo "Adding " . $extraHP . " HP. Rolled a d" . $this->HeroClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
     
     //increase XP cap
     $this->CurrentXP = $this->LevelUpXP;
@@ -225,7 +225,7 @@ class Hero
       $i=0;
       while($i < $this->calculateAttributeBonus($this->Fte))
       {
-        array_push($possibleAttribute, $this->AdvClass->FavouredAttribute);
+        array_push($possibleAttribute, $this->HeroClass->FavouredAttribute);
         $i++;
       }
     }
@@ -265,10 +265,10 @@ class Hero
   }
   
   
-  function GenerateAdvClass()//all characters start as commoners
+  function GenerateHeroClass()//all characters start as commoners
   {
     //change to load(by name "commoner")
-    $commoner = advClass::loadAdvClass(1);//1 is the ID of commoner. hacky!
+    $commoner = HeroClass::loadHeroClass(1);//1 is the ID of commoner. hacky!
 
     return $commoner;
   }
@@ -302,7 +302,7 @@ class Hero
                                `PartyID` = " . $this->PartyID . ", 
                                `Name` = '" . $this->Name . "',  
                                `Race` = " . $this->Race->ID . ",          
-                               `Class` = " . $this->AdvClass->ID . ",    
+                               `Class` = " . $this->HeroClass->ID . ",    
                                `MaxHP` = " . $this->MaxHP . ",
                                `CurrentHP` = " . $this->CurrentHP . ",
                                `Level` = " . $this->Level . ",
@@ -323,7 +323,7 @@ class Hero
     else //no id, add new character
     {
       $InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-                                ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->AdvClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
+                                ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
       echo "Inserting New Hero: " . $InsertQuery . "<br />";
       mysql_query($InsertQuery);
     }

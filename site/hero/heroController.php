@@ -14,7 +14,7 @@ class heroController
     echo "<br />OwnerID: " . $Hero->OwnerID;
     echo "<br />PartyID: " . $Hero->PartyID;
     echo "<br />Race: " . $Hero->Race;
-    echo "<br />Class: " . $Hero->AdvClass;
+    echo "<br />Class: " . $Hero->HeroClass;
     echo "<br />HP: " . $Hero->CurrentHP .'/'. $Hero->MaxHP;
     echo "<br />Level: " . $Hero->Level;
     echo "<br />XP: " . $Hero->CurrentXP .'/'. $Hero->LevelUpXP;
@@ -35,7 +35,7 @@ class heroController
     //echo "<td>" . $Hero->OwnerID ."</td>";
     //echo "<td>" . $Hero->PartyID ."</td>";
     echo "<td>" . $Hero->Race->Name ."</td>";
-    echo "<td>" . $Hero->AdvClass->Name ."</td>";
+    echo "<td>" . $Hero->HeroClass->Name ."</td>";
     echo "<td>" . $Hero->CurrentHP .'/'. $Hero->MaxHP ."</td>";
     echo "<td>" . $Hero->Level ."</td>";
     echo "<td>" . $Hero->CurrentXP .'/'. $Hero->LevelUpXP ."</td>";
