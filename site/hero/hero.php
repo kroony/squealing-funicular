@@ -2,7 +2,7 @@
 
 include_once("race.php");
 include_once("heroClass.php");
-//include weapon? should it be a child of this class?
+include_once("weapon.php");
 
 class Hero
 /*
@@ -249,6 +249,55 @@ class Hero
     return $bonus;
   }
   
+  function getAttributeByName($name)
+  {
+	if ($name == "Str")
+      return $this->Str;
+	else if ($name == "Dex")
+	  return $this->Dex;
+	else if ($name == "Con")
+	  return $this->Con;
+	else if ($name == "Intel")
+	  return $this->Intel;
+	else if ($name == "Wis")
+	  return $this->Wis;
+	else if ($name == "Cha")
+	  return $this->Cha;
+	else if ($name == "Fte")
+	  return $this->Fte;
+	else
+	  throw new Exception("Not a known attribute: $name");
+  }
+  
+  function calcDamage()
+  {
+	$weapon = Weapon::loadWeapon($this->WeaponID);
+	$attr   = $this->getAttributeByName($weapon->DamageAttribute);
+	$bonus  = $this->calculateAttributeBonus($attr);
+	$damage = $weapon->calcDamage($this->calculateAttributeBonus($this->Fte), $bonus);
+	
+	return $damage;
+  }
+  
+  function takeDamage($damage)
+  {
+	$damage -= $this->calculateAttributeBonus($this->Dex);//dodge Damage Reduction
+	//$damage -= ARMOR;//Armor Damage Deduction
+	
+	if($damage < 1)//always take at least 1 damage
+	{
+		$damage = 1;
+	}
+	
+	$this->CurrentHP -= $damage;
+	
+	return $damage;
+  }
+  
+  function rollInitiative()
+  {
+    return rand(1,20) + $this->calculateAttributeBonus($this->Wis);
+  }
   
   function GenerateAtribute($bonus)
   {  
