@@ -1,5 +1,5 @@
 <?php
-class AdvClass
+class HeroClass
 {
   /*
   Bard - helps recruit new people
@@ -8,11 +8,11 @@ class AdvClass
   Wizard - Do DPS to "fight" and in PVP?
   Cleric - Heals
   
-  $bard = new AdvClass("Bard", 6);
-  $fighter = new AdvClass("Fighter", 10);
-  $rouge = new AdvClass("Rouge", 8);
-  $wizard = new AdvClass("Wizard", 4);
-  $cleric = new AdvClass("Cleric", 8);
+  $bard = new HeroClass("Bard", 6);
+  $fighter = new HeroClass("Fighter", 10);
+  $rouge = new HeroClass("Rouge", 8);
+  $wizard = new HeroClass("Wizard", 4);
+  $cleric = new HeroClass("Cleric", 8);
   */
   
   /*in x levels you "complete" your current class and if you meet the pre reqs you change class to a prestige class
@@ -43,7 +43,7 @@ class AdvClass
   }
   
   //load Adventurer from DB 
-  function loadAdvClass($ID)
+  function loadHeroClass($ID)
   {
     //check ID is not blank and exists and such
     
@@ -52,7 +52,7 @@ class AdvClass
     $getResult=mysql_query($getQuery);//execute query
     $num=mysql_numrows($getResult);
     
-    $ReturnClass = new advClass(mysql_result($getResult,0,"Name"), 
+    $ReturnClass = new HeroClass(mysql_result($getResult,0,"Name"), 
                                 mysql_result($getResult,0,"HD"), 
                                 mysql_result($getResult,0,"FavouredAttribute"), 
                                 mysql_result($getResult,0,"LevelCap"), 
@@ -74,12 +74,12 @@ class AdvClass
     perhaps this shouldnt be called CHECK if it DOES something?
     */
     
-    if($Hero->AdvClass->NextClass == null || $Hero->AdvClass->NextClass == "")//check there is another class to go to
+    if($Hero->HeroClass->NextClass == null || $Hero->HeroClass->NextClass == "")//check there is another class to go to
     {
       return false;
     }
     
-    $NextClassIDs = explode("|", $Hero->AdvClass->NextClass);
+    $NextClassIDs = explode("|", $Hero->HeroClass->NextClass);
     //Get all classes listed in next class
     $getQuery = 'SELECT * FROM `AdvClass` WHERE `ID` IN (' . implode(',', array_map('intval', $NextClassIDs)) . ')';
 
@@ -103,7 +103,7 @@ class AdvClass
          ($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
          ($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte))
       {
-        $tmpClass = new AdvClass(mysql_result($getResult,$i,"Name"), 
+        $tmpClass = new HeroClass(mysql_result($getResult,$i,"Name"), 
                                  mysql_result($getResult,$i,"HD"), 
                                  mysql_result($getResult,$i,"FavouredAttribute"), 
                                  mysql_result($getResult,$i,"LevelCap"), 
