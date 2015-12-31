@@ -55,6 +55,12 @@ function draw(ctx, obj)
 	ctx.translate(translation.x, translation.y);
 	ctx.rotate(rotation);
 
+	var children = obj.prechildren;
+	if (children) {
+		for (var i = 0; i != children.length; ++i) {
+			draw(ctx, children[i]);
+		}
+	}
 	
 	ctx.beginPath();
 	if (obj.points) {
@@ -65,8 +71,10 @@ function draw(ctx, obj)
 	ctx.stroke();
 	
 	var children = obj.children;
-	for (var i = 0; i != children.length; ++i) {
-	  draw(ctx, children[i]);
+	if (children) {
+		for (var i = 0; i != children.length; ++i) {
+			draw(ctx, children[i]);
+		}
 	}
 
 	ctx.rotate(-rotation);
@@ -121,7 +129,7 @@ function make_eye(opts, left)
 
 	return { fillStyle   : opts.eye_fill
 		   , translation : new Point(left*eye_width_mid, -eye_height_mid)
-		   , rotation    : left * 0.5
+		   , rotation    : left * 0.1
 		   , points      : pts
  		   , curvature   : 0.1
 		   , children    : []
@@ -239,10 +247,10 @@ function make_head_opts()
 
  , eye_fill: "#F0E5E0"
  , eye_line_width: 1
- , eye_top_ratio: 0.8 // randy(12353, 0.6, 0.9)
- , eye_bot_ratio: 0.5 // randy(78934, 0.4, 0.7)
- , eye_width_inner_ratio: 0.4 // randy(213578, 0.2, 0.5)
- , eye_width_outer_ratio: 0.2 // randy(5789, 0.1, 0.4)
+ , eye_top_ratio: randy(12353, 0.6, 0.9)
+ , eye_bot_ratio: randy(78934, 0.4, 0.7)
+ , eye_width_inner_ratio: randy(213578, 0.2, 0.5)
+ , eye_width_outer_ratio: randy(5789, 0.1, 0.4)
 
  , mouth_fill: "#AA2233"
  , mouth_line_width: 2
