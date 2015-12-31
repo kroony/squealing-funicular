@@ -7,7 +7,4 @@ include_once("hero/heroController.php");
 
 $heroController = new heroController();
 $res = $heroController->performGlobalHealing(0.1);
-
-echo "Healed $res people";
-
 ?>
