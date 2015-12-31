@@ -278,7 +278,7 @@ class Hero
 	$bonus  = $this->calculateAttributeBonus($attr);
 	$damage = $weapon->calcDamage($this->calculateAttributeBonus($this->Fte), $bonus);
 	
-	echo $this->Name . " Weilds " . $this->Weapon->Name . " and strikes for " . $damage . "<br />";
+	echo $this->Name . " weilds " . $this->Weapon->Name . " and strikes for " . $damage . "<br />";
 	
 	return $damage;
   }

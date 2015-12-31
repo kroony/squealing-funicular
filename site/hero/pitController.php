@@ -24,11 +24,13 @@ class PitController
 	$winner = null;
 	$roundCounter = 1;
 	while ($fighting) {
-	  echo "<br />Round " . $roundCounter . "<br />";
+	  if($roundCounter % 2){
+		  echo "<br />Round " . ceil($roundCounter / 2) . "<br />";
+      }
+	  
 	  $target = ($aggressor + 1) % 2;
 	  
 	  $damageDelt = $fighters[$target][0]->takeDamage($fighters[$aggressor][0]->calcDamage());
-	  echo $fighters[$aggressor][0]->Name . " did " . $damageDelt . "<br />";
 	  
 	  //increase runaway possibility
 	  if($damage > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))

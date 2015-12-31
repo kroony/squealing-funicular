@@ -23,21 +23,25 @@ echo "<br /><br /><br />";
 if($hero1->CurrentHP < (0 - $hero1->Con))
 {
 	//call death function of some sort 
-	echo $hero1->Name . " has died in battle<br />";
+	echo $hero1->Name . " has died in battle<br /><br />";
+	echo "<b>" . $hero2->Name . " is victorious!</b><br />";
 }
 else if($hero1->CurrentHP < 0)
 {
-	echo $hero1->Name . " has been knocked out in battle<br />";
+	echo $hero1->Name . " has been knocked out in battle<br /><br />";
+	echo "<b>" . $hero2->Name . " is victorious!</b><br />";
 }
 
 if($hero2->CurrentHP < (0 - $hero1->Con))
 {
 	//call death function of some sort 
-	echo $hero2->Name . " has died in battle<br />";
+	echo $hero2->Name . " has died in battle<br /><br />";
+	echo "<b>" . $hero1->Name . " is victorious!</b><br />";
 }
 else if($hero2->CurrentHP < 0)
 {
-	echo $hero2->Name . " has been knocked out in battle<br />";
+	echo $hero2->Name . " has been knocked out in battle<br /><br />";
+	echo "<b>" . $hero1->Name . " is victorious!</b><br />";
 }
 
 //save heros

@@ -48,7 +48,12 @@ class heroController
     echo "<td>" . $Hero->Fte ."</td>";
     //echo "<td>" . $Hero->WeaponID ."</td>";
     echo "<td><a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
-    echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
+	if($Hero->CurrentXP == $Hero->LevelUpXP){
+		echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
+	}else{
+		echo "<td>Not Enough XP</td>";
+	}
+    
     echo "<td><a href='addXP.php?ID=" . $Hero->ID . "'>Add 1,000XP</a></td>";
   }
   
