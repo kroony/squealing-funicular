@@ -52,7 +52,7 @@ class Hero
     $this->HeroClass = HeroClass::loadHeroClass(mysql_result($getResult,0,"Class"));
     //$this->HeroClass = mysql_result($getResult,0,"Class");//load object
     $this->MaxHP = mysql_result($getResult,0,"MaxHP");
-    $this->CurrentHP = mysql_result($getResult,0,"CurrentHP");
+    $this->CurrentHP = floor(mysql_result($getResult,0,"CurrentHP"));
     $this->Level = mysql_result($getResult,0,"Level");
     $this->CurrentXP = mysql_result($getResult,0,"CurrentXP");
     $this->LevelUpXP = mysql_result($getResult,0,"LevelUpXP");
