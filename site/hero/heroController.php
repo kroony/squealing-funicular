@@ -46,7 +46,7 @@ class heroController
     echo "<td>" . $Hero->Wis ."</td>";
     echo "<td>" . $Hero->Cha ."</td>";
     echo "<td>" . $Hero->Fte ."</td>";
-    //echo "<td>" . $Hero->WeaponID ."</td>";
+    echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
     echo "<td><a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 	if($Hero->CurrentXP == $Hero->LevelUpXP){
 		echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
@@ -54,7 +54,15 @@ class heroController
 		echo "<td>Not Enough XP</td>";
 	}
     
-    echo "<td><a href='addXP.php?ID=" . $Hero->ID . "'>Add 1,000XP</a></td>";
+	if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
+		echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
+	}
+	else if($Hero->CurrentHP < 1){
+		echo "<td>DEAD!</td>";
+	}
+	else{
+		echo "<td></td>";
+	}
   }
   
   function showAll()
@@ -85,7 +93,6 @@ class heroController
               <!--<td>WeaponID</td>-->
               <td>Delete</td>
               <td>Level UP</td>
-              <td>Add XP</td>
             </tr>";
               
     $i=0;
@@ -126,10 +133,10 @@ class heroController
               <td>Wis</td>
               <td>Cha</td>
               <td>Fte</td>
-              <!--<td>WeaponID</td>-->
+              <td>Weapon</td>
               <td>Delete</td>
               <td>Level UP</td>
-              <td>Add XP</td>
+			  <td>Revive</td>
             </tr>";
               
     $i=0;
@@ -168,7 +175,7 @@ class heroController
   
   function dropDownForUserEnemys($id)
   {
-    $getQuery = "SELECT `ID`, `Name` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` > 0;";
+    $getQuery = "SELECT `ID`, `Name` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` = `MaxHP`;";
 
     $getResult=mysql_query($getQuery);//execute query
     $totalHeros=mysql_numrows($getResult); 

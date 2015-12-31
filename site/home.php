@@ -34,7 +34,7 @@ print_r($occurences);
 /******** end rand() test   ****************/
 
 //show link to generate new
-echo '<p>
+/*echo '<p>
         Generate Level: 
         <a href="addNew.php?level=1">1</a> 
         <a href="addNew.php?level=2">2</a> 
@@ -55,8 +55,10 @@ echo '<p>
         <a href="addNew.php?level=80">80</a> 
         <a href="addNew.php?level=90">90</a> 
         <a href="addNew.php?level=100">100</a> 
-      </p>';
-
+      </p>';*/
+echo '<p>
+        Generate Level: 
+        <a href="addNew.php?level=1">1</a>';
 /*********  Fight Options  ***********/
 echo '
 <p>

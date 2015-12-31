@@ -131,7 +131,7 @@ class Hero
     }
     
 	//generate weapon
-	$this->Weapon = Weapon::loadWeapon(1);
+	$this->Weapon = Weapon::loadWeapon(rand(1,9));
   }
   
   function GiveToUser($UID)
