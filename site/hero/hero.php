@@ -314,6 +314,13 @@ class Hero
     return $roll;
   }
   
+  function revive()
+  {
+    if ($this->CurrentHP <= 0 && $this->CurrentHP >= -$this->Con) {
+		$this->CurrentHP = 1;
+	}
+  }
+  
   function GenerateAtribute($bonus)
   {  
     //shitty 4d6 drop 1
