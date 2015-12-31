@@ -17,22 +17,6 @@ $notificationEmail=mysql_result($configResult,$i,"ConfigValue");
 echo $notificationEmail;*/
 /**********end get email config********/
 
-/******** rand() test   ****************/
-
-$i=0;
-$rolls = array();
-while($i<600)
-{
-  array_push($rolls, rand(1,6));
-  $i++;
-}
-
-$occurences = array_count_values($rolls);
-ksort($occurences);
-print_r($occurences);
-
-/******** end rand() test   ****************/
-
 //show link to generate new
 /*echo '<p>
         Generate Level: 

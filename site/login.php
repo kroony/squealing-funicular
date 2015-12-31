@@ -2,8 +2,8 @@
 
 include_once("includes/connect.php");
 
-$Username = $_REQUEST['username'];
-$Pass = $_REQUEST['password'];
+$Username = mysql_real_escape_string($_REQUEST['username']);
+$Pass = mysql_real_escape_string($_REQUEST['password']);
 
 //if($Username != '' || $Pass != '')
 //{
