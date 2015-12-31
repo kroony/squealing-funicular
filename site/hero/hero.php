@@ -388,14 +388,14 @@ class Hero
                                `Fte` = " . $this->Fte . ",
                                `WeaponID` = " . $this->Weapon->ID . "
                                WHERE `Hero`.`ID` = " . $this->ID . ";";
-      echo "Updating Hero: " . $updateQuery . "<br />";
+      // echo "Updating Hero: " . $updateQuery . "<br />";
       mysql_query($updateQuery);
     }
     else //no id, add new character
     {
       $InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
                                 ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '".$this->Weapon->ID."');";
-      echo "Inserting New Hero: " . $InsertQuery . "<br />";
+      // echo "Inserting New Hero: " . $InsertQuery . "<br />";
       mysql_query($InsertQuery);
     }
     

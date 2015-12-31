@@ -63,6 +63,13 @@ class heroController
 	else{
 		echo "<td></td>";
 	}
+
+	if($Hero->CurrentHP > 0){
+		echo "<td><a href='oneononechoose.php?ID=" . $Hero->ID . "'>Fight!</a></td>";
+	}
+	else{
+		echo "<td></td>";
+	}
   }
   
   function showAll()
@@ -93,6 +100,8 @@ class heroController
               <!--<td>WeaponID</td>-->
               <td>Delete</td>
               <td>Level UP</td>
+              <td>Revive</td>
+              <td>Fight</td>
             </tr>";
               
     $i=0;
@@ -137,6 +146,7 @@ class heroController
               <td>Delete</td>
               <td>Level UP</td>
 			  <td>Revive</td>
+              <td>Fight</td>
             </tr>";
               
     $i=0;
@@ -198,12 +208,11 @@ class heroController
   {
     $low_level = $Hero->Level - 1;
 	$high_level = $Hero->Level + 2;
-    $getQuery = "SELECT `ID` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` > 0 AND Level BETWEEN $low_level AND $high_level;";
+    $getQuery = "SELECT `ID` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` = `MaxHP` AND `Level` BETWEEN $low_level AND $high_level;";
 
     $getResult=mysql_query($getQuery);
     $totalHeros=mysql_numrows($getResult); 
 	
-	$returnString = "";
     $i=0;
 	$enemys = array();
     while($i < $totalHeros)

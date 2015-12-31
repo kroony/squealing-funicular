@@ -58,21 +58,7 @@ print_r($occurences);
       </p>';*/
 echo '<p>
         Generate Level: 
-        <a href="addNew.php?level=1">1</a>';
-/*********  Fight Options  ***********/
-echo '
-<p>
-<form action="oneonone.php">
-	<select name="ID1">
-		<option>Select your fighter</option>
-		' . $heroController->dropDownForUser($currentUID) . '
-	</select> VS 
-	<select name="ID2">
-		<option>Select your opponent</option>
-		' . $heroController->dropDownForUserEnemys($currentUID) . '
-	</select> <input type="submit">
-</form>
-</p>';
+        <a href="addNew.php?level=1">1</a></p>';
 	  
 	  
 /*********  show all Hero  ***********/
