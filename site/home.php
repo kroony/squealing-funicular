@@ -2,6 +2,10 @@
 
 include_once("includes/connect.php");
 include_once("includes/session.php");
+include_once("hero/heroController.php");
+
+
+$heroController = new heroController();
 
 
 /*********get email config*********/
@@ -53,10 +57,23 @@ echo '<p>
         <a href="addNew.php?level=100">100</a> 
       </p>';
 
+/*********  Fight Options  ***********/
+echo '
+<p>
+<form action="oneonone.php">
+	<select name="ID1">
+		<option>Select your fighter</option>
+		' . $heroController->dropDownForUser($currentUID) . '
+	</select> VS 
+	<select name="ID2">
+		<option>Select your opponent</option>
+		' . $heroController->dropDownForUserEnemys($currentUID) . '
+	</select> <input type="submit">
+</form>
+</p>';
+	  
+	  
 /*********  show all Hero  ***********/
-include_once("hero/heroController.php");
-
-$heroController = new heroController();
 
 $heroController->showAllForUser($currentUID);
 

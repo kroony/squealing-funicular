@@ -7,14 +7,14 @@ class PitController
   function oneOnOne($hero1, $hero2)
   {
     if ($hero1->CurrentHP <= 0) {
-		echo "Hero 1 has no HP!<br />";
+		echo $hero1->Name . " has no HP and is unable to battle!<br />";
 		return;
 	}
     if ($hero2->CurrentHP <= 0) {
-		echo "Hero 2 has no HP!<br />";
+		echo $hero2->Name . " has no HP and is unable to battle!<br />";
 		return;
 	}
-	echo $hero1->Name . " Level " . $hero1->Level . " is fighting " . $hero2->Name . " Level " . $hero2->Level . "<br />";
+	echo $hero1->Name . " Level " . $hero1->Level . " is fighting " . $hero2->Name . " Level " . $hero2->Level . "<br /><br />";
 	
 	$fighters = array(array($hero1, 0), array($hero2, 0));
 	$aggressor = $this->chooseFirst($hero1, $hero2);
@@ -22,7 +22,9 @@ class PitController
 	
 	$fighting = true;
 	$winner = null;
+	$roundCounter = 1;
 	while ($fighting) {
+	  echo "<br />Round " . $roundCounter . "<br />";
 	  $target = ($aggressor + 1) % 2;
 	  
 	  $damageDelt = $fighters[$target][0]->takeDamage($fighters[$aggressor][0]->calcDamage());
@@ -45,8 +47,9 @@ class PitController
 	  
 	  if ($fighters[$target][0]->CurrentHP <= 0) {
 	    $winner = $fighters[$aggressor][0];
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		$fighting = false;
-		if ($fighters[$target][0]->CurrentHP <= -$fighters[$target][0]->Con) {
+		if ($fighters[$target][0]->CurrentHP <= 0 - $fighters[$target][0]->Con) {
 		  echo $fighters[$target][0]->Name . " died <br />";
 		} else {
 		  echo $fighters[$target][0]->Name . " was knocked out <br />";
@@ -57,12 +60,14 @@ class PitController
 	  if($fighters[$target][1] > $fighter[$target][0]->Level)
 	  {
 		$winner = $fighters[$aggressor][0];
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		$fighting = false;
 		echo $fighters[$target][0]->Name . " decided to run away <br />";
 		break;
 	  }
 	  
 	  $aggressor = $target;
+	  $roundCounter++;
     }
   }
   

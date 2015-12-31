@@ -28,7 +28,7 @@ class Hero
   public $Wis;
   public $Cha;
   public $Fte;
-  public $WeaponID;
+  public $Weapon;
   
   function __construct()
   {
@@ -63,7 +63,7 @@ class Hero
     $this->Wis = mysql_result($getResult,0,"Wis");
     $this->Cha = mysql_result($getResult,0,"Cha");
     $this->Fte = mysql_result($getResult,0,"Fte");
-    $this->WeaponID = mysql_result($getResult,0,"WeaponID");
+    $this->Weapon = Weapon::loadWeapon(mysql_result($getResult,0,"WeaponID"));
     
     return $this;
   }
@@ -130,7 +130,8 @@ class Hero
       }
     }
     
-    //generate weapon
+	//generate weapon
+	$this->Weapon = Weapon::loadWeapon(1);
   }
   
   function GiveToUser($UID)
@@ -142,12 +143,13 @@ class Hero
   function addXP($XP)
   {
     echo "Current XP: " . $this->CurrentXP . "<br />";
-    echo "Adding 1,000XP<br />";
+    echo "Adding " . $XP . "XP<br />";
     $this->CurrentXP += $XP;//add the XP
     
     if($this->CurrentXP > $this->LevelUpXP)//if its more then the level up reduce it to the levelup amount
     {
       $this->CurrentXP = $this->LevelUpXP;
+	  echo "Time to try leveling up!<br />";
     }
     
     echo "New XP: " . $this->CurrentXP . "<br />";
@@ -271,32 +273,45 @@ class Hero
   
   function calcDamage()
   {
-	$weapon = Weapon::loadWeapon($this->WeaponID);
+	$weapon = $this->Weapon;
 	$attr   = $this->getAttributeByName($weapon->DamageAttribute);
 	$bonus  = $this->calculateAttributeBonus($attr);
 	$damage = $weapon->calcDamage($this->calculateAttributeBonus($this->Fte), $bonus);
+	
+	echo $this->Name . " Weilds " . $this->Weapon->Name . " and strikes for " . $damage . "<br />";
 	
 	return $damage;
   }
   
   function takeDamage($damage)
   {
-	$damage -= $this->calculateAttributeBonus($this->Dex);//dodge Damage Reduction
-	//$damage -= ARMOR;//Armor Damage Deduction
+	$dexBon = $this->calculateAttributeBonus($this->Dex);
+	$damageReduction = 0;
+	
+	if($dexBon > 0){
+		$damageReduction = $dexBon;//dodge Damage Reduction
+	}
+	
+	//$damageReduction += ARMOR;//Armor Damage Deduction
+	
+	$damage -= $damageReduction;
 	
 	if($damage < 1)//always take at least 1 damage
 	{
+		$damageReduction = $damageReduction + $damage - 1;//(add damage cause it will be a negative number)
 		$damage = 1;
 	}
 	
 	$this->CurrentHP -= $damage;
-	
+	echo $this->Name . " mitigated " . $damageReduction . " damage.<br />";
 	return $damage;
   }
   
   function rollInitiative()
   {
-    return rand(1,20) + $this->calculateAttributeBonus($this->Wis);
+	$roll = rand(1,20) + $this->calculateAttributeBonus($this->Wis);
+	echo $this->Name . " rolled " . $roll . " on initative.<br />";
+    return $roll;
   }
   
   function GenerateAtribute($bonus)
@@ -364,7 +379,7 @@ class Hero
                                `Wis` = " . $this->Wis . ",
                                `Cha` = " . $this->Cha . ",
                                `Fte` = " . $this->Fte . ",
-                               `WeaponID` = " . $this->WeaponID . "
+                               `WeaponID` = " . $this->Weapon->ID . "
                                WHERE `Hero`.`ID` = " . $this->ID . ";";
       echo "Updating Hero: " . $updateQuery . "<br />";
       mysql_query($updateQuery);
@@ -372,7 +387,7 @@ class Hero
     else //no id, add new character
     {
       $InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-                                ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '0');";
+                                ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '".$this->Weapon->ID."');";
       echo "Inserting New Hero: " . $InsertQuery . "<br />";
       mysql_query($InsertQuery);
     }

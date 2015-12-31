@@ -57,6 +57,7 @@ class Weapon
     {
       $ActiveDamageQuantity += $ActiveDamageQuantity;//we critted! double the number of dice to roll
       $ActiveDamageOffset += $ActiveDamageOffset;//And also double the weapon bonus
+	  echo "<b>Crit!</b> ";
     }
     
     $i=0;//roll DamageDie number of DamageQuantity times and add to TotalDamage
@@ -73,6 +74,7 @@ class Weapon
     {
       $TotalDamage = 1;
     }
+	
     return $TotalDamage;
   }
   

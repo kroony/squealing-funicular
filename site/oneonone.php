@@ -19,29 +19,30 @@ $pit->oneOnOne($hero1, $hero2);
 
 echo "<br /><br /><br />";
 
-$hero1 = $hero1->loadHero($_REQUEST['ID1']);
-$hero2 = $hero2->loadHero($_REQUEST['ID2']);
-$pit->oneOnOne($hero1, $hero2);
+//check for death 
+if($hero1->CurrentHP < (0 - $hero1->Con))
+{
+	//call death function of some sort 
+	echo $hero1->Name . " has died in battle<br />";
+}
+else if($hero1->CurrentHP < 0)
+{
+	echo $hero1->Name . " has been knocked out in battle<br />";
+}
 
-echo "<br /><br /><br />";
+if($hero2->CurrentHP < (0 - $hero1->Con))
+{
+	//call death function of some sort 
+	echo $hero2->Name . " has died in battle<br />";
+}
+else if($hero2->CurrentHP < 0)
+{
+	echo $hero2->Name . " has been knocked out in battle<br />";
+}
 
-$hero1 = $hero1->loadHero($_REQUEST['ID1']);
-$hero2 = $hero2->loadHero($_REQUEST['ID2']);
-$pit->oneOnOne($hero1, $hero2);
-
-echo "<br /><br /><br />";
-
-$hero1 = $hero1->loadHero($_REQUEST['ID1']);
-$hero2 = $hero2->loadHero($_REQUEST['ID2']);
-$pit->oneOnOne($hero1, $hero2);
-
-//save adventurer
-/*$testHero->addXP(1000);
-
-$testHero->SaveHero();*/
-
-/***********end Add XP*********/
-
+//save heros
+$hero1->SaveHero();
+$hero2->SaveHero();
 
 //header("Location: index.php");
 
