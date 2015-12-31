@@ -45,7 +45,6 @@ class heroController
     echo "<td>" . $Hero->Wis ."</td>";
     echo "<td>" . $Hero->Cha ."</td>";
     echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
-    echo "<td><a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 	if($Hero->CurrentXP == $Hero->LevelUpXP){
 		echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
 	}else{
@@ -56,7 +55,7 @@ class heroController
 		echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
 	}
 	else if($Hero->CurrentHP < 1){
-		echo "<td>DEAD!</td>";
+		echo "<td>DEAD! <a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 	}
 	else{
 		echo "<td></td>";
@@ -95,7 +94,6 @@ class heroController
               <td>Wis</td>
               <td>Cha</td>
               <!--<td>WeaponID</td>-->
-              <td>Delete</td>
               <td>Level UP</td>
               <td>Revive</td>
               <td>Fight</td>
@@ -139,7 +137,6 @@ class heroController
               <td>Wis</td>
               <td>Cha</td>
               <td>Weapon</td>
-              <td>Delete</td>
               <td>Level UP</td>
 			  <td>Revive</td>
               <td>Fight</td>
@@ -156,6 +153,8 @@ class heroController
     }
     
     echo "</table>";
+	
+	return $totalHeros;
   }
   
   function dropDownForUser($id)

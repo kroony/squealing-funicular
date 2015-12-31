@@ -55,7 +55,7 @@ class PitController
 		} else {
 		  echo $fighters[$target][0]->Name . " was knocked out <br /><br />";
 		}
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 3));
 		break;
 	  }
 	  
@@ -65,7 +65,7 @@ class PitController
 		$fighting = false;
 		echo $fighters[$target][0]->Name . " decided to run away <br /><br />";
 		
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 3));
 		break;
 	  }
 	  

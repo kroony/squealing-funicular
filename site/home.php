@@ -40,14 +40,18 @@ echo $notificationEmail;*/
         <a href="addNew.php?level=90">90</a> 
         <a href="addNew.php?level=100">100</a> 
       </p>';*/
-echo '<p>
-        Generate Level: 
-        <a href="addNew.php?level=1">1</a></p>';
-	  
 	  
 /*********  show all Hero  ***********/
 
-$heroController->showAllForUser($currentUID);
+$totalHeros = $heroController->showAllForUser($currentUID);
+
+if ($totalHeros < 10)
+{
+	echo '<p>
+			Generate Level: 
+			<a href="addNew.php?level=1">1</a></p>';
+}	  
+
 
 /*********  end show all Hero  ***********/
 
