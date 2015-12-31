@@ -1,4 +1,4 @@
-<br />
+<a href="register.php">Register here</a> if you do not already have an account.<br />
 <hr>
 <br />
 <form action="login.php">

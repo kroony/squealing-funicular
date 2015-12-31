@@ -11,4 +11,17 @@ mysql_connect(localhost,$DBusername,$DBpassword);
 
 //Notification Email address
 $NotificationEmail="sf@trout-slap.com";
+
+
+function mysql_get_rows($query)
+{
+  $q = mysql_query($query);
+  $ret = array();
+  while ($row = mysql_fetch_assoc($q))
+  {
+    $ret[] = $row;
+  }
+  return $ret;
+}
+
 ?>

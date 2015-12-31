@@ -24,7 +24,6 @@ class heroController
     echo "<br />Int: " . $Hero->Intel;
     echo "<br />Wis: " . $Hero->Wis;
     echo "<br />Cha: " . $Hero->Cha;
-    echo "<br />Fte: " . $Hero->Fte;
     echo "<br />WeaponID: " . $Hero->WeaponID . "</p>";
   }
   
@@ -45,7 +44,6 @@ class heroController
     echo "<td>" . $Hero->Intel ."</td>";
     echo "<td>" . $Hero->Wis ."</td>";
     echo "<td>" . $Hero->Cha ."</td>";
-    echo "<td>" . $Hero->Fte ."</td>";
     echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
     echo "<td><a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 	if($Hero->CurrentXP == $Hero->LevelUpXP){
@@ -96,7 +94,6 @@ class heroController
               <td>Int</td>
               <td>Wis</td>
               <td>Cha</td>
-              <td>Fte</td>
               <!--<td>WeaponID</td>-->
               <td>Delete</td>
               <td>Level UP</td>
@@ -141,7 +138,6 @@ class heroController
               <td>Int</td>
               <td>Wis</td>
               <td>Cha</td>
-              <td>Fte</td>
               <td>Weapon</td>
               <td>Delete</td>
               <td>Level UP</td>

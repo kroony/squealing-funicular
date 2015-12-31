@@ -15,12 +15,15 @@ $against = $heroController->findEnemys($currentUID, $hero);
 
 echo "<table>";
 foreach ($against as $ag) {
+	$owner = mysql_get_rows("SELECT * FROM `User` WHERE ID = " . $ag->OwnerID);
+
 	echo "<tr>";
 	$href = "oneonone.php?ID1=" . $hero->ID . "&ID2=" . $ag->ID;
 	echo "<td><a href='"  .  $href . "'>" . $ag->Name . "</a></td>";
 	echo "<td>Level " . $ag->Level . "</td>";
 	echo "<td>" . $ag->Race->Name . "</td>";
 	echo "<td>" . $ag->HeroClass->Name . "</td>";
+	echo "<td>" . $owner[0]['username'] . "</td>";
 	echo "</tr>";
 
 }

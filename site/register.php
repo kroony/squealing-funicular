@@ -1,25 +1,29 @@
 <?php
 
+include_once("includes/connect.php");
+
+
 $created = false;
 $error_message = "";
 
+$user = mysql_real_escape_string($_REQUEST['username']);
+$pass = "pass";
+
 if (isset($_REQUEST['username']))
 {
-	$user = mysql_real_escape_string($_REQUST['username']);
-	$pass = "pass";
-
 	$q1 = "SELECT * FROM `User` WHERE `username` = '$user'";
 	$result1=mysql_query($q1);
 	$num1=mysql_numrows($result1);
 	if($num1 == 0)
 	{
-		mysql_query("INSERT INTO `User` (`username`, `password`) VALUES ($user, $pass)";
+		$q = "INSERT INTO `User` (`username`, `password`, `email`, `salt`, `gold`, `active`) VALUES ('$user', '$pass', '', 0, 0, 1)";
+		mysql_query($q);
 		$created = true;
 	}
 	else
 	{
 		$created = false;
-		$error_message = "<b>Sorry, that username is already taken</b>";
+		$error_message = "<b>Sorry, that username is already taken</b><hr />";
 	}
 }
 	
