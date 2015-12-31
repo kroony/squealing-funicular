@@ -49,22 +49,23 @@ class PitController
 	  
 	  if ($fighters[$target][0]->CurrentHP <= 0) {
 	    $winner = $fighters[$aggressor][0];
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		$fighting = false;
 		if ($fighters[$target][0]->CurrentHP <= 0 - $fighters[$target][0]->Con) {
-		  echo $fighters[$target][0]->Name . " died <br />";
+		  echo "<b>" . $fighters[$target][0]->Name . " died </b><br /><br />";
 		} else {
-		  echo $fighters[$target][0]->Name . " was knocked out <br />";
+		  echo $fighters[$target][0]->Name . " was knocked out <br /><br />";
 		}
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		break;
 	  }
 	  
 	  if($fighters[$target][1] > $fighter[$target][0]->Level)
 	  {
 		$winner = $fighters[$aggressor][0];
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		$fighting = false;
-		echo $fighters[$target][0]->Name . " decided to run away <br />";
+		echo $fighters[$target][0]->Name . " decided to run away <br /><br />";
+		
+		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 10));
 		break;
 	  }
 	  
