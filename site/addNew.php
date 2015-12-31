@@ -7,7 +7,7 @@ include_once("includes/session.php");
 include_once("hero/hero.php");
 $testHero = new Hero();
 
-$testHero->GenerateHero($_REQUEST["level"]); //generate lvl1 Hero
+$testHero->GenerateHero(1); // $_REQUEST["level"]); //generate lvl1 Hero
 
 $testHero->GiveToUser($currentUID);
 //save adventurer

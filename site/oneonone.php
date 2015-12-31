@@ -45,8 +45,10 @@ else if($hero2->CurrentHP < 0)
 }
 
 //save heros
+
 $hero1->SaveHero();
-$hero2->SaveHero();
+if ($hero2->Level != -1)
+	$hero2->SaveHero();
 
 //header("Location: index.php");
 

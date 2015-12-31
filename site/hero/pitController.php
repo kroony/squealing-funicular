@@ -35,14 +35,15 @@ class PitController
 	  //increase runaway possibility
 	  if($damageDelt > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
 	  {
+		echo $fighters[$target][0]->Name . "'s run away starts at " . $fighters[$target][1] . "<br />";
 		if($fighters[$target][0]->Cha < $fighters[aggressor][0]->Cha)
 		{
-			$fighter[$target][1] += 2;
+			$fighters[$target][1] += 2;
 			echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";
 		}
 		else
 		{
-			$fighter[$target][1] += 1;
+			$fighters[$target][1] += 1;
 			echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";
 		}
 	  }
@@ -59,7 +60,7 @@ class PitController
 		break;
 	  }
 	  
-	  if($fighters[$target][1] > $fighter[$target][0]->Level)
+	  if($fighters[$target][1] > $fighters[$target][0]->Level + $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Cha))
 	  {
 		$winner = $fighters[$aggressor][0];
 		$fighting = false;
