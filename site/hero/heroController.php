@@ -193,6 +193,31 @@ class heroController
     }
     return $returnString;
   }
+
+  function findEnemys($id, $Hero)
+  {
+    $low_level = $Hero->Level - 1;
+	$high_level = $Hero->Level + 2;
+    $getQuery = "SELECT `ID` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` > 0 AND Level BETWEEN $low_level AND $high_level;";
+
+    $getResult=mysql_query($getQuery);
+    $totalHeros=mysql_numrows($getResult); 
+	
+	$returnString = "";
+    $i=0;
+	$enemys = array();
+    while($i < $totalHeros)
+    {
+      $HeroID=mysql_result($getResult,$i,"ID");
+	  
+	  $enemy = new Hero();
+	  $enemy = $enemy->loadHero($HeroID);
+	  $enemys[] = $enemy;
+      
+      $i++;
+    }
+    return $enemys;
+  }
   
   function performGlobalHealing($rate)
   {
