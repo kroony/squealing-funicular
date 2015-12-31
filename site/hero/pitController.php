@@ -33,7 +33,7 @@ class PitController
 	  $damageDelt = $fighters[$target][0]->takeDamage($fighters[$aggressor][0]->calcDamage());
 	  
 	  //increase runaway possibility
-	  if($damage > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
+	  if($damageDelt > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
 	  {
 		if($fighters[$target][0]->Cha < $fighters[aggressor][0]->Cha)
 		{

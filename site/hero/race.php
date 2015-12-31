@@ -96,11 +96,11 @@ class Race
 		$f_pre = array("", "", "", "", "", "", "", "");
 		$f_mid = array("bil", "fro", "mul", "ber", "ry", "grem", "mil", "at", "et");
 		$f_suf = array("o the");
-		$f_max = 1;
 
 		$l_pre = array();
 		$l_mid = array("spoon", "hat", "bag", "word", "sword", "hobbit", "mead", "fly", "hog", "wolf", "badger");
 		$l_suf = array("-fearer", "-worthy", "-slayer", "-drinker", "", "", "", "", "", "");
+		$l_max = 1;
 	}
 	return $this->makeParts($f_max, $f_pre, $f_mid, $f_suf)
 			. ' ' . 
