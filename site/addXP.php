@@ -18,7 +18,4 @@ $testHero->SaveHero();
 
 
 //header("Location: index.php");
-
-?>
-
-<a href="home.php">Return</a>
+$smarty->display("addXP.tpl");

@@ -1,7 +1,6 @@
 <?php
 
-include_once("includes/connect.php");
-include_once("includes/session.php");
+include("bootstrap.php");
 
 /*********Add XP*********/
 include_once("hero/heroController.php");
@@ -10,9 +9,16 @@ $heroController = new heroController();
 
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
-echo $hero->Name . "(level " . $hero->Level . ") would like to fight:<br />";
-$against = $heroController->findEnemys($currentUID, $hero);
+$smarty->assign("hero",$hero);
 
+//Now in template...
+//echo $hero->Name . "(level " . $hero->Level . ") would like to fight:<br />";
+
+$against = $heroController->findEnemys($currentUID, $hero);
+$smarty->assign("against",$against);
+
+/*
+//Now in template...
 echo "<table>";
 foreach ($against as $ag) {
 	$owner = mysql_get_rows("SELECT * FROM `User` WHERE ID = " . $ag->OwnerID);
@@ -28,7 +34,7 @@ foreach ($against as $ag) {
 
 }
 echo "</table>";
+*/
 
-?>
+$smarty->display("oneononechoose.tpl");
 
-<a href="home.php">Return</a>

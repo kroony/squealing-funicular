@@ -1,7 +1,6 @@
 <?php
 
-include_once("includes/connect.php");
-include_once("includes/session.php");
+include_once("bootstrap.php");
 include_once("hero/heroController.php");
 
 
@@ -44,15 +43,10 @@ echo $notificationEmail;*/
 /*********  show all Hero  ***********/
 
 $totalHeros = $heroController->showAllForUser($currentUID);
+$smarty->assign("totalHeros",$totalHeros);
+$smarty->display("home.tpl");
 
-if ($totalHeros < 10)
-{
-	echo '<p>
-			Generate Level: 
-			<a href="addNew.php?level=1">1</a></p>';
-}	  
-
-
+		  
 /*********  end show all Hero  ***********/
 
 

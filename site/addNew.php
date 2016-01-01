@@ -1,7 +1,6 @@
 <?php
 
-include_once("includes/connect.php");
-include_once("includes/session.php");
+include_once("bootstrap.php");
 
 /*********Generate Hero*********/
 include_once("hero/hero.php");
