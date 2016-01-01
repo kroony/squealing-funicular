@@ -151,9 +151,7 @@ class Race
 
 	function pick($array)
 	{
-		$r = rand(0, count($array)-1);
+		$r = rand(0, count($array) - 1);
 		return $array[$r];
 	}
 }
-
-?>

@@ -19,7 +19,9 @@ $smarty->assign("hero1",$hero1);
 $smarty->assign("hero2",$hero2);
 
 //save heros
+
 $hero1->SaveHero();
-$hero2->SaveHero();
+if ($hero2->Level != -1)
+	$hero2->SaveHero();
 
 $smarty->display("oneonone.tpl");
