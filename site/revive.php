@@ -1,7 +1,6 @@
 <?php
-header("Location: home.php");
 
-include_once("includes/connect.php");
+include("bootstrap.php");
 
 /*********Add XP*********/
 include_once("hero/hero.php");
@@ -11,5 +10,4 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 $hero->revive();
 $hero->SaveHero();
 
-
-?>
+header("Location: home.php");

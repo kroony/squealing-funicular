@@ -35,7 +35,7 @@ class PitController
 	  //increase runaway possibility
 	  if($damageDelt > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
 	  {
-		if($fighters[$target][0]->Cha < $fighters[aggressor][0]->Cha)
+		if($fighters[$target][0]->Cha < $fighters[$aggressor][0]->Cha)
 		{
 			$fighter[$target][1] += 2;
 			echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";

@@ -1,6 +1,6 @@
 <?php
 
-include_once("includes/connect.php");
+include_once("bootstrap.php");
 
 /*********Generate Hero*********/
 include_once("hero/hero.php");
@@ -20,7 +20,4 @@ if($testHero->LevelUP())
 
 
 //header("Location: index.php");
-
-?>
-
-<a href="home.php">Return</a>
+$smarty->display("levelUp.tpl");
