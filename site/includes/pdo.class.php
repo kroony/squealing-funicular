@@ -120,7 +120,8 @@ class KroonyPDO extends PDO {
 		$retval = $stmt->execute($bind);
 		
 		if ($retval === false) {
-			throw new PDOException("PDO statement execute error : " . $stmt->errorInfo()[2] . " Error code: ". $stmt->errorCode());
+			$error = $stmt->errorInfo();
+			throw new PDOException("PDO statement execute error : " . $error[2] . " Error code: ". $stmt->errorCode());
 		}
 
 		// return the results embedded in the prepared statement object
