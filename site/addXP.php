@@ -1,6 +1,6 @@
 <?php
 
-include_once("includes/connect.php");
+include_once("bootstrap.php");
 
 /*********Add XP*********/
 include_once("hero/hero.php");
