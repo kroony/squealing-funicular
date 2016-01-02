@@ -76,40 +76,36 @@ class HeroClass
 		//Get all classes listed in next class
 		$getQuery = 'SELECT * FROM `AdvClass` WHERE `ID` IN (' . implode(',', array_map('intval', $NextClassIDs)) . ')';
 
-				$getResult=mysql_query($getQuery);//execute query
-				$num=mysql_numrows($getResult);
+		$db = DB::GetConn();
+		$getResult=$db->query($getQuery);
 
-				//filter out the unavalible classes
-				$possibleNewClasses = array();
-				$i=0;
-				while($i < $num)
-				{
-				$PrerequisiteAttribute = mysql_result($getResult,$i,"PrerequisiteAttribute");
-				$PrerequisiteTarget = mysql_result($getResult,$i,"PrerequisiteTarget");
-				echo mysql_result($getResult,$i,"Name") . " a needs " . $PrerequisiteTarget . " in " . $PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
+		//filter out the unavalible classes
+		$possibleNewClasses = array();
+		while($obj = $getResult->fetchObjct())
+		{
+			echo $obj->Name . " a needs " . $obj->PrerequisiteTarget . " in " . $obj->PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
 
-				if(($PrerequisiteAttribute == "Str" && $PrerequisiteTarget <= $Hero->Str) ||
-					($PrerequisiteAttribute == "Dex" && $PrerequisiteTarget <= $Hero->Dex) ||
-					($PrerequisiteAttribute == "Con" && $PrerequisiteTarget <= $Hero->Con) ||
-					($PrerequisiteAttribute == "Intel" && $PrerequisiteTarget <= $Hero->Intel) ||
-					($PrerequisiteAttribute == "Wis" && $PrerequisiteTarget <= $Hero->Wis) ||
-					($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
-					($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte))
-				{
-					$tmpClass = new HeroClass(mysql_result($getResult,$i,"Name"), 
-							mysql_result($getResult,$i,"HD"), 
-							mysql_result($getResult,$i,"FavouredAttribute"), 
-							mysql_result($getResult,$i,"LevelCap"), 
-							mysql_result($getResult,$i,"NextClass"), 
-							mysql_result($getResult,$i,"PrerequisiteAttribute"), 
-							mysql_result($getResult,$i,"PrerequisiteTarget"), 
-							mysql_result($getResult,$i,"PrerequisiteAge"), 
-							mysql_result($getResult,$i,"Description"));
-					$tmpClass->ID = mysql_result($getResult,$i,"ID");
-					array_push($possibleNewClasses, $tmpClass);
+			if(($PrerequisiteAttribute == "Str" && $PrerequisiteTarget <= $Hero->Str) ||
+				($PrerequisiteAttribute == "Dex" && $PrerequisiteTarget <= $Hero->Dex) ||
+				($PrerequisiteAttribute == "Con" && $PrerequisiteTarget <= $Hero->Con) ||
+				($PrerequisiteAttribute == "Intel" && $PrerequisiteTarget <= $Hero->Intel) ||
+				($PrerequisiteAttribute == "Wis" && $PrerequisiteTarget <= $Hero->Wis) ||
+				($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
+				($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte)) {
+					$tmpClass = new HeroClass($obj->Name, 
+							$obj->HD, 
+							$obj->FavouredAttribute, 
+							$obj->LevelCap, 
+							$obj->NextClass, 
+							$obj->PrerequisiteAttribute,
+							$obj->PrerequisiteTarget,
+							$obj->PrerequisiteAge, 
+							$obj->Description);
+
+					$tmpClass->ID = $obj->ID;
+					$possibleNewClasses[] = $tmpClass;
 				}
-				$i++;
-				}
+		}
 		//check age prereqs
 
 		//check if there are any new possible new classes

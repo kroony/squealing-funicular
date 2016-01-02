@@ -1,5 +1,3 @@
-<br /><br /><br />
-
 {if $hero1->CurrentHP lt (0 - $hero1->Con)}
 	{$hero1->Name} has <b>died</b> in battle<br /><br />
 	<b>{$hero2->Name} is victorious!</b><br />
