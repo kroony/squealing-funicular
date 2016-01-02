@@ -3,7 +3,7 @@
 {if $hero1->CurrentHP lt (0 - $hero1->Con)}
 	{$hero1->Name} has <b>died</b> in battle<br /><br />
 	<b>{$hero2->Name} is victorious!</b><br />
-{else if $hero1->CurrentHP gt 0}
+{else if $hero1->CurrentHP lt 0}
 	{$hero1->Name} has been knocked out in battle<br /><br />
 	<b>{$hero2->Name} is victorious!</b><br />
 {/if}
