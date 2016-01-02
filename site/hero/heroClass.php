@@ -81,7 +81,7 @@ class HeroClass
 
 		//filter out the unavalible classes
 		$possibleNewClasses = array();
-		while($obj = $getResult->fetchObjct())
+		while($obj = $getResult->fetchObject())
 		{
 			echo $obj->Name . " a needs " . $obj->PrerequisiteTarget . " in " . $obj->PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
 
