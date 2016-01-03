@@ -32,7 +32,16 @@ class Hero
 
 	function __construct()
 	{
+	}
 
+	//@todo move this to a user class and just have this call the function on the user class
+	public function GetOwner()
+	{
+		$db = DB::GetConn();
+		$user_con = $db->quoteInto("ID = ?",$this->OwnerID);
+		$sql = "select * from User where $user_con limit 1";
+		$res = $db->query($sql);
+		return $res->fetchObject();
 	}
 
 	//load Adventurer from DB 
