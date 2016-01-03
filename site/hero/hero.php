@@ -109,7 +109,8 @@ class Hero
 		echo "<br />Class: " . $this->HeroClass->Name . " HD: D" . $this->HeroClass->HD . "<br />";
 
 		//HP
-		$this->MaxHP = $this->HeroClass->HD + $this->calculateAttributeBonus($this->Con);  //base the multiplyer on HD and con
+		$this->MaxHP = $this->HeroClass->HD + $this->calculateAttributeBonus($this->Con);  //base the multiplier on HD and con
+		if($this->MaxHP < 1){$this->MaxHP = 1;}//stop negative max HP
 		$this->CurrentHP = $this->MaxHP;
 		echo "Hit Points: " . $this->CurrentHP . "/" . $this->MaxHP . "<br />";
 
