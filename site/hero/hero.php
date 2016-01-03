@@ -29,6 +29,7 @@ class Hero
 	public $Cha;
 	public $Fte;
 	public $Weapon;
+	public $OwnerName;
 
 	function __construct()
 	{
