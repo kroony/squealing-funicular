@@ -9,7 +9,7 @@
           <td>Level {$ag->Level}</td>
           <td>{$ag->Race->Name}</td>
           <td>{$ag->HeroClass->Name}</td>
-          <td>Owner: {if !empty($ag->OwnerName)}{$ag->OwnerName}{else}Owner Unknown{/if}  (ID: {$ag->OwnerID})</td>
+          <td>Owner: {if !empty($ag->GetOwner())}{$ag->GetOwner()->username}{else}Owner Unknown{/if}  (ID: {$ag->OwnerID})</td>
         </tr>
 {/foreach}
 </table>

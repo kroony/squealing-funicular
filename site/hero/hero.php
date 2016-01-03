@@ -29,11 +29,22 @@ class Hero
 	public $Cha;
 	public $Fte;
 	public $Weapon;
-	public $OwnerName;
 
-	function __construct()
+	function __construct($dbo)
 	{
+		if (!is_null($dbo)) {
+			foreach($dbo as $key => $value) $this->$key = $value;
+		}
+	}
 
+	//@todo move this to a user class and just have this call the function on the user class
+	public function GetOwner()
+	{
+		$db = DB::GetConn();
+		$user_con = $db->quoteInto("ID = ?",$this->OwnerID);
+		$sql = "select * from User where $user_con limit 1";
+		$res = $db->query($sql);
+		return $res->fetchObject();
 	}
 
 	//load Adventurer from DB 
