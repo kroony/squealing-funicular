@@ -64,7 +64,7 @@ class HeroClass
 		/*checks for classes we could move to.
 		  returns false if unsuccessful
 		  returns true AND makes the change if successful
-		  perhaps this shouldnt be called CHECK if it DOES something?
+		  perhaps this shouldn't be called CHECK if it DOES something?
 		 */
 
 		if($Hero->HeroClass->NextClass == null || $Hero->HeroClass->NextClass == "")//check there is another class to go to
@@ -79,19 +79,19 @@ class HeroClass
 		$db = DB::GetConn();
 		$getResult=$db->query($getQuery);
 
-		//filter out the unavalible classes
+		//filter out the unavailable classes
 		$possibleNewClasses = array();
 		while($obj = $getResult->fetchObject())
 		{
 			echo $obj->Name . " a needs " . $obj->PrerequisiteTarget . " in " . $obj->PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
 
-			if(($PrerequisiteAttribute == "Str" && $PrerequisiteTarget <= $Hero->Str) ||
-				($PrerequisiteAttribute == "Dex" && $PrerequisiteTarget <= $Hero->Dex) ||
-				($PrerequisiteAttribute == "Con" && $PrerequisiteTarget <= $Hero->Con) ||
-				($PrerequisiteAttribute == "Intel" && $PrerequisiteTarget <= $Hero->Intel) ||
-				($PrerequisiteAttribute == "Wis" && $PrerequisiteTarget <= $Hero->Wis) ||
-				($PrerequisiteAttribute == "Cha" && $PrerequisiteTarget <= $Hero->Cha) ||
-				($PrerequisiteAttribute == "Fte" && $PrerequisiteTarget <= $Hero->Fte)) {
+			if(($obj->PrerequisiteAttribute == "Str" && $obj->PrerequisiteTarget <= $Hero->Str) ||
+				($obj->PrerequisiteAttribute == "Dex" && $obj->PrerequisiteTarget <= $Hero->Dex) ||
+				($obj->PrerequisiteAttribute == "Con" && $obj->PrerequisiteTarget <= $Hero->Con) ||
+				($obj->PrerequisiteAttribute == "Intel" && $obj->PrerequisiteTarget <= $Hero->Intel) ||
+				($obj->PrerequisiteAttribute == "Wis" && $obj->PrerequisiteTarget <= $Hero->Wis) ||
+				($obj->PrerequisiteAttribute == "Cha" && $obj->PrerequisiteTarget <= $Hero->Cha) ||
+				($obj->PrerequisiteAttribute == "Fte" && $obj->PrerequisiteTarget <= $Hero->Fte)) {
 					$tmpClass = new HeroClass($obj->Name, 
 							$obj->HD, 
 							$obj->FavouredAttribute, 
@@ -116,7 +116,7 @@ class HeroClass
 			$newClassIndex = rand(0,$newClassCount -1);
 			$newClass = $possibleNewClasses[$newClassIndex];
 
-			$this->ID = $newClass->ID;  //should load properly from DB or update the parent adventurer in db or something
+			$this->ID = $newClass->ID;  //should load properly from DB or update the parent hero in db or something
 			$this->Name = $newClass->Name;
 			$this->HD = $newClass->HD;
 			$this->FavouredAttribute = $newClass->FavouredAttribute;
