@@ -417,5 +417,6 @@ class Hero
 		If not equipped with a weapon, generate a new one
 		*/
 	}
+}
 
 ?>
