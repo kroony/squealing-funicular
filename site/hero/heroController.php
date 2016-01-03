@@ -30,7 +30,7 @@ class heroController
 	function outputInTable($Hero)
 	{
 		echo "<tr>";
-		echo "<td>" . $Hero->Name ."</td>";
+		echo "<td><a href='viewHero.php?ID=" . $Hero->ID . "'>" . $Hero->Name ."</a></td>";
 		//echo "<td>" . $Hero->OwnerID ."</td>";
 		//echo "<td>" . $Hero->PartyID ."</td>";
 		echo "<td>" . $Hero->Race->Name ."</td>";

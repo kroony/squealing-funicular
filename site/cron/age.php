@@ -1,6 +1,6 @@
 <?php
 
-//call herocontroller.age();
+//call herocontroller.preformGlobalAge();
 
 
 ?>

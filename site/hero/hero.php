@@ -56,7 +56,6 @@ class Hero
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 
-
 		$this->OwnerID =  $obj->OwnerID;
 		$this->PartyID =  $obj->PartyID;
 		$this->Race = Race::loadRace($obj->Race);
