@@ -181,7 +181,7 @@ class Hero
 		}
 	}
 
-	function forceLevelUP()//same as level up without the checks, used in character gen when XP shouldnt get in the way
+	function forceLevelUP()//same as level up without the checks, used in character gen when XP shouldn't get in the way
 	{
 		if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
 		{
@@ -189,7 +189,7 @@ class Hero
 			if(!$this->HeroClass->checkForNewClass($this))
 			{
 				//no new class. have reached level cap.
-				echo "Dont meet the requirements for any classes. :(<br /><br /><br />";
+				echo "Do not meet the requirements for any classes. :(<br /><br /><br />";
 				//cant levelup, we are done here.
 				return false;
 			}
@@ -204,7 +204,7 @@ class Hero
 
 		//increase level
 		$this->Level += 1;
-		echo "<br /><br /><strong>Leveling to " . $this->Level . "</strong><br />";
+		echo "<br /><br /><strong>Levelling to " . $this->Level . "</strong><br />";
 
 		//add hp
 		$extraHP = rand(1,$this->HeroClass->HD) + $this->calculateAttributeBonus($this->Con);
@@ -217,9 +217,7 @@ class Hero
 		echo "Adding " . $extraHP . " HP. Rolled a d" . $this->HeroClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
 
 		//increase XP cap
-		$this->CurrentXP = $this->LevelUpXP;
-		//how much bonus do they already have?
-		$currentXPBonus = (100 * pow($this->Level -1, 2)) - $this->LevelUpXP;
+		$this->CurrentXP = 0;
 		//calc new bonus
 		$newXPBonus = 0;
 		$i=0;
@@ -228,11 +226,11 @@ class Hero
 			$newXPBonus += rand(0, $this->Fte); //level D fate (1d6 -> foo D bar)
 			$i++;
 		}
-		$this->LevelUpXP = (100 * pow($this->Level, 2)) - $currentXPBonus - $newXPBonus;
+		$this->LevelUpXP = (100 * pow($this->Level, 2)) - (100 * pow($this->Level - 1, 2)) - $newXPBonus;
 		echo "New XP cap:" . $this->LevelUpXP . " XP Bonus this Level: " . $newXPBonus . "<br />";
 
 		//increase 1 attribute
-		$possibleAttribute = array("Str", "Dex", "Con", "Intel", "Wis", "Cha", "Fte");//dynamiclly create this array using a Class favoured Attribute, weighted with Fate
+		$possibleAttribute = array("Str", "Dex", "Con", "Intel", "Wis", "Cha", "Fte");//dynamically create this array using a Class favoured Attribute, weighted with Fate
 		if($this->calculateAttributeBonus($this->Fte) > 0)//add favoured bonus to array, for each fate bonus above 0
 		{
 			$i=0;
