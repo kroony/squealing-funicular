@@ -78,7 +78,7 @@ class Hero
 		return $this;
 	}
 
-	function GenerateHero($level)// change to generate all characters at level 1 then call level up from a loop to add levels
+	function GenerateHero($level)
 	{
 		//Race
 		$this->Race = $this->GenerateRace();
@@ -90,7 +90,7 @@ class Hero
 
 		//Attributes
 		echo "Str ";
-		$this->Str = $this->GenerateAtribute($this->Race->StrBon);//include bonuses argument and level argument
+		$this->Str = $this->GenerateAtribute($this->Race->StrBon);
 		echo "Dex ";
 		$this->Dex = $this->GenerateAtribute($this->Race->DexBon);
 		echo "Con ";
@@ -101,7 +101,7 @@ class Hero
 		$this->Wis = $this->GenerateAtribute($this->Race->WisBon);
 		echo "Cha ";
 		$this->Cha = $this->GenerateAtribute($this->Race->ChaBon);
-		echo "Fte ";
+		//echo "Fte ";
 		$this->Fte = $this->GenerateAtribute($this->Race->FteBon);
 
 		//Class
@@ -240,7 +240,7 @@ class Hero
 				$i++;
 			}
 		}
-		print_r($possibleAttribute);
+		
 		$pickAttribute = $possibleAttribute[rand(0, count($possibleAttribute) -1)];
 		if      ($pickAttribute == "Str") {$this->Str++; echo "<b>Increase Str</b><br />";}
 		else if($pickAttribute == "Dex") {$this->Dex++; echo "<b>Increase Dex</b><br />";}
@@ -248,7 +248,7 @@ class Hero
 		else if($pickAttribute == "Intel") {$this->Intel++; echo "<b>Increase Intel</b><br />";}
 		else if($pickAttribute == "Wis") {$this->Wis++; echo "<b>Increase Wis</b><br />";}
 		else if($pickAttribute == "Cha") {$this->Cha++; echo "<b>Increase Cha</b><br />";}
-		else if($pickAttribute == "Fte") {$this->Fte++; echo "<b>Increase Fte</b><br />";}
+		//else if($pickAttribute == "Fte") {$this->Fte++; echo "<b>Increase Fte</b><br />";}
 
 		return true;
 	}
@@ -344,19 +344,17 @@ class Hero
 		return $attribute;
 	}
 
-
 	function GenerateHeroClass()//all characters start as commoners
 	{
-		//change to load(by name "commoner")
+		//@TODO:change to load(by name "commoner")
 		$commoner = HeroClass::loadHeroClass(1);//1 is the ID of commoner. hacky!
 
 		return $commoner;
 	}
 
-
 	function GenerateRace()
 	{
-		//This is pretty terrible but it matches the DB for now
+		//@TODO:Load all StarterRaces from race table and pick a random one.
 		$human = Race::loadRace(1);
 		$dwarf = Race::loadRace(2);
 		$elf = Race::loadRace(3);
@@ -412,12 +410,12 @@ class Hero
 		//some sort of try catch error detection
 	}
 
-	function GetAllHeros()
-	{
-		//return array of all adventurers in DB
-		//NOT THIS CLASS JOB thats for the controller
+	function KillHero(){
+		/*@TODO
+		Change owner ID to that of the "Monster" user
+		Change race to undead equivalent of current race
+		If not equipped with a weapon, generate a new one
+		*/
 	}
-
-}
 
 ?>

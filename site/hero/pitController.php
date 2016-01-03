@@ -39,12 +39,12 @@ class PitController
 		if($fighters[$target][0]->Cha < $fighters[$aggressor][0]->Cha)
 		{
 			$fighters[$target][1] += 2;
-			echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";
+			//echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";//was debug output
 		}
 		else
 		{
 			$fighters[$target][1] += 1;
-			echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";
+			//echo $fighters[$target][0]->Name . "'s run away increased to " . $fighters[$target][1] . "<br />";//was debug output
 		}
 	  }
 	  
