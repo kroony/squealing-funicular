@@ -209,7 +209,8 @@ class heroController
 		$enemys = array();
 		while($obj = $res->fetchObject())
 		{
-			$enemy = new Hero($obj);
+			$enemy = new Hero();
+			$enemy = $enemy->loadHero($obj->ID);
 			$enemys[] = $enemy;
 		}
 		return $enemys;

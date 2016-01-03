@@ -30,11 +30,8 @@ class Hero
 	public $Fte;
 	public $Weapon;
 
-	function __construct($dbo)
+	function __construct()
 	{
-		if (!is_null($dbo)) {
-			foreach($dbo as $key => $value) $this->$key = $value;
-		}
 	}
 
 	//@todo move this to a user class and just have this call the function on the user class
