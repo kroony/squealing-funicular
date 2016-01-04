@@ -48,7 +48,7 @@ class PitController
 		{
 			$fighters[$target][1] += 1;
 		}
-		$log .= $this->displayFighter($fighters, $target) . "'s run away increased to " . $fighters[$target][1] . "<br />";
+		$log->log($this->displayFighter($fighters, $target) . "'s run away increased to " . $fighters[$target][1] . "<br />");
 	  }
 	  
 	  if ($fighters[$target][0]->CurrentHP <= 0) {
