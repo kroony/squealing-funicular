@@ -59,7 +59,7 @@ class PitController
 		} else {
 		  $log->log($this->displayFighter($fighters, $target) . " was knocked out <br /><br />");
 		}
-		$log->log($winner->addXP(round($fighters[$target][0]->LevelUpXP / 3)));
+		$winner->addXP($this->logof($log, $aggressor), round($fighters[$target][0]->LevelUpXP / 3));
 		break;
 	  }
 	  
