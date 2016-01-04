@@ -45,7 +45,7 @@ class heroController
 		echo "<td>" . $Hero->Wis ."</td>";
 		echo "<td>" . $Hero->Cha ."</td>";
 		echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
-		if($Hero->CurrentXP == $Hero->LevelUpXP){
+		if($Hero->CurrentXP >= $Hero->LevelUpXP){
 			echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
 		}else{
 			echo "<td>Not Enough XP</td>";
