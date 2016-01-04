@@ -169,7 +169,7 @@ class Hero
 	function levelUP()
 	{
 		//returns true if it worked
-		if($this->CurrentXP == $this->LevelUpXP)//we have enough XP
+		if($this->CurrentXP >= $this->LevelUpXP)//we have enough XP
 		{
 			$this->forceLevelUP();
 			return true;
