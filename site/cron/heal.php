@@ -8,7 +8,7 @@ include_once("hero/heroController.php");
 $heroController = new heroController();
 $res = $heroController->performGlobalHealing(1);
 
-//@TODO flag somewhere the time this was run and display last heal time somewhere on the site. 
+//@TODO flag somewhere the last time this was run and display it somewhere on the site. 
 
 
 //commented out so no AUTO resurections
