@@ -38,7 +38,7 @@ class FightLog
     public $lines = "";
     function log($line)
     {
-        $this->lines .= $line->show();
+        $this->lines .= $line;
     }
 
     function show()
