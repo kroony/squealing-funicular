@@ -56,7 +56,11 @@ class Hero
 		$getQuery = "SELECT * FROM `Hero` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
+        return $this->loadHeroFromObject($obj);
+    }
 
+	function loadHeroFromObject($obj)
+    {
 		$this->OwnerID =  $obj->OwnerID;
 		$this->PartyID =  $obj->PartyID;
 		$this->Race = Race::loadRace($obj->Race);

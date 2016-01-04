@@ -210,7 +210,7 @@ class heroController
 		while($obj = $res->fetchObject())
 		{
 			$enemy = new Hero();
-			$enemy = $enemy->loadHero($obj->ID);
+			$enemy = $enemy->loadHeroFromObject($obj);
 			$enemys[] = $enemy;
 		}
 		return $enemys;
