@@ -292,7 +292,7 @@ class Hero
             $log->log("<b>Crit!</b> ");
         }
         $log->logName($this->Name)
-            ->log(" wields " . $this->Weapon->Name . " and strikes for " . $damage)
+            ->log(" wields " . $this->Weapon->Name . " and strikes for " . $damage->damage)
             ->br();
 
 		return $damage->damage;

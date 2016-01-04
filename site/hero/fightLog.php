@@ -12,7 +12,7 @@ class FightLogLine
 
     function logName($name)
     {
-        $this->into->log("<span class='$class'>" . $name . "</span>");
+        $this->into->log("<span class='$this->name_class'>" . $name . "</span>");
         return $this;
     }
     function log($str)
