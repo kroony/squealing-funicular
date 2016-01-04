@@ -131,7 +131,7 @@ class Hero
 			$i=0;
 			while($i < $level - 1)
 			{
-				if($this->forceLevelUP())//add in try catch, make forceLevelUP throw error when reached class cap
+				if($this->forceLevelUP())
 				{
 					$i++;
 				}
@@ -143,6 +143,15 @@ class Hero
 		}
 
 		//generate weapon
+		echo "<br /><br />";
+		print_r(Weapon::generateStartingWeapon(1,"Str"));
+		echo "<br /><br />";
+		print_r(Weapon::generateStartingWeapon(1,"Dex"));
+		echo "<br /><br />";
+		print_r(Weapon::generateStartingWeapon(1,"Intel"));
+		echo "<br /><br />";
+		print_r(Weapon::generateStartingWeapon(1,"Wis"));
+		echo "<br /><br />";
 		
 		if($this->Str >= $this->Dex && $this->Str >= $this->Intel && $this->Str >= $this->Wis){
 			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Str");

@@ -53,7 +53,7 @@ class WeaponBase
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 
-		$ReturnWeaponBase = new WeaponBase($obj->Name,$obj->DamageDie,$obj->DamageQuantity,$obj->MinOffset,$obj->MaxOffset,$obj->MinCrit,$obj->MaxCrit,$obj->DamageAttribute,$obj->NegativeNameAdjective,$obj->PositiveNameAdjective,$obj->StartingWeapon); 
+		$ReturnWeaponBase = new WeaponBase($obj->name,$obj->damagedie,$obj->damagequantity,$obj->minoffset,$obj->maxoffset,$obj->mincrit,$obj->maxcrit,$obj->damageattribute,$obj->negativenameadjective,$obj->positivenameadjective,$obj->startingweapon); 
 
 		$ReturnWeaponBase->ID = $ID;
 
@@ -85,7 +85,7 @@ class Weapon
 		$this->DamageAttribute = $DamageAttribute;
 	}
 
-	//load Race from DB 
+	//load Weapon from DB 
 	function loadWeapon($ID)
 	{
 		//check ID is not blank and exists and such
@@ -139,14 +139,14 @@ class Weapon
 
 	function generateStartingWeapon($UserID, $HighestAttribute)
 	{
-		echo "Starting Weapon based on " . $HighestAttribute . "<br />";
 		//get a weapon base matching the highest attribute
 		$db = DB::GetConn();
+		
 		$attribute_con = $db->quoteInto("damageattribute = ?", $HighestAttribute);
 		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-		echo "Picked to make a " . $obj->Name . "<br />";
+		
 		$rw = Weapon::generateWeapon($UserID, $obj->ID);
 		return $rw;
 	}
@@ -166,10 +166,10 @@ class Weapon
 			$rwName = $wb->Name;
 		} else if(($wb->MinOffset - $rwDamageOffset) < ($rwDamageOffset - $wb->MaxOffset)){ //better then normal
 			$adjectives = explode("|", $wb->PositiveNameAdjective);
-			$rwName = $adjectives[rand(0,count($adjectives))] . " " . $wb->Name;
+			$rwName = $adjectives[rand(0,count($adjectives) - 1)] . " " . $wb->Name;
 		} else if(($wb->MinOffset - $rwDamageOffset) > ($rwDamageOffset - $wb->MaxOffset)){ //worse then normal
 			$adjectives = explode("|", $wb->NegativeNameAdjective);
-			$rwName = $adjectives[rand(0,count($adjectives))] . " " . $wb->Name;
+			$rwName = $adjectives[rand(0,count($adjectives) - 1)] . " " . $wb->Name;
 		}
 		
 		return new Weapon($rwName, $UserID, $rwDamageDie, $rwDamageQuantity, $rwDamageOffset, $rwCritChance, $rwDamageAttribute);
