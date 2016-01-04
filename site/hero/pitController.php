@@ -1,38 +1,41 @@
 <?php
 
+include_once("fightLog.php");
 include_once("hero.php");
 
 class PitController
 {
   function oneOnOne($hero1, $hero2)
   {
-    $log = "";
+    $log = new FightLog();
     if ($hero1->CurrentHP <= 0) {
-		$log .= $this->displayName($hero1, true) . " has no HP and is unable to battle!<br />";
+		$log->log($hero1->displayName(true) . " has no HP and is unable to battle!<br />");
 		return $log;
 	}
     if ($hero2->CurrentHP <= 0) {
-		$log .= $this->displayName($hero2, false) . " has no HP and is unable to battle!<br />";
+		$log->log($hero2->displayName(false) . " has no HP and is unable to battle!<br />");
 		return $log;
 	}
-	$log .= $this->displayName($hero1, true) . " Level " . $hero1->Level . " is fighting " . $this->displayName($hero2, false) . " Level " . $hero2->Level . "<br /><br />";
+	$log->log($hero1->displayName(true) . " Level " . $hero1->Level . " is fighting " . $hero2->displayName(false) . " Level " . $hero2->Level . "<br />");
 	
 	$fighters = array(array($hero1, 0), array($hero2, 0));
-	$aggressor = $this->chooseFirst($hero1, $hero2);
+	$aggressor = $this->chooseFirst($log, $hero1, $hero2);
 
-	$log .= $this->displayFighter($fighters, $aggressor) . " is going 1st<br />";
+	$log->log($this->displayFighter($fighters, $aggressor) . " is going 1st<br />");
 	
 	$fighting = true;
 	$winner = null;
 	$roundCounter = 1;
 	while ($fighting) {
 	  if($roundCounter % 2){
-		  $log .= "<br />Round " . ceil($roundCounter / 2) . "<br />";
+		  $log->log("<br />Round " . ceil($roundCounter / 2) . "<br />");
       }
 	  
 	  $target = ($aggressor + 1) % 2;
+
+      $calc = $fighters[$aggressor][0]->calcDamage($this->logof($log, $aggressor));
 	  
-	  $damageDelt = $fighters[$target][0]->takeDamage($fighters[$aggressor][0]->calcDamage());
+	  $damageDelt = $fighters[$target][0]->takeDamage($this->logof($log, $target), $calc);
 	  
 	  //increase runaway possibility
 	  if($damageDelt > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
@@ -52,11 +55,11 @@ class PitController
 	    $winner = $fighters[$aggressor][0];
 		$fighting = false;
 		if ($fighters[$target][0]->CurrentHP <= 0 - $fighters[$target][0]->Con) {
-		  $log .= "<b>" . $this->displayFighter($fighters, $target) . " died </b><br /><br />";
+		  $log->log("<b>" . $this->displayFighter($fighters, $target) . " died </b><br /><br />");
 		} else {
-		  $log .= $this->displayFighter($fighters, $target) . " was knocked out <br /><br />";
+		  $log->log($this->displayFighter($fighters, $target) . " was knocked out <br /><br />");
 		}
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 3));
+		$log->log($winner->addXP(round($fighters[$target][0]->LevelUpXP / 3)));
 		break;
 	  }
 	  
@@ -64,9 +67,9 @@ class PitController
 	  {
 		$winner = $fighters[$aggressor][0];
 		$fighting = false;
-		$log .= $this->displayFighter($fighters, $target) . " decided to run away <br /><br />";
+		$log->log($this->displayFighter($fighters, $target) . " decided to run away <br /><br />");
 		
-		$winner->addXP(round($fighters[$target][0]->LevelUpXP / 3));
+		$log->log($winner->addXP(round($fighters[$target][0]->LevelUpXP / 3)));
 		break;
 	  }
 	  
@@ -77,11 +80,11 @@ class PitController
 
     return $log;
   }
-  
-  function chooseFirst($hero1, $hero2)
+
+  function chooseFirst($log, $hero1, $hero2)
   {
-    $init1 = $hero1->rollInitiative();
-    $init2 = $hero2->rollInitiative();
+    $init1 = $hero1->rollInitiative(new FightLogLine("player", $log));
+    $init2 = $hero2->rollInitiative(new FightLogLine("other", $log));
 	
 	if ($init1 > $init2) {
 	  return 0;
@@ -100,14 +103,15 @@ class PitController
 	}
   }
 
-  function displayName($hero, $is_mine)
-  {
-      $class = $is_mine ? "player" : "enemy";
-      return "<span class='$class'>" . $hero->Name . "</span>";
-  }
+
   function displayFighter($fighters, $ix)
   {
-      return $this->displayName($fighters[$ix][0], $ix == 0);
+      return $fighters[$ix][0]->displayName($ix == 0);
+  }
+
+  function logof($log, $ix)
+  {
+      return new FightLogLine($ix == 0 ? "player" : "other", $log);
   }
 
 }

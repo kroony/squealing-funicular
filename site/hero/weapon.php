@@ -1,5 +1,18 @@
 <?php
 
+include_once("fightLog.php");
+
+class WeaponDamageResult
+{
+    public $isCrit;
+    public $damage;
+    function __construct($isCrit, $damage)
+    {
+        $this->isCrit = $isCrit;
+        $this->damage = $damage;
+    }
+}
+
 class Weapon
 {
 	public $ID;
@@ -49,11 +62,12 @@ class Weapon
 
 		//check for crit damage
 		$TotalCrit = $CritFteBonus + $this->CritChance;
+        $crit = false;
 		if(rand(1,100) <= $TotalCrit)
 		{
 			$ActiveDamageQuantity += $ActiveDamageQuantity;//we critted! double the number of dice to roll
 			$ActiveDamageOffset += $ActiveDamageOffset;//And also double the weapon bonus
-			echo "<b>Crit!</b> ";
+            $crit = true;
 		}
 
 		$i=0;//roll DamageDie number of DamageQuantity times and add to TotalDamage
@@ -71,7 +85,7 @@ class Weapon
 			$TotalDamage = 1;
 		}
 
-		return $TotalDamage;
+		return new WeaponDamageResult($crit, $TotalDamage);
 	}
 
 
