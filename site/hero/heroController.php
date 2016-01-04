@@ -115,7 +115,7 @@ class heroController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT `ID` FROM `Hero` WHERE `OwnerID` = $id;";
+		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` = $id;";
 
 		$res=$db->query($getQuery);//execute query
 
@@ -145,7 +145,7 @@ class heroController
 		while($obj = $res->fetchObject())
 		{
 			$Hero = new Hero();
-			$this->outputInTable($Hero->loadHero($obj->ID));
+			$this->outputInTable($Hero->loadHeroFromObject($obj));
 			$totalHeros++;
 		}
 		echo "Showing " . $totalHeros . " results.<br />";
