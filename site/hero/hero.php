@@ -161,7 +161,7 @@ class Hero
 		if($this->CurrentXP > $this->LevelUpXP)//if its more then the level up reduce it to the levelup amount
 		{
 			$this->CurrentXP = $this->LevelUpXP;
-			echo "Time to try leveling up!<br />";
+			$log->log("Time to try leveling up!<br />");
 		}
 
 		$log->log("New XP: " . $this->CurrentXP . "<br />");

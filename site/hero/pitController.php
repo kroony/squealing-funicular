@@ -111,7 +111,7 @@ class PitController
 
   function logof($log, $ix)
   {
-      return new FightLogLine($ix == 0 ? "player" : "other", $log);
+      return new FightLogLine($ix == 0 ? "player" : "enemy", $log);
   }
 
 }
