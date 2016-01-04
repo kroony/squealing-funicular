@@ -17,9 +17,9 @@ $log = $pit->oneOnOne($hero1, $hero2);
 
 $smarty->assign("log",$log);
 $smarty->assign("hero1",$hero1);
-$smarty->assign("hero1_name",$pit->displayName($hero1, true));
+$smarty->assign("hero1_name",$hero1->displayName(true));
 $smarty->assign("hero2",$hero2);
-$smarty->assign("hero2_name",$pit->displayName($hero2, false));
+$smarty->assign("hero2_name",$hero2->displayName(false));
 
 //save heros
 
