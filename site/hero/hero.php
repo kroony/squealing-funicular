@@ -1,5 +1,6 @@
 <?php
 
+include_once("fightLog.php");
 include_once("race.php");
 include_once("heroClass.php");
 include_once("weapon.php");
@@ -151,10 +152,10 @@ class Hero
 		$this->OwnerID = $UID;
 	}
 
-	function addXP($XP)
+	function addXP($log, $XP)
 	{
-		echo "Current XP: " . $this->CurrentXP . "<br />";
-		echo "Adding " . $XP . "XP<br />";
+		$log->log("Current XP: " . $this->CurrentXP . "<br />");
+		$log->log("Adding " . $XP . "XP<br />");
 		$this->CurrentXP += $XP;//add the XP
 
 		if($this->CurrentXP > $this->LevelUpXP)//if its more then the level up reduce it to the levelup amount
@@ -163,7 +164,7 @@ class Hero
 			echo "Time to try leveling up!<br />";
 		}
 
-		echo "New XP: " . $this->CurrentXP . "<br />";
+		$log->log("New XP: " . $this->CurrentXP . "<br />");
 	}
 
 	function levelUP()
@@ -280,19 +281,24 @@ class Hero
 			throw new Exception("Not a known attribute: $name");
 	}
 
-	function calcDamage()
+	function calcDamage($log)
 	{
 		$weapon = $this->Weapon;
 		$attr   = $this->getAttributeByName($weapon->DamageAttribute);
 		$bonus  = $this->calculateAttributeBonus($attr);
 		$damage = $weapon->calcDamage($this->calculateAttributeBonus($this->Fte), $bonus);
 
-		echo $this->Name . " weilds " . $this->Weapon->Name . " and strikes for " . $damage . "<br />";
+        if ($damage->isCrit) {
+            $log->log("<b>Crit!</b> ");
+        }
+        $log->logName($this->Name)
+            ->log(" wields " . $this->Weapon->Name . " and strikes for " . $damage)
+            ->br();
 
-		return $damage;
+		return $damage->damage;
 	}
 
-	function takeDamage($damage)
+	function takeDamage($log, $damage)
 	{
 		$dexBon = $this->calculateAttributeBonus($this->Dex);
 		$damageReduction = 0;
@@ -312,14 +318,18 @@ class Hero
 		}
 
 		$this->CurrentHP -= $damage;
-		echo $this->Name . " mitigated " . $damageReduction . " damage.<br />";
+		$log->logName($this->Name)
+            ->log(" mitigated " . $damageReduction . " damage.")
+            ->br();
 		return $damage;
 	}
 
-	function rollInitiative()
+	function rollInitiative($log)
 	{
 		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Wis);
-		echo $this->Name . " rolled " . $roll . " on initative.<br />";
+		$log->logName($this->Name)
+            ->log(" rolled " . $roll . " on initative.")
+            ->br();
 		return $roll;
 	}
 
@@ -417,6 +427,13 @@ class Hero
 		If not equipped with a weapon, generate a new one
 		*/
 	}
+
+    function displayName($is_mine)
+    {
+        $class = $is_mine ? "player" : "enemy";
+        return "<span class='$class'>" . $this->Name . "</span>";
+    }
+
 }
 
 ?>

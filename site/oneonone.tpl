@@ -4,7 +4,7 @@
 </head>
 <body>
 
-{$log}
+{$log->show()}
 
 {if $hero1->CurrentHP lt (0 - $hero1->Con)}
 	{$hero1_name} has <b>died</b> in battle<br /><br />
