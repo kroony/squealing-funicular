@@ -1,6 +1,6 @@
 <?php
 set_include_path("..");
-include_once("bootstrap.php");
+require_once("includes/database.class.php");
 
 /*********Add XP*********/
 include_once("hero/heroController.php");
