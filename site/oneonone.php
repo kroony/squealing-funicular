@@ -13,10 +13,13 @@ $hero1 = $hero1->loadHero($_REQUEST['ID1']);
 $hero2 = new Hero();
 $hero2 = $hero2->loadHero($_REQUEST['ID2']);
 
-$pit->oneOnOne($hero1, $hero2);
+$log = $pit->oneOnOne($hero1, $hero2);
 
+$smarty->assign("log",$log);
 $smarty->assign("hero1",$hero1);
+$smarty->assign("hero1_name",$pit->displayName($hero1, true));
 $smarty->assign("hero2",$hero2);
+$smarty->assign("hero2_name",$pit->displayName($hero2, false));
 
 //save heros
 
