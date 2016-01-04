@@ -44,6 +44,17 @@ class Hero
 		return $res->fetchObject();
 	}
 
+	public function GetOwnerName()
+	{
+		$db = DB::GetConn();
+		$user_con = $db->quoteInto("ID = ?",$this->OwnerID);
+		$sql = "select * from User where $user_con limit 1";
+		$res = $db->query($sql);
+		$obj = $res->fetchObject();
+        return $obj->username;
+	}
+
+
 	//load Adventurer from DB 
 	function loadHero($ID)
 	{
