@@ -48,7 +48,6 @@ class Hero
 	//load Adventurer from DB 
 	function loadHero($ID)
 	{
-		$this->ID = $ID;
 		//check ID is not blank and exists and such
 		$db = DB::GetConn();
 
@@ -61,6 +60,7 @@ class Hero
 
 	function loadHeroFromObject($obj)
     {
+		$this->ID = $obj->ID;
 		$this->OwnerID =  $obj->OwnerID;
 		$this->PartyID =  $obj->PartyID;
 		$this->Race = Race::loadRace($obj->Race);
