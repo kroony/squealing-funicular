@@ -18,7 +18,8 @@
 <i>image, ability to unequip/equip different weapons</i><br />
 {$hero->Weapon->Name} 
 Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}+{$hero->Weapon->DamageOffset}<br />
-Uses: {$hero->Weapon->DamageAttribute}
+Uses: {$hero->Weapon->DamageAttribute}<br />
+<a href="generateWeapon.php?ID={$hero->ID}">Generate New Weapon</a>
 </p>
 <p><h2>Armor</h2></p>
 <p><h2>Item</h2></p>
