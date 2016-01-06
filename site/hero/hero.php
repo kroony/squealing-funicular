@@ -145,7 +145,10 @@ class Hero
 				}
 			}
 		}
-		
+	}
+	
+	function generateStartingWeapon()
+	{
 		if($this->Str >= $this->Dex && $this->Str >= $this->Intel && $this->Str >= $this->Wis){
 			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Str");
 		} else if($this->Dex >= $this->Str && $this->Dex >= $this->Intel && $this->Dex >= $this->Wis) {
@@ -161,7 +164,6 @@ class Hero
 		//save weapon 
 		$this->Weapon->save();
 	}
-
 	function GiveToUser($UID)
 	{
 		//check user exists
@@ -427,9 +429,35 @@ class Hero
 		}
 		else //no id, add new character
 		{
-			$InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-				                      ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '".$this->Weapon->ID."');";
-			$db->query($InsertQuery); //@todo change this to an associate array and use db->Insert(...);
+			$row = array("OwnerID"=>$this->OwnerID,
+				"PartyID"=>0,
+				"Name"=>$this->Name,
+				"Race"=>$this->Race->ID,
+				"Class"=>$this->HeroClass->ID,
+				"MaxHP"=>$this->MaxHP,
+				"CurrentHP"=>$this->CurrentHP,
+				"Level"=>$this->Level,
+				"CurrentXP"=>$this->CurrentXP,
+				"LevelUpXP"=>$this->LevelUpXP,
+				"Str"=>$this->Str,
+				"Dex"=>$this->Dex,
+				"Con"=>$this->Con,
+				"Intel"=>$this->Intel,
+				"Wis"=>$this->Wis,
+				"Cha"=>$this->Cha,
+				"Fte"=>$this->Fte,
+				"WeaponID"=>Weapon->ID);
+			
+			try {
+				$db->insert("Hero",$row);
+				$id = $db->lastInsertId();
+				$this->ID = $id;
+				
+			}
+			catch(Exception $ex)
+			{
+				print_r($ex);
+			}
 		}
 
 		//some sort of try catch error detection
