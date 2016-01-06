@@ -96,7 +96,7 @@ class Weapon
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 
-		$ReturnWeapon = new Weapon($obj->Name,$obj->UserID,$obj->HeroID,$obj->DamageDie,$obj->DamageQuantity,$obj->DamageOffset,$obj->CritChance,$obj->DamageAttribute); 
+		$ReturnWeapon = new Weapon($obj->Name,$obj->UserID,$obj->DamageDie,$obj->DamageQuantity,$obj->DamageOffset,$obj->CritChance,$obj->DamageAttribute); 
 
 		$ReturnWeapon->ID = $ID;
 
