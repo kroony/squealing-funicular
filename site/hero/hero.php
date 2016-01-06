@@ -150,17 +150,18 @@ class Hero
 	function generateStartingWeapon()
 	{
 		if($this->Str >= $this->Dex && $this->Str >= $this->Intel && $this->Str >= $this->Wis){
-			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Str");
+			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Str");
 		} else if($this->Dex >= $this->Str && $this->Dex >= $this->Intel && $this->Dex >= $this->Wis) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Dex");
+			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Dex");
 		} else if($this->Intel >= $this->Str && $this->Intel >= $this->Dex && $this->Intel >= $this->Wis) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Intel");
+			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Intel");
 		} else if($this->Wis >= $this->Str && $this->Wis >= $this->Dex && $this->Wis >= $this->Intel) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Wis");
+			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Wis");
 		} else {
 			//not sure this should happen
 			echo "<b>Bill check your highest attribute picker</b>";
 		}
+		echo "Generated a " . $this->Weapon->Name . "<br />";
 		//save weapon 
 		$this->Weapon->save();
 	}

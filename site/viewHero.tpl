@@ -15,6 +15,7 @@
 </p>
 <p>
 <h2>Weapon</h2>
+WeaponID: {$hero->Weapon->ID}<br />
 <i>image, ability to unequip/equip different weapons</i><br />
 {$hero->Weapon->Name} 
 Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}+{$hero->Weapon->DamageOffset}<br />
