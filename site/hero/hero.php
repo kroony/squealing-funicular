@@ -447,7 +447,8 @@ class Hero
 				"Intel"=>$this->Intel,
 				"Wis"=>$this->Wis,
 				"Cha"=>$this->Cha,
-				"Fte"=>$this->Fte);
+				"Fte"=>$this->Fte, 
+				"WeaponID"=>$this->Weapon->ID);
 			
 			try {
 				$db->insert("Hero",$row);
