@@ -164,6 +164,7 @@ class Hero
 		echo "Generated a " . $this->Weapon->Name . "<br />";
 		//save weapon 
 		$this->Weapon->save();
+		echo "The " . $this->Weapon->Name . " has ID " . $this->Weapon->ID . "<br />";
 	}
 	function GiveToUser($UID)
 	{
