@@ -135,7 +135,7 @@ class Hero
 			$i=0;
 			while($i < $level - 1)
 			{
-				if($this->forceLevelUP())//add in try catch, make forceLevelUP throw error when reached class cap
+				if($this->forceLevelUP())
 				{
 					$i++;
 				}
@@ -145,9 +145,21 @@ class Hero
 				}
 			}
 		}
-
-		//generate weapon
-		$this->Weapon = Weapon::loadWeapon(rand(1,9));
+		
+		if($this->Str >= $this->Dex && $this->Str >= $this->Intel && $this->Str >= $this->Wis){
+			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Str");
+		} else if($this->Dex >= $this->Str && $this->Dex >= $this->Intel && $this->Dex >= $this->Wis) {
+			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Dex");
+		} else if($this->Intel >= $this->Str && $this->Intel >= $this->Dex && $this->Intel >= $this->Wis) {
+			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Intel");
+		} else if($this->Wis >= $this->Str && $this->Wis >= $this->Dex && $this->Wis >= $this->Intel) {
+			$this->Weapon = Weapon::generateStartingWeapon($this->GetOwner()->ID, "Wis");
+		} else {
+			//not sure this should happen
+			echo "<b>Bill check your highest attribute picker</b>";
+		}
+		//save weapon 
+		$this->Weapon->save();
 	}
 
 	function GiveToUser($UID)
@@ -213,12 +225,12 @@ class Hero
 
 		//add hp
 		$extraHP = rand(1,$this->HeroClass->HD) + $this->calculateAttributeBonus($this->Con);
-		if($extraHP < 1)//minimum 1 hitpoint increase.
+		if($extraHP < 1)//minimum 1 HP increase.
 		{
 			$extraHP = 1;
 		}
 		$this->MaxHP += $extraHP;
-		$this->CurrentHP = $this->MaxHP; //healed when leveled up?? could be exploited....
+		$this->CurrentHP = $this->MaxHP; //healed when levelled up?? could be exploited....
 		echo "Adding " . $extraHP . " HP. Rolled a d" . $this->HeroClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
 
 		//increase XP cap
@@ -416,8 +428,7 @@ class Hero
 		else //no id, add new character
 		{
 			$InsertQuery = "INSERT INTO `Hero` (`OwnerID`,                  `PartyID`, `Name`,            `Race`,                  `Class`,                    `MaxHP`,            `CurrentHP`,            `Level`,            `CurrentXP`,            `LevelUpXP`,            `Str`,            `Dex`,            `Con`,            `Intel`,          `Wis`,            `Cha`,            `Fte`,            `WeaponID`
-				) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '".$this->Weapon->ID."');";
-			// echo "Inserting New Hero: " . $InsertQuery . "<br />";
+				                      ) VALUES ('".$this->OwnerID."',       '0',       '".$this->Name."', '".$this->Race->ID."', '".$this->HeroClass->ID ."', '".$this->MaxHP."', '".$this->CurrentHP."', '".$this->Level."', '".$this->CurrentXP."', '".$this->LevelUpXP."', '".$this->Str."', '".$this->Dex."', '".$this->Con."', '".$this->Intel."', '".$this->Wis."', '".$this->Cha."', '".$this->Fte."', '".$this->Weapon->ID."');";
 			$db->query($InsertQuery); //@todo change this to an associate array and use db->Insert(...);
 		}
 
