@@ -18,7 +18,7 @@
 	<i>@TODO: image, ability to unequip/equip different weapons</i><br />
 	{$hero->Weapon->Name} 
 	Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}+{$hero->Weapon->DamageOffset}<br />
-	Uses: {$hero->Weapon->DamageAttribute}<br />
+	Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
 	Critical Strike Chance: 
 		{if $hero->Cha > 10}
 			{$hero->Weapon->CritChance + $hero->calculateAttributeBonus($hero->Cha)}%
