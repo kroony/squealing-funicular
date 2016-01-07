@@ -64,7 +64,7 @@ class heroController
 				  </div>
 				</div></td>';
 			}
-			if($Hero->CurrentHP < $Hero->Con)
+			else if($Hero->CurrentHP < $Hero->Con)
 			{
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-danger" role="progressbar" 
