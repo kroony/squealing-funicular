@@ -197,6 +197,7 @@ class heroController
 		$res=$db->query($getQuery);//execute query
 
 		echo "<table class='table table-condensed table-hover'>
+			<thead>
 			<tr>
 			<td>Name</td>
 			<!--<td>OwnerID</td>
@@ -214,7 +215,8 @@ class heroController
 			<td>Cha</td>
 			<td>Weapon</td>
 			<td>Fight</td>
-			</tr>";
+			</tr>
+			</thead><tbody>";
 
 		$totalHeros = 0;
 		while($obj = $res->fetchObject())
@@ -225,7 +227,7 @@ class heroController
 		}
 		echo "Showing " . $totalHeros . " results.<br />";
 
-		echo "</table>";
+		echo "</tbody></table>";
 
 		return $totalHeros;
 	}
