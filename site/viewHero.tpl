@@ -1,25 +1,25 @@
 <h1>{$hero->Name}</h1>
 {include file='kobold.html'}
+<br />
+Level: {$hero->Level}<br />
+Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
+Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
+HP: 
+<div class="progress" style="display: inline-flex;width: 300px;">
+  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
+  aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
+	{$hero->CurrentHP}HP/{$hero->MaxHP}HP
+  </div>
+</div><br />
 
-	Level: {$hero->Level}<br />
-	Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
-	Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
-	HP: 
-	<div class="progress">
-	  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-	  aria-valuemin="0" aria-valuemax="100" style="width:40%">
-		{$hero->CurrentHP}HP/{$hero->MaxHP}HP
-	  </div>
-	</div><br />
-	
-	
-	XP: <progress max="{$hero->LevelUpXP}" value="{$hero->CurrentXP}" style="width: 250px;"></progress><br />
-	Strength: {$hero->Str}<br />
-	Dexterity: {$hero->Dex}<br />
-	Constitution: {$hero->Con}<br />
-	Intellegence: {$hero->Intel}<br />
-	Wisdom: {$hero->Wis}<br />
-	Charasma: {$hero->Cha}<br />
+
+XP: <progress max="{$hero->LevelUpXP}" value="{$hero->CurrentXP}" style="width: 250px;"></progress><br />
+Strength: {$hero->Str}<br />
+Dexterity: {$hero->Dex}<br />
+Constitution: {$hero->Con}<br />
+Intellegence: {$hero->Intel}<br />
+Wisdom: {$hero->Wis}<br />
+Charasma: {$hero->Cha}<br />
 
 <p>
 	<h2>Weapon</h2>
