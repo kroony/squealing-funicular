@@ -1,6 +1,6 @@
 <h1>{$hero->Name}</h1>
 {include file='kobold.html'}
-<p>
+
 	Level: {$hero->Level}<br />
 	Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 	Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
@@ -20,7 +20,7 @@
 	Intellegence: {$hero->Intel}<br />
 	Wisdom: {$hero->Wis}<br />
 	Charasma: {$hero->Cha}<br />
-</p>
+
 <p>
 	<h2>Weapon</h2>
 	<i>@TODO: image, ability to unequip/equip different weapons</i><br />

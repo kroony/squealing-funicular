@@ -125,7 +125,7 @@ class heroController
 
 		$res=$db->query($getQuery);//execute query
 
-		echo "<table style='width: 100%;'>
+		echo "<table style=table table-hover'>
 			<tr>
 			<td>Name</td>
 			<!--<td>OwnerID</td>
