@@ -2,22 +2,22 @@
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
+      google.load("visualization", "1", {literal}{packages:["corechart"]}{/literal});
       google.setOnLoadCallback(drawChart);
-      function drawChart() {
+      function drawChart() {literal}{
 
-        var data = google.visualization.arrayToDataTable([
+        var data = google.visualization.arrayToDataTable([{/literal}
           {$ClassTableData}
         ]);
 
-        var options = {
+        var options = {literal}{
           title: 'Population By Class'
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
         chart.draw(data, options);
-      }
+      }{/literal}
     </script>
   </head>
   <body>
