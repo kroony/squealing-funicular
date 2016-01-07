@@ -35,7 +35,60 @@ class heroController
 		//echo "<td>" . $Hero->PartyID ."</td>";
 		echo "<td>" . $Hero->Race->Name ."</td>";
 		echo "<td>" . $Hero->HeroClass->Name ."</td>";
-		echo "<td>" . $Hero->CurrentHP .'/'. $Hero->MaxHP ."</td>";
+		
+		//@TODO , pretty disgusting make into nicer Smarty Templates
+		if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
+			echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
+			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-warning" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="revive.php?ID=' . $hero->ID . '">Revive</a></span>
+				  </div>
+				</div></td>';
+		}
+		else if($Hero->CurrentHP < 1){
+			echo "<td>DEAD! <a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
+			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-warning" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="delete.php?ID=' . $hero->ID . '">Remove</a></span>
+				  </div>
+				</div></td>';
+		}
+		else{
+			if($Hero->CurrentHP < $Hero->Con)
+			{
+				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
+				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-danger" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
+				  </div>
+				</div></td>';
+			}
+			else if($Hero->CurrentHP < $Hero->MaxHP / 2)
+			{
+				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
+				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-warning" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
+				  </div>
+				</div></td>';
+			}
+			else
+			{
+				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
+				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-success" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
+				  </div>
+				</div></td>';
+			}
+		}
+		
+		
 		echo "<td>" . $Hero->Level ."</td>";
 		if($Hero->CurrentXP >= $Hero->LevelUpXP)
 		{
@@ -69,16 +122,6 @@ class heroController
 		}
 		else{
 			echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
-		}
-
-		if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
-			echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
-		}
-		else if($Hero->CurrentHP < 1){
-			echo "<td>DEAD! <a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
-		}
-		else{
-			echo "<td></td>";
 		}
 
 		if($Hero->CurrentHP > 0){
@@ -156,7 +199,6 @@ class heroController
 			<td>Wis</td>
 			<td>Cha</td>
 			<td>Weapon</td>
-			<td>Revive</td>
 			<td>Fight</td>
 			</tr>";
 
