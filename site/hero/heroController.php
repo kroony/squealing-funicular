@@ -29,6 +29,15 @@ class heroController
 
 	function outputInTable($Hero)
 	{
+		//fix for single quotes in names
+		$fixedName =  str_replace("'", "", $Hero->Name);
+		if($fixedName != $Hero->Name)
+		{
+			$Hero->Name = $fixedName;
+			$Hero->SaveHero();
+		}
+		//end fix
+		
 		echo "<tr>";
 		echo "<td><a href='viewHero.php?ID=" . $Hero->ID . "'>" . $Hero->Name ."</a></td>";
 		//echo "<td>" . $Hero->OwnerID ."</td>";

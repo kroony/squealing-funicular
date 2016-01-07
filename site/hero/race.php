@@ -68,7 +68,7 @@ class Race
 			$f_mid = array("pet", "jac", "cob", "er", "ic", "stef", "fan", "mer", "ril", "ley");
 			$f_suf = array("of", "met", "ic", "im", "rum", "", "", "", "");
 
-			$l_pre = array("o'", "mac", "free", "", "", "", "");
+			$l_pre = array("O", "mac", "free", "", "", "", "");
 			$l_mid = array("smi", "ith", "co", "be", "er", "rob", "bert", "frank", "anne");
 			$l_suf = array("son", "er", "well", "s", "", "", "", "");
 		}
