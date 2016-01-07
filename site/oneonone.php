@@ -41,10 +41,10 @@ else //Monster AI
   }
   else
   {
-	if($hero2->CurrentHP > 0)//if still concious, heal
+	/*if($hero2->CurrentHP > 0)//if still concious, heal
 	{
 		$hero2->CurrentHP = $hero2->MaxHP;
-	}
+	}*/
   }
   $hero2->SaveHero();
 }
