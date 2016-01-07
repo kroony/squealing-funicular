@@ -4,10 +4,12 @@ include_once("bootstrap.php");
 
 include_once("hero/hero.php");
 
-$Hero = new Hero();
-$Hero = $testHero->loadHero($_REQUEST['ID']);
+//@TODO add undead races to DB and change current race to matching Undead Race
 
-$Hero->GiveToUser(146);//give the Hero to the monster user 
+$Hero = new Hero();
+$Hero = $Hero->loadHero($_REQUEST['ID']);
+
+$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
 
 $Hero->Level = -1;
 $Hero->CurrentHP = $Hero->MaxHP;
