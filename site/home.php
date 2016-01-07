@@ -3,6 +3,7 @@
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
 
+$smarty->display("css/css.tpl");
 
 $heroController = new heroController();
 
