@@ -41,8 +41,8 @@ class heroController
 			echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
 			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
-				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
-					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="revive.php?ID=' . $hero->ID . '">Revive</a></span>
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="revive.php?ID=' . $Hero->ID . '">Revive</a></span>
 				  </div>
 				</div></td>';
 		}
@@ -50,8 +50,8 @@ class heroController
 			echo "<td>DEAD! <a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
-				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
-					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="delete.php?ID=' . $hero->ID . '">Remove</a></span>
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="delete.php?ID=' . $Hero->ID . '">Remove</a></span>
 				  </div>
 				</div></td>';
 		}
@@ -61,7 +61,7 @@ class heroController
 				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-danger" role="progressbar" 
-				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
 				  </div>
 				</div></td>';
@@ -71,7 +71,7 @@ class heroController
 				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
-				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
 				  </div>
 				</div></td>';
@@ -81,7 +81,7 @@ class heroController
 				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-success" role="progressbar" 
-				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $hero->CurrentHP / $hero->MaxHP * 100 . '%">
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
 				  </div>
 				</div></td>';
