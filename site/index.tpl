@@ -5,18 +5,23 @@
       google.load("visualization", "1", {literal}{packages:["corechart"]}{/literal});
       google.setOnLoadCallback(drawChart);
       function drawChart() {literal}{
-
-        var data = google.visualization.arrayToDataTable([{/literal}
+        var Classdata = google.visualization.arrayToDataTable([{/literal}
           {$ClassTableData}
         ]);
-
-        var options = {literal}{
+        var Classoptions = {literal}{
           title: 'Population By Class'
         };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
+        var Classchart = new google.visualization.PieChart(document.getElementById('classpiechart'));
+        Classchart.draw(Classdata, Classoptions);
+		
+		var Racedata = google.visualization.arrayToDataTable([{/literal}
+          {$RaceTableData}
+        ]);
+        var Raceoptions = {literal}{
+          title: 'Population By Race'
+        };
+        var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
+        Racechart.draw(Racedata, Raceoptions);
       }{/literal}
     </script>
   </head>
@@ -34,6 +39,7 @@
 		War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
 		<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
 
-	<div id="piechart" style="width: 900px; height: 500px;"></div>
+	<div id="classpiechart" style="width: 900px; height: 500px;"></div>
+	<div id="Racepiechart" style="width: 900px; height: 500px;"></div>
   </body>
 </html>
