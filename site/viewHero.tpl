@@ -8,7 +8,7 @@ HP:
 <div class="progress" style="display: inline-flex;width: 300px; position: relative;">
   <div class="progress-bar {if $hero->CurrentHP < $hero->Con} progress-bar-danger {elseif $hero->CurrentHP < $hero->MaxHP/2} progress-bar-warning {else} progress-bar-success {/if}" role="progressbar" 
   aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
-	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP</span>
+	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a></if}</span>
   </div>
 </div><br />
 
