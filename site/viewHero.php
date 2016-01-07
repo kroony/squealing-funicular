@@ -2,6 +2,8 @@
 
 include("bootstrap.php");
 
+$smarty->display("css/css.tpl");
+
 /*********Add XP*********/
 include_once("hero/heroController.php");
 
