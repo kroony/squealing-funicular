@@ -8,7 +8,7 @@ HP:
 <div class="progress" style="display: inline-flex;width: 300px; position: relative;">
   <div class="progress-bar {if $hero->CurrentHP < $hero->Con} progress-bar-danger {elseif $hero->CurrentHP < $hero->MaxHP/2} progress-bar-warning {else} progress-bar-success {/if}" role="progressbar" 
   aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
-	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a></if}</span>
+	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a>{/if}</span>
   </div>
 </div><br />
 
@@ -43,24 +43,5 @@ Charisma: {$hero->Cha}<br />
 <p><h2>Armor</h2></p>
 <p><h2>Item</h2></p>
 <br />
-
-
-
-
-
-
-<div class="progress">
-  <div class="progress-bar " role="progressbar" aria-valuenow="60"
-  aria-valuemin="0" aria-valuemax="100" style="width:60%">
-    60% Complete (warning)
-  </div>
-</div>
-
-<div class="progress">
-  <div class="progress-bar " role="progressbar" aria-valuenow="70"
-  aria-valuemin="0" aria-valuemax="100" style="width:70%">
-    70% Complete (danger)
-  </div>
-</div>
 
 <a href="home.php">Return</a>
