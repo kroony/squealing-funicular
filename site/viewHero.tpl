@@ -13,10 +13,13 @@ HP:
 </div><br />
 
 XP: 
-<div class="progress" style="display: inline-flex;width: 300px;">>
+<div class="progress" style="display: inline-flex;width: 300px;">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
-    {$hero->CurrentXP}XP/{$hero->LevelUpXP}XP
+    <span style="position: absolute;
+    display: block;
+    width: 100%;
+    color: black;">{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP</span>
   </div>
 </div><br />
 Strength: {$hero->Str}<br />
