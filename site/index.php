@@ -1,7 +1,7 @@
 <?php
 
 include("bootstrap.php");
-include_once("heroClass.php");
+include_once("hero/heroClass.php");
 $db = DB::GetConn();
 $getQuery = "SELECT Class,COUNT(*) as count FROM Hero GROUP BY Class ORDER BY count DESC;";
 $res=$db->query($getQuery);//execute query
