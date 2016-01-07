@@ -38,7 +38,6 @@ class heroController
 		
 		//@TODO , pretty disgusting make into nicer Smarty Templates
 		if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
-			echo "<td><a href='revive.php?ID=" . $Hero->ID . "'>Revive Hero</a></td>";
 			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
@@ -47,7 +46,6 @@ class heroController
 				</div></td>';
 		}
 		else if($Hero->CurrentHP < 1){
-			echo "<td>DEAD! <a href='delete.php?ID=" . $Hero->ID . "'>Delete</a></td>";
 			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
@@ -55,10 +53,19 @@ class heroController
 				  </div>
 				</div></td>';
 		}
-		else{
+		else
+		{
+			if($Hero->CurrentHP == $Hero->MaxHP)
+			{
+				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				  <div class="progress-bar progress-bar-success" role="progressbar" 
+				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
+				  </div>
+				</div></td>';
+			}
 			if($Hero->CurrentHP < $Hero->Con)
 			{
-				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-danger" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
@@ -68,7 +75,6 @@ class heroController
 			}
 			else if($Hero->CurrentHP < $Hero->MaxHP / 2)
 			{
-				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
@@ -78,7 +84,6 @@ class heroController
 			}
 			else
 			{
-				echo '<td>' . $Hero->CurrentHP .'/'. $Hero->MaxHP .'</td>';
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-success" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
