@@ -1,6 +1,6 @@
 {$hero->Name} (level {$hero->Level}) would like to fight:<br />
 
-<table>
+<table class='table table-condensed table-hover'>
 {foreach item=ag from=$against}
         <!--$owner = mysql_get_rows("SELECT * FROM `User` WHERE ID = " . $ag->OwnerID);
 		To get the username add this as property to the $ag object-->

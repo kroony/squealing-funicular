@@ -47,7 +47,7 @@ class heroController
 		
 		//@TODO , pretty disgusting make into nicer Smarty Templates
 		if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
-			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+			echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="revive.php?ID=' . $Hero->ID . '">Revive</a></span>
@@ -55,7 +55,7 @@ class heroController
 				</div></td>';
 		}
 		else if($Hero->CurrentHP < 1){
-			echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+			echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="delete.php?ID=' . $Hero->ID . '">Remove</a></span>
@@ -66,7 +66,7 @@ class heroController
 		{
 			if($Hero->CurrentHP == $Hero->MaxHP)
 			{
-				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-success" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
@@ -75,7 +75,7 @@ class heroController
 			}
 			else if($Hero->CurrentHP < $Hero->Con)
 			{
-				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-danger" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
@@ -84,7 +84,7 @@ class heroController
 			}
 			else if($Hero->CurrentHP < $Hero->MaxHP)
 			{
-				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
@@ -93,7 +93,7 @@ class heroController
 			}
 			else
 			{
-				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-success" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
 					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP</span>
@@ -107,7 +107,7 @@ class heroController
 		if($Hero->CurrentXP >= $Hero->LevelUpXP)
 		{
 			echo '<td>
-				<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				<div class="progress">
 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="' . $Hero->CurrentXP .'"
 					aria-valuemin="0" aria-valuemax="'. $Hero->LevelUpXP .'" style="width:'. $Hero->CurrentXP / $Hero->LevelUpXP * 100 . '%">
 						<span>' . $Hero->CurrentXP . 'XP/' . $Hero->LevelUpXP . 'XP <a href="levelUp.php?ID=' . $Hero->ID . '">Try Level up</a></span>
@@ -117,7 +117,7 @@ class heroController
 		else
 		{
 			echo '<td>
-				<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+				<div class="progress">
 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="' . $Hero->CurrentXP .'"
 					aria-valuemin="0" aria-valuemax="'. $Hero->LevelUpXP .'" style="width:'. $Hero->CurrentXP / $Hero->LevelUpXP * 100 . '%">
 						<span>' . $Hero->CurrentXP . 'XP/' . $Hero->LevelUpXP . 'XP</span>
