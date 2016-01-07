@@ -73,7 +73,7 @@ class heroController
 				  </div>
 				</div></td>';
 			}
-			else if($Hero->CurrentHP < $Hero->MaxHP / 2)
+			else if($Hero->CurrentHP < $Hero->MaxHP)
 			{
 				echo '<td><div class="progress" style="display: inline-flex;width: 300px; position: relative;">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
