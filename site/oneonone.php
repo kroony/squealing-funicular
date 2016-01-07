@@ -21,8 +21,10 @@ $smarty->assign("hero1_name",$hero1->displayName(true));
 $smarty->assign("hero2",$hero2);
 $smarty->assign("hero2_name",$hero2->displayName(false));
 
-//save heros
+$smarty->display("oneonone.tpl");
 
+
+//save heros
 $hero1->SaveHero();
 if ($hero2->Level != -1)
 {
@@ -35,7 +37,6 @@ else //Monster AI
 	//level up
 	$preXP = $hero2->LevelUpXP;
 	$hero2->LevelUp();
-	
 	$hero2->Level = -1;
 	$hero2->LevelUpXP = $preXP + 200;
   }
@@ -49,4 +50,3 @@ else //Monster AI
   $hero2->SaveHero();
 }
 
-$smarty->display("oneonone.tpl");
