@@ -25,6 +25,26 @@ $smarty->assign("hero2_name",$hero2->displayName(false));
 
 $hero1->SaveHero();
 if ($hero2->Level != -1)
+{
 	$hero2->SaveHero();
+}
+else //Monster AI
+{
+  if($hero2->CurrentXP >= $hero2->LevelUpXP)
+  {
+	//level up
+	$preXP = $hero2->LevelUpXP;
+	$hero2->LevelUp();
+	
+	$hero2->Level = -1;
+	$hero2->LevelUpXP = $preXP + 200;
+  }
+  else
+  {
+	//Just heal
+	$hero2->CurrentHP = $hero2->MaxHP;
+  }
+  $hero2->SaveHero();
+}
 
 $smarty->display("oneonone.tpl");
