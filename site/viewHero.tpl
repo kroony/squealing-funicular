@@ -5,21 +5,18 @@ Level: {$hero->Level}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 HP: 
-<div class="progress" style="display: inline-flex;width: 300px;">
+<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
   <div class="progress-bar {if $hero->CurrentHP < 0}progress-bar-danger{elseif $hero->CurrentHP < $hero->Con}progress-bar-warning{else}progress-bar-success{/if}" role="progressbar" aria-valuenow="{$hero->CurrentHP}"
   aria-valuemin="-{$hero->Con}" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
-	{$hero->CurrentHP}HP/{$hero->MaxHP}HP
+	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP</span>
   </div>
 </div><br />
 
 XP: 
-<div class="progress" style="display: inline-flex;width: 300px;">
+<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
-    <span style="position: absolute;
-    display: block;
-    width: 100%;
-    color: black;">{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP</span>
+    <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP</span>
   </div>
 </div><br />
 Strength: {$hero->Str}<br />
