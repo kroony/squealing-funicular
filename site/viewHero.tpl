@@ -6,20 +6,25 @@ Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 HP: 
 <div class="progress" style="display: inline-flex;width: 300px;">
-  <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40"
-  aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
+  <div class="progress-bar {if $hero->CurrentHP < 0}progress-bar-danger{elseif $hero->CurrentHP < $hero->Con}progress-bar-warning{else}progress-bar-success{/if}" role="progressbar" aria-valuenow="{$hero->CurrentHP}"
+  aria-valuemin="-{$hero->Con}" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
 	{$hero->CurrentHP}HP/{$hero->MaxHP}HP
   </div>
 </div><br />
 
-
-XP: <progress max="{$hero->LevelUpXP}" value="{$hero->CurrentXP}" style="width: 250px;"></progress><br />
+XP: 
+<div class="progress" style="display: inline-flex;width: 300px;">>
+  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
+  aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
+    {$hero->CurrentXP}XP/{$hero->LevelUpXP}XP
+  </div>
+</div><br />
 Strength: {$hero->Str}<br />
 Dexterity: {$hero->Dex}<br />
 Constitution: {$hero->Con}<br />
-Intellegence: {$hero->Intel}<br />
+Intelligence: {$hero->Intel}<br />
 Wisdom: {$hero->Wis}<br />
-Charasma: {$hero->Cha}<br />
+Charisma: {$hero->Cha}<br />
 
 <p>
 	<h2>Weapon</h2>
@@ -42,22 +47,17 @@ Charasma: {$hero->Cha}<br />
 
 
 
-<div class="progress">
-  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="50"
-  aria-valuemin="0" aria-valuemax="100" style="width:50%">
-    50% Complete (info)
-  </div>
-</div>
+
 
 <div class="progress">
-  <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60"
+  <div class="progress-bar " role="progressbar" aria-valuenow="60"
   aria-valuemin="0" aria-valuemax="100" style="width:60%">
     60% Complete (warning)
   </div>
 </div>
 
 <div class="progress">
-  <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="70"
+  <div class="progress-bar " role="progressbar" aria-valuenow="70"
   aria-valuemin="0" aria-valuemax="100" style="width:70%">
     70% Complete (danger)
   </div>

@@ -125,7 +125,7 @@ class heroController
 
 		$res=$db->query($getQuery);//execute query
 
-		echo "<table class='table table-hover'>
+		echo "<table class='table table-condensed table-hover'>
 			<tr>
 			<td>Name</td>
 			<!--<td>OwnerID</td>
