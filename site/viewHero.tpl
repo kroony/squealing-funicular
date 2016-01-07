@@ -6,8 +6,8 @@ Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 HP: 
 <div class="progress" style="display: inline-flex;width: 300px; position: relative;">
-  <div class="progress-bar {if $hero->CurrentHP < 0}progress-bar-danger{elseif $hero->CurrentHP < $hero->Con}progress-bar-warning{else}progress-bar-success{/if}" role="progressbar" 
-  aria-valuenow="{$hero->CurrentHP}" aria-valuemin="-{$hero->Con}" aria-valuemax="{$hero->MaxHP+$hero->Con}" style="width:{$hero->CurrentHP/($hero->MaxHP+$hero->Con)*100}%">
+  <div class="progress-bar {if $hero->CurrentHP < $hero->Con} progress-bar-danger {elseif $hero->CurrentHP < $hero->MaxHP/2} progress-bar-warning {else} progress-bar-success {/if}" role="progressbar" 
+  aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
 	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP</span>
   </div>
 </div><br />
