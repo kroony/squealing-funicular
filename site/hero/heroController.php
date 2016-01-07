@@ -37,7 +37,27 @@ class heroController
 		echo "<td>" . $Hero->HeroClass->Name ."</td>";
 		echo "<td>" . $Hero->CurrentHP .'/'. $Hero->MaxHP ."</td>";
 		echo "<td>" . $Hero->Level ."</td>";
-		echo "<td>" . $Hero->CurrentXP .'/'. $Hero->LevelUpXP ."</td>";
+		if($Hero->CurrentXP >= $Hero->LevelUpXP)
+		{
+			echo '<td>
+				<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="' . $Hero->CurrentXP .'"
+					aria-valuemin="0" aria-valuemax="'. $Hero->LevelUpXP .'" style="width:'. $Hero->CurrentXP / $Hero->LevelUpXP * 100 . '%">
+						<span>' . $Hero->CurrentXP . 'XP/' . $Hero->LevelUpXP . 'XP <a href="levelUp.php?ID=' . $Hero->ID . '">Try Level up</a></span>
+					</div>
+				</div></td>';
+		}
+		else
+		{
+			echo '<td>
+				<div class="progress" style="display: inline-flex;width: 300px; position: relative;">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="' . $Hero->CurrentXP .'"
+					aria-valuemin="0" aria-valuemax="'. $Hero->LevelUpXP .'" style="width:'. $Hero->CurrentXP / $Hero->LevelUpXP * 100 . '%">
+						<span>' . $Hero->CurrentXP . 'XP/' . $Hero->LevelUpXP . 'XP</span>
+					</div>
+				</div></td>';
+		}
+
 		echo "<td>" . $Hero->Str ."</td>";
 		echo "<td>" . $Hero->Dex ."</td>";
 		echo "<td>" . $Hero->Con ."</td>";
@@ -49,12 +69,6 @@ class heroController
 		}
 		else{
 			echo "<td>" . $Hero->Weapon->Name ." ".$Hero->Weapon->DamageQuantity."d".$Hero->Weapon->DamageDie."+".$Hero->Weapon->DamageOffset."</td>";
-		}
-		
-		if($Hero->CurrentXP >= $Hero->LevelUpXP){
-			echo "<td><a href='levelUp.php?ID=" . $Hero->ID . "'>Try Level up</a></td>";
-		}else{
-			echo "<td>Not Enough XP</td>";
 		}
 
 		if($Hero->CurrentHP < 1 && $Hero->CurrentHP > -$Hero->Con){
@@ -142,7 +156,6 @@ class heroController
 			<td>Wis</td>
 			<td>Cha</td>
 			<td>Weapon</td>
-			<td>Level UP</td>
 			<td>Revive</td>
 			<td>Fight</td>
 			</tr>";
