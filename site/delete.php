@@ -9,17 +9,25 @@ include_once("hero/hero.php");
 $Hero = new Hero();
 $Hero = $Hero->loadHero($_REQUEST['ID']);
 
-$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
+if($Hero->GetOwner()->ID == $currentUID)
+{
+	if($Hero->CurrentHP < -$Hero->Con)
+	{
+		$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
 
-$Hero->Level = -1;
-$Hero->CurrentHP = $Hero->MaxHP;
+		$Hero->Level = -1;
+		$Hero->CurrentHP = $Hero->MaxHP;
 
-$Hero->SaveHero();
+		$Hero->SaveHero();
 
-/*
-$DeleteQuery = "DELETE FROM `kr00ny_sf`.`Hero` WHERE `Hero`.`ID` = " . $_REQUEST["ID"] . ";";
-
-$db = DB::GetConn();
-$db->query($DeleteQuery);*/
-
-header("Location: home.php");
+		header("Location: home.php");
+	}
+	else
+	{
+		echo "Im not even dead yet.";
+	}
+}
+else
+{
+	echo "This isn't yours to delete.";
+}
