@@ -36,7 +36,7 @@ $res=$db->query($getLevelQuery);//execute query
 $LevelTableData = "['Level', 'Population'],";
 while($obj = $res->fetchObject())
 {
-	$LevelTableData .= "['" . $obj->Level . "', " . $obj->count . "],";
+	$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
 }
 $LevelTableData = rtrim($LevelTableData, ",");
 $smarty->assign("LevelTableData",$LevelTableData);
