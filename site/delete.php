@@ -11,7 +11,7 @@ $Hero = $Hero->loadHero($_REQUEST['ID']);
 
 if($Hero->GetOwner()->ID == $currentUID)
 {
-	if($Hero->CurrentHP < -$Hero->Con)
+	if($Hero->CurrentHP <= -$Hero->Con)
 	{
 		$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
 
