@@ -1,6 +1,7 @@
 <html>
   <head>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
       google.load("visualization", "1", {literal}{packages:["corechart"]}{/literal});
       google.setOnLoadCallback(drawChart);
@@ -65,7 +66,7 @@
 
 	<div id="classpiechart" style="width: 900px; height: 500px;"></div>
 	<div id="Racepiechart" style="width: 900px; height: 500px;"></div>
-	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	
 	<div id="levelchart"></div>
   </body>
 </html>
