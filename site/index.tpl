@@ -22,12 +22,12 @@
         };
         var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
         Racechart.draw(Racedata, Raceoptions);
-      }{/literal}
+      }
 	  
 	  google.charts.load('current', {packages: ['corechart', 'line']});
 	google.charts.setOnLoadCallback(drawBackgroundColor);
 
-	function drawBackgroundColor() {literal}{{/literal}
+	function drawBackgroundColor() {{/literal}
       var data = new google.visualization.DataTable();
       data.addColumn('number', 'X');
       data.addColumn('number', 'Heros');
