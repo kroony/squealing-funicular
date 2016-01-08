@@ -23,8 +23,6 @@ $smarty->display("displayHeroCombat.tpl");
 
 $log = $pit->oneOnOne($hero1, $hero2);
 
-
-
 $smarty->assign("log",$log);
 $smarty->assign("hero1",$hero1);
 $smarty->assign("hero1_name",$hero1->displayName(true));
@@ -32,14 +30,6 @@ $smarty->assign("hero2",$hero2);
 $smarty->assign("hero2_name",$hero2->displayName(false));
 
 $smarty->display("oneonone.tpl");
-
-$smarty->assign("divFloatRight","False");
-$smarty->assign("displayHero",$hero1);
-$smarty->display("displayHeroCombat.tpl");
-
-$smarty->assign("divFloatRight","True");
-$smarty->assign("displayHero",$hero2);
-$smarty->display("displayHeroCombat.tpl");
 
 
 //save heros
