@@ -1,7 +1,7 @@
 <?php
 
 include_once("bootstrap.php");
-
+$smarty->display("css/css.tpl");
 /*********Add XP*********/
 include_once("hero/pitController.php");
 

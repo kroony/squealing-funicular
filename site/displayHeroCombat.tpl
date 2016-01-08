@@ -1,6 +1,6 @@
 <h1>{$displayHero->Name}</h1>
 Race: {$displayHero->Race->Name} - {$displayHero->Race->Description}<br />
-Class: {$displayHero->displayHeroClass->Name} - {$displayHero->displayHeroClass->Description}<br />
+Class: {$displayHero->HeroClass->Name} - {$displayHero->HeroClass->Description}<br />
 HP: 
 <div class="progress">
   <div class="progress-bar {if $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP/2} progress-bar-warning {else} progress-bar-success {/if}" role="progressbar" 

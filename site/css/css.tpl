@@ -13,6 +13,18 @@
 		width: 100%;
 		color: black;
 	}
+	
+	.player
+  {
+      color: #005500;
+  }
+
+  .enemy
+  {
+      color: #550000;
+  }
+
+
 </style>
 </head>
 <body>

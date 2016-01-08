@@ -1,9 +1,3 @@
-<html>
-<head>
-<link type="text/css" rel="stylesheet" href="css/fight.css" />
-</head>
-<body>
-
 {$log->show()}
 
 {if $hero1->CurrentHP lt (0 - $hero1->Con)}
