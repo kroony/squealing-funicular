@@ -15,6 +15,5 @@ $Hero->SaveHero();
 
 /***********end generate Hero *********/
 
-
-echo '<br /><a href="viewHero.php?ID=' . $Hero->ID . '">Return</a>';
+header("Location: viewHero.php?ID=" . $Hero->ID);
 ?>
