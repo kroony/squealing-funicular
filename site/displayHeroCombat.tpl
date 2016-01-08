@@ -1,4 +1,4 @@
-<div>
+<div style="display:inline-block;">
 <h2>{$displayHero->Name}</h2>
 Race: {$displayHero->Race->Name} - {$displayHero->Race->Description}<br />
 Class: {$displayHero->HeroClass->Name} - {$displayHero->HeroClass->Description}<br />
@@ -10,4 +10,4 @@ HP:
   </div>
 </div>
 <br />
-<div>
+</div>
