@@ -10,12 +10,14 @@ $pit = new PitController();
 $hero1 = new Hero();
 $hero1 = $hero1->loadHero($_REQUEST['ID1']);
 
+$smarty->assign("divFloatRight","False");
 $smarty->assign("displayHero",$hero1);
 $smarty->display("displayHeroCombat.tpl");
 
 $hero2 = new Hero();
 $hero2 = $hero2->loadHero($_REQUEST['ID2']);
 
+$smarty->assign("divFloatRight","True");
 $smarty->assign("displayHero",$hero2);
 $smarty->display("displayHeroCombat.tpl");
 
@@ -30,6 +32,14 @@ $smarty->assign("hero2",$hero2);
 $smarty->assign("hero2_name",$hero2->displayName(false));
 
 $smarty->display("oneonone.tpl");
+
+$smarty->assign("divFloatRight","False");
+$smarty->assign("displayHero",$hero1);
+$smarty->display("displayHeroCombat.tpl");
+
+$smarty->assign("divFloatRight","True");
+$smarty->assign("displayHero",$hero2);
+$smarty->display("displayHeroCombat.tpl");
 
 
 //save heros
