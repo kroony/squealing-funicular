@@ -1,4 +1,4 @@
-<div style="display:inline-block;{if $divFloatRight == "True} float: right;{/if}">
+<div style="display:inline-block;{if $divFloatRight == "True"} float: right;{/if}">
 <h2>{$displayHero->Name}</h2>
 Race: {$displayHero->Race->Name} - {$displayHero->Race->Description}<br />
 Class: {$displayHero->HeroClass->Name} - {$displayHero->HeroClass->Description}<br />
