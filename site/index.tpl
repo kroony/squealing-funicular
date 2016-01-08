@@ -32,7 +32,7 @@
       data.addColumn('number', 'X');
       data.addColumn('number', 'Heros');
 
-      data.addRows([{LevelTableData}]);
+      data.addRows([{$LevelTableData}]);
 
       var options = {literal}{
         hAxis: {
