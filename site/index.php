@@ -33,7 +33,7 @@ $smarty->assign("RaceTableData",$RaceTableData);
 //Get Level Count
 $getLevelQuery = "SELECT Level,COUNT(*) as count FROM Hero Where OwnerID <> 146 GROUP BY Level ORDER BY Level ASC;";
 $res=$db->query($getLevelQuery);//execute query
-$LevelTableData = "['Level', 'Population'],";
+//$LevelTableData = "['Level', 'Population'],";
 while($obj = $res->fetchObject())
 {
 	$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
