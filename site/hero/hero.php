@@ -87,47 +87,34 @@ class Hero
 	{
 		//Race
 		$this->Race = $this->GenerateRace();
-		echo "Race: " . $this->Race->Name . "<br />";
 
 		//Name
 		$this->Name = $this->Race->generateHeroName();
-		echo "Name: " . $this->Name . "<br />";
 
 		//Attributes
-		echo "Str ";
 		$this->Str = $this->GenerateAtribute($this->Race->StrBon);
-		echo "Dex ";
 		$this->Dex = $this->GenerateAtribute($this->Race->DexBon);
-		echo "Con ";
 		$this->Con = $this->GenerateAtribute($this->Race->ConBon);
-		echo "Int ";
 		$this->Intel = $this->GenerateAtribute($this->Race->IntelBon);
-		echo "Wis ";
 		$this->Wis = $this->GenerateAtribute($this->Race->WisBon);
-		echo "Cha ";
 		$this->Cha = $this->GenerateAtribute($this->Race->ChaBon);
-		//echo "Fte ";
 		$this->Fte = $this->GenerateAtribute($this->Race->FteBon);
 
 		//Class
 		$this->HeroClass = $this->GenerateHeroClass();
-		echo "<br />Class: " . $this->HeroClass->Name . " HD: D" . $this->HeroClass->HD . "<br />";
 
 		//HP
 		$this->MaxHP = $this->HeroClass->HD + $this->calculateAttributeBonus($this->Con);  //base the multiplier on HD and con
 		if($this->MaxHP < 1){$this->MaxHP = 1;}//stop negative max HP
 		$this->CurrentHP = $this->MaxHP;
-		echo "Hit Points: " . $this->CurrentHP . "/" . $this->MaxHP . "<br />";
 
 		//Level
 		$this->Level = 1;
-		echo "Level:" . $this->Level . "<br />";
 
 		//XP
 		$XPBonus = rand(0, $this->Fte);
 		$this->CurrentXP = 0;
 		$this->LevelUpXP = 100 - $XPBonus;
-		echo "XP: " . $this->CurrentXP . "/" . $this->LevelUpXP . " Luck Bonus: " . $XPBonus . "<br />";
 
 		//check for levelup
 		if($level > 1)
@@ -364,10 +351,7 @@ class Hero
 		$diceRolled = array(rand(1, 6), rand(1, 6), rand(1, 6), rand(1, 6));
 		rsort($diceRolled);//Sort the 4d6
 
-		echo "Attribute Dice: " . $diceRolled[0] . ", " . $diceRolled[1] . ", " . $diceRolled[2] . " +" . $bonus . " Drop: " . $diceRolled[3] . " ";
-
 		$attribute = $diceRolled[0] + $diceRolled[1] + $diceRolled[2] + $bonus;//add the highest 3 and the bonus passed in
-		echo "<strong>Total: " . $attribute . " Bonus: " . $this->calculateAttributeBonus($attribute) . "</strong><br />";
 
 		return $attribute;
 	}
