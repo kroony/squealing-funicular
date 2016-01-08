@@ -23,6 +23,30 @@
         var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
         Racechart.draw(Racedata, Raceoptions);
       }{/literal}
+	  
+	  google.charts.load('current', {packages: ['corechart', 'line']});
+	google.charts.setOnLoadCallback(drawBackgroundColor);
+
+	function drawBackgroundColor() {literal}{{/literal}
+      var data = new google.visualization.DataTable();
+      data.addColumn('number', 'X');
+      data.addColumn('number', 'Heros');
+
+      data.addRows([{LevelTableData}]);
+
+      var options = {literal}{
+        hAxis: {
+          title: 'Level'
+        },
+        vAxis: {
+          title: 'Popupation'
+        },
+        backgroundColor: '#f1f8e9'
+      };
+
+      var chart = new google.visualization.LineChart(document.getElementById('levelchart'));
+      chart.draw(data, options);
+    }{/literal}
     </script>
   </head>
   <body>
@@ -41,5 +65,7 @@
 
 	<div id="classpiechart" style="width: 900px; height: 500px;"></div>
 	<div id="Racepiechart" style="width: 900px; height: 500px;"></div>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<div id="levelchart"></div>
   </body>
 </html>
