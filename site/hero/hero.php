@@ -372,9 +372,9 @@ class Hero
 		$elf = Race::loadRace(3);
 		$halfling = Race::loadRace(4);
 
-		$races = array($human, $dwarf, $elf, $halfling);
+		$races = array($human, $human, $dwarf, $elf, $halfling);
 
-		$newRace = $races[rand(0,3)];
+		$newRace = $races[rand(0,4)];
 
 		return $newRace;
 	}
