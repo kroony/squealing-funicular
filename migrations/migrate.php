@@ -29,7 +29,8 @@ foreach ($all as $migration) {
             $contents = file_get_contents($filename);
             $queries  = explode(";", $contents);
             foreach ($queries as $query) {
-                $db->query($query);
+                if (trim($query) != "")
+                    $db->query($query);
             }
         } else {
             echo "NOT RUNNING $migration: unknown extension\n";
