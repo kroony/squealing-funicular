@@ -22,8 +22,17 @@ foreach ($all as $migration) {
     if (!isset($already_run[$migration])) {
         echo "Running migration $migration\n";
         $info = pathinfo($migration);
+        $filename = 'run/' . $migration;
         if ($info['extension'] == "php") {
-            include('run/' . $migration);
+            include($filename);
+        } else if ($info['extension'] == "sql") {
+            $contents = $file_get_contents($filename);
+            $queries  = explode(";", $contents);
+            foreach ($queries as $query) {
+                $db->query($query);
+            }
+        } else {
+            echo "NOT RUNNING $migration: unknown extension\n";
         }
         echo "Inserting migration $migration\n";
         $insert = array('migration_name' => $migration
