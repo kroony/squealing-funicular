@@ -12,7 +12,7 @@ $already_run = array();
 
 while($obj = $res->fetchObject())
 {
-    $already_run[$obj->migration_file] = 1;
+    $already_run[$obj->migration_name] = 1;
 }
 
 echo "Looking for new migrations\n";
@@ -26,7 +26,7 @@ foreach ($all as $migration) {
             include('run/' . $migration);
         }
         echo "Inserting migration $migration\n";
-        $insert = array('migration_file' => $migration
+        $insert = array('migration_name' => $migration
                        , 'time' => time() );
         $db->insert('migrations', $insert);
     }
