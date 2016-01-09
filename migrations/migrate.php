@@ -26,7 +26,7 @@ foreach ($all as $migration) {
         if ($info['extension'] == "php") {
             include($filename);
         } else if ($info['extension'] == "sql") {
-            $contents = $file_get_contents($filename);
+            $contents = file_get_contents($filename);
             $queries  = explode(";", $contents);
             foreach ($queries as $query) {
                 $db->query($query);
