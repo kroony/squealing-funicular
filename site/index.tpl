@@ -42,7 +42,7 @@
         vAxis: {
           title: 'Popupation'
         },
-        backgroundColor: '#f1f8e9'
+        backgroundColor: '#ffffff'
       };
 
       var chart = new google.visualization.LineChart(document.getElementById('levelchart'));
