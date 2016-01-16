@@ -6,6 +6,7 @@ $smarty->display("css/css.tpl");
 
 
 //menu
+$smarty->assign("currentpage","user");
 $smarty->display("menu.tpl");
 
 

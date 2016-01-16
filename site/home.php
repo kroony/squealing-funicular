@@ -9,6 +9,7 @@ $smarty->display("css/css.tpl");
 $heroController = new heroController();
 
 //menu
+$smarty->assign("currentpage","home");
 $smarty->display("menu.tpl");
 	  
 /*********  show all Hero  ***********/
