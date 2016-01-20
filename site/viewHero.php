@@ -13,7 +13,7 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 
 if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user 
 {
-	if(isset($_REQUEST['action'])//check if we are doing anything
+	if(isset($_REQUEST['action']))//check if we are doing anything
 	{	
 		if($_REQUEST['action'] == "editName")
 		{
