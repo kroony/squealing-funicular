@@ -13,5 +13,3 @@
         </tr>
 {/foreach}
 </table>
-
-<a href="home.php">Return</a>

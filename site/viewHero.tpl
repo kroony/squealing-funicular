@@ -61,6 +61,4 @@ Charisma: {$hero->Cha}<br />
 </p>
 <p><h2>Armor</h2></p>
 <p><h2>Item</h2></p>
-<br />
 
-<a href="home.php">Return</a>

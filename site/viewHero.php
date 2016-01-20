@@ -4,6 +4,8 @@ include("bootstrap.php");
 
 $smarty->display("css/css.tpl");
 
+$smarty->display("menu.tpl");
+
 include_once("hero/heroController.php");
 
 $heroController = new heroController();
