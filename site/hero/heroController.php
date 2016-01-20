@@ -18,7 +18,7 @@ class heroController
 		{
 			array_push($returnHeroes, Hero::loadHeroFromObject($obj));
 		}
-		return $totalHeros;
+		return $returnHeroes;
 	}
 
 	function dropDownForUser($id)
