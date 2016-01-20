@@ -7,10 +7,10 @@
   <td>Crit</td>
   </tr>
   </thead><tbody>
-{foreach $usersWeapons as $weapon}
+{foreach from=$usersWeapons item=weapon}
 <tr>
 <td>{$weapon->Name}</td>
-<td>{$Weapon->DamageQuantity}d{$Weapon->DamageDie}+{$Weapon->DamageOffset}</td>
+<td>{$weapon->DamageQuantity}d{$weapon->DamageDie}+{$weapon->DamageOffset}</td>
 <td>{$weapon->DamageAttribute}</td>
 <td>{$weapon->CritChance}%</td>
 </tr>
