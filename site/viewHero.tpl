@@ -12,7 +12,7 @@
 
 <form id="heroEditName" action="viewHero.php" style="display: none;">
 <input type="hidden" name="action" value="editName">
-<input type="hidden" name="heroID" value="{$hero->ID}">
+<input type="hidden" name="ID" value="{$hero->ID}">
 <input type="text" name="heroName" value="{$hero->Name}">
 <input type="submit" value="Submit">
 </form>
