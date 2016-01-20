@@ -71,8 +71,6 @@ class Weapon
 	public $DamageOffset;
 	public $CritChance;
 	public $DamageAttribute;
-	//INSERT INTO `kr00ny_sf`.`Weapon` (`ID`, `Name`, `DamageDie`, `DamageQuantity`, `DamageOffset`, `CritChance`, `DamageAttribute`) 
-	//VALUES (NULL, 'Sword', '6', '1', '1', '4', 'Str');
 
 	function __construct($Name, $UserID, $DamageDie, $DamageQuantity, $DamageOffset, $CritChance, $DamageAttribute)
 	{

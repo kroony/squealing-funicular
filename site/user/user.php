@@ -45,20 +45,25 @@ class User
 		$db = DB::GetConn();
 		if($this->ID != null)
 		{
-			$updateQuery = "UPDATE `User` SET 
-				`username` = " . $this->username . ", 
-				`email` = " . $this->email . ", 
-				`password` = '" . $this->password . "',  
-				'salt` = " . $this->salt . ",          
-				`gold` = " . $this->gold . ",    
-				`active` = " . $this->active . "
-				WHERE `User`.`ID` = " . $this->ID . ";";
-			$db->query($updateQuery); //@todo change this to an associate array and use db->Update(...);
+			$row = array("username"=>$this->username,
+				"username"=>$this->username,
+				"email"=>$this->email,
+				"password"=>$this->password,
+				"salt"=>$this->salt,
+				"gold"=>$this->gold,
+				"active"=>$this->active);
+			$where = array($db->quoteInto("ID == ?" => $this->ID));
+			try {
+				$db->update("User", $row, $where);
+			}
+			catch(Exception $ex)
+			{
+				print_r($ex);
+			}
 		}
 		else //no id, add new user
 		{
 			$row = array("username"=>$this->username,
-				"username"=>$this->username,
 				"email"=>$this->email,
 				"password"=>$this->password,
 				"salt"=>$this->salt,

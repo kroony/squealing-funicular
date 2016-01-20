@@ -225,7 +225,6 @@ class heroController
 			$this->outputInTable($Hero->loadHeroFromObject($obj));
 			$totalHeros++;
 		}
-		echo "Showing " . $totalHeros . " results.<br />";
 
 		echo "</tbody></table>";
 
