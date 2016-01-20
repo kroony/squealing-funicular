@@ -15,7 +15,7 @@
 			<td>{$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</td>
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
-			<td>{$weapon->GetHeroNameFromWeapon()}%</td>
+			<td>{$weapon->GetHeroNameFromWeapon()}</td>
 		</tr>
 		{/foreach}
 	</tbody>

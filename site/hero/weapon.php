@@ -90,7 +90,14 @@ class Weapon
 		$sql = "select Name from Hero where $weapon_con limit 1";
 		$res = $db->query($sql);
 		$obj = $res->fetchObject();
-		return $obj->Name;
+		if(is_object($obj)
+		{
+			return $obj->Name;
+		}
+		else
+		{
+			return "Not Equipped";
+		}
 	}
 
 	//load Weapon from DB 
