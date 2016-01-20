@@ -87,7 +87,7 @@ class Weapon
 	{
 		$db = DB::GetConn();
 		$weapon_con = $db->quoteInto("WeaponID = ?", $this->ID);
-		$sql = "select ID from Hero where $weapon_con limit 1";
+		$sql = "select Name from Hero where $weapon_con limit 1";
 		$res = $db->query($sql);
 		$obj = $res->fetchObject();
 		return $obj->Name;
