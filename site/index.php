@@ -43,4 +43,5 @@ $smarty->assign("LevelTableData",$LevelTableData);
 
 
 $smarty->display("index.tpl");
+$smarty->display("updates.tpl");
 

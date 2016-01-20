@@ -1,10 +1,14 @@
-<h1>{$hero->Name}</h1>
+<h1 id="heroName">{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1>
+<form id="heroEditName" action="hero/editName.php" style="display: none;">
+<input type="hidden" name="heroID" value="{$hero->ID}">
+<input type="text" name="heroName" value="{$hero->Name}">
+<input type="submit" value="Submit">
+</form>
 {include file='kobold.html'}
 <br />
 Level: {$hero->Level}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
-HP: 
 <div class="progress">
   <div class="progress-bar {if $displayHero->CurrentHP == $displayHero->MaxHP} progress-bar-success {elseif $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP} progress-bar-warning {/if}" 
   role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
@@ -12,7 +16,6 @@ HP:
   </div>
 </div><br />
 
-XP: 
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">

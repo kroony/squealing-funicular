@@ -202,10 +202,8 @@ class Weapon
 			{
 				print_r($ex);
 			}
-		}
-		
+		}	
 	}
-
 }
 
 ?>

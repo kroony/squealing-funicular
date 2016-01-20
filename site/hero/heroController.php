@@ -58,7 +58,7 @@ class heroController
 			echo '<td><div class="progress">
 				  <div class="progress-bar progress-bar-warning" role="progressbar" 
 				  aria-valuenow="' . $Hero->CurrentHP . '" aria-valuemin="0" aria-valuemax="' . $Hero->MaxHP . '" style="width:' . $Hero->CurrentHP / $Hero->MaxHP * 100 . '%">
-					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="delete.php?ID=' . $Hero->ID . '">Remove</a></span>
+					<span>' . $Hero->CurrentHP . 'HP/' . $Hero->MaxHP . 'HP <a href="hero/delete.php?ID=' . $Hero->ID . '">Remove</a></span>
 				  </div>
 				</div></td>';
 		}

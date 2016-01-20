@@ -443,8 +443,6 @@ class Hero
 				print_r($ex);
 			}
 		}
-
-		//some sort of try catch error detection
 	}
 
 	function KillHero(){
