@@ -49,7 +49,7 @@ Charisma: {$hero->Cha}<br />
 	<h2>Weapon</h2>
 	<i>@TODO: image, ability to unequip/equip different weapons</i><br />
 	{$hero->Weapon->Name} 
-	Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}+{$hero->Weapon->DamageOffset}<br />
+	Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
 	Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
 	Critical Strike Chance: 
 		{if $hero->Cha > 10}
