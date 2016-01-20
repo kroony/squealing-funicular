@@ -1,5 +1,17 @@
 <div id="heroName"><h1>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1></div>
-<form id="heroEditName" action="editName.php" style="display: none;">
+{if isset($message)}
+<div class="alert alert-info">
+  {$message}
+</div>
+{/if}
+{if isset($error)}
+<div class="alert alert-danger">
+  {$error}
+</div>
+{/if}
+
+<form id="heroEditName" action="viewHero.php" style="display: none;">
+<input type="hidden" name="action" value="editName">
 <input type="hidden" name="heroID" value="{$hero->ID}">
 <input type="text" name="heroName" value="{$hero->Name}">
 <input type="submit" value="Submit">

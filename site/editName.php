@@ -28,3 +28,4 @@ else
 {
 	echo "This isn't yours to rename.";
 }
+?>
