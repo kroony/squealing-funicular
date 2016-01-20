@@ -90,7 +90,7 @@ class Weapon
 		$sql = "select ID from Hero where $weapon_con limit 1";
 		$res = $db->query($sql);
 		$obj = $res->fetchObject();
-		return = $obj->Name;
+		return $obj->Name;
 	}
 
 	//load Weapon from DB 
