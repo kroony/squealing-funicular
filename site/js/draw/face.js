@@ -23,9 +23,9 @@ function make_eye(opts, left)
 
     c.fillStyle   = opts.eye_fill;
     c.points      = pts;
-	c.rotation    = left * 0.1;
+	c.rotation    = left * opts.eye_rotation;
     c.translation = new Point(left*eye_width_mid, -eye_height_mid);
-    c.curvature   = 0.2;
+    c.curvature   = opts.curvature;
 
     return c;
 }
@@ -43,21 +43,10 @@ function make_mouth(opts)
 
     c.fillStyle = opts.mouth_fill;
     c.points    = pts;
-    c.curvature = 0.2;
+    c.curvature = opts.curvature;
 
     return c;
 }
-
-function randy(seed, min, max)
-{
-	var ms = new Date().getTime();
-	var to = Math.sin(ms*40 / seed + seed);
-	var diff = max - min;
-	var avg  = (min + max) / 2;
-	
-	return to * (diff / 2) + avg;
-}
-
 
 function make_head(opts)
 {
@@ -76,7 +65,7 @@ function make_head(opts)
 
     c.fillStyle = opts.head_fill;
     c.rotation  = Math.sin(ms / 500) * 0.10;
-    c.curvature = Math.sin(ms / 800) * 0.05 + 0.3;
+    c.curvature = opts.curvature + Math.sin(ms / 800) * opts.curvature * 0.1;
 
     return c;
 }
@@ -89,7 +78,7 @@ function make_neck(opts)
 
     var c = empty_drawing('Neck');
     c.fillStyle = opts.head_fill;
-    c.curvature = 0.2;
+    c.curvature = opts.curvature;
     c.points    = points;
 
 	return c;
@@ -102,34 +91,55 @@ function make_body(opts)
 }
 
 
-function make_head_opts()
+function make_head_opts(hero_id, hero_race)
 {
+    var randy = new Randy(hero_id);
+    var opts =
+    { head_fill: "C09FAF"
+    , top_height: randy.produce(12367, 50, 100)
+    , top_width: randy.produce(12361, 5, 25)
 
-  var opts =
- { head_fill: "#C09FAF" // "#448833"
- , top_height: randy(12367, 50, 100)
- , top_width: randy(12361, 5, 25)
+    , mid_ratio: randy.produce(4655, 0.2, 0.8)
+    , mid_width: randy.produce(2351, 10, 30)
 
- , mid_ratio: randy(4655, 0.2, 0.8)
- , mid_width: randy(2351, 10, 30)
+    , eye_fill: "#F0E5E0"
+    , eye_line_width: 1
+    , eye_top_ratio: randy.produce(12353, 0.6, 0.9)
+    , eye_bot_ratio: randy.produce(78934, 0.4, 0.7)
+    , eye_width_inner_ratio: randy.produce(213578, 0.2, 0.5)
+    , eye_width_outer_ratio: randy.produce(5789, 0.1, 0.4)
 
- , eye_fill: "#F0E5E0"
- , eye_line_width: 1
- , eye_top_ratio: randy(12353, 0.6, 0.9)
- , eye_bot_ratio: randy(78934, 0.4, 0.7)
- , eye_width_inner_ratio: randy(213578, 0.2, 0.5)
- , eye_width_outer_ratio: randy(5789, 0.1, 0.4)
+    , mouth_fill: "#AA2233"
+    , mouth_line_width: 2
+    , mouth_top_ratio: randy.produce(45789, 0.1, 0.3)
+    , mouth_bot_ratio: randy.produce(2378, 0.1, 0.3)
+    , mouth_width_inner_ratio: randy.produce(35781, -0.6, -0.3)
+    , mouth_width_outer_ratio: randy.produce(37890, 0.3, 0.6)
 
- , mouth_fill: "#AA2233"
- , mouth_line_width: 2
- , mouth_top_ratio: randy(45789, 0.1, 0.3)
- , mouth_bot_ratio: randy(2378, 0.1, 0.3)
- , mouth_width_inner_ratio: randy(35781, -0.6, -0.3)
- , mouth_width_outer_ratio: randy(37890, 0.3, 0.6)
+    , bot_width: randy.produce(34789, 5, 25)
+    , curvature: 0.2
+    , eye_rotation: 0.1
+    }
 
- , bot_width: randy(34789, 5, 25)
- , curvature: 0.2
- }
+    if (hero_race == "Human") {
+        opts.head_fill = "#C0A0AF";
+    } else if (hero_race == "Dwarf") {
+        opts.head_fill = "#90807F";
+        opts.curvature = 0.4;
+        opts.eye_rotation = 0.0;
+        opts.eye_width_outer_ratio += 0.2;
+    } else if (hero_race == "Elf") {
+        opts.head_fill = "#C0CB7F";
+        opts.curvature = 0.1;
+        opts.eye_rotation = 0.5;
+        opts.mouth_line_width = 1;
+    } else if (hero_race == "Halfling") {
+        opts.head_fill = "#B0AB7F";
+        opts.curvature = 0.2;
+        opts.eye_rotation = 0.2;
+    }
+
+ 
   return opts;
 }
 

@@ -1,17 +1,15 @@
-<!DOCTYPE html>
-<html>
-<body>
-
 <canvas id="kobold" width="200" height="450">
 No canvas no work</canvas>
 
 <script type="text/javascript" src="js/draw/base.js"></script>
-
+<script type="text/javascript" src="js/draw/randy.js"></script>
 <script type="text/javascript" src="js/draw/face.js"></script>
 
 <script type="text/javascript">
+var hero_id    = {$hero->ID};
+var hero_race  = '{$hero->Race->Name}';
 
-var opts = make_head_opts();
+var opts = make_head_opts(hero_id, hero_race);
 var width = Math.max(opts.top_width, opts.mid_width, opts.bot_width);
 var height = opts.top_height;
 var canvas = document.getElementById("kobold");
@@ -31,6 +29,3 @@ setInterval(function() {
 }, 10);
 
 </script> 
-
-</body>
-</html>
