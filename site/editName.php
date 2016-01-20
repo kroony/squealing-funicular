@@ -1,8 +1,8 @@
 <?php
 
-include_once("../bootstrap.php");
+include_once("bootstrap.php");
 
-include_once("hero.php");
+include_once("hero/hero.php");
 
 //@TODO add undead races to DB and change current race to matching Undead Race
 
@@ -17,7 +17,7 @@ if($Hero->GetOwner()->ID == $currentUID)
 
 		$Hero->SaveHero();
 
-		header("Location: ../viewHero.php?ID=" . $Hero->ID);
+		header("Location: viewHero.php?ID=" . $Hero->ID);
 	}
 	else
 	{
