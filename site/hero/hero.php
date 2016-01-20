@@ -55,32 +55,33 @@ class Hero
 		$getQuery = "SELECT * FROM `Hero` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-        return $this->loadHeroFromObject($obj);
+        return Hero::loadHeroFromObject($obj);
     }
 
 	function loadHeroFromObject($obj)
     {
-		$this->ID = $obj->ID;
-		$this->OwnerID =  $obj->OwnerID;
-		$this->PartyID =  $obj->PartyID;
-		$this->Race = Race::loadRace($obj->Race);
-		$this->Name = $obj->Name;
-		$this->HeroClass = HeroClass::loadHeroClass($obj->Class);
-		$this->MaxHP = $obj->MaxHP;
-		$this->CurrentHP = floor($obj->CurrentHP);
-		$this->Level = $obj->Level;
-		$this->CurrentXP = $obj->CurrentXP;
-		$this->LevelUpXP = $obj->LevelUpXP;
-		$this->Str = $obj->Str;
-		$this->Dex = $obj->Dex;
-		$this->Con = $obj->Con;
-		$this->Intel = $obj->Intel;
-		$this->Wis = $obj->Wis;
-		$this->Cha = $obj->Cha;
-		$this->Fte = $obj->Fte;
-		$this->Weapon = Weapon::loadWeapon($obj->WeaponID);
+		$returnHero = new Hero();
+		$returnHero->ID = $obj->ID;
+		$returnHero->OwnerID =  $obj->OwnerID;
+		$returnHero->PartyID =  $obj->PartyID;
+		$returnHero->Race = Race::loadRace($obj->Race);
+		$returnHero->Name = $obj->Name;
+		$returnHero->HeroClass = HeroClass::loadHeroClass($obj->Class);
+		$returnHero->MaxHP = $obj->MaxHP;
+		$returnHero->CurrentHP = floor($obj->CurrentHP);
+		$returnHero->Level = $obj->Level;
+		$returnHero->CurrentXP = $obj->CurrentXP;
+		$returnHero->LevelUpXP = $obj->LevelUpXP;
+		$returnHero->Str = $obj->Str;
+		$returnHero->Dex = $obj->Dex;
+		$returnHero->Con = $obj->Con;
+		$returnHero->Intel = $obj->Intel;
+		$returnHero->Wis = $obj->Wis;
+		$returnHero->Cha = $obj->Cha;
+		$returnHero->Fte = $obj->Fte;
+		$returnHero->Weapon = Weapon::loadWeapon($obj->WeaponID);
 
-		return $this;
+		return $returnHero;
 	}
 
 	function GenerateHero($level)

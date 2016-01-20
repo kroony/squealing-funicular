@@ -14,8 +14,9 @@ $smarty->display("menu.tpl");
 	  
 /*********  show all Hero  ***********/
 
-$totalHeros = $heroController->showAllForUser($currentUID);
-$smarty->assign("totalHeros",$totalHeros);
+$userHeros = $heroController->getAllForUser($currentUID);
+$smarty->assign("userHeros",$userHeros);
+$smarty->assign("totalHeros",count($userHeros));
 $smarty->display("home.tpl");
 
 		  
