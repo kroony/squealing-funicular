@@ -93,7 +93,7 @@ class Weapon
 		$getQuery = "SELECT * FROM `Weapon` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-		return Weapon::loadWeaponFromObject(obj);
+		return Weapon::loadWeaponFromObject($obj);
 	}
 	
 	function loadWeaponFromObject($obj)
