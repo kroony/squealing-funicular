@@ -1,11 +1,11 @@
 <div id="heroName"><h1>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1></div>
-<form id="heroEditName" action="hero/editName.php" style="display: none;">
+<form id="heroEditName" action="editName.php" style="display: none;">
 <input type="hidden" name="heroID" value="{$hero->ID}">
 <input type="text" name="heroName" value="{$hero->Name}">
 <input type="submit" value="Submit">
 </form>
 <br />
-{include file='kobold.html'}
+{include file='portraits/kobold.html'}
 <br />
 Level: {$hero->Level}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
