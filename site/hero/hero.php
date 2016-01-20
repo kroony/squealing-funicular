@@ -78,7 +78,8 @@ class Hero
 		$this->Wis = $obj->Wis;
 		$this->Cha = $obj->Cha;
 		$this->Fte = $obj->Fte;
-		$this->Weapon = Weapon::loadWeapon($obj->WeaponID);
+		$heroWeapon = new Weapon();
+		$this->Weapon = heroWeapon->loadWeapon($obj->WeaponID);
 
 		return $this;
 	}
