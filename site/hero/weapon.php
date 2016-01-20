@@ -103,7 +103,7 @@ class Weapon
 		$this->Name = $obj->Name;
 		$this->DamageDie = $obj->DamageDie;
 		$this->DamageQuantity = $obj->DamageQuantity;
-		$this->DamageOffset = $objDamageOffset;
+		$this->DamageOffset = $obj->DamageOffset;
 		$this->CritChance = $obj->CritChance;
 		$this->DamageAttribute = $obj->DamageAttribute;
 
