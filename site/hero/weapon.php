@@ -178,7 +178,21 @@ class Weapon
 		$db = DB::GetConn();
 		
 		if($this->ID != null){
-			//@TODO update weapon 
+			$row = array("UserID"=>$this->UserID,
+				"Name"=>$this->Name,
+				"DamageDie"=>$this->DamageDie,
+				"DamageQuantity"=>$this->DamageQuantity,
+				"DamageOffset"=>$this->DamageOffset,
+				"CritChance"=>$this->CritChance,
+				"DamageAttribute"=>$this->DamageAttribute);
+			$where = array($db->quoteInto("ID = ?", $this->ID));
+			try {
+				$db->update("Weapon", $row, $where);
+			}
+			catch(Exception $ex)
+			{
+				print_r($ex);
+			} 
 		} 
 		else 
 		{
