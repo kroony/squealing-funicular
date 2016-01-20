@@ -445,7 +445,8 @@ class Hero
 		}
 	}
 
-	function KillHero(){
+	function KillHero()
+	{
 		/*@TODO
 		Change owner ID to that of the "Monster" user
 		Change race to undead equivalent of current race

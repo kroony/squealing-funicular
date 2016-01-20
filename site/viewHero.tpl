@@ -1,13 +1,16 @@
 <div id="heroName"><h1>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1></div>
+
 {if isset($message)}
-<div class="alert alert-info">
-  {$message}
-</div>
+	<div class="alert alert-info">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		{$message}
+	</div>
 {/if}
 {if isset($error)}
-<div class="alert alert-danger">
-  {$error}
-</div>
+	<div class="alert alert-danger">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		{$error}
+	</div>
 {/if}
 
 <form id="heroEditName" action="viewHero.php" style="display: none;">
