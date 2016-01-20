@@ -46,7 +46,7 @@
 			<td>{$Hero->Intel}</td>
 			<td>{$Hero->Wis}</td>
 			<td>{$Hero->Cha}</td>
-			<td>{$Hero->Weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}{if $Hero->Weapon->ID < 10}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
+			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}{if $Hero->Weapon->ID < 10}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>{/if}</td>
 		</tr>
 		{/foreach}
