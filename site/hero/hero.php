@@ -381,37 +381,37 @@ class Hero
 
 	function SaveHero()//could be called just Save()??
 	{
-		//check shit is ok
-
-		//if $ID !== null, update
-
 		$db = DB::GetConn();
 		if($this->ID != null)
 		{
-			$updateQuery = "UPDATE `kr00ny_sf`.`Hero` SET 
-				`OwnerID` = " . $this->OwnerID . ", 
-				`PartyID` = " . $this->PartyID . ", 
-				`Name` = '" . $this->Name . "',  
-				`Race` = " . $this->Race->ID . ",          
-				`Class` = " . $this->HeroClass->ID . ",    
-				`MaxHP` = " . $this->MaxHP . ",
-				`CurrentHP` = " . $this->CurrentHP . ",
-				`Level` = " . $this->Level . ",
-				`CurrentXP` = " . $this->CurrentXP . ",
-				`LevelUpXP` = " . $this->LevelUpXP . ",
-				`Str` = " . $this->Str . ",
-				`Dex` = " . $this->Dex . ",
-				`Con` = " . $this->Con . ",
-				`Intel` = " . $this->Intel . ",
-				`Wis` = " . $this->Wis . ",
-				`Cha` = " . $this->Cha . ",
-				`Fte` = " . $this->Fte . ",
-				`WeaponID` = " . $this->Weapon->ID . "
-					WHERE `Hero`.`ID` = " . $this->ID . ";";
-			// echo "Updating Hero: " . $updateQuery . "<br />";
-			$db->query($updateQuery); //@todo change this to an associate array and use db->Update(...);
+			$row = array("OwnerID"=>$this->OwnerID,
+				"PartyID"=>0,
+				"Name"=>$this->Name,
+				"Race"=>$this->Race->ID,
+				"Class"=>$this->HeroClass->ID,
+				"MaxHP"=>$this->MaxHP,
+				"CurrentHP"=>$this->CurrentHP,
+				"Level"=>$this->Level,
+				"CurrentXP"=>$this->CurrentXP,
+				"LevelUpXP"=>$this->LevelUpXP,
+				"Str"=>$this->Str,
+				"Dex"=>$this->Dex,
+				"Con"=>$this->Con,
+				"Intel"=>$this->Intel,
+				"Wis"=>$this->Wis,
+				"Cha"=>$this->Cha,
+				"Fte"=>$this->Fte, 
+				"WeaponID"=>$this->Weapon->ID);
+			$where = array($db->quoteInto("ID = ?", $this->ID));
+			try {
+				$db->update("Hero", $row, $where);
+			}
+			catch(Exception $ex)
+			{
+				print_r($ex);
+			}
 		}
-		else //no id, add new character
+		else //no id, add new hero
 		{
 			$row = array("OwnerID"=>$this->OwnerID,
 				"PartyID"=>0,
