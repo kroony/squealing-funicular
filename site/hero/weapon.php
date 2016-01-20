@@ -93,12 +93,21 @@ class Weapon
 		$getQuery = "SELECT * FROM `Weapon` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
+		return $this->loadWeaponFromObject(obj);
+	}
+	
+	function loadWeaponFromObject($obj)
+    {
+		$this->ID = $obj->ID;
+		$this->UserID = $obj->UserID;
+		$this->Name = $obj->Name;
+		$this->DamageDie = $obj->DamageDie;
+		$this->DamageQuantity = $obj->DamageQuantity;
+		$this->DamageOffset = $objDamageOffset;
+		$this->CritChance = $obj->CritChance;
+		$this->DamageAttribute = $obj->DamageAttribute;
 
-		$ReturnWeapon = new Weapon($obj->Name,$obj->UserID,$obj->DamageDie,$obj->DamageQuantity,$obj->DamageOffset,$obj->CritChance,$obj->DamageAttribute); 
-
-		$ReturnWeapon->ID = $ID;
-
-		return $ReturnWeapon;
+		return $this;
 	}
 
 	function calcDamage($CritFteBonus, $HeroOffset)

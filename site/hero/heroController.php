@@ -5,28 +5,6 @@ include_once("hero/hero.php");
 
 class heroController
 {
-
-	function output($Hero)
-	{
-
-		echo "</p><br /><strong>" . $Hero->Name ."</strong>";
-		echo "<br />ID: " . $Hero->ID;
-		echo "<br />OwnerID: " . $Hero->OwnerID;
-		echo "<br />PartyID: " . $Hero->PartyID;
-		echo "<br />Race: " . $Hero->Race;
-		echo "<br />Class: " . $Hero->HeroClass;
-		echo "<br />HP: " . $Hero->CurrentHP .'/'. $Hero->MaxHP;
-		echo "<br />Level: " . $Hero->Level;
-		echo "<br />XP: " . $Hero->CurrentXP .'/'. $Hero->LevelUpXP;
-		echo "<br />Str: " . $Hero->Str;
-		echo "<br />Dex: " . $Hero->Dex;
-		echo "<br />Con: " . $Hero->Con;
-		echo "<br />Int: " . $Hero->Intel;
-		echo "<br />Wis: " . $Hero->Wis;
-		echo "<br />Cha: " . $Hero->Cha;
-		echo "<br />WeaponID: " . $Hero->WeaponID . "</p>";
-	}
-
 	function outputInTable($Hero)
 	{
 		//fix for single quotes in names
