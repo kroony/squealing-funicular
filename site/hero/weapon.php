@@ -82,6 +82,16 @@ class Weapon
 		$this->CritChance = $CritChance;
 		$this->DamageAttribute = $DamageAttribute;
 	}
+	
+	function GetHeroNameFromWeapon()
+	{
+		$db = DB::GetConn();
+		$weapon_con = $db->quoteInto("WeaponID = ?", $this->ID);
+		$sql = "select ID from Hero where $weapon_con limit 1";
+		$res = $db->query($sql);
+		$obj = $res->fetchObject();
+		return = $obj->Name;
+	}
 
 	//load Weapon from DB 
 	function loadWeapon($ID)
