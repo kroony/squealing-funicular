@@ -52,7 +52,7 @@ class User
 				"salt"=>$this->salt,
 				"gold"=>$this->gold,
 				"active"=>$this->active);
-			$where = array($db->quoteInto("ID = ?" => $this->ID));
+			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("User", $row, $where);
 			}
