@@ -15,8 +15,8 @@ class weaponController
 		$returnWeapons = array();
 		while($obj = $res->fetchObject())
 		{
-			$Weapon = new Weapon();
-			array_push($returnWeapons, $Weapon->loadHeroFromObject($obj));
+			$Weapon = new Weapon("", "", "", "", "", "", "");
+			array_push($returnWeapons, $Weapon->loadWeaponFromObject($obj));
 		}
 		return $returnWeapons;
 	}
