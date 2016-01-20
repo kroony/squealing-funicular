@@ -36,7 +36,7 @@
 				<div class="progress">
 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$Hero->CurrentXP}"
 					aria-valuemin="0" aria-valuemax="{$Hero->LevelUpXP}" style="width:{$Hero->CurrentXP / $Hero->LevelUpXP * 100}%">
-						<span>{$Hero->CurrentXP}XP/{$Hero->LevelUpXP}XP{if $Hero->CurrentXP >= Hero->LevelUpXP} <a href="levelUp.php?ID={$Hero->ID}">Try Level up</a>{/if}</span>
+						<span>{$Hero->CurrentXP}XP/{$Hero->LevelUpXP}XP{if $Hero->CurrentXP >= $Hero->LevelUpXP} <a href="levelUp.php?ID={$Hero->ID}">Try Level up</a>{/if}</span>
 					</div>
 				</div>
 			</td>
