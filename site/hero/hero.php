@@ -45,7 +45,7 @@ class Hero
 		return $res->fetchObject();
 	}
 
-	//load Adventurer from DB 
+	//load Hero from DB 
 	function loadHero($ID)
 	{
 		//check ID is not blank and exists and such
