@@ -1,3 +1,5 @@
+<br />
+<h2>Top 10 by XP</h2>
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
@@ -13,7 +15,7 @@
 	<tbody>
 		{foreach from=$XPHeroes key=rank item=Hero}
 		<tr>
-      <td>{$rank}</td>
+      <td>{$rank + 1}</td>
 			<td>{str_replace("'", "", $Hero->Name)}</td>
 			<td>{$Hero->Race->Name}</td>
 			<td>{$Hero->HeroClass->Name}</td>
