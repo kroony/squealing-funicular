@@ -164,9 +164,9 @@ class Hero
 		$log->log("Adding " . $XP . "XP<br />");
 		$this->CurrentXP += $XP;//add the XP
 
-		if($this->CurrentXP > $this->LevelUpXP)//if its more then the level up reduce it to the levelup amount
+		if($this->CurrentXP > $this->LevelUpXP)
 		{
-			$this->CurrentXP = $this->LevelUpXP;
+			//$this->CurrentXP = $this->LevelUpXP; //removed for leader board purposes 
 			$log->log("Time to try leveling up!<br />");
 		}
 

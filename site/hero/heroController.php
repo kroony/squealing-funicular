@@ -20,6 +20,22 @@ class heroController
 		}
 		return $returnHeroes;
 	}
+	
+	function getTop10ByXP()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` <> 146 ORDER BY `Hero`.`CurrentXP` DESC LIMIT 10;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnHeroes = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnHeroes, Hero::loadHeroFromObject($obj));
+		}
+		return $returnHeroes;
+	}
 
 	function dropDownForUser($id)
 	{
