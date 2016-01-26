@@ -17,7 +17,7 @@
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
 			<td>{$weapon->GetHeroNameFromWeapon()}</td>
-			<td>{$tmpHero->loadHero($weapon->GetHeroIDFromWeapon())->GetOwner()->Name}</td>
+			<td>{if is_numeric($weapon->GetHeroIDFromWeapon())}{$tmpHero->loadHero($weapon->GetHeroIDFromWeapon())->GetOwner()->username}{/if}</td>
 		</tr>
 		{/foreach}
 	</tbody>
