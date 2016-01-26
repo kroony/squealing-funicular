@@ -77,7 +77,6 @@ class PitController
 	  $roundCounter++;
     }
 
-
     return $log;
   }
 
@@ -103,7 +102,6 @@ class PitController
 	}
   }
 
-
   function displayFighter($fighters, $ix)
   {
       return $fighters[$ix][0]->displayName($ix == 0);
@@ -113,5 +111,4 @@ class PitController
   {
       return new FightLogLine($ix == 0 ? "player" : "enemy", $log);
   }
-
 }
