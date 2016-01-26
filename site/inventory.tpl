@@ -6,6 +6,7 @@
 		  <td>Attribute</td>
 		  <td>Crit</td>
 		  <td>Hero</td>
+		  <td>Hero Owner</td>
 	  </tr>
 	</thead>
 	<tbody>
@@ -16,6 +17,7 @@
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
 			<td>{$weapon->GetHeroNameFromWeapon()}</td>
+			<td>{$tmpHero->loadHero($weapon->GetHeroIDFromWeapon())->GetOwner()->Name}</td>
 		</tr>
 		{/foreach}
 	</tbody>
