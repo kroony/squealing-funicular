@@ -44,6 +44,11 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			}
 		}
 	}
+	
+	if($_REQUEST['action'] == "expiredPassword")
+	{
+		$smarty->assign("message", "Your password has expired. Please change it.");
+	}
 }
 
 $smarty->assign("user",$user);
