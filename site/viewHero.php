@@ -60,6 +60,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				$hero->Weapon = $weapon;
 				$hero->SaveHero();
+				$smarty->assign("hero",$hero);
+				$smarty->assign("message", $hero->Name . " has equipped " . $weapon->Name);
 			}
 			else
 			{
