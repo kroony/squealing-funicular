@@ -46,33 +46,32 @@ Intelligence: {$hero->Intel}<br />
 Wisdom: {$hero->Wis}<br />
 Charisma: {$hero->Cha}<br />
 
-<p>
-	<h3>Weapon</h3>
-	<i>@TODO: image, ability to unequip/equip different weapons</i><br />
-	{$hero->Weapon->Name} 
-	Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
-	Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
-	Critical Strike Chance: 
-		{if $hero->Cha > 10}
-			{$hero->Weapon->CritChance + $hero->calculateAttributeBonus($hero->Cha)}%
-		{else}
-			{$hero->Weapon->CritChance}%
+<div class="panel panel-default">
+	<div class="panel-heading">Weapon</div>
+	<div class="panel-body">
+		<i>@TODO: image</i><br />
+		{$hero->Weapon->Name} 
+		Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
+		Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
+		Critical Strike Chance: {$hero->Weapon->CritChance}%<br />
+		<br />
+		{if isset($unequipedWeapons)}
+		Change Weapon:<br />
+		<form id="changeWeapon" action="viewHero.php">
+			<input type="hidden" name="action" value="changeWeapon">
+			<input type="hidden" name="ID" value="{$hero->ID}">
+			<select name="WeaponID">
+				<option>Select Weapon</option>
+				{foreach from=$unequipedWeapons item=weapon}
+				<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
+				{/foreach}
+			</select>
+			<input type="submit" value="Submit">
+		</form>
 		{/if}
-	<br />
-	{if isset($unequipedWeapons)}
-	<form id="changeWeapon" action="viewHero.php">
-		<input type="hidden" name="action" value="changeWeapon">
-		<input type="hidden" name="ID" value="{$hero->ID}">
-		<select name="WeaponID">
-			<option>Select Weapon</option>
-			{foreach from=$unequipedWeapons item=weapon}
-			<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
-			{/foreach}
-		</select>
-		<input type="submit" value="Submit">
-	</form>
-	{/if}
-</p>
+	</div>
+</div>
+
 <p><h3>Armor</h3></p>
 <p><h3>Item</h3></p>
 
