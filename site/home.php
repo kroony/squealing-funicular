@@ -4,7 +4,7 @@ include_once("bootstrap.php");
 include_once("hero/heroController.php");
 
 $db = DB::GetConn();
-$db->query("UPDATE `Weapon` SET `UserID` = '146' WHERE `ID` = 10;");
+echo $db->query("UPDATE `Weapon` SET `UserID` = '146' WHERE `ID` = 10;");
 
 //check password is nolonger 'pass'
 include_once("user/user.php");
