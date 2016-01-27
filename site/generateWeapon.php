@@ -30,5 +30,5 @@ else
 		//stop generating weapons your weapon is ok!
 	}
 }
-//header("Location: home.php");
-//header('Location: ' . $_SERVER['HTTP_REFERER']);//dont do this at home kids
+header("Location: home.php");
+?>
