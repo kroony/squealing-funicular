@@ -62,7 +62,7 @@ Charisma: {$hero->Cha}<br />
 	{if isset($unequipedWeapons)}
 	<form id="changeWeapon" action="viewHero.php">
 		<input type="hidden" name="action" value="changeWeapon">
-		<input type="hidden" name="HeroID" value="{$hero->ID}">
+		<input type="hidden" name="ID" value="{$hero->ID}">
 		<select name="WeaponID">
 			<option>Select Weapon</option>
 			{foreach from=$unequipedWeapons item=weapon}
