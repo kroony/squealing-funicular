@@ -17,7 +17,15 @@ if($Hero->GetOwner()->ID == $currentUID)
 
 		$Hero->Level = -1;
 		$Hero->CurrentHP = $Hero->MaxHP;
-
+		
+		//remove the old weapon
+		$Hero->Weapon->UserID = 0;
+		$Hero->Weapon->save();
+		
+		//generate a new npc weapon
+		$Hero->Weapon = $Hero->Weapon->generateNPCWeapon(146, $Hero->getHighestWeaponStat());
+		$Hero->Weapon->save();
+		
 		$Hero->SaveHero();
 
 		header("Location: home.php");

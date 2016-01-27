@@ -137,21 +137,27 @@ class Hero
 	
 	function generateStartingWeapon()
 	{
+		$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, getHighestWeaponStat());
+		
+		$this->Weapon->save();
+	}
+	
+	function getHighestWeaponStat()
+	{
 		if($this->Str >= $this->Dex && $this->Str >= $this->Intel && $this->Str >= $this->Wis){
-			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Str");
+			return "Str";
 		} else if($this->Dex >= $this->Str && $this->Dex >= $this->Intel && $this->Dex >= $this->Wis) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Dex");
+			return "Dex";
 		} else if($this->Intel >= $this->Str && $this->Intel >= $this->Dex && $this->Intel >= $this->Wis) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Intel");
+			return "Intel";
 		} else if($this->Wis >= $this->Str && $this->Wis >= $this->Dex && $this->Wis >= $this->Intel) {
-			$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, "Wis");
+			return "Wis";
 		} else {
 			//not sure this should happen
 			echo "<b>Bill check your highest attribute picker</b>";
 		}
-		//save weapon 
-		$this->Weapon->save();
 	}
+	
 	function GiveToUser($UID)
 	{
 		//check user exists

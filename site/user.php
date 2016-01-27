@@ -13,6 +13,12 @@ include_once("user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
 
+if($user->gold > 0)
+{
+	$user->gold = 0;
+	$user->Save();
+}
+
 if(isset($_REQUEST['action']))//check if we are doing anything
 {
 	if($_REQUEST['action'] == "changePassword")

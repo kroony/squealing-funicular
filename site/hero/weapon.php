@@ -83,6 +83,18 @@ class Weapon
 		$this->DamageAttribute = $DamageAttribute;
 	}
 	
+	function getScrapValue()
+	{
+		$scrapValue = 0;
+		
+		$scrapValue += $this->DamageDie;
+		$scrapValue += $this->DamageQuantity;
+		$scrapValue += $this->DamageOffset;
+		$scrapValue += $this->CritChance;
+		
+		return $scrapValue;
+	}
+	
 	function GetHeroNameFromWeapon()
 	{
 		$db = DB::GetConn();
@@ -185,7 +197,23 @@ class Weapon
 		$db = DB::GetConn();
 		
 		$attribute_con = $db->quoteInto("damageattribute = ?", $HighestAttribute);
-		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con limit 1;";
+		$starting_con = $db->quoteInto("startingweapon = ?", 1);
+		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con AND $starting_con limit 1;";
+		$res = $db->query($getQuery);
+		$obj = $res->fetchObject();
+		
+		$rw = Weapon::generateWeapon($UserID, $obj->ID);
+		return $rw;
+	}
+	
+	function generateNPCWeapon($UserID, $HighestAttribute)
+	{
+		//get a weapon base matching the highest attribute
+		$db = DB::GetConn();
+		
+		$attribute_con = $db->quoteInto("damageattribute = ?", $HighestAttribute);
+		$npc_con = $db->quoteInto("npcweapon = ?", 1);
+		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con AND $npc_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 		
