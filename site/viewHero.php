@@ -54,7 +54,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		else if($_REQUEST['action'] == "changeWeapon")
 		{
 			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
-			$hero = Hero::loadHero($_REQUEST['HeroID'];
+			$hero = Hero::loadHero($_REQUEST['HeroID']);
 			
 			if($weapon->UserID == $currentUID && $hero->OwnerID == $currentUID)
 			{
