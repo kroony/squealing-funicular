@@ -10,6 +10,7 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 
 if($currentUID = 146)
 {
+	echo $hero->getHighestWeaponStat() . "<br />";
 	$hero->Weapon = Weapon::generateNPCWeapon($hero->GetOwner()->ID, $hero->getHighestWeaponStat());
 	//save weapon 
 	$hero->Weapon->save();		
@@ -30,4 +31,4 @@ else
 	}
 }
 //header("Location: home.php");
-header('Location: ' . $_SERVER['HTTP_REFERER']);//dont do this at home kids
+//header('Location: ' . $_SERVER['HTTP_REFERER']);//dont do this at home kids
