@@ -54,7 +54,7 @@ $usersWeapons = $weaponController->getAllForUser($currentUID);
 $allWeapons = $weaponController->getAll();
 foreach($allWeapons as &$weapon)
 {
-	$heroID = $weapon->GetHeroIDFromWeapon()
+	$heroID = $weapon->GetHeroIDFromWeapon();
 	if(is_numeric($weapon->GetHeroIDFromWeapon())
 	{
 		$tmpHero->loadHero($heroID);
