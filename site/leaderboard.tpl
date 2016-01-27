@@ -1,21 +1,21 @@
 <div class="container-fluid">
-<h2>Top 10 by XP</h2>
+<h3>Top 10 by XP</h3>
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
-      <td>Rank</td>
-			<td>Name</td>
-			<td>Race</td>
-			<td>Class</td>
-			<td>Level</td>
-			<td>XP</td>
-			<td>User</td>
+			<td>Rank</td>
+			<th>Name</th>
+			<th>Race</th>
+			<th>Class</th>
+			<th>Level</th>
+			<th>XP</th>
+			<th>User</th>
 		</tr>
 	</thead>
 	<tbody>
 		{foreach from=$XPHeroes key=rank item=Hero}
 		<tr>
-      <td>{$rank + 1}</td>
+			<td>{$rank + 1}</td>
 			<td>{str_replace("'", "", $Hero->Name)}</td>
 			<td>{$Hero->Race->Name}</td>
 			<td>{$Hero->HeroClass->Name}</td>

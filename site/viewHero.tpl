@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div id="heroName"><h1>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1></div>
+<div id="heroName"><h3>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h3></div>
 
 {if isset($message)}
 	<div class="alert alert-info">
@@ -47,7 +47,7 @@ Wisdom: {$hero->Wis}<br />
 Charisma: {$hero->Cha}<br />
 
 <p>
-	<h2>Weapon</h2>
+	<h3>Weapon</h3>
 	<i>@TODO: image, ability to unequip/equip different weapons</i><br />
 	{$hero->Weapon->Name} 
 	Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
@@ -60,7 +60,7 @@ Charisma: {$hero->Cha}<br />
 		{/if}
 	<br />
 </p>
-<p><h2>Armor</h2></p>
-<p><h2>Item</h2></p>
+<p><h3>Armor</h3></p>
+<p><h3>Item</h3></p>
 
 </div>

@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<h1>{$user->username}</h1>
+<h3>{$user->username}</h3>
 
 {if isset($message)}
 	<div class="alert alert-info">
@@ -15,8 +15,8 @@
 {/if}
 
 <br />
-email: {$user->email}<br />
-gold: {$user->gold}gp<br />
+Email: {$user->email}<br />
+Gold: {$user->gold}gp<br />
 <br />
 Change Password<br />
 <form action="user.php" method="post">
