@@ -1,6 +1,7 @@
 <?php
 
 include("bootstrap.php");
+include_once("user/user.php");
 
 $smarty->display("css/css.tpl");
 
@@ -8,7 +9,6 @@ $smarty->display("css/css.tpl");
 $smarty->assign("currentpage","user");
 $smarty->display("menu.tpl");
 
-include_once("user/user.php");
 
 $user = new User();
 $user = $user->load($currentUID);

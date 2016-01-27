@@ -15,7 +15,7 @@
 
 <br />
 email: {$user->email}<br />
-gold: {$user->gold}<br />
+gold: {$user->gold}gp<br />
 <br />
 Change Password<br />
 <form action="user.php" method="post">
