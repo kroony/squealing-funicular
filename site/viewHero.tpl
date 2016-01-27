@@ -59,6 +59,19 @@ Charisma: {$hero->Cha}<br />
 			{$hero->Weapon->CritChance}%
 		{/if}
 	<br />
+	{if isset($unequipedWeapons)}
+	<form id="changeWeapon" action="viewHero.php">
+		<input type="hidden" name="action" value="changeWeapon">
+		<input type="hidden" name="HeroID" value="{$hero->ID}">
+		<select name="WeaponID">
+			<option>Select Weapon</option>
+			{foreach from=$unequipedWeapons item=weapon}
+			<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
+			{/foreach}
+		</select>
+		<input type="submit" value="Submit">
+	</form>
+	{/if}
 </p>
 <p><h3>Armor</h3></p>
 <p><h3>Item</h3></p>

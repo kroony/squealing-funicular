@@ -1,17 +1,34 @@
 <?php
 
 include("bootstrap.php");
+include_once("hero/heroController.php");
+include_once("hero/weaponController.php");
 
 $smarty->display("css/css.tpl");
 
 $smarty->display("menu.tpl");
 
-include_once("hero/heroController.php");
-
 $heroController = new heroController();
+$weaponController = new weaponController();
+
+
 
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
+
+$allWeapons = $weaponController->getAllForUser($currentUID);
+$unequipedWeapons = array();
+foreach($allWeapons as $weapon)
+{
+	if(is_numeric($weapon->GetHeroIDFromWeapon()))
+	{
+		array_push($unequipedWeapons, $weapon);
+	}
+}
+if(count($unequipedWeapons) > 0)
+{
+	$smarty->assign("unequipedWeapons", $unequipedWeapons);
+}
 
 if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user 
 {
@@ -32,6 +49,21 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				$smarty->assign("error","Hero's name can not be blank");
 				$smarty->assign("hero",$hero);
+			}
+		}
+		else if($_REQUEST['action'] == "changeWeapon")
+		{
+			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
+			$hero = Hero::loadHero($_REQUEST['HeroID'];
+			
+			if($weapon->UserID == $currentUID && $hero->OwnerID == $currentUID)
+			{
+				$hero->Weapon = $weapon;
+				$hero->SaveHero();
+			}
+			else
+			{
+				$smarty->assign("error","That does not belong to you.");
 			}
 		}
 	}

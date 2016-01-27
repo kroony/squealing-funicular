@@ -30,7 +30,7 @@
 			<td>{$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</td>
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
-			<td>{$weapon->GetHeroNameFromWeapon()}</td>
+			<td>{if is_numeric($weapon->GetHeroIDFromWeapon())}<a href='viewHero.php?ID={$weapon->GetHeroIDFromWeapon()}'>{str_replace("'", "", $weapon->GetHeroNameFromWeapon())}</a>{else}{$weapon->GetHeroNameFromWeapon()}{/if}</td>
 			<td>{if $weapon->GetHeroNameFromWeapon() == "Not Equipped"}<a href="inventory.php?action=scrap&ID={$weapon->ID}">{$weapon->getScrapValue()}gp - Scrap</a>{else}{$weapon->getScrapValue()}gp{/if}</td>
 		</tr>
 		{/foreach}
