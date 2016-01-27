@@ -28,10 +28,7 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 				$user->gold += $scrapWeapon->getScrapValue();
 				$user->Save();
 				
-				$scrapWeapon->UserID = 0;
-				$scrapWeapon->Save();
-				
-				//@TODO Delete $scrapWeapon from DB
+				$scrapWeapon->delete();
 				
 				$smarty->assign("message", $scrapWeapon->Name . " has been scrapped for " . $scrapWeapon->getScrapValue() . "gp");
 			}
@@ -51,6 +48,32 @@ $tmpHero = new Hero();
 $smarty->assign("tmpHero",$tmpHero);
 
 $usersWeapons = $weaponController->getAllForUser($currentUID);
+
+
+//fix monster weapons
+$allWeapons = $weaponController->getAll();
+foreach($allWeapons as &$weapon)
+{
+	$heroID = $weapon->GetHeroIDFromWeapon()
+	if(is_numeric($weapon->GetHeroIDFromWeapon())
+	{
+		$tmpHero->loadHero($heroID);
+		if($tmpHero->UserID != $weapon->UserID)
+		{
+			if($tmpHero->UserID == 146)
+			{
+				//generate new weapon for tmpHero
+				$tmpHero->Weapon = $tmpHero->Weapon->generateNPCWeapon(146, $tmpHero->getHighestWeaponStat());
+				$tmpHero->Weapon->save();
+				$tmpHero->SaveHero();
+				
+				//delete weapon
+				$weapon->delete();
+			}
+		}
+	}
+}
+
 $smarty->assign("usersWeapons",$usersWeapons);
 $smarty->display("inventory.tpl");
 		  

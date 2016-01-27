@@ -288,6 +288,20 @@ class Weapon
 			}
 		}	
 	}
+	
+	function delete()
+	{
+		$db = DB::GetConn();
+			
+		$where = array($db->quoteInto("ID = ?", $this->ID));
+		try {
+			$db->delete("Weapon", $where);
+		}
+		catch(Exception $ex)
+		{
+			print_r($ex);
+		} 
+	}
 }
 
 ?>

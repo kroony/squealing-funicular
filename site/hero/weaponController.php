@@ -19,6 +19,22 @@ class weaponController
 		}
 		return $returnWeapons;
 	}
+	
+	function getAll()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Weapon`;";
+
+		$res=$db->query($getQuery);//execute query
+
+		$returnWeapons = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnWeapons, Weapon::loadWeaponFromObject($obj));
+		}
+		return $returnWeapons;
+	}
 }
 
 ?>
