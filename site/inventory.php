@@ -60,7 +60,7 @@ foreach($allWeapons as &$weapon)
 		$tmpHero->loadHero($heroID);
 		if($tmpHero->OwnerID != $weapon->UserID)
 		{
-			echo "found one! " . $tmpHero->OwnerID . "<br />";
+			echo "found one! Owner: " . $tmpHero->OwnerID . " Hero: " . $heroID . " Weapon Owner: " . $weapon->UserID . "<br />";
 			if($tmpHero->OwnerID == 146)
 			{
 				//generate new weapon for tmpHero
