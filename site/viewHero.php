@@ -20,7 +20,7 @@ $allWeapons = $weaponController->getAllForUser($currentUID);
 $unequipedWeapons = array();
 foreach($allWeapons as $weapon)
 {
-	if(is_numeric($weapon->GetHeroIDFromWeapon()))
+	if(!is_numeric($weapon->GetHeroIDFromWeapon()))
 	{
 		array_push($unequipedWeapons, $weapon);
 	}
