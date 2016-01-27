@@ -49,36 +49,7 @@ $smarty->assign("tmpHero",$tmpHero);
 
 $usersWeapons = $weaponController->getAllForUser($currentUID);
 
-
-//fix monster weapons
-$allWeapons = $weaponController->getAll();
-foreach($allWeapons as &$weapon)
-{
-	$heroID = $weapon->GetHeroIDFromWeapon();
-	if(is_numeric($weapon->GetHeroIDFromWeapon()))
-	{
-		$tmpHero = $tmpHero->loadHero($heroID);
-		if($tmpHero->OwnerID != $weapon->UserID)
-		{
-			echo "found one! Owner: " . $tmpHero->OwnerID . " Hero: " . $heroID . " Weapon Owner: " . $weapon->UserID . "<br />";
-			if($tmpHero->OwnerID == 146)
-			{
-				//generate new weapon for tmpHero
-				$tmpHero->Weapon = $tmpHero->Weapon->generateNPCWeapon(146, $tmpHero->getHighestWeaponStat());
-				$tmpHero->Weapon->save();
-				$tmpHero->SaveHero();
-				
-				//delete weapon
-				$weapon->delete();
-			}
-		}
-	}
-}
-
 $smarty->assign("usersWeapons",$usersWeapons);
 $smarty->display("inventory.tpl");
 		  
-
-
-
 ?>
