@@ -2,6 +2,9 @@
 
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
+include_once("hero/weaponController.php");
+
+print_r(getAllWeaponBase());
 
 //check password is nolonger 'pass'
 include_once("user/user.php");
