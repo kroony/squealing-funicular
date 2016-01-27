@@ -72,7 +72,16 @@ Charisma: {$hero->Cha}<br />
 	</div>
 </div>
 
-<p><h3>Armor</h3></p>
-<p><h3>Item</h3></p>
+<div class="panel panel-default">
+	<div class="panel-heading">Armor</div>
+	<div class="panel-body">
+	</div>
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">Item</div>
+	<div class="panel-body">
+	</div>
+</div>
 
 </div>

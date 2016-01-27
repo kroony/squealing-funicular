@@ -21,6 +21,17 @@ class heroController
 		return $returnHeroes;
 	}
 	
+	function countAllForUser($id)
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT ID FROM `Hero` WHERE `OwnerID` = $id;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		return count($res);
+	}
+	
 	function getTop10ByXP()
 	{
 		$db = DB::GetConn();
