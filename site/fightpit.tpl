@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h1>Fight Pit</h1>
 
 <p>
@@ -9,3 +10,4 @@ Once a fight is set, the whole world will have a chance to view the match up and
 When time comes, the fight will commence, until knockout or perhaps even death. The winner will be payed out dividents of all bets and earn renoun among the fighting pits.
 </p>
 
+</div>

@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div style="display:inline-block; vertical-align: top;{if $divFloatRight == "True"} float: right;{/if}">
 <h2>{$displayHero->Name}</h2>
 Race: {$displayHero->Race->Name} - {$displayHero->Race->Description}<br />
@@ -15,4 +16,5 @@ Class: {$displayHero->HeroClass->Name} - {$displayHero->HeroClass->Description}<
   </div>
 </div>
 <br />
+</div>
 </div>

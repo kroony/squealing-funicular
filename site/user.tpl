@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <h1>{$user->username}</h1>
 
 {if isset($message)}
@@ -28,3 +29,4 @@ Confirm new password: <input name="password2" type="password"><br />
 
 TODO: change email, password
 
+<div>

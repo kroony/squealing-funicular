@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div style="display: inline-block; margin: auto;">
 	{$log->show()}
 
@@ -18,5 +19,6 @@
 	{/if}
 
 	<a href="home.php">Return</a>
+</div>
 </div>
 </body>

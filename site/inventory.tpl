@@ -1,3 +1,4 @@
+<div class="container-fluid">
 {if isset($message)}
 	<div class="alert alert-info">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -35,3 +36,4 @@
 		{/foreach}
 	</tbody>
 </table>
+</div>

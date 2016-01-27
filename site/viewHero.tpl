@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <div id="heroName"><h1>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h1></div>
 
 {if isset($message)}
@@ -62,3 +63,4 @@ Charisma: {$hero->Cha}<br />
 <p><h2>Armor</h2></p>
 <p><h2>Item</h2></p>
 
+</div>

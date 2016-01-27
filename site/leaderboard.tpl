@@ -1,4 +1,4 @@
-<br />
+<div class="container-fluid">
 <h2>Top 10 by XP</h2>
 <table class='table table-condensed table-hover'>
 	<thead>
@@ -33,3 +33,4 @@
 		{/foreach}
 	</tbody>
 </table>
+</div>

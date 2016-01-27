@@ -1,3 +1,4 @@
+<div class="container-fluid">
 {$hero->Name} (level {$hero->Level}) would like to fight:<br />
 
 <table class='table table-condensed table-hover'>
@@ -13,3 +14,4 @@
         </tr>
 {/foreach}
 </table>
+</div>

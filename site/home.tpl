@@ -1,3 +1,4 @@
+<div class="container-fluid">
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
@@ -56,3 +57,4 @@
 {if $totalHeros < 20}
 <p>Generate Level: <a href="addNew.php?level=1">1</a></p>
 {/if}
+</div>
