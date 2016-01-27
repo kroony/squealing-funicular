@@ -57,7 +57,7 @@ foreach($allWeapons as &$weapon)
 	$heroID = $weapon->GetHeroIDFromWeapon();
 	if(is_numeric($weapon->GetHeroIDFromWeapon()))
 	{
-		$tmpHero->loadHero($heroID);
+		$tmpHero = $tmpHero->loadHero($heroID);
 		if($tmpHero->OwnerID != $weapon->UserID)
 		{
 			echo "found one! Owner: " . $tmpHero->OwnerID . " Hero: " . $heroID . " Weapon Owner: " . $weapon->UserID . "<br />";
