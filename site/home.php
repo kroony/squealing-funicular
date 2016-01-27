@@ -2,16 +2,6 @@
 
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
-include_once("hero/weaponController.php");
-
-$db = DB::GetConn();
-$db->query("INSERT INTO `weaponbase` (`name`, `damagedie`, `damagequantity`, `minoffset`, `maxoffset`, `mincrit`, `maxcrit`, `damageattribute`, `positivenameadjective`, `negativenameadjective`, `startingweapon`, `npcweapon`) VALUES ('Mace', '8', '1', '-2', '2', '0', '6', 'Str', 'Polished|Blessed|Honed|Deadly', 'Dented|Rusty|Cursed|Cracked', '0', '1');");
-$db->query("INSERT INTO `weaponbase` (`name`, `damagedie`, `damagequantity`, `minoffset`, `maxoffset`, `mincrit`, `maxcrit`, `damageattribute`, `positivenameadjective`, `negativenameadjective`, `startingweapon`, `npcweapon`) VALUES ('Longbow', '8', '1', '-2', '2', '0', '6', 'Dex', 'Balanced|Quality', 'Loose|Split', '0', '1');");
-$db->query("INSERT INTO `weaponbase` (`name`, `damagedie`, `damagequantity`, `minoffset`, `maxoffset`, `mincrit`, `maxcrit`, `damageattribute`, `positivenameadjective`, `negativenameadjective`, `startingweapon`, `npcweapon`) VALUES ('Rod', '8', '1', '-2', '2', '0', '6', 'Intel', 'Powered|Charged', 'Drained|Cracked', '0', '1');");
-$db->query("INSERT INTO `weaponbase` (`name`, `damagedie`, `damagequantity`, `minoffset`, `maxoffset`, `mincrit`, `maxcrit`, `damageattribute`, `positivenameadjective`, `negativenameadjective`, `startingweapon`, `npcweapon`) VALUES ('Quarterstaff', '8', '1', '-2', '2', '0', '6', 'Wis', 'Ornate|Precise', 'Flimsy|Crooked', '0', '1');");
-
-
-print_r(weaponController::getAllWeaponBase());
 
 //check password is nolonger 'pass'
 include_once("user/user.php");
