@@ -47,10 +47,9 @@ Wisdom: {$hero->Wis}<br />
 Charisma: {$hero->Cha}<br />
 
 <div class="panel panel-default">
-	<div class="panel-heading">Weapon</div>
+	<div class="panel-heading">{$hero->Weapon->Name}</div>
 	<div class="panel-body">
-		<i>@TODO: image</i><br />
-		{$hero->Weapon->Name} 
+		<!--<i>@TODO: image</i><br />-->
 		Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
 		Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
 		Critical Strike Chance: {$hero->Weapon->CritChance}%<br />
