@@ -7,6 +7,7 @@
 		  <td>Crit</td>
 		  <td>Hero</td>
 		  <td>Hero Owner</td>
+		  <td>Scrap Value</td>
 	  </tr>
 	</thead>
 	<tbody>
@@ -18,6 +19,7 @@
 			<td>{$weapon->CritChance}%</td>
 			<td>{$weapon->GetHeroNameFromWeapon()}</td>
 			<td>{if is_numeric($weapon->GetHeroIDFromWeapon())}{$tmpHero->loadHero($weapon->GetHeroIDFromWeapon())->GetOwner()->username}{/if}</td>
+			<td>{if $weapon->GetHeroNameFromWeapon() == "Not Equipped"}<a href="inventory.php?action=scrap&ID={$weapon->ID}">{$weapon->getScrapValue()} - Scrap</a>{else}{$weapon->getScrapValue()}{/if}</td>
 		</tr>
 		{/foreach}
 	</tbody>
