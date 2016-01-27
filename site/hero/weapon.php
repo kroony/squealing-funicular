@@ -87,8 +87,7 @@ class Weapon
 	{
 		$scrapValue = 0;
 		
-		$scrapValue += $this->DamageDie;
-		$scrapValue += $this->DamageQuantity;
+		$scrapValue += $this->DamageDie * $this->DamageQuantity;
 		$scrapValue += $this->DamageOffset;
 		$scrapValue += $this->CritChance;
 		
