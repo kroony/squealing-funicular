@@ -15,12 +15,12 @@
 <table class='table table-condensed table-hover'>
 	<thead>
 	  <tr>
-		  <td>Name</td>
-		  <td>Damage</td>
-		  <td>Attribute</td>
-		  <td>Crit</td>
-		  <td>Hero</td>
-		  <td>Scrap Value</td>
+		  <th>Name</th>
+		  <th>Damage</th>
+		  <th>Attribute</th>
+		  <th>Crit</th>
+		  <th>Hero</th>
+		  <th>Scrap Value</th>
 	  </tr>
 	</thead>
 	<tbody>

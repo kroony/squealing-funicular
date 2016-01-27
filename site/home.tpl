@@ -2,20 +2,20 @@
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
-			<td>Name</td>
-			<td>Race</td>
-			<td>Class</td>
-			<td>HP</td>
-			<td>Level</td>
-			<td>XP</td>
-			<td>Str</td>
-			<td>Dex</td>
-			<td>Con</td>
-			<td>Int</td>
-			<td>Wis</td>
-			<td>Cha</td>
-			<td>Weapon</td>
-			<td>Fight</td>
+			<th>Name</th>
+			<th>Race</th>
+			<th>Class</th>
+			<th>HP</th>
+			<th>Level</th>
+			<th>XP</th>
+			<th>Str</th>
+			<th>Dex</th>
+			<th>Con</th>
+			<th>Int</th>
+			<th>Wis</th>
+			<th>Cha</th>
+			<th>Weapon</th>
+			<th>Fight</th>
 		</tr>
 	</thead>
 	<tbody>
