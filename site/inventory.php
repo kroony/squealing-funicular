@@ -58,9 +58,9 @@ foreach($allWeapons as &$weapon)
 	if(is_numeric($weapon->GetHeroIDFromWeapon()))
 	{
 		$tmpHero->loadHero($heroID);
-		if($tmpHero->UserID != $weapon->UserID)
+		if($tmpHero->OwnerID != $weapon->UserID)
 		{
-			if($tmpHero->UserID == 146)
+			if($tmpHero->OwnerID == 146)
 			{
 				//generate new weapon for tmpHero
 				$tmpHero->Weapon = $tmpHero->Weapon->generateNPCWeapon(146, $tmpHero->getHighestWeaponStat());
