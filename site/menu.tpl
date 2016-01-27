@@ -5,7 +5,7 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="{if $currentpage == "user"}active{/if}"><a href="user.php">User</a></li>
-	  <li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes <span class="badge">20</span></a></li>
+	  <li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes <span class="badge">20<!--@TODO make this actually dynamic--></span></a></li>
 	  <li class="{if $currentpage == "fight"}active{/if}"><a href="fightpit.php">Fight Pit</a></li>
 	  <li class="{if $currentpage == "inventory"}active{/if}"><a href="inventory.php">Inventory</a></li>
 	  <li class="{if $currentpage == "leader"}active{/if}"><a href="leaderboard.php">Leaderboard</a></li>
