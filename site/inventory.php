@@ -55,7 +55,7 @@ $allWeapons = $weaponController->getAll();
 foreach($allWeapons as &$weapon)
 {
 	$heroID = $weapon->GetHeroIDFromWeapon();
-	if(is_numeric($weapon->GetHeroIDFromWeapon())
+	if(is_numeric($weapon->GetHeroIDFromWeapon()))
 	{
 		$tmpHero->loadHero($heroID);
 		if($tmpHero->UserID != $weapon->UserID)
