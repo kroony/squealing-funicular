@@ -77,6 +77,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$weapon->save();
 				
 				$smarty->assign("message", $oldName . " was renamed to " . $weapon->Name);
+				$hero->Weapon = $weapon;
 				$smarty->assign("hero",$hero);
 			}
 			else
