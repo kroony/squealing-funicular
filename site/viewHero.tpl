@@ -50,8 +50,8 @@ Charisma: {$hero->Cha}<br /><br />
 	<div class="col-sm-4" >
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div name="weaponName"><b>{$hero->Weapon->Name}</b> <img src="images/icons/pencil_16.png" onclick='document.getElementById("weaponName").style.display = "none"; document.getElementById("weaponEditName").style.display = "block";' /></div>
-				<form id="weaponEditName" action="viewHero.php" style="display: none;">
+				<div id="weaponNameDiv"><b>{$hero->Weapon->Name}</b> <img src="images/icons/pencil_16.png" onclick='document.getElementById("weaponNameDiv").style.display = "none"; document.getElementById("weaponEditNameForm").style.display = "block";' /></div>
+				<form id="weaponEditNameForm" action="viewHero.php" style="display: none;">
 					<input type="hidden" name="action" value="editWeaponName">
 					<input type="hidden" name="weaponID" value="{$hero->Weapon->ID}">
 					<input type="hidden" name="ID" value="{$hero->ID}">
