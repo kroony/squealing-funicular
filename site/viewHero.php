@@ -67,7 +67,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("error","That does not belong to you.");
 			}
 		}
-		else if($_REQUEST['action'] == "weaponEditName")
+		else if($_REQUEST['action'] == "editWeaponName")
 		{
 			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
 			if($weapon->UserID == $currentUID)
