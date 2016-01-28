@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div id="heroName"><h3>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'</h3></div>
+<div id="heroName"><h3>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";' /></h3></div>
 
 {if isset($message)}
 	<div class="alert alert-info">
@@ -49,7 +49,16 @@ Charisma: {$hero->Cha}<br /><br />
 <div class="row">
 	<div class="col-sm-4" >
 		<div class="panel panel-default">
-			<div class="panel-heading">{$hero->Weapon->Name}</div>
+			<div class="panel-heading">
+				<div name="weaponName"><b>{$hero->Weapon->Name}</b> <img src="images/icons/pencil_16.png" onclick='document.getElementById("weaponName").style.display = "none"; document.getElementById("weaponEditName").style.display = "block";' /></div>
+				<form id="weaponEditName" action="viewHero.php" style="display: none;">
+					<input type="hidden" name="action" value="editWeaponName">
+					<input type="hidden" name="weaponID" value="{$hero->Weapon->ID}">
+					<input type="hidden" name="ID" value="{$hero->ID}">
+					<input type="text" name="weaponName" value="{$hero->Weapon->Name}">
+					<input type="submit" value="Submit">
+				</form>
+			</div>
 			<div class="panel-body">
 				<!--<i>@TODO: image</i><br />-->
 				Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />

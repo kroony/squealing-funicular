@@ -54,9 +54,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		else if($_REQUEST['action'] == "changeWeapon")
 		{
 			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
-			$hero = Hero::loadHero($_REQUEST['ID']);
 			
-			if($weapon->UserID == $currentUID && $hero->OwnerID == $currentUID)
+			if($weapon->UserID == $currentUID)
 			{
 				$hero->Weapon = $weapon;
 				$hero->SaveHero();
@@ -66,6 +65,23 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			else
 			{
 				$smarty->assign("error","That does not belong to you.");
+			}
+		}
+		else if($_REQUEST['action'] == "weaponEditName")
+		{
+			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
+			if($weapon->UserID == $currentUID)
+			{
+				$oldName = $weapon->Name;
+				$weapon->Name = $_REQUEST['weaponName'];
+				$weapon->save();
+				
+				$smarty->assign("message", $oldName . " was renamed to " . $weapon->Name);
+				$smarty->assign("hero",$hero);
+			}
+			else
+			{
+				$smarty->assign("error","You can't rename what does not belong to you.");
 			}
 		}
 	}
