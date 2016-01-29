@@ -12,9 +12,10 @@
 			<ul class="nav navbar-nav">
 				<li class="{if $currentpage == "user"}active{/if}"><a href="user.php">User</a></li>
 				<li class="dropdown">
-					<a class="dropdown-toggle{if $currentpage == "home"} active{/if}" data-toggle="dropdown" href="home.php">Heroes <!--<span class="badge">20 </span>@TODO make this actually dynamic--><span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Heroes<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes</a></li>
+						<li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>
+						<li class="{if $currentpage == "party"}active{/if}"><a href="#">Parties</a></li>
 					</ul>
 				</li>
 				<li class="{if $currentpage == "fightpit"}active{/if}"><a href="fightpit.php">Fight Pit</a></li>
