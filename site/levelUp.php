@@ -2,22 +2,19 @@
 
 include_once("bootstrap.php");
 
-/*********Generate Hero*********/
+/*********Level up Hero*********/
 include_once("hero/hero.php");
-
 
 $testHero = new Hero();
 $testHero = $testHero->loadHero($_REQUEST['ID']);
 
-
 if($testHero->LevelUP())
 {
-  // if we leveled up then we can save adventurer
+  // if we levelled up then we can save hero
   $testHero->SaveHero();
 }
 
-/***********end generate Hero *********/
-
+/***********end Level up Hero *********/
 
 //header("Location: index.php");
 $smarty->display("levelUp.tpl");

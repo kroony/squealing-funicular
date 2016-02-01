@@ -85,6 +85,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("error","You can't rename what does not belong to you.");
 			}
 		}
+		//else if($_REQUEST['action'] == "levelUp")
 	}
 	else// we are just viewing hero
 	{

@@ -54,7 +54,7 @@
 	</tbody>
 </table>
 
-{if $totalHeros < 20}
-<p>Generate Level: <a href="addNew.php?level=1">1</a></p>
-{/if}
+{* if $totalHeros < 20 *}
+<p><a href="addNew.php?level=1">Generate A New Hero</a></p>
+{* /if *}
 </div>
