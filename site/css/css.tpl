@@ -33,7 +33,7 @@
 			var bar = document.getElementById(id);
 			var percent = min / max * 100;
 			var percentString = percent.toString();
-			bar.width = percent.concat("%");
+			bar.width = percentString.concat("%");
 		}
 	</script>
 
