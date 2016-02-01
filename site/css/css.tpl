@@ -32,6 +32,7 @@
 		function UpdateBar(id, min, max) {
 			var bar = document.getElementById(id);
 			var percent = min / max * 100;
+			var percentString = percent.toString();
 			bar.width = percent.concat("%");
 		}
 	</script>
