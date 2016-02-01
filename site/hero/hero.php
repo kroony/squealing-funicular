@@ -216,7 +216,7 @@ class Hero
 
 		//increase level
 		$this->Level += 1;
-		$returnString .= "<br /><br /><strong>Levelling to " . $this->Level . "</strong><br />";
+		$returnString .= "<strong>Levelling to " . $this->Level . "</strong><br />";
 
 		//add hp
 		$extraHP = rand(1,$this->HeroClass->HD) + $this->calculateAttributeBonus($this->Con);
