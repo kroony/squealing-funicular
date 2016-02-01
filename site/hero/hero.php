@@ -137,7 +137,7 @@ class Hero
 	
 	function generateStartingWeapon()
 	{
-		$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, getHighestWeaponStat());
+		$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, $this->getHighestWeaponStat());
 		
 		$this->Weapon->save();
 	}
