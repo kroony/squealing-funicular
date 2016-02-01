@@ -85,7 +85,35 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("error","You can't rename what does not belong to you.");
 			}
 		}
-		//else if($_REQUEST['action'] == "levelUp")
+		else if($_REQUEST['action'] == "levelUp")
+		{
+			$preStr = $hero->Str;
+			$preDex = $hero->Dex;
+			$preCon = $hero->Con;
+			$preIntel = $hero->Intel;
+			$preWis = $hero->Wis;
+			$preCha = $hero->Cha;
+			
+			$returnString = $hero->LevelUP();
+			
+			if($returnString == "Not Enough XP to level up")
+			{
+				$smarty->assign("error","Not Enough XP to level up.");
+				$smarty->assign("hero",$hero);
+			}
+			else
+			{
+				if($preStr < $hero->Str){$smarty->assign("StrIncrease", true);}
+				if($preDex < $hero->Dex){$smarty->assign("DexIncrease", true);}
+				if($preCon < $hero->Con){$smarty->assign("ConIncrease", true);}
+				if($preIntel < $hero->Intel){$smarty->assign("IntelIncrease", true);}
+				if($preWis < $hero->Wis){$smarty->assign("WisIncrease", true);}
+				if($preCha < $hero->Cha){$smarty->assign("ChaIncrease", true);}
+				$smarty->assign("message", $returnString);
+				// if we levelled up then we can save hero
+				$hero->SaveHero();
+			}
+		}
 	}
 	else// we are just viewing hero
 	{

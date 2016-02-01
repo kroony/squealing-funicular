@@ -137,7 +137,7 @@ class Hero
 	
 	function generateStartingWeapon()
 	{
-		$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, $this->getHighestWeaponStat());
+		$this->Weapon = Weapon::generateStartingWeapon($this->OwnerID, getHighestWeaponStat());
 		
 		$this->Weapon->save();
 	}
@@ -184,32 +184,31 @@ class Hero
 		//returns true if it worked
 		if($this->CurrentXP >= $this->LevelUpXP)//we have enough XP
 		{
-			$this->forceLevelUP();
-			return true;
+			return $this->forceLevelUP();
 		}
 		else
 		{
-			echo "Not Enough XP to level UP!<br />";
-			return false;
+			return "Not Enough XP to level up";
 		}
 	}
 
 	function forceLevelUP()//same as level up without the checks, used in character gen when XP shouldn't get in the way
 	{
+		$returnString = "";
 		if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
 		{
-			echo "<br />At " . $this->HeroClass->Name . " level cap, Trying to find new class<br />";
+			$returnString .= "<br />At " . $this->HeroClass->Name . " level cap, Trying to find new class<br />";
 			if(!$this->HeroClass->checkForNewClass($this))
 			{
 				//no new class. have reached level cap.
-				echo "Do not meet the requirements for any classes. :(<br /><br /><br />";
+				$returnString .= "Do not meet the requirements for any classes. :(<br /><br /><br />";
 				//cant levelup, we are done here.
-				return false;
+				return $returnString;
 			}
 			else
 			{
 				//we found a new class and have applied it. now we can level
-				echo "Have chosen class: " . $this->HeroClass->Name . "<br />";
+				$returnString .= "Have chosen class: " . $this->HeroClass->Name . "<br />";
 			}
 			//search for new class
 		}
@@ -217,7 +216,7 @@ class Hero
 
 		//increase level
 		$this->Level += 1;
-		echo "<br /><br /><strong>Levelling to " . $this->Level . "</strong><br />";
+		$returnString .= "<br /><br /><strong>Levelling to " . $this->Level . "</strong><br />";
 
 		//add hp
 		$extraHP = rand(1,$this->HeroClass->HD) + $this->calculateAttributeBonus($this->Con);
@@ -227,7 +226,7 @@ class Hero
 		}
 		$this->MaxHP += $extraHP;
 		$this->CurrentHP = $this->MaxHP; //healed when levelled up?? could be exploited....
-		echo "Adding " . $extraHP . " HP. Rolled a d" . $this->HeroClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
+		$returnString .= "Adding " . $extraHP . " HP. Rolled a d" . $this->HeroClass->HD . "+" . $this->calculateAttributeBonus($this->Con) . "<br />";
 
 		//increase XP cap
 		$this->CurrentXP = 0;
@@ -240,7 +239,7 @@ class Hero
 			$i++;
 		}
 		$this->LevelUpXP = (100 * pow($this->Level, 2)) - (100 * pow($this->Level - 1, 2)) - $newXPBonus;
-		echo "New XP cap:" . $this->LevelUpXP . " XP Bonus this Level: " . $newXPBonus . "<br />";
+		$returnString .= "New XP cap:" . $this->LevelUpXP . " XP Bonus this Level: " . $newXPBonus . "<br />";
 
 		//increase 1 attribute
 		$possibleAttribute = array("Str", "Dex", "Con", "Intel", "Wis", "Cha", "Fte");//dynamically create this array using a Class favoured Attribute, weighted with Fate
@@ -255,15 +254,15 @@ class Hero
 		}
 		
 		$pickAttribute = $possibleAttribute[rand(0, count($possibleAttribute) -1)];
-		if      ($pickAttribute == "Str") {$this->Str++; echo "<b>Increase Str</b><br />";}
-		else if($pickAttribute == "Dex") {$this->Dex++; echo "<b>Increase Dex</b><br />";}
-		else if($pickAttribute == "Con") {$this->Con++; echo "<b>Increase Con</b><br />";}
-		else if($pickAttribute == "Intel") {$this->Intel++; echo "<b>Increase Intel</b><br />";}
-		else if($pickAttribute == "Wis") {$this->Wis++; echo "<b>Increase Wis</b><br />";}
-		else if($pickAttribute == "Cha") {$this->Cha++; echo "<b>Increase Cha</b><br />";}
-		//else if($pickAttribute == "Fte") {$this->Fte++; echo "<b>Increase Fte</b><br />";}
+		if      ($pickAttribute == "Str") {$this->Str++;}
+		else if($pickAttribute == "Dex") {$this->Dex++;}
+		else if($pickAttribute == "Con") {$this->Con++;}
+		else if($pickAttribute == "Intel") {$this->Intel++;}
+		else if($pickAttribute == "Wis") {$this->Wis++;}
+		else if($pickAttribute == "Cha") {$this->Cha++;}
+		else if($pickAttribute == "Fte") {$this->Fte++;}
 
-		return true;
+		return $returnString;
 	}
 
 	function calculateAttributeBonus($attribute)

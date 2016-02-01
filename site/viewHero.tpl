@@ -36,7 +36,7 @@ Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
-    <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP</span>
+    <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
 </div><br />
 Strength: {$hero->Str}<br />
