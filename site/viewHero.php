@@ -112,6 +112,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("message", $returnString);
 				// if we levelled up then we can save hero
 				$hero->SaveHero();
+				
+				$smarty->assign("hero",$hero);
 			}
 		}
 	}

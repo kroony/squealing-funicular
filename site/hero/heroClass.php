@@ -64,9 +64,9 @@ class HeroClass
 		/*checks for classes we could move to.
 		  returns false if unsuccessful
 		  returns true AND makes the change if successful
-		  perhaps this shouldn't be called CHECK if it DOES something?
+		  @TODO perhaps this shouldn't be called CHECK if it DOES something?
 		 */
-
+		
 		if($Hero->HeroClass->NextClass == null || $Hero->HeroClass->NextClass == "")//check there is another class to go to
 		{
 			return false;
@@ -83,7 +83,7 @@ class HeroClass
 		$possibleNewClasses = array();
 		while($obj = $getResult->fetchObject())
 		{
-			echo $obj->Name . " a needs " . $obj->PrerequisiteTarget . " in " . $obj->PrerequisiteAttribute . " Hero has " . $Hero->Str . " " . $Hero->Dex . " " . $Hero->Con . " " . $Hero->Intel . " " . $Hero->Wis . " " . $Hero->Cha . " " . $Hero->Fte . "<br />";
+			//$returnString .= $obj->Name . " a needs " . $obj->PrerequisiteTarget . " in " . $obj->PrerequisiteAttribute"<br />";
 
 			if(($obj->PrerequisiteAttribute == "Str" && $obj->PrerequisiteTarget <= $Hero->Str) ||
 				($obj->PrerequisiteAttribute == "Dex" && $obj->PrerequisiteTarget <= $Hero->Dex) ||
