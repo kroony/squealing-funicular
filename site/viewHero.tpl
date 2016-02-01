@@ -23,13 +23,17 @@
 <br />
 {include file='portraits/kobold.html'}
 <br />
-Level: {$hero->Level}<br />
+Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"></span>{/if}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
-Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
+Class: {if isset($ClassChange)} After completing mastering all that a {$ClassChange} can. {$hero->Name} has advanced to {/if}{$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 <div class="progress">
   <div class="progress-bar {if $displayHero->CurrentHP == $displayHero->MaxHP} progress-bar-success {elseif $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP} progress-bar-warning {/if}" 
   role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
-	<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a>{/if}</span>
+	<span>
+		{$hero->CurrentHP}HP/{$hero->MaxHP}HP
+		{if isset($HPIncrease)} <span class="glyphicon glyphicon-arrow-up"></span> +{$HPIncrease}{/if}
+		{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a>{/if}
+	</span>
   </div>
 </div><br />
 

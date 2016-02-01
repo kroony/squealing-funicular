@@ -93,6 +93,9 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			$preIntel = $hero->Intel;
 			$preWis = $hero->Wis;
 			$preCha = $hero->Cha;
+			$preLevel = $hero->Level;
+			$preClass = $hero->HeroClass->Name;
+			$preHP = $hero->MaxHP;
 			
 			$returnString = $hero->LevelUP();
 			
@@ -109,6 +112,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				if($preIntel < $hero->Intel){$smarty->assign("IntelIncrease", true);}
 				if($preWis < $hero->Wis){$smarty->assign("WisIncrease", true);}
 				if($preCha < $hero->Cha){$smarty->assign("ChaIncrease", true);}
+				
+				if($preLevel < $hero->Level){$smarty->assign("LevelIncrease", true);}
+				if($preClass != $hero->HeroClass->Name){$smarty->assign("ClassChange", $preClass);}
+				if($preHP < $hero->MaxHP){$smarty->assign("HPIncrease", $preHP - $hero->MaxHP);}
+				
 				$smarty->assign("message", $returnString);
 				// if we levelled up then we can save hero
 				$hero->SaveHero();
