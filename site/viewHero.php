@@ -96,6 +96,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			$preLevel = $hero->Level;
 			$preClass = $hero->HeroClass->Name;
 			$preHP = $hero->MaxHP;
+			$preXP = $hero->CurrentXP;
 			
 			$returnString = $hero->LevelUP();
 			
@@ -116,6 +117,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				if($preLevel < $hero->Level){$smarty->assign("LevelIncrease", true);}
 				if($preClass != $hero->HeroClass->Name){$smarty->assign("ClassChange", $preClass);}
 				if($preHP < $hero->MaxHP){$smarty->assign("HPIncrease", $hero->MaxHP - $preHP);}
+				if($preXP == 0){$smarty->assign("OldXP", $preXP);}
 				
 				$smarty->assign("message", $returnString);
 				// if we levelled up then we can save hero

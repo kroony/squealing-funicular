@@ -38,10 +38,16 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
 
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
-  aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
+  aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" id="XPBar" style="width:{if isset($OldXP)}{$OldXP/$hero->LevelUpXP*100}{else}{$hero->CurrentXP/$hero->LevelUpXP*100}{/if}%">
     <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
-</div><br />
+</div>
+{if isset($OldXP)}
+<script type="text/javascript">
+UpdateBar("XPBar", 0, {$hero->CurrentXP});
+</script>
+{/if}
+<br />
 Strength: {$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if}<br />
 Dexterity: {$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}<br />
 Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}<br />
