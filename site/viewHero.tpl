@@ -25,7 +25,7 @@
 <br />
 Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
-Class: {if isset($ClassChange)} After completing mastering all that a {$ClassChange} can. {$hero->Name} has advanced to {/if}{$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
+Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {$hero->Name} has advanced to {/if}{$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
 <div class="progress">
   <div class="progress-bar {if $displayHero->CurrentHP == $displayHero->MaxHP} progress-bar-success {elseif $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP} progress-bar-warning {/if}" 
   role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
