@@ -197,11 +197,11 @@ class Hero
 		$returnString = "";
 		if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
 		{
-			$returnString .= "<br />At " . $this->HeroClass->Name . " level cap, Trying to find new class<br />";
+			$returnString .= "At " . $this->HeroClass->Name . " level cap, Trying to find new class<br />";
 			if(!$this->HeroClass->checkForNewClass($this))
 			{
 				//no new class. have reached level cap.
-				$returnString .= "Do not meet the requirements for any classes. :(<br /><br /><br />";
+				$returnString .= "Do not meet the requirements for any classes.";
 				//cant levelup, we are done here.
 				return $returnString;
 			}

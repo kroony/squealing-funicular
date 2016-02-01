@@ -39,12 +39,12 @@ Class: {$hero->HeroClass->Name} - {$hero->HeroClass->Description}<br />
     <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
 </div><br />
-Strength: {$hero->Str}<br />
-Dexterity: {$hero->Dex}<br />
-Constitution: {$hero->Con}<br />
-Intelligence: {$hero->Intel}<br />
-Wisdom: {$hero->Wis}<br />
-Charisma: {$hero->Cha}<br /><br />
+Strength: {$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span> Strength increased when levelling up!{/if}<br />
+Dexterity: {$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span> Dexterity increased when levelling up!{/if}<br />
+Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span> Constitution increased when levelling up!{/if}<br />
+Intelligence: {$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span> Intelligence increased when levelling up!{/if}<br />
+Wisdom: {$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span>{/if} Wisdom increased when levelling up!<br />
+Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: gold;"></span>{/if} Charisma increased when levelling up!<br /><br />
 
 <div class="row">
 	<div class="col-sm-4" >
