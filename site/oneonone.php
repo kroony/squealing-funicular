@@ -29,6 +29,17 @@ $smarty->assign("hero1_name",$hero1->displayName(true));
 $smarty->assign("hero2",$hero2);
 $smarty->assign("hero2_name",$hero2->displayName(false));
 
+if($hero2->Level == -1 $$ $hero2->CurrentHP <= 0)//if we knock out a monster, loot their weapon
+{
+	$hero2->Weapon->UserID = $hero1->OwnerID;
+	$hero2->Weapon->save();
+	$smarty->assign("WeaponLoot",$hero2->Weapon);
+	
+	$hero2->Weapon = Weapon::generateNPCWeapon($hero2->GetOwner()->ID, $hero2->getHighestWeaponStat());
+	$hero2->Weapon->save();		
+	$hero2->SaveHero();
+}
+
 $smarty->display("oneonone.tpl");
 
 

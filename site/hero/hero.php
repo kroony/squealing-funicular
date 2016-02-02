@@ -271,6 +271,20 @@ class Hero
 
 		return $bonus;
 	}
+	
+	function calculateRunawayLimit()
+	{
+		$limit = $this->calculateAttributeBonus($this->Cha);
+		if($this->Level > 0)
+		{
+			$limit += $this->Level;
+		}
+		else
+		{
+			$limit += ceil(($this->LevelUpXP - 100) / 2);
+		}
+		return $limit;
+	}
 
 	function getAttributeByName($name)
 	{

@@ -17,7 +17,10 @@
 		{$hero2_name} has been knocked out in battle<br /><br />
 		<b>{$hero1_name} is victorious!</b><br />
 	{/if}
-
+	
+	{if isset($WeaponLoot)}
+		You manage to loot {$WeaponLoot->Name} from {$hero2_name}<br />
+	{/if}
 	<a href="home.php">Return</a>
 </div>
 </div>

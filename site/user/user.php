@@ -39,6 +39,15 @@ class User
 		
 		return $this;
 	}
+	
+	function canAfford($price)
+    {
+		if($this->gold <= $price)
+		{
+			return true;
+		}
+		return false;
+	}
 
 	function Save()
 	{
