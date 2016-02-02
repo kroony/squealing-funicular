@@ -7,6 +7,15 @@ include_once("user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
 
+if($user->ID == 1)
+{
+	$getClassQuery = "SELECT count(*) FROM `User`;";
+	$res=$db->query($getClassQuery);//execute query
+	$obj = $res->fetchObject();
+	
+	$smarty->assign("Players",$obj->count);
+}
+
 //Create Hero Controller
 include_once("hero/heroController.php");
 $heroController = new heroController();
