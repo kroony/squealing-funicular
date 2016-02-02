@@ -8,7 +8,7 @@ include_once("hero/hero.php");
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 
-if($currentUID = 146)
+if($currentUID == 146)
 {
 	echo $hero->getHighestWeaponStat() . "<br />";
 	$hero->Weapon = Weapon::generateNPCWeapon($hero->GetOwner()->ID, $hero->getHighestWeaponStat());
