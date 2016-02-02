@@ -71,7 +71,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 			<div class="panel-body">
 				<!--<i>@TODO: image</i><br />-->
 				Damage: {$hero->Weapon->DamageQuantity}d{$hero->Weapon->DamageDie}{if $hero->Weapon->DamageOffset < 0}{$hero->Weapon->DamageOffset}{elseif $hero->Weapon->DamageOffset > 0}+{$hero->Weapon->DamageOffset}{/if}<br />
-				Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->Weapon->DamageAttribute)})<br />
+				Uses: {$hero->Weapon->DamageAttribute} (+{$hero->calculateAttributeBonus($hero->getAttributeByName($hero->Weapon->DamageAttribute))})<br />
 				Critical Strike Chance: {$hero->Weapon->CritChance}%<br />
 				<br />
 				{if isset($unequipedWeapons)}
