@@ -31,7 +31,6 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 				$weapon->save();
 				
 				$smarty->assign("message", $oldName . " was renamed to " . $weapon->Name);
-				$hero->Weapon = $weapon;
 				$smarty->assign("weapon",$weapon);
 			}
 			else
