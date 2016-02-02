@@ -7,7 +7,7 @@ include_once("hero/race.php");
 $db = DB::GetConn();
 
 //get Class Count
-$getClassQuery = "SELECT Class,COUNT(*) as count FROM Hero Where OwnerID <> 146 GROUP BY Class ORDER BY count DESC;";
+$getClassQuery = "SELECT Class,COUNT(*) as count FROM Hero Where OwnerID <> 146 AND CurrentHP > 0 GROUP BY Class ORDER BY count DESC;";
 $res=$db->query($getClassQuery);//execute query
 $ClassTableData = "['Class', 'Population'],";
 while($obj = $res->fetchObject())
@@ -19,7 +19,7 @@ $ClassTableData = rtrim($ClassTableData, ",");
 $smarty->assign("ClassTableData",$ClassTableData);
 
 //get Race count
-$getRaceQuery = "SELECT Race,COUNT(*) as count FROM Hero Where OwnerID <> 146 GROUP BY Race ORDER BY count DESC;";
+$getRaceQuery = "SELECT Race,COUNT(*) as count FROM Hero Where OwnerID <> 146 AND CurrentHP > 0 GROUP BY Race ORDER BY count DESC;";
 $res=$db->query($getRaceQuery);//execute query
 $RaceTableData = "['Race', 'Population'],";
 while($obj = $res->fetchObject())
@@ -31,7 +31,7 @@ $RaceTableData = rtrim($RaceTableData, ",");
 $smarty->assign("RaceTableData",$RaceTableData);
 
 //Get Level Count
-$getLevelQuery = "SELECT Level,COUNT(*) as count FROM Hero Where OwnerID <> 146 GROUP BY Level ORDER BY Level ASC;";
+$getLevelQuery = "SELECT Level,COUNT(*) as count FROM Hero Where OwnerID <> 146 AND CurrentHP > 0 GROUP BY Level ORDER BY Level ASC;";
 $res=$db->query($getLevelQuery);//execute query
 $LevelTableData = "";
 while($obj = $res->fetchObject())
