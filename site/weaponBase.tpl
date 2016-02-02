@@ -13,6 +13,7 @@
       <th>negativenameadjective</th>
       <th>positivenameadjective</th>
       <th>startingweapon</th>
+      <th>npcweapon</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,6 +30,7 @@
       <td>{$weaponBase->negativenameadjective}</td>
       <td>{$weaponBase->positivenameadjective}</td>
       <td>{$weaponBase->startingweapon}</td>
+      <td>{$weaponBase->npcweapon}</td>
 		</tr>
 		{/foreach}
 	</tbody>
