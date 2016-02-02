@@ -13,7 +13,7 @@ $smarty->display("menu.tpl");
 
 $weaponController = new weaponController();
 
-$weapon = new Weapon();
+$weapon = new Weapon(0,0,0,0,0,0,0);
 $weapon = $weapon->loadWeapon($_REQUEST['ID']);
 
 if($weapon->UserID == $currentUID)//check weapon belongs to current user 
