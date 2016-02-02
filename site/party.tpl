@@ -19,7 +19,7 @@
 </table>
 
 <p>
-Comming soon</p>
+Coming soon</p>
 
 <p>
 Select upto 6 heroes to join a party.<br />

@@ -2,7 +2,7 @@
 <h1>Fight Pit</h1>
 
 <p>
-Comming soon</p>
+Coming soon</p>
 
 <p>
 Select a hero to enter into the fight pits, or select another players fighter already in the pits to challange.<br />
