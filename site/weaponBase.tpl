@@ -2,6 +2,7 @@
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
+      <th>ID</th>
 			<th>name</th>
       <th>damagedie</th>
       <th>damagequantity</th>
@@ -19,6 +20,7 @@
 	<tbody>
 		{foreach from=$weaponBases item=weaponBase}
 		<tr>
+      <td>{$weaponBase->ID}</td>
 			<td>{$weaponBase->name}</td>
       <td>{$weaponBase->damagedie}</td>
       <td>{$weaponBase->damagequantity}</td>
