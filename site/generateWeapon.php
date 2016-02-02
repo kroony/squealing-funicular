@@ -8,6 +8,7 @@ include_once("hero/hero.php");
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 
+echo "current user ID: " . $currentUID . "<br />";
 if($currentUID == 146)
 {
 	echo $hero->getHighestWeaponStat() . "<br />";
@@ -30,5 +31,5 @@ else
 		//stop generating weapons your weapon is ok!
 	}
 }
-header("Location: home.php");
+//header("Location: home.php");
 ?>
