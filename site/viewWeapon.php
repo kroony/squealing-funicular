@@ -20,7 +20,7 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 {
 	if(isset($_REQUEST['action']))//check if we are doing anything
 	{	
-		else if($_REQUEST['action'] == "editWeaponName")
+		if($_REQUEST['action'] == "editWeaponName")
 		{
 			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
 			if($weapon->UserID == $currentUID)
