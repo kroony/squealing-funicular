@@ -26,7 +26,7 @@
 	<tbody>
 		{foreach from=$usersWeapons item=weapon}
 		<tr>
-			<td>{$weapon->Name}</td>
+			<td><a href="viewWeapon.php?ID={$weapon->ID}">{$weapon->Name}</a></td>
 			<td>{$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</td>
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
