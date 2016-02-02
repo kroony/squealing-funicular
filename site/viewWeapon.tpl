@@ -27,35 +27,40 @@
 		Damage: {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if} - Test<br />
 		<table class='table table-condensed table-hover'>
 			<tr>
+				<td>Weapon Attribute</td>
+				<td>Current Value</td>
+				<td>Upgrade</td>
+			</tr>
+			<tr>
 				<td>Damage Quantity</td><td>{$weapon->DamageQuantity}</td>
 				{if $user->canAfford($weapon->calcDamageQuantityUpgradeCost())}
 					<td><a href="viewWeapon.php?action=upgradeQuantity&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageQuantityUpgradeCost()} gp</td>
 				{else}
-					<td><span class="glyphicon glyphicon-arrow-up" style="color: red;"></span> {$weapon->calcDamageQuantityUpgradeCost()} gp</td>
+					<td>{$weapon->calcDamageQuantityUpgradeCost()} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Damage Dice</td><td>{$weapon->DamageDie}</td>
 				{if $user->canAfford($weapon->calcDamageDieUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeDie&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcDamageDieUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeDie&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageDieUpgradeCost()} gp</td>
 				{else}
-					<td><span class="glyphicon glyphicon-arrow-up" style="color: red;"></span> {$weapon->calcDamageDieUpgradeCost()} gp</td>
+					<td>{$weapon->calcDamageDieUpgradeCost()} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Damage Offset</td><td>{$weapon->DamageOffset}</td>
 				{if $user->canAfford($weapon->calcDamageOffsetUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeOffset&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcDamageOffsetUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeOffset&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageOffsetUpgradeCost()} gp</td>
 				{else}
-					<td><span class="glyphicon glyphicon-arrow-up" style="color: red;"></span> {$weapon->calcDamageOffsetUpgradeCost()} gp</td>
+					<td>{$weapon->calcDamageOffsetUpgradeCost()} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Critical Chance</td><td>{$weapon->CritChance}</td>
 				{if $user->canAfford($weapon->calcCritChanceUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeCrit&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcCritChanceUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeCrit&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcCritChanceUpgradeCost()} gp</td>
 				{else}
-					<td><span class="glyphicon glyphicon-arrow-up" style="color: red;"></span> {$weapon->calcCritChanceUpgradeCost()} gp</td>
+					<td>{$weapon->calcCritChanceUpgradeCost()} gp</td>
 				{/if}
 			</tr>
 		</table>

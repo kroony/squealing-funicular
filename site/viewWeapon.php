@@ -32,11 +32,79 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 				
 				$smarty->assign("message", $oldName . " was renamed to " . $weapon->Name);
 				$hero->Weapon = $weapon;
-				$smarty->assign("hero",$hero);
+				$smarty->assign("weapon",$weapon);
 			}
 			else
 			{
 				$smarty->assign("error","You can't rename what does not belong to you.");
+			}
+		}
+		else if($_REQUEST['action'] == "upgradeQuantity")
+		{
+			if($user->canAfford($weapon->calcDamageQuantityUpgradeCost()))
+			{
+				$user->gold -= $weapon->calcDamageQuantityUpgradeCost();
+				$user->Save();
+				
+				$weapon->DamageQuantity++;
+				$weapon->save();
+				
+				$smarty->assign("weapon",$weapon);
+			}
+			else
+			{
+				$smarty->assign("error","You can't afford this upgrade.");
+			}
+		}
+		else if($_REQUEST['action'] == "upgradeDie")
+		{
+			if($user->canAfford($weapon->calcDamageDieUpgradeCost()))
+			{
+				$user->gold -= $weapon->calcDamageDieUpgradeCost();
+				$user->Save();
+				
+				$weapon->DamageDie++;
+				$weapon->save();
+				
+				$smarty->assign("weapon",$weapon);
+			}
+			else
+			{
+				$smarty->assign("error","You can't afford this upgrade.");
+			}
+		}
+		else if($_REQUEST['action'] == "upgradeOffset")
+		{
+			if($user->canAfford($weapon->calcDamageOffsetUpgradeCost()))
+			{
+				$user->gold -= $weapon->calcDamageOffsetUpgradeCost();
+				$user->Save();
+				
+				$weapon->DamageOffset++;
+				$weapon->save();
+				
+				$smarty->assign("weapon",$weapon);
+			}
+			else
+			{
+				$smarty->assign("error","You can't afford this upgrade.");
+			}
+		}
+		else if($_REQUEST['action'] == "upgradeCrit")
+		{
+			if($user->canAfford($weapon->calcCritChanceUpgradeCost()))
+			{
+				$user->gold -= $weapon->calcCritChanceUpgradeCost();
+				$user->Save();
+				
+				$weapon->CritChance++;
+				$weapon->save();
+				
+				$smarty->assign("weapon",$weapon);
+			}
+			else
+			{
+				$smarty->assign("error","You can't afford this upgrade.");
 			}
 		}
 	}
