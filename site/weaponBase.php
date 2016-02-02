@@ -13,7 +13,7 @@ $smarty->assign("currentpage","party");
 $smarty->display("menu.tpl");
 
 /*********  show all Party  ***********/
-$weaponbases = $weaponController->getAllWeaponBase();
+$weaponBases = $weaponController->getAllWeaponBase();
 $smarty->assign("weaponBases",$weaponBases);
 $smarty->display("weaponBase.tpl");
 /*********  end show all Party  ***********/
