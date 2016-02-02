@@ -42,7 +42,7 @@ class User
 	
 	function canAfford($price)
     {
-		if($this->gold <= $price)
+		if($price <= $this->gold)
 		{
 			return true;
 		}
