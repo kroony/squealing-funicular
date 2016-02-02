@@ -85,22 +85,22 @@ class Weapon
 	
 	function calcDamageQuantityUpgradeCost()
 	{
-		return ceil(($this->DamageQuantity + 1)^($this->DamageDie * 1.66));
+		return ceil(pow(($this->DamageQuantity + 1), ($this->DamageDie * 1.66)));
 	}
 	
 	function calcDamageDieUpgradeCost()
 	{
-		return ceil($this->DamageDie^($this->DamageQuantity * 3));
+		return ceil(pow($this->DamageDie, ($this->DamageQuantity * 3)));
 	}
 	
 	function calcDamageOffsetUpgradeCost()
 	{
-		return ceil((($this->DamageOffset + 3) * 1.77) ^ (2 * $this->DamageQuantity));
+		return ceil(pow((($this->DamageOffset + 3) * 1.77), (2 * $this->DamageQuantity)));
 	}
 	
 	function calcCritChanceUpgradeCost()
 	{
-		return ceil(($this->DamageQuantity + $this->DamageDie + $this->CritChance + 1) * (2 ^ $this->CritChance));
+		return ceil(($this->DamageQuantity + $this->DamageDie + $this->CritChance + 1) * pow(2, $this->CritChance));
 	}
 	
 	function getScrapValue()
