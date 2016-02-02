@@ -213,6 +213,7 @@ class Weapon
 		$attribute_con = $db->quoteInto("damageattribute = ?", $HighestAttribute);
 		$npc_con = $db->quoteInto("npcweapon = ?", 1);
 		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con AND $npc_con limit 1;";
+		echo $getQuery;
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 		
