@@ -15,7 +15,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Heroes<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>
-						<li class="{if $currentpage == "party"}active{/if}"><a href="#">Parties</a></li>
+						<li class="{if $currentpage == "party"}active{/if}"><a href="party.php">Parties</a></li>
 					</ul>
 				</li>
 				<li class="{if $currentpage == "fightpit"}active{/if}"><a href="fightpit.php">Fight Pit</a></li>
