@@ -3,8 +3,7 @@
 	<thead>
 		<tr>
 			<th>Name</th>
-			<th>Race</th>
-			<th>Class</th>
+			<th>Type</th>
 			<th>HP</th>
 			<th>Level</th>
 			<th>XP</th>
@@ -22,8 +21,7 @@
 		{foreach from=$userHeros item=Hero}
 		<tr>
 			<td><a href='viewHero.php?ID={$Hero->ID}'>{str_replace("'", "", $Hero->Name)}</a></td>
-			<td>{$Hero->Race->Name}</td>
-			<td>{$Hero->HeroClass->Name}</td>
+			<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
 			<td>
 				<div class="progress">
 					<div class="progress-bar {if $Hero->CurrentHP == $Hero->MaxHP} progress-bar-success {elseif $Hero->CurrentHP < $Hero->Con} progress-bar-danger {elseif $Hero->CurrentHP < $Hero->MaxHP} progress-bar-warning {/if}" 

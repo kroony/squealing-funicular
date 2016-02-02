@@ -5,8 +5,7 @@
 		<tr>
 			<th>Rank</th>
 			<th>Name</th>
-			<th>Race</th>
-			<th>Class</th>
+			<th>Type</th>
 			<th>Level</th>
 			<th>XP</th>
 			<th>User</th>
@@ -17,8 +16,7 @@
 		<tr>
 			<td>{$rank + 1}</td>
 			<td>{str_replace("'", "", $Hero->Name)}</td>
-			<td>{$Hero->Race->Name}</td>
-			<td>{$Hero->HeroClass->Name}</td>
+			<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
 			<td>{$Hero->Level}</td>
 			<td>
 				<div class="progress">

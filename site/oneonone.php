@@ -40,6 +40,18 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	$hero2->SaveHero();
 }
 
+//if the attacker is knocked out by a defending PC, the winner loots the weapon
+if($hero1->CurrentHP <= 0 && $hero2->OwnerID != 146)
+{
+	$hero1->Weapon->UserID = $hero2->OwnerID;
+	$hero1->Weapon->save();
+	$smarty->assign("WeaponLost",$hero1->Weapon);
+	
+	$hero1->Weapon = Weapon::generateStartingWeapon($hero1->GetOwner()->ID, $hero1->getHighestWeaponStat());
+	$hero1->Weapon->save();		
+	$hero1->SaveHero();
+}
+
 $smarty->display("oneonone.tpl");
 
 
