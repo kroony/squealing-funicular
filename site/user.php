@@ -1,17 +1,23 @@
 <?php
 
 include("bootstrap.php");
-include_once("user/user.php");
 
+//load User
+include_once("user/user.php");
+$user = new User();
+$user = $user->load($currentUID);
+
+//Create Hero Controller
+include_once("hero/heroController.php");
+$heroController = new heroController();
+
+//Page Header
 $smarty->display("css/css.tpl");
 
 //menu
 $smarty->assign("currentpage","user");
 $smarty->display("menu.tpl");
 
-
-$user = new User();
-$user = $user->load($currentUID);
 
 if(isset($_REQUEST['action']))//check if we are doing anything
 {
@@ -51,7 +57,9 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 	}
 }
 
+$heroCount = $heroController->countAllForUser($currentUID);
 $smarty->assign("user",$user);
+$smarty->assign("heroCount",$heroCount);
 
 $smarty->display("user.tpl");
 

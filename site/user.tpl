@@ -17,6 +17,7 @@
 <br />
 Email: {$user->email}<br />
 Gold: {$user->gold}gp<br />
+Total Heroes: {$heroCount}<br />
 <br />
 Change Password<br />
 <form action="user.php" method="post">
