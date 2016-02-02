@@ -10,7 +10,7 @@ $user = $user->load($currentUID);
 if($user->ID == 1)
 {
 	$db = DB::GetConn();
-	$getClassQuery = "SELECT count(*) FROM `User`;";
+	$getClassQuery = "SELECT count(*) as count FROM `User`;";
 	$res=$db->query($getClassQuery);//execute query
 	$obj = $res->fetchObject();
 	
