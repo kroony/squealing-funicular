@@ -11,7 +11,7 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 echo "current user ID: " . $currentUID . "<br />";
 if($currentUID == 146)
 {
-	echo $hero->getHighestWeaponStat() . "<br />";
+	//echo $hero->getHighestWeaponStat() . "<br />";
 	$hero->Weapon = Weapon::generateNPCWeapon($hero->GetOwner()->ID, $hero->getHighestWeaponStat());
 	//save weapon 
 	$hero->Weapon->save();		
@@ -31,5 +31,5 @@ else
 		//stop generating weapons your weapon is ok!
 	}
 }
-//header("Location: home.php");
+header("Location: home.php");
 ?>

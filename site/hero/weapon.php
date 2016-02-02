@@ -213,10 +213,10 @@ class Weapon
 		$attribute_con = $db->quoteInto("damageattribute = ?", $HighestAttribute);
 		$npc_con = $db->quoteInto("npcweapon = ?", 1);
 		$getQuery = "SELECT * FROM `weaponbase` WHERE $attribute_con AND $npc_con limit 1;";
-		echo $getQuery . "<br />";
+		
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-		echo "Weapon base ID: " . $obj->ID;
+		
 		$rw = Weapon::generateWeapon($UserID, $obj->ID);
 		return $rw;
 	}
