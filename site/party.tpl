@@ -8,13 +8,13 @@
 		</tr>
 	</thead>
 	<tbody>
-		{foreach from=$userParties item=Party}
+		{* foreach from=$userParties item=Party *}
 		<tr>
-			<td>{$Party->Name}</td>
-			<td>{$Party->Status}</td>
-			<td>{$Party->Cooldown}</td>
+			<td>{* $Party->Name *}</td>
+			<td>{* $Party->Status *}</td>
+			<td>{* $Party->Cooldown *}</td>
 		</tr>
-		{/foreach}
+		{* /foreach *}
 	</tbody>
 </table>
 
