@@ -51,7 +51,7 @@ class Party
 
 	function addXP($log, $XP)
 	{
-		return false
+		return false;
 	}
 
 	function rollInitiative($log)
