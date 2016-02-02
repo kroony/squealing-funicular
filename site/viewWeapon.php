@@ -7,6 +7,7 @@ include_once("hero/weaponController.php");
 include_once("user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
+$smarty->assign("user",$user);
 
 $smarty->display("css/css.tpl");
 $smarty->display("menu.tpl");

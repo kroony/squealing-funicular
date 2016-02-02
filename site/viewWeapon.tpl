@@ -26,10 +26,10 @@
 		{/if}
 		Damage: {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if} - Test<br />
 		<table class='table table-condensed table-hover'>
-			<tr><td>Damage Quantity</td><td>{$weapon->DamageQuantity}</td><td><span class="glyphicon glyphicon-arrow-up"> {$weapon->calcDamageQuantityUpgradeCost()} gp</td></td>
-			<tr><td>Damage Dice</td><td>{$weapon->DamageDie}</td><td><span class="glyphicon glyphicon-arrow-up"> {$weapon->calcDamageDieUpgradeCost()} gp</td></td>
-			<tr><td>Damage Offset</td><td>{$weapon->DamageOffset}</td><td><span class="glyphicon glyphicon-arrow-up"> {$weapon->calcDamageOffsetUpgradeCost()} gp</td></td>
-			<tr><td>Critical Chance</td><td>{$weapon->CritChance}</td><td><span class="glyphicon glyphicon-arrow-up"> {$weapon->calcCritChanceUpgradeCost()} gp</td></td>
+			<tr><td>Damage Quantity</td><td>{$weapon->DamageQuantity}</td><td><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcDamageQuantityUpgradeCost()} gp</td></td>
+			<tr><td>Damage Dice</td><td>{$weapon->DamageDie}</td><td><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcDamageDieUpgradeCost()} gp</td></td>
+			<tr><td>Damage Offset</td><td>{$weapon->DamageOffset}</td><td><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcDamageOffsetUpgradeCost()} gp</td></td>
+			<tr><td>Critical Chance</td><td>{$weapon->CritChance}</td><td><span class="glyphicon glyphicon-arrow-up"></span> {$weapon->calcCritChanceUpgradeCost()} gp</td></td>
 		</table>
 		Uses: {$weapon->DamageAttribute}<br />
 	</div>
