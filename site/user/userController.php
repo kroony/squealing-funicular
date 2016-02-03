@@ -15,6 +15,7 @@ class userController
 		while($obj = $res->fetchObject())
 		{
 			array_push($returnUsers, User::loadUserFromObject($obj));
+			echo $obj->username . "<br />";
 		}
 		return $returnUsers;
 	}
@@ -30,7 +31,7 @@ class userController
 		$returnUsers = array();
 		while($obj = $res->fetchObject())
 		{
-			array_push($returnUsers, Hero::loadUserFromObject($obj));
+			array_push($returnUsers, User::loadUserFromObject($obj));
 		}
 		return $returnUsers;
 	}

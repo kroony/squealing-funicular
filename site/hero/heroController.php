@@ -24,12 +24,12 @@ class heroController
 	function countAllForUser($id)
 	{
 		$db = DB::GetConn();
-
-		$getQuery = "SELECT ID FROM `Hero` WHERE `OwnerID` = $id;";
-
-		$res=$db->query($getQuery);//execute query
 		
-		return count($res);
+		$getQuery = "SELECT count(*) as count FROM `Hero` WHERE `OwnerID` = $id;";
+		$res=$db->query($getQuery);//execute query
+		$obj = $res->fetchObject();
+		
+		return $obj->count;
 	}
 	
 	function getTop10ByXP()
