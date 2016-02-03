@@ -3,36 +3,22 @@
 	<thead>
 		<tr>
       <th>ID</th>
-			<th>name</th>
-      <th>damagedie</th>
-      <th>damagequantity</th>
-      <th>minoffset</th>
-      <th>maxoffset</th>
-      <th>mincrit</th>
-      <th>maxcrit</th>
-      <th>damageattribute</th>
-      <th>negativenameadjective</th>
-      <th>positivenameadjective</th>
-      <th>startingweapon</th>
-      <th>npcweapon</th>
+			<th>username</th>
+      <th>email</th>
+      <th>password</th>
+      <th>gold</th>
+      <th>active</th>
 		</tr>
 	</thead>
 	<tbody>
-		{foreach from=$weaponBases item=weaponBase}
+		{foreach from=$users item=user}
 		<tr>
-      <td>{$weaponBase->ID}</td>
-			<td>{$weaponBase->name}</td>
-      <td>{$weaponBase->damagedie}</td>
-      <td>{$weaponBase->damagequantity}</td>
-      <td>{$weaponBase->minoffset}</td>
-      <td>{$weaponBase->maxoffset}</td>
-      <td>{$weaponBase->mincrit}</td>
-      <td>{$weaponBase->maxcrit}</td>
-      <td>{$weaponBase->damageattribute}</td>
-      <td>{$weaponBase->negativenameadjective}</td>
-      <td>{$weaponBase->positivenameadjective}</td>
-      <td>{$weaponBase->startingweapon}</td>
-      <td>{$weaponBase->npcweapon}</td>
+      <td>{$user->ID}</td>
+			<td>{$user->username}</td>
+      <td>{$user->email}</td>
+      <td>{$user->password}</td>
+      <td>{$user->gold}</td>
+      <td>{$user->active}</td>
 		</tr>
 		{/foreach}
 	</tbody>

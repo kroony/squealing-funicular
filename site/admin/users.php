@@ -3,21 +3,22 @@
 chdir("../");
 
 include_once("bootstrap.php");
-include_once("hero/weaponController.php");
+include_once("user/userController.php");
 
 //html header
 $smarty->display("css/css.tpl");
 
-$weaponController = new weaponController();
+$userController = new userController();
 
 //menu
-$smarty->assign("currentpage","party");
 $smarty->display("menu.tpl");
 
 /*********  show all Party  ***********/
-$weaponBases = $weaponController->getAllWeaponBase();
-$smarty->assign("weaponBases",$weaponBases);
+$users = $userController->getAll();
+$smarty->assign("users",$users);
 $smarty->display("admin/users.tpl");
 /*********  end show all Party  ***********/
+
+chdir("admin/");
 
 ?>
