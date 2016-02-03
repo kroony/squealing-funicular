@@ -1,5 +1,7 @@
 <?php
 
+chdir("../")
+
 include_once("bootstrap.php");
 include_once("hero/weaponController.php");
 
