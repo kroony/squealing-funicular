@@ -17,7 +17,7 @@ $smarty->display("menu.tpl");
 /*********  show all Party  ***********/
 $weaponBases = $weaponController->getAllWeaponBase();
 $smarty->assign("weaponBases",$weaponBases);
-$smarty->display("weaponBase.tpl");
+$smarty->display("users.tpl");
 /*********  end show all Party  ***********/
 
 ?>
