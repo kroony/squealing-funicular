@@ -34,18 +34,6 @@ class userController
 		}
 		return $returnUsers;
 	}
-
-	function performGlobalHealing($rate)
-	{
-		$rate = (float)$rate;
-		$db = DB::GetConn();
-		$getQuery = "UPDATE Hero
-			SET CurrentHP = LEAST(MaxHP, CurrentHP + (Level + GREATEST(0, FLOOR((Con - 10) / 2))) * $rate)
-			WHERE CurrentHP > 0 AND CurrentHP < MaxHP";
-
-		$getResult=$db->query($getQuery);//execute query
-		return $getResult;
-	}
 }
 
 ?>

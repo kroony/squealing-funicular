@@ -8,6 +8,8 @@ include_once("hero/weaponController.php");
 //html header
 $smarty->display("css/css.tpl");
 
+chdir("admin/");
+
 $weaponController = new weaponController();
 
 //menu
