@@ -14,11 +14,9 @@ $userController = new userController();
 $smarty->display("menu.tpl");
 
 /*********  show all Party  ***********/
-$users = $userController->getAll();
-$smarty->assign("users",$users);
+$allUsers = $userController->getAll();
+$smarty->assign("allUsers",$allUsers);
 $smarty->display("admin/users.tpl");
 /*********  end show all Party  ***********/
-
-chdir("admin/");
 
 ?>

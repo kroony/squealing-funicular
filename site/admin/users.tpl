@@ -11,14 +11,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		{foreach from=$users item=user}
+		{foreach from=$allUsers item=iUser}
 		<tr>
-      <td>{$user->ID}</td>
-			<td>{$user->username}</td>
-      <td>{$user->email}</td>
-      <td>{$user->password}</td>
-      <td>{$user->gold}</td>
-      <td>{$user->active}</td>
+      <td>{$iUser->ID}</td>
+			<td>{$iUser->username}</td>
+      <td>{$iUser->email}</td>
+      <td>{$iUser->password}</td>
+      <td>{$iUser->gold}</td>
+      <td>{$iUser->active}</td>
 		</tr>
 		{/foreach}
 	</tbody>
