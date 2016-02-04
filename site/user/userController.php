@@ -15,7 +15,6 @@ class userController
 		while($obj = $res->fetchObject())
 		{
 			array_push($returnUsers, User::loadUserFromObject($obj));
-			echo $obj->username . "<br />";
 		}
 		return $returnUsers;
 	}

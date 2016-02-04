@@ -13,14 +13,10 @@ $userController = new userController();
 //menu
 $smarty->display("menu.tpl");
 
-/*********  show all Party  ***********/
+/*********  show all Users  ***********/
 $allUsers = $userController->getAll();
-foreach($allUsers as $iUser)
-{
-	echo $iUser->username . "<br />";
-}
 $smarty->assign("allUsers",$allUsers);
 $smarty->display("admin/users.tpl");
-/*********  end show all Party  ***********/
+/*********  end show all Users  ***********/
 
 ?>
