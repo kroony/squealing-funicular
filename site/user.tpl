@@ -17,10 +17,6 @@
 <br />
 Email: {$user->email}<br />
 Gold: {$user->gold}gp<br />
-Total Heroes: {$heroCount}<br />
-{if isset($Players)}
-Total Players: {$Players}
-{/if}
 <br />
 Change Password<br />
 <form action="user.php" method="post">

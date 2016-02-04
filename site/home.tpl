@@ -1,4 +1,5 @@
 <div class="container-fluid">
+<p>You have {$totalHeros}, {if isset($canAffordHero)}<a href="addNew.php?level=1">hire a new hero for {$newHeroCost}gp</a>{else}hire a new hero for {$newHeroCost}gp{/if}</p>
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>
@@ -52,8 +53,4 @@
 		{/foreach}
 	</tbody>
 </table>
-
-{if $totalHeros < 20}
-<p><a href="addNew.php?level=1">Generate A New Hero</a></p>
-{/if}
 </div>

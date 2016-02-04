@@ -6,6 +6,7 @@ include_once("hero/heroController.php");
 //$db = DB::GetConn();
 //print_r($db->query("UPDATE `Weapon` SET `UserID` = '146' WHERE `ID` = 10;"));
 
+
 //check password is nolonger 'pass'
 include_once("user/user.php");
 $user = new User();
@@ -27,6 +28,14 @@ else
   $smarty->display("menu.tpl");
 
   /*********  show all Hero  ***********/
+  $newHeroCost = $heroController->getCostForNextHero($currentUID);
+  $smarty->assign("newHeroCost", $newHeroCost);
+  
+  if($user->canAfford($newHeroCost)
+  {
+	$smarty->assign("canAffordHero", true);
+  }
+  
   $userHeros = $heroController->getAllForUser($currentUID);
   $smarty->assign("userHeros",$userHeros);
   $smarty->assign("totalHeros",count($userHeros));

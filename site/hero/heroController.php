@@ -5,6 +5,18 @@ include_once("hero/hero.php");
 
 class heroController
 {
+	function getCostForNextHero($userID)
+	{
+		$cost = 0;
+		$currentCount = $this->countAllForUser($userID);
+		$cost = ceil(($currentCount + 1) * (1.2 * $currentCount) - 30);
+		if($cost < 0)
+		{
+			$cost = 0;
+		}
+		return $cost;
+	}
+	
 	function getAllForUser($id)
 	{
 		$db = DB::GetConn();
@@ -21,11 +33,11 @@ class heroController
 		return $returnHeroes;
 	}
 	
-	function countAllForUser($id)
+	function countAllForUser($userID)
 	{
 		$db = DB::GetConn();
 		
-		$getQuery = "SELECT count(*) as count FROM `Hero` WHERE `OwnerID` = $id;";
+		$getQuery = "SELECT count(*) as count FROM `Hero` WHERE `OwnerID` = $userID;";
 		$res=$db->query($getQuery);//execute query
 		$obj = $res->fetchObject();
 		

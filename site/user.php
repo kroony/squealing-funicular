@@ -7,16 +7,6 @@ include_once("user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
 
-if($user->ID == 1)
-{
-	$db = DB::GetConn();
-	$getClassQuery = "SELECT count(*) as count FROM `User`;";
-	$res=$db->query($getClassQuery);//execute query
-	$obj = $res->fetchObject();
-	
-	$smarty->assign("Players",$obj->count);
-}
-
 //Create Hero Controller
 include_once("hero/heroController.php");
 $heroController = new heroController();
@@ -67,9 +57,6 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 	}
 }
 
-$heroCount = $heroController->countAllForUser($currentUID);
 $smarty->assign("user",$user);
-$smarty->assign("heroCount",$heroCount);
-
 $smarty->display("user.tpl");
 
