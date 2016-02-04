@@ -11,7 +11,7 @@ $user = new User();
 $user = $user->load($currentUID);
 
 $newHeroCost = $heroController->getCostForNextHero($currentUID);
-if($user->canAfford($newHeroCost)
+if($user->canAfford($newHeroCost))
 {
 	$user->gold -= $newHeroCost;
 	$user->Save();
