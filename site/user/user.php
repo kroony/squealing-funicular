@@ -24,20 +24,22 @@ class User
 		$getQuery = "SELECT * FROM `User` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-        return $this->loadUserFromObject($obj);
+        return User::loadUserFromObject($obj);
     }
 
 	function loadUserFromObject($obj)
     {
-		$this->ID = $obj->ID;
-		$this->username =  $obj->username;
-		$this->email =  $obj->email;
-		$this->password = $obj->password;
-		$this->salt = $obj->salt;
-		$this->gold = $obj->gold;
-		$this->active = $obj->active;
+		$returnUser = new User();
 		
-		return $this;
+		$returnUser->ID = $obj->ID;
+		$returnUser->username =  $obj->username;
+		$returnUser->email =  $obj->email;
+		$returnUser->password = $obj->password;
+		$returnUser->salt = $obj->salt;
+		$returnUser->gold = $obj->gold;
+		$returnUser->active = $obj->active;
+		
+		return $returnUser;
 	}
 	
 	function canAfford($price)
