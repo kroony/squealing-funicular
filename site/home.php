@@ -31,7 +31,7 @@ else
   $newHeroCost = $heroController->getCostForNextHero($currentUID);
   $smarty->assign("newHeroCost", $newHeroCost);
   
-  if($user->canAfford($newHeroCost)
+  if($user->canAfford($newHeroCost))
   {
 	$smarty->assign("canAffordHero", true);
   }
