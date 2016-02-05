@@ -95,20 +95,46 @@
 		  position: relative; 
 		}
 		#InfoSection {
-			padding-top:50px;height:500px;
-		}
-		#UpdatesSection {
-			padding-top:50px;height:500px;background-color: #ddd;
-		}
-		#StatsSection {
-			padding-top:50px;height:500px;
-		}
-		#SignupSection {
-			padding-top:50px;height:500px;background-color: #eee;
+			padding-top:50px;
+			height:500px;
+			background: #bbb; /* For browsers that do not support gradients */
+			background: -webkit-linear-gradient(#bbb, #ccc); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#bbb, #ccc); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#bbb, #ccc); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#bbb, #ccc); /* Standard syntax */
 		}
 		#LoginSection {
-			padding-top:50px;height:500px;
+			padding-top:50px;
+			height:500px;
+			background: #ccc; /* For browsers that do not support gradients */
+			background: -webkit-linear-gradient(#ccc, #ddd); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#ccc, #ddd); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#ccc, #ddd); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#ccc, #ddd); /* Standard syntax */
 		}
+		#UpdatesSection {
+			padding-top:50px;
+			height:500px;
+			background: #ddd; /* For browsers that do not support gradients */
+			background: -webkit-linear-gradient(#ddd, #eee); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#ddd, #eee); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#ddd, #eee); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#ddd, #eee); /* Standard syntax */
+		}
+		#SignupSection {
+			padding-top:50px;
+			height:500px;
+			background: #eee; /* For browsers that do not support gradients */
+			background: -webkit-linear-gradient(#eee, #fff); /* For Safari 5.1 to 6.0 */
+			background: -o-linear-gradient(#eee, #fff); /* For Opera 11.1 to 12.0 */
+			background: -moz-linear-gradient(#eee, #fff); /* For Firefox 3.6 to 15 */
+			background: linear-gradient(#eee, #fff); /* Standard syntax */
+		}
+		#StatsSection {
+			padding-top:50px;
+			height:500px;
+		}
+		
 	</style>
 	
   </head>
