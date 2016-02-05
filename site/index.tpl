@@ -161,17 +161,17 @@
 	</div>
 </nav>
 
-<div id="InfoSection">
-<div class="container">
+<div id="InfoSection" class="container-fluid">
+
 	<div class="jumbotron">
 		<p>War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
 		<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
 	</div>
-</div>
+
 </div>
 
-<div id="LoginSection">
-<div class="container">
+<div id="LoginSection" class="container-fluid">
+
 	<h1>Login</h1>
 	<form action="login.php" class="form-horizontal" role="form">
 		<div class="form-group">
@@ -192,17 +192,17 @@
 			</div>
 		</div>
 	</form>
-</div>
+
 </div>
 
-<div id="UpdatesSection">
-<div class="container">
+<div id="UpdatesSection" class="container-fluid">
+
 	{include file='updates.tpl'}
-</div>
+
 </div>
 
-<div id="SignupSection">
-<div class="container">
+<div id="SignupSection" class="container-fluid">
+
 	<h1>Register</h1>
 	<form action="register.php" method="post" class="form-horizontal" role="form">
 		<div class="form-group">
@@ -223,10 +223,10 @@
 			</div>
 		</div>
 	</form>
-</div>
+
 </div>
 
-<div id="StatsSection">
+<div id="StatsSection" class="container-fluid">
 	<div class="row">
 		<div class="col-sm-4"><div id="classpiechart" style="width: 900px; height: 500px;"></div></div>
 		<div class="col-sm-4"><div id="Racepiechart" style="width: 900px; height: 500px;"></div></div>
