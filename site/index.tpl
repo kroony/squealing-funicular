@@ -96,7 +96,7 @@
 		}
 		#InfoSection {
 			padding-top:50px;
-			height:500px;
+			min-height:500px;
 			background: #bbb; /* For browsers that do not support gradients */
 			background: -webkit-linear-gradient(#bbb, #ccc); /* For Safari 5.1 to 6.0 */
 			background: -o-linear-gradient(#bbb, #ccc); /* For Opera 11.1 to 12.0 */
@@ -105,7 +105,7 @@
 		}
 		#LoginSection {
 			padding-top:50px;
-			height:500px;
+			min-height:500px;
 			background: #ccc; /* For browsers that do not support gradients */
 			background: -webkit-linear-gradient(#ccc, #ddd); /* For Safari 5.1 to 6.0 */
 			background: -o-linear-gradient(#ccc, #ddd); /* For Opera 11.1 to 12.0 */
@@ -114,7 +114,7 @@
 		}
 		#UpdatesSection {
 			padding-top:50px;
-			height:500px;
+			min-height:500px;
 			background: #ddd; /* For browsers that do not support gradients */
 			background: -webkit-linear-gradient(#ddd, #eee); /* For Safari 5.1 to 6.0 */
 			background: -o-linear-gradient(#ddd, #eee); /* For Opera 11.1 to 12.0 */
@@ -123,7 +123,7 @@
 		}
 		#SignupSection {
 			padding-top:50px;
-			height:500px;
+			min-height:500px;
 			background: #eee; /* For browsers that do not support gradients */
 			background: -webkit-linear-gradient(#eee, #fff); /* For Safari 5.1 to 6.0 */
 			background: -o-linear-gradient(#eee, #fff); /* For Opera 11.1 to 12.0 */
@@ -132,7 +132,7 @@
 		}
 		#StatsSection {
 			padding-top:50px;
-			height:500px;
+			min-height:500px;
 		}
 		
 	</style>
@@ -152,12 +152,10 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li><a href="#UpdatesSection">Updates</a></li>
-				<li><a href="#StatsSection">Statistics</a></li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right">
-				<li><a href="#SignupSection"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 				<li><a href="#LoginSection"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+				<li><a href="#UpdatesSection">Updates</a></li>
+				<li><a href="#SignupSection"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+				<li><a href="#StatsSection">Statistics</a></li>
 			</ul>
 		</div>
 	</div>
