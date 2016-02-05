@@ -90,6 +90,16 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
+	<style>
+		body {
+		  position: relative; 
+		}
+		#InfoSection {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
+		#UpdatesSection {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
+		#StatsSection {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
+		#SignupSection {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
+		#LoginSection {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+	</style>
 	
   </head>
   <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -107,9 +117,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="#UpdatesSection">Updates</a></li>
-				<li><a href="#StatsSection">User</a></li>
-				<li><a href="user.php">User</a></li>
-				<li><a href="user.php">User</a></li>
+				<li><a href="#StatsSection">Statistics</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#SignupSection"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -120,43 +128,61 @@
 </nav>
 
 <div id="InfoSection">
-	<p>War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
-	<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
+<div class="container">
+	<div class="jumbotron">
+		<p>War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
+		<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
+	</div>
+</div>
 </div>
 
 <div id="LoginSection">
-	<form action="login.php">
-		Username: <input name="username" type="text"><br />
-		password: <input name="password" type="password"><br />
-		<input type="submit" value="Submit">
+<div class="container">
+	<form action="login.php" class="form-horizontal" role="form">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">Username:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-10"> 
+				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group"> 
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		</div>
 	</form>
+</div>
 </div>
 
 <div id="UpdatesSection">
+<div class="container">
 	{include file='updates.tpl'}
+</div>
 </div>
 
 <div id="SignupSection">
+<div class="container">
 	<form action="register.php" method="post">
 		Username: <input name="username" type="text"><br />
 		Password: <input name="password" type="password"><br />
 		<input type="submit" value="Submit">
 	</form>
 </div>
+</div>
 
 <div id="StatsSection">
 	<div class="row">
 		<div class="col-sm-4"><div id="classpiechart" style="width: 900px; height: 500px;"></div></div>
-		<div class="col-sm-4"><div id="levelchart"></div></div>
 		<div class="col-sm-4"><div id="Racepiechart" style="width: 900px; height: 500px;"></div></div>
 	</div>
+	<div id="levelchart"></div>
 </div>
 
-
-  
-	
-	
-	
-	
   </body>
 </html>
