@@ -94,11 +94,21 @@
 		body {
 		  position: relative; 
 		}
-		#InfoSection {padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;}
-		#UpdatesSection {padding-top:50px;height:500px;color: #fff; background-color: #673ab7;}
-		#StatsSection {padding-top:50px;height:500px;color: #fff; background-color: #ff9800;}
-		#SignupSection {padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;}
-		#LoginSection {padding-top:50px;height:500px;color: #fff; background-color: #009688;}
+		#InfoSection {
+			padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;
+		}
+		#UpdatesSection {
+			padding-top:50px;height:500px;color: #fff; background-color: #673ab7;
+		}
+		#StatsSection {
+			padding-top:50px;height:500px;color: #fff; background-color: #ff9800;
+		}
+		#SignupSection {
+			padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;
+		}
+		#LoginSection {
+			padding-top:50px;height:500px;color: #fff; background-color: #009688;
+		}
 	</style>
 	
   </head>
