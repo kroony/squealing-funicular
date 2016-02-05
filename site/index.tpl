@@ -95,19 +95,19 @@
 		  position: relative; 
 		}
 		#InfoSection {
-			padding-top:50px;height:500px;color: #fff; background-color: #1E88E5;
+			padding-top:50px;height:500px;
 		}
 		#UpdatesSection {
-			padding-top:50px;height:500px;color: #fff; background-color: #673ab7;
+			padding-top:50px;height:500px;background-color: #ddd;
 		}
 		#StatsSection {
-			padding-top:50px;height:500px;color: #fff; background-color: #ff9800;
+			padding-top:50px;height:500px;
 		}
 		#SignupSection {
-			padding-top:50px;height:500px;color: #fff; background-color: #00bcd4;
+			padding-top:50px;height:500px;background-color: #eee;
 		}
 		#LoginSection {
-			padding-top:50px;height:500px;color: #fff; background-color: #009688;
+			padding-top:50px;height:500px;
 		}
 	</style>
 	
@@ -148,6 +148,7 @@
 
 <div id="LoginSection">
 <div class="container">
+	<h1>Login</h1>
 	<form action="login.php" class="form-horizontal" role="form">
 		<div class="form-group">
 			<label class="control-label col-sm-2" for="email">Username:</label>
@@ -178,10 +179,25 @@
 
 <div id="SignupSection">
 <div class="container">
-	<form action="register.php" method="post">
-		Username: <input name="username" type="text"><br />
-		Password: <input name="password" type="password"><br />
-		<input type="submit" value="Submit">
+	<h1>Register</h1>
+	<form action="register.php" method="post" class="form-horizontal" role="form">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="email">Username:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-10"> 
+				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group"> 
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-default">Submit</button>
+			</div>
+		</div>
 	</form>
 </div>
 </div>
