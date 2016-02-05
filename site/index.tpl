@@ -22,7 +22,7 @@
         ]);
         var Raceoptions = {literal}{
           title: 'Population By Race',
-		  width: 300
+		  width: 450
         };
         var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
         Racechart.draw(Racedata, Raceoptions);
@@ -229,7 +229,7 @@
 	</div>
 </div>
 
-<div id="StatsSection">
+<div id="StatsSection" class="container-fluid">
 	<div class="row">
 		<div class="col-sm-4"><div id="classpiechart" style="width: 900px; height: 500px;"></div></div>
 		<div class="col-sm-4"><div id="Racepiechart" style="width: 900px; height: 500px;"></div></div>
