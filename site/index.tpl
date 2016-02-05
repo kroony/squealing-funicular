@@ -11,7 +11,8 @@
           {$ClassTableData}
         ]);
         var Classoptions = {literal}{
-          title: 'Population By Class'
+          title: 'Population By Class',
+		  width: 400
         };
         var Classchart = new google.visualization.PieChart(document.getElementById('classpiechart'));
         Classchart.draw(Classdata, Classoptions);
@@ -20,7 +21,8 @@
           {$RaceTableData}
         ]);
         var Raceoptions = {literal}{
-          title: 'Population By Race'
+          title: 'Population By Race',
+		  width: 300
         };
         var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
         Racechart.draw(Racedata, Raceoptions);
@@ -172,59 +174,59 @@
 </div>
 
 <div id="LoginSection">
-<div class="container">
-	<h1>Login</h1>
-	<form action="login.php" class="form-horizontal" role="form">
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Username:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+	<div class="container">
+		<h1>Login</h1>
+		<form action="login.php" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="email">Username:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="pwd">Password:</label>
-			<div class="col-sm-10"> 
-				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Password:</label>
+				<div class="col-sm-10"> 
+					<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+				</div>
 			</div>
-		</div>
-		<div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Submit</button>
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
 			</div>
-		</div>
-	</form>
-</div>
+		</form>
+	</div>
 </div>
 
 <div id="UpdatesSection">
-<div class="container">
-	{include file='updates.tpl'}
-</div>
+	<div class="container">
+		{include file='updates.tpl'}
+	</div>
 </div>
 
 <div id="SignupSection">
-<div class="container">
-	<h1>Register</h1>
-	<form action="register.php" method="post" class="form-horizontal" role="form">
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="email">Username:</label>
-			<div class="col-sm-10">
-				<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+	<div class="container">
+		<h1>Register</h1>
+		<form action="register.php" method="post" class="form-horizontal" role="form">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="email">Username:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" id="username" placeholder="Enter Username" name="username">
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label class="control-label col-sm-2" for="pwd">Password:</label>
-			<div class="col-sm-10"> 
-				<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="pwd">Password:</label>
+				<div class="col-sm-10"> 
+					<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+				</div>
 			</div>
-		</div>
-		<div class="form-group"> 
-			<div class="col-sm-offset-2 col-sm-10">
-				<button type="submit" class="btn btn-default">Submit</button>
+			<div class="form-group"> 
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-default">Submit</button>
+				</div>
 			</div>
-		</div>
-	</form>
-</div>
+		</form>
+	</div>
 </div>
 
 <div id="StatsSection">
