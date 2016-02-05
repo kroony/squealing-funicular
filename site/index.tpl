@@ -92,23 +92,71 @@
 	
 	
   </head>
-  <body>
-
-		<a href="register.php">Register here</a> if you do not already have an account.<br />
-		<hr>
-		<br />
-		<form action="login.php">
-		  Username: <input name="username" type="text"><br />
-		  password: <input name="password" type="password"><br />
-		  <input type="submit" value="Submit">
-		</form>
-		<p>
-		War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
-		<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
+  <body data-spy="scroll" data-target=".navbar" data-offset="50">
   
-	<div id="classpiechart" style="width: 900px; height: 500px;"></div>
-	<div id="Racepiechart" style="width: 900px; height: 500px;"></div>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> 
+			</button>
+			<a class="navbar-brand" href="#InfoSection">Hero Game!</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav">
+				<li><a href="#UpdatesSection">Updates</a></li>
+				<li><a href="#StatsSection">User</a></li>
+				<li><a href="user.php">User</a></li>
+				<li><a href="user.php">User</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#SignupSection"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+				<li><a href="#LoginSection"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div id="InfoSection">
+	<p>War happened as it always does when too many people with too many different opinions come together. This war was not between countries but between the professions that those had chosen, the guilds that worked for their professions' prosperity had decided that war was the only way. Thus it was not long before battle was joined, warrior against wizard, priest against thief. The war was devastating and when the dust settled the countries banded together and banned all profession based guilds. To ensure that the workers of the world would have the representation that they needed it was decided that guilds would be reinstated but instead of them being profession based they would instead be based on the membership of the individual guilds. The new guilds would be responsible for negotiating what jobs their members would do and for how much. Thus a new age of prosperity began.
+	<br />Start your guild and choose your first members. Grow your guild to become the greatest of all the guilds.</p>
+</div>
+
+<div id="LoginSection">
+	<form action="login.php">
+		Username: <input name="username" type="text"><br />
+		password: <input name="password" type="password"><br />
+		<input type="submit" value="Submit">
+	</form>
+</div>
+
+<div id="UpdatesSection">
+	{include file='updates.tpl'}
+</div>
+
+<div id="SignupSection">
+	<form action="register.php" method="post">
+		Username: <input name="username" type="text"><br />
+		Password: <input name="password" type="password"><br />
+		<input type="submit" value="Submit">
+	</form>
+</div>
+
+<div id="StatsSection">
+	<div class="row">
+		<div class="col-sm-4"><div id="classpiechart" style="width: 900px; height: 500px;"></div></div>
+		<div class="col-sm-4"><div id="levelchart"></div></div>
+		<div class="col-sm-4"><div id="Racepiechart" style="width: 900px; height: 500px;"></div></div>
+	</div>
+</div>
+
+
+  
 	
-	<div id="levelchart"></div>
+	
+	
+	
   </body>
 </html>
