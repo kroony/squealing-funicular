@@ -28,8 +28,9 @@ class HeroClass
 	public $PrerequisiteTarget;
 	public $PrerequisiteAge;
 	public $Description;
+	public $Quote;
 
-	function __construct($Name, $HD, $FavouredAttribute, $LevelCap, $NextClass, $PrerequisiteAttribute, $PrerequisiteTarget, $PrerequisiteAge, $Description)
+	function __construct($Name, $HD, $FavouredAttribute, $LevelCap, $NextClass, $PrerequisiteAttribute, $PrerequisiteTarget, $PrerequisiteAge, $Description, $Quote)
 	{
 		$this->Name = $Name;
 		$this->HD = $HD;
@@ -40,6 +41,7 @@ class HeroClass
 		$this->PrerequisiteTarget = $PrerequisiteTarget;
 		$this->PrerequisiteAge = $PrerequisiteAge;
 		$this->Description = $Description;
+		$this->Quote = $Quote;
 	}
 
 	//load Adventurer from DB 
@@ -53,7 +55,7 @@ class HeroClass
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 
-		$ReturnClass = new HeroClass($obj->Name, $obj->HD,$obj->FavouredAttribute,$obj->LevelCap,$obj->NextClass,$obj->PrerequisiteAttribute,$obj->PrerequisiteTarget,$obj->PrerequisiteAge,$obj->Description);
+		$ReturnClass = new HeroClass($obj->Name, $obj->HD,$obj->FavouredAttribute,$obj->LevelCap,$obj->NextClass,$obj->PrerequisiteAttribute,$obj->PrerequisiteTarget,$obj->PrerequisiteAge,$obj->Description,$obj->Quote);
 		$ReturnClass->ID = $ID;
 
 		return $ReturnClass;
@@ -100,7 +102,8 @@ class HeroClass
 							$obj->PrerequisiteAttribute,
 							$obj->PrerequisiteTarget,
 							$obj->PrerequisiteAge, 
-							$obj->Description);
+							$obj->Description,
+							$obj->Quote);
 
 					$tmpClass->ID = $obj->ID;
 					$possibleNewClasses[] = $tmpClass;
@@ -126,6 +129,7 @@ class HeroClass
 			$this->PrerequisiteTarget = $newClass->PrerequisiteTarget;
 			$this->PrerequisiteAge = $newClass->PrerequisiteAge;
 			$this->Description = $newClass->Description;
+			$this->Quote = $newClass->Quote;
 			//we changed the class, return true
 			return true;
 		}

@@ -11,8 +11,7 @@
           {$ClassTableData}
         ]);
         var Classoptions = {literal}{
-          title: 'Population By Class',
-		  width: 400
+          title: 'Population By Class'
         };
         var Classchart = new google.visualization.PieChart(document.getElementById('classpiechart'));
         Classchart.draw(Classdata, Classoptions);
@@ -21,8 +20,7 @@
           {$RaceTableData}
         ]);
         var Raceoptions = {literal}{
-          title: 'Population By Race',
-		  width: 450
+          title: 'Population By Race'
         };
         var Racechart = new google.visualization.PieChart(document.getElementById('Racepiechart'));
         Racechart.draw(Racedata, Raceoptions);
