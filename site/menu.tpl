@@ -29,6 +29,7 @@
 					<ul class="dropdown-menu">
 						<li><a href="admin/weaponBase.php">Weapon Bases</a></li>
 						<li><a href="admin/users.php">Users</a></li>
+						<li><a href="admin/migrations.php">Migrations</a></li>
 					</ul>
 				</li>
 				{/if}
