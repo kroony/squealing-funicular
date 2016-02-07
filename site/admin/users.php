@@ -3,6 +3,10 @@
 chdir("../");
 
 include_once("bootstrap.php");
+
+$db = DB::GetConn();
+print_r($db->query("ALTER TABLE `AdvClass` ADD `Quote` TEXT NOT NULL;"));
+
 include_once("user/userController.php");
 
 //html header
