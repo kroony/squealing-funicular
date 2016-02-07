@@ -14,17 +14,21 @@ $db = DB::GetConn();
 //print_r($db->query("UPDATE `AdvClass` SET `Description` = 'Eventually for the Brawler they come to an understanding that despite all the fights they survive. One thing will always win out, the need for money.', `Quote` = 'Honestly, for the right price I''ll do almost anything.' WHERE `AdvClass`.`ID` = 7;"));
 
 include_once("user/userController.php");
+include_once("user/heroController.php");
 
 //html header
 $smarty->display("css/css.tpl");
 
 $userController = new userController();
 
+$heroController = new heroController();
+
 //menu
 $smarty->display("menu.tpl");
 
 /*********  show all Users  ***********/
 $allUsers = $userController->getAll();
+$smarty->assign("heroController",$heroController);
 $smarty->assign("allUsers",$allUsers);
 $smarty->display("admin/users.tpl");
 /*********  end show all Users  ***********/

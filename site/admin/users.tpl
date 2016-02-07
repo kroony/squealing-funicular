@@ -8,6 +8,7 @@
 			<th>password</th>
 			<th>gold</th>
 			<th>active</th>
+			<th>heroes</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -19,6 +20,7 @@
 			<td>{$iUser->password}</td>
 			<td>{$iUser->gold}</td>
 			<td>{$iUser->active}</td>
+			<td>{$heroController->countAllForUser($iUser->ID)}</td>
 		</tr>
 		{/foreach}
 	</tbody>
