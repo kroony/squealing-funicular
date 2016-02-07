@@ -3,10 +3,6 @@
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
 
-//$db = DB::GetConn();
-//print_r($db->query("UPDATE `Weapon` SET `UserID` = '146' WHERE `ID` = 10;"));
-
-
 //check password is nolonger 'pass'
 include_once("user/user.php");
 $user = new User();
