@@ -14,7 +14,7 @@ $db = DB::GetConn();
 //print_r($db->query("UPDATE `AdvClass` SET `Description` = 'Eventually for the Brawler they come to an understanding that despite all the fights they survive. One thing will always win out, the need for money.', `Quote` = 'Honestly, for the right price I''ll do almost anything.' WHERE `AdvClass`.`ID` = 7;"));
 
 include_once("user/userController.php");
-include_once("user/heroController.php");
+include_once("hero/heroController.php");
 
 //html header
 $smarty->display("css/css.tpl");
