@@ -4,6 +4,7 @@ include_once("bootstrap.php");
 $smarty->display("css/css.tpl");
 /*********Add XP*********/
 include_once("hero/pitController.php");
+include_once("user/user.php");
 
 $pit = new PitController();
 
@@ -31,6 +32,7 @@ $smarty->assign("hero2_name",$hero2->displayName(false));
 
 if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, loot their weapon
 {
+	//weapon Loot
 	$hero2->Weapon->UserID = $hero1->OwnerID;
 	$hero2->Weapon->save();
 	$smarty->assign("WeaponLoot",$hero2->Weapon);
@@ -38,10 +40,32 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	$hero2->Weapon = Weapon::generateNPCWeapon($hero2->GetOwner()->ID, $hero2->getHighestWeaponStat());
 	$hero2->Weapon->save();		
 	$hero2->SaveHero();
+	
+	//Gold Loot
+	$loot = $hero2->calculateAttributeBonus($hero2->Str);
+	$loot += $hero2->calculateAttributeBonus($hero2->Dex);
+	$loot += $hero2->calculateAttributeBonus($hero2->Con);
+	$loot += $hero2->calculateAttributeBonus($hero2->Intel);
+	$loot += $hero2->calculateAttributeBonus($hero2->Wis);
+	$loot += $hero2->calculateAttributeBonus($hero2->Cha);
+	$loot += $hero2->calculateAttributeBonus($hero2->Fte);
+	$loot += $hero2->calculateAttributeBonus($hero1->Fte);//add looters luck
+	
+	if($loot > 0)
+	{
+		$loot = rand(0, $loot);
+		$smarty->assign("GoldLoot",$loot);
+		
+		$user = new User();
+		$user = $user->load($hero1->OwnerID);
+		$user->gold += $loot;
+		
+		$user->Save();
+	}
 }
 
 //if the attacker is knocked out by a defending PC, the winner loots the weapon
-if($hero1->CurrentHP <= 0 && $hero2->OwnerID != 146)
+/*if($hero1->CurrentHP <= 0 && $hero2->OwnerID != 146)
 {
 	$hero1->Weapon->UserID = $hero2->OwnerID;
 	$hero1->Weapon->save();
@@ -50,7 +74,7 @@ if($hero1->CurrentHP <= 0 && $hero2->OwnerID != 146)
 	$hero1->Weapon = Weapon::generateStartingWeapon($hero1->GetOwner()->ID, $hero1->getHighestWeaponStat());
 	$hero1->Weapon->save();		
 	$hero1->SaveHero();
-}
+}*///commented out as it does not foster PVP
 
 $smarty->display("oneonone.tpl");
 

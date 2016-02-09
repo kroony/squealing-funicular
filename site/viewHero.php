@@ -11,8 +11,6 @@ $smarty->display("menu.tpl");
 $heroController = new heroController();
 $weaponController = new weaponController();
 
-
-
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 

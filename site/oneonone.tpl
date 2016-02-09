@@ -21,6 +21,9 @@
 	{if isset($WeaponLoot)}
 		You manage to loot {$WeaponLoot->Name} from {$hero2_name}<br />
 	{/if}
+	{if isset($GoldLoot)}
+		Townsfolk reward you with {$GoldLoot}gp for stopping {$hero2_name} for another day.<br />
+	{/if}
 	{if isset($WeaponLost)}
 		{$hero2_name} looted {$WeaponLost->Name} from {$hero1_name}<br />
 	{/if}
