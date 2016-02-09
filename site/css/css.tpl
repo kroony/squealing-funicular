@@ -26,6 +26,11 @@
 	{
 		color: #550000;
 	}
+	
+	.progress
+	{
+    margin-bottom: 2px;
+	}
 	</style>
 
 	<script type="text/javascript">
