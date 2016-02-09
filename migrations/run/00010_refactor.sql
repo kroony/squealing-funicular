@@ -1,0 +1,1 @@
+ALTER TABLE `Hero` ADD `Kills` INT NOT NULL ;

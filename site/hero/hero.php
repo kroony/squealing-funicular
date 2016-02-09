@@ -30,6 +30,7 @@ class Hero
 	public $Cha;
 	public $Fte;
 	public $Weapon;
+	public $Kills;
 
 	function __construct()
 	{
@@ -80,6 +81,7 @@ class Hero
 		$returnHero->Cha = $obj->Cha;
 		$returnHero->Fte = $obj->Fte;
 		$returnHero->Weapon = Weapon::loadWeapon($obj->WeaponID);
+		$returnHero->Kills = $obj->Kills;
 
 		return $returnHero;
 	}
@@ -133,6 +135,9 @@ class Hero
 				}
 			}
 		}
+		
+		//Kills
+		$this->Kills = 0;
 	}
 	
 	function generateStartingWeapon()
@@ -421,7 +426,8 @@ class Hero
 				"Wis"=>$this->Wis,
 				"Cha"=>$this->Cha,
 				"Fte"=>$this->Fte, 
-				"WeaponID"=>$this->Weapon->ID);
+				"WeaponID"=>$this->Weapon->ID,
+				"Kills"=>$this->Kills);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Hero", $row, $where);
@@ -450,7 +456,8 @@ class Hero
 				"Wis"=>$this->Wis,
 				"Cha"=>$this->Cha,
 				"Fte"=>$this->Fte, 
-				"WeaponID"=>$this->Weapon->ID);
+				"WeaponID"=>$this->Weapon->ID,
+				"Kills"=>$this->Kills);
 			
 			try {
 				$db->insert("Hero",$row);

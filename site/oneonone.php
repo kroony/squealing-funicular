@@ -78,6 +78,15 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 
 $smarty->display("oneonone.tpl");
 
+//check for kills
+if($hero1->CurrentHP < -$hero1->Con)
+{
+	$hero2->Kills++;
+}
+if($hero2->CurrentHP < -$hero2->Con)
+{
+	$hero1->Kills++;
+}//we save both lower
 
 //save heros
 $hero1->SaveHero();
