@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div id="heroName"><h3>{$hero->Name} <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'></span> /></h3></div>
+<div id="heroName"><h3>{$hero->Name} <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'></span></h3></div>
 
 {if isset($message)}
 	<div class="alert alert-info">
@@ -60,7 +60,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 	<div class="col-sm-4" >
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div id="weaponNameDiv"><b>{$hero->Weapon->Name}</b> <img src="images/icons/pencil_16.png" onclick='document.getElementById("weaponNameDiv").style.display = "none"; document.getElementById("weaponEditNameForm").style.display = "block";' /></div>
+				<div id="weaponNameDiv"><b>{$hero->Weapon->Name}</b> <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name"  onclick='document.getElementById("weaponNameDiv").style.display = "none"; document.getElementById("weaponEditNameForm").style.display = "block";' ></span></div>
 				<form id="weaponEditNameForm" action="viewHero.php" style="display: none;">
 					<input type="hidden" name="action" value="editWeaponName">
 					<input type="hidden" name="ID" value="{$hero->ID}">
