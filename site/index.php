@@ -36,12 +36,19 @@ $res=$db->query($getLevelQuery);//execute query
 $LevelTableData = "";
 $i = 1;
 $obj = $res->fetchObject();
-while($i < 50)
+while($i <= 50)
 {
-	if($obj->Level == $i)
+	if($obj != false)
 	{
-		$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
-		$obj = $res->fetchObject();
+		if($obj->Level == $i)
+		{
+			$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
+			$obj = $res->fetchObject();
+		}
+		else
+		{
+			$LevelTableData .= "[" . $i . ", 0],";
+		}
 	}
 	else
 	{
