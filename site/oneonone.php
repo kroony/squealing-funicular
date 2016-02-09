@@ -53,7 +53,7 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	
 	if($loot > 0)
 	{
-		$loot = rand(0, $loot);
+		$loot = rand(1, $loot);
 		$smarty->assign("GoldLoot",$loot);
 		
 		$user = new User();
