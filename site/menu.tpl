@@ -24,7 +24,7 @@
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				{if isset($help)}
-					<li><a href="#" title="{$helpTitle}" data-toggle="popover" data-placement="bottom" data-trigger="focus" data-content="{$help}"><span class="glyphicon glyphicon-question-sign"></span> Page Help</a></li>
+					<li><a href="#" title="{$helpTitle}" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="{$help}"><span class="glyphicon glyphicon-question-sign"></span> Page Help</a></li>
 				{/if}
 				{if isset($admin)}
 					<li class="dropdown">
