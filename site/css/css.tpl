@@ -35,6 +35,10 @@
 			var percentString = percent.toString();
 			bar.style.width = percentString.concat("%");
 		}
+		
+		$(document).ready(function(){
+      $('[data-toggle="popover"]').popover(); 
+    });
 	</script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">

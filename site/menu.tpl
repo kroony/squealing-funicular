@@ -23,15 +23,18 @@
 				<li class="{if $currentpage == "leaderboard"}active{/if}"><a href="leaderboard.php">Leaderboard</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-        {if isset($admin)}
-        <li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="admin/weaponBase.php">Weapon Bases</a></li>
-						<li><a href="admin/users.php">Users</a></li>
-						<li><a href="admin/migrations.php">Migrations</a></li>
-					</ul>
-				</li>
+				{if isset($help)}
+					<li><a href="#" title="{$helpTitle}" data-toggle="popover" data-trigger="focus" data-content="{$help}"></a><span class="glyphicon glyphicon-question-sign"></span> Page Help</li>
+				{/if}
+				{if isset($admin)}
+					<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#">Admin<span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="admin/weaponBase.php">Weapon Bases</a></li>
+							<li><a href="admin/users.php">Users</a></li>
+							<li><a href="admin/migrations.php">Migrations</a></li>
+						</ul>
+					</li>
 				{/if}
 				<!--<li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>-->
 				<li><a href="logout.php"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
