@@ -34,13 +34,23 @@ $smarty->assign("RaceTableData",$RaceTableData);
 $getLevelQuery = "SELECT Level,COUNT(*) as count FROM Hero Where OwnerID <> 146 AND CurrentHP > 0 GROUP BY Level ORDER BY Level ASC;";
 $res=$db->query($getLevelQuery);//execute query
 $LevelTableData = "";
-while($obj = $res->fetchObject())
+$i = 1;
+$obj = $res->fetchObject();
+while($i < 50)
 {
-	$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
+	if($obj->Level == $i)
+	{
+		$LevelTableData .= "[" . $obj->Level . ", " . $obj->count . "],";
+		$obj = $res->fetchObject();
+	}
+	else
+	{
+		$LevelTableData .= "[" . $i . ", 0],";
+	}
+	$i++;
 }
 $LevelTableData = rtrim($LevelTableData, ",");
 $smarty->assign("LevelTableData",$LevelTableData);
-
 
 $smarty->display("index.tpl");
 
