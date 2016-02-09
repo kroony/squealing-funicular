@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <p>You have {$totalHeros}, {if isset($canAffordHero)}<a href="addNew.php?level=1">hire a new hero for {$newHeroCost}gp</a>{else}hire a new hero for {$newHeroCost}gp{/if}</p>
-<table class='table table-condensed table-hover'>
+<table class='table table-hover'>
 	<thead>
 		<tr>
 			<th>Name</th>
