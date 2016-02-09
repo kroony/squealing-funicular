@@ -1,5 +1,5 @@
 <div class="container-fluid">
-<div id="heroName"><h3>{$hero->Name} <img src="images/icons/pencil_24.png" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";' /></h3></div>
+<div id="heroName"><h3>{$hero->Name} <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name" onclick='document.getElementById("heroName").style.display = "none"; document.getElementById("heroEditName").style.display = "block";'></span> /></h3></div>
 
 {if isset($message)}
 	<div class="alert alert-info">

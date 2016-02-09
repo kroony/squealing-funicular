@@ -39,6 +39,10 @@
 		$(document).ready(function(){
       $('[data-toggle="popover"]').popover(); 
     });
+    
+    $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+    });
 	</script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
