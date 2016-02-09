@@ -126,7 +126,7 @@ class heroController
 		$rate = (float)$rate;
 		$db = DB::GetConn();
 		$getQuery = "UPDATE Hero
-			SET CurrentHP = LEAST(MaxHP, CurrentHP + (Level + GREATEST(0, FLOOR((Con - 10) / 2))) * $rate)
+			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * $rate)
 			WHERE CurrentHP > 0 AND CurrentHP < MaxHP";
 
 		$getResult=$db->query($getQuery);//execute query
