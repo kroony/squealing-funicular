@@ -6,6 +6,10 @@ include_once("hero/weaponController.php");
 
 $smarty->display("css/css.tpl");
 
+$smarty->assign("help",'Hero and weapon names can be edited by click the <span class="glyphicon glyphicon-edit"></span> button.
+					    Equipped weapons can be changed if you have unused weapons in your inventory.
+					    When a hero gains a level they increase their Max HP and sometimes increase an attribute. This is shown with the <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"></span> icon.');
+$smarty->assign("helpTitle","Hero Page Help");
 $smarty->display("menu.tpl");
 
 $heroController = new heroController();
