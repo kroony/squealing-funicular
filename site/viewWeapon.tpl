@@ -34,33 +34,33 @@
 			<tr>
 				<td>Damage Quantity</td><td>{$weapon->DamageQuantity}</td>
 				{if $user->canAfford($weapon->calcDamageQuantityUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeQuantity&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageQuantityUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeQuantity&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {number_format($weapon->calcDamageQuantityUpgradeCost())} gp</td>
 				{else}
-					<td>{$weapon->calcDamageQuantityUpgradeCost()} gp</td>
+					<td>{number_format($weapon->calcDamageQuantityUpgradeCost())} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Damage Dice</td><td>{$weapon->DamageDie}</td>
 				{if $user->canAfford($weapon->calcDamageDieUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeDie&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageDieUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeDie&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {number_format($weapon->calcDamageDieUpgradeCost())} gp</td>
 				{else}
-					<td>{$weapon->calcDamageDieUpgradeCost()} gp</td>
+					<td>{number_format($weapon->calcDamageDieUpgradeCost())} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Damage Offset</td><td>{$weapon->DamageOffset}</td>
 				{if $user->canAfford($weapon->calcDamageOffsetUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeOffset&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcDamageOffsetUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeOffset&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {number_format($weapon->calcDamageOffsetUpgradeCost())} gp</td>
 				{else}
-					<td>{$weapon->calcDamageOffsetUpgradeCost()} gp</td>
+					<td>{number_format($weapon->calcDamageOffsetUpgradeCost())} gp</td>
 				{/if}
 			</tr>
 			<tr>
 				<td>Critical Chance</td><td>{$weapon->CritChance}</td>
 				{if $user->canAfford($weapon->calcCritChanceUpgradeCost())}
-					<td><a href="viewWeapon.php?action=upgradeCrit&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {$weapon->calcCritChanceUpgradeCost()} gp</td>
+					<td><a href="viewWeapon.php?action=upgradeCrit&ID={$weapon->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a> {number_format($weapon->calcCritChanceUpgradeCost())} gp</td>
 				{else}
-					<td>{$weapon->calcCritChanceUpgradeCost()} gp</td>
+					<td>{number_format($weapon->calcCritChanceUpgradeCost())} gp</td>
 				{/if}
 			</tr>
 		</table>

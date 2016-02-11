@@ -40,7 +40,7 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" id="XPBar" style="width:{if isset($OldXP)}{$OldXP/$hero->LevelUpXP*100}{else}{$hero->CurrentXP/$hero->LevelUpXP*100}{/if}%">
-    <span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
+    <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
 </div>
 {if isset($OldXP)}

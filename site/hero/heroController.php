@@ -64,7 +64,7 @@ class heroController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` <> 146 ORDER BY `Hero`.`Kills` DESC LIMIT 10;";
+		$getQuery = "SELECT * FROM `Hero` ORDER BY `Hero`.`Kills` DESC LIMIT 10;";
 
 		$res=$db->query($getQuery);//execute query
 		
