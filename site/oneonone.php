@@ -33,13 +33,16 @@ $smarty->assign("hero2_name",$hero2->displayName(false));
 if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, loot their weapon
 {
 	//weapon Loot
-	$hero2->Weapon->UserID = $hero1->OwnerID;
-	$hero2->Weapon->save();
-	$smarty->assign("WeaponLoot",$hero2->Weapon);
-	
-	$hero2->Weapon = Weapon::generateNPCWeapon($hero2->GetOwner()->ID, $hero2->getHighestWeaponStat());
-	$hero2->Weapon->save();		
-	$hero2->SaveHero();
+	if(rand(1, 100) <= $hero1->Fte)//only loot weapon sometimes
+	{
+		$hero2->Weapon->UserID = $hero1->OwnerID;
+		$hero2->Weapon->save();
+		$smarty->assign("WeaponLoot",$hero2->Weapon);
+		
+		$hero2->Weapon = Weapon::generateNPCWeapon($hero2->GetOwner()->ID, $hero2->getHighestWeaponStat());
+		$hero2->Weapon->save();		
+		$hero2->SaveHero();
+	}
 	
 	//Gold Loot
 	$loot = $hero2->calculateAttributeBonus($hero2->Str);
@@ -53,7 +56,8 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	
 	if($loot > 0)
 	{
-		$loot = rand(1, $loot);
+		$lootmod = $hero1->Fte / 10 + 1;
+		$loot = rand(1, $loot * $lootmod);
 		$smarty->assign("GoldLoot",$loot);
 		
 		$user = new User();
