@@ -5,7 +5,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-//print_r($db->query("ALTER TABLE `Hero` ADD `Kills` INT NOT NULL ;"));
+//print_r($db->query("UPDATE `User` SET `gold` = '1000000000' WHERE `User`.`ID` = 146;"));
 
 include_once("user/userController.php");
 include_once("hero/heroController.php");

@@ -33,7 +33,7 @@ $smarty->assign("hero2_name",$hero2->displayName(false));
 if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, loot their weapon
 {
 	//weapon Loot
-	if(rand(1, 100) <= $hero1->Fte)//only loot weapon sometimes
+	if(rand(1, 100) <= $hero1->Fte && $hero2->OwnerID != 146 && hero2->Name != "Black Ninja")//only loot weapon sometimes
 	{
 		$hero2->Weapon->UserID = $hero1->OwnerID;
 		$hero2->Weapon->save();
