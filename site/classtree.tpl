@@ -4,78 +4,66 @@ body {
 	font-size: 15px;
 }
 
-$reverse: false;
-
-.tree {
-	@if $reverse {
-		transform: rotate(180deg);
-		transform-origin: 50%;
-	}
-}
-
 .tree ul {
 	position: relative;
-	padding: 1em 0; 
+	padding: 1em 0;
 	white-space: nowrap;
 	margin: 0 auto;
 	text-align: center;
-	&::after {
-		content: '';
-		display: table;
-		clear: both;
-	}
+}
+.tree ul::after {
+	content: '';
+	display: table;
+	clear: both;
 }
 
 .tree li {
-  display: inline-block; // need white-space fix
-  vertical-align: top;
-  text-align: center;
+	display: inline-block;
+	vertical-align: top;
+	text-align: center;
 	list-style-type: none;
 	position: relative;
 	padding: 1em .5em 0 .5em;
-  &::before,
-  &::after {
-    content: '';
-    position: absolute; 
-    top: 0; 
-    right: 50%;
-    border-top: 1px solid #ccc;
-    width: 50%; 
-    height: 1em;
-  }
-  &::after {
-    right: auto; 
-    left: 50%;
-	  border-left: 1px solid #ccc;
-  }
-  &:only-child::after,
-  &:only-child::before {
-    display: none;
-  }
-  &:only-child {
-    padding-top: 0;
-  }
-  &:first-child::before,
-  &:last-child::after {
-    border: 0 none;
-  }
-  &:last-child::before{
-    border-right: 1px solid #ccc;
-    border-radius: 0 5px 0 0;
-  }
-  &:first-child::after{
-    border-radius: 5px 0 0 0;
-  }
+}
+.tree li::before, .tree li::after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%;
+	height: 1em;
+}
+.tree li::after {
+	right: auto;
+	left: 50%;
+	border-left: 1px solid #ccc;
+}
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+.tree li:only-child {
+	padding-top: 0;
+}
+.tree li:first-child::before, .tree li:last-child::after {
+	border: 0 none;
+}
+.tree li:last-child::before {
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after {
+	border-radius: 5px 0 0 0;
 }
 
-.tree ul ul::before{
+.tree ul ul::before {
 	content: '';
-	position: absolute; 
-  top: 0; 
-  left: 50%;
+	position: absolute;
+	top: 0;
+	left: 50%;
 	border-left: 1px solid #ccc;
-	width: 0; 
-  height: 1em;
+	width: 0;
+	height: 1em;
 }
 
 .tree li a {
@@ -84,26 +72,23 @@ $reverse: false;
 	text-decoration: none;
 	display: inline-block;
 	border-radius: 5px;
-  color: #333;
-  position: relative;
-  top: 1px;
-  @if $reverse {
-    transform: rotate(180deg);
-  }
+	color: #333;
+	position: relative;
+	top: 1px;
 }
 
 .tree li a:hover,
-.tree li a:hover+ul li a {
+.tree li a:hover + ul li a {
 	background: #e9453f;
-  color: #fff;
-  border: 1px solid #e9453f;
+	color: #fff;
+	border: 1px solid #e9453f;
 }
 
-.tree li a:hover + ul li::after, 
-.tree li a:hover + ul li::before, 
-.tree li a:hover + ul::before, 
-.tree li a:hover + ul ul::before{
-	border-color:  #e9453f;
+.tree li a:hover + ul li::after,
+.tree li a:hover + ul li::before,
+.tree li a:hover + ul::before,
+.tree li a:hover + ul ul::before {
+	border-color: #e9453f;
 }
 </style>
 
