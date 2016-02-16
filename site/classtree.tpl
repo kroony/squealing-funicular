@@ -4,7 +4,6 @@ body {
 	font-size: 15px;
 }
 
-$border-width: 1px;
 $reverse: false;
 
 .tree {
@@ -40,14 +39,14 @@ $reverse: false;
     position: absolute; 
     top: 0; 
     right: 50%;
-    border-top: $border-width solid #ccc;
+    border-top: 1px solid #ccc;
     width: 50%; 
     height: 1em;
   }
   &::after {
     right: auto; 
     left: 50%;
-	  border-left: $border-width solid #ccc;
+	  border-left: 1px solid #ccc;
   }
   &:only-child::after,
   &:only-child::before {
@@ -61,7 +60,7 @@ $reverse: false;
     border: 0 none;
   }
   &:last-child::before{
-    border-right: $border-width solid #ccc;
+    border-right: 1px solid #ccc;
     border-radius: 0 5px 0 0;
   }
   &:first-child::after{
@@ -74,20 +73,20 @@ $reverse: false;
 	position: absolute; 
   top: 0; 
   left: 50%;
-	border-left: $border-width solid #ccc;
+	border-left: 1px solid #ccc;
 	width: 0; 
   height: 1em;
 }
 
 .tree li a {
-	border: $border-width solid #ccc;
+	border: 1px solid #ccc;
 	padding: .5em .75em;
 	text-decoration: none;
 	display: inline-block;
 	border-radius: 5px;
   color: #333;
   position: relative;
-  top: $border-width;
+  top: 1px;
   @if $reverse {
     transform: rotate(180deg);
   }
@@ -97,7 +96,7 @@ $reverse: false;
 .tree li a:hover+ul li a {
 	background: #e9453f;
   color: #fff;
-  border: $border-width solid #e9453f;
+  border: 1px solid #e9453f;
 }
 
 .tree li a:hover + ul li::after, 
