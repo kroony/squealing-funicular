@@ -21,6 +21,7 @@
 				<li class="{if $currentpage == "fightpit"}active{/if}"><a href="fightpit.php">Fight Pit</a></li>
 				<li class="{if $currentpage == "inventory"}active{/if}"><a href="inventory.php">Inventory</a></li>
 				<li class="{if $currentpage == "leaderboard"}active{/if}"><a href="leaderboard.php">Leaderboard</a></li>
+				<li class="{if $currentpage == "classtree"}active{/if}"><a href="classtree.php">Class Tree</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				{if isset($help)}
