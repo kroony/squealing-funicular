@@ -51,7 +51,7 @@
 			<td>{$Hero->Cha}</td>
 			<td>{$Hero->Fte}</td>
 			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}
-			{if $Hero->Weapon->ID < 10}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
+			{if $Hero->Weapon->ID < 10}<a href="../generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>{$Hero->DateOfBirth->format('Y-m-d H:i:s')}</td>
 		</tr>
 		{/foreach}
