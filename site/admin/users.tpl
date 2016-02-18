@@ -17,7 +17,7 @@
 			<td>{$iUser->ID}</td>
 			<td>{$iUser->username}</td>
 			<td>{$iUser->email}</td>
-			<td>{$iUser->password == "pass"}pass{else}Hashed{/if}</td>
+			<td>{if $iUser->password == "pass"}pass{else}Hashed{/if}</td>
 			<td>{$iUser->gold}</td>
 			<td>{$iUser->active}</td>
 			<td>{$heroController->countAllForUser($iUser->ID)}</td>

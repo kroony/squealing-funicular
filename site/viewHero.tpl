@@ -55,9 +55,13 @@ Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphi
 Intelligence: {$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence increased when levelling up!{/if}<br />
 Wisdom: {$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom increased when levelling up!{/if}<br />
 Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma increased when levelling up!{/if}<br />
+<br /><strong>Statistics</strong>
+<br />Kills: {$hero->Kills}
 <br />
-<strong>Statistics</strong><br />
-Kills: {$hero->Kills}<br /><br />
+<br /><strong>Debug</strong>
+<br />DOB: {$hero->DateofBirth}
+<br />Status: {$hero->Status}
+<br />StatusTime: {$hero->StatusTime}
 
 <div class="row">
 	<div class="col-sm-4" >

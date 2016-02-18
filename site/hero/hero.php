@@ -85,7 +85,10 @@ class Hero
 		$returnHero->Fte = $obj->Fte;
 		$returnHero->Weapon = Weapon::loadWeapon($obj->WeaponID);
 		$returnHero->Kills = $obj->Kills;
-
+		$returnHero->Status = $obj->Status;
+		$returnHero->StatusTime = $obj->StatusTime;
+		$returnHero->DateOfBirth = $obj->DateOfBirth;
+		
 		return $returnHero;
 	}
 
