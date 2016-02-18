@@ -441,7 +441,7 @@ class Hero
 				"Fte"=>$this->Fte, 
 				"WeaponID"=>$this->Weapon->ID,
 				"Kills"=>$this->Kills,
-				"DateOfBirth"=>$this->DateOfBirth);
+				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'));
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Hero", $row, $where);
@@ -472,7 +472,7 @@ class Hero
 				"Fte"=>$this->Fte, 
 				"WeaponID"=>$this->Weapon->ID,
 				"Kills"=>$this->Kills,
-				"DateOfBirth"=>$this->DateOfBirth);
+				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'));
 			
 			try {
 				$db->insert("Hero",$row);
