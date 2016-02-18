@@ -7,7 +7,7 @@ include_once("weapon.php");
 
 class Hero
 /*
-//////perhaps have 2 weapons and an armor or 3 items of some sort to make things more indepth, laters problem.
+//////perhaps have 2 weapons and an armour or 3 items of some sort to make things more indepth, laters problem.
 /////// Death from old age? max age based on race? 1day IRL = 1 year
  */
 {
@@ -31,6 +31,9 @@ class Hero
 	public $Fte;
 	public $Weapon;
 	public $Kills;
+	public $Status;
+	public $StatusTime;
+	public $DateOfBirth;
 
 	function __construct()
 	{
@@ -138,6 +141,9 @@ class Hero
 		
 		//Kills
 		$this->Kills = 0;
+		
+		//dob
+		$this->DateOfBirth = new DateTime("Y-m-d H:i:s");
 	}
 	
 	function generateStartingWeapon()
@@ -427,7 +433,8 @@ class Hero
 				"Cha"=>$this->Cha,
 				"Fte"=>$this->Fte, 
 				"WeaponID"=>$this->Weapon->ID,
-				"Kills"=>$this->Kills);
+				"Kills"=>$this->Kills,
+				"DateOfBirth"=>$this->DateOfBirth);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Hero", $row, $where);
@@ -457,7 +464,8 @@ class Hero
 				"Cha"=>$this->Cha,
 				"Fte"=>$this->Fte, 
 				"WeaponID"=>$this->Weapon->ID,
-				"Kills"=>$this->Kills);
+				"Kills"=>$this->Kills,
+				"DateOfBirth"=>$this->DateOfBirth);
 			
 			try {
 				$db->insert("Hero",$row);

@@ -5,7 +5,10 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-//print_r($db->query("UPDATE `User` SET `gold` = '1000000000' WHERE `User`.`ID` = 146;"));
+
+print_r($db->query("ALTER TABLE `Hero` ADD `Status` TEXT NOT NULL;"));
+print_r($db->query("ALTER TABLE `Hero` ADD `StatusTime` TIMESTAMP NOT NULL;"));
+print_r($db->query("ALTER TABLE `Hero` ADD `DateOfBirth` TIMESTAMP NOT NULL;"));
 
 include_once("user/userController.php");
 include_once("hero/heroController.php");
