@@ -88,7 +88,7 @@ class Hero
 		$returnHero->Kills = $obj->Kills;
 		$returnHero->Status = $obj->Status;
 		$returnHero->StatusTime = $obj->StatusTime;
-		$returnHero->DateOfBirth = $obj->DateOfBirth;
+		$returnHero->DateOfBirth = new DateTime($obj->DateOfBirth);
 		
 		$now = new DateTime('now');
 		$returnHero->Age = $returnHero->DateOfBirth->diff($now)->format('%d');
