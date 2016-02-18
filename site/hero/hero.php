@@ -34,6 +34,7 @@ class Hero
 	public $Status;
 	public $StatusTime;
 	public $DateOfBirth;
+	public $Age;
 
 	function __construct()
 	{
@@ -88,6 +89,9 @@ class Hero
 		$returnHero->Status = $obj->Status;
 		$returnHero->StatusTime = $obj->StatusTime;
 		$returnHero->DateOfBirth = $obj->DateOfBirth;
+		
+		$now = new DateTime("Y-m-d H:i:s");
+		$returnHero->Age = $returnHero->DateOfBirth->diff($now)->format('%d');
 		
 		return $returnHero;
 	}
