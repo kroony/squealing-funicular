@@ -17,7 +17,7 @@ $smarty->display("menu.tpl");
 $Heros = $heroController->getAll();
 $smarty->assign("Heros",$Heros);
 $smarty->assign("totalHeros",count($Heros));
-$smarty->display("heroes.tpl");
+$smarty->display("admin/heroes.tpl");
 /*********  end show all Hero  ***********/
 
 chdir("admin/");
