@@ -209,6 +209,91 @@ body {
 					</li>
 				</ul>
 			</li>
+			<li>
+				<a href="#">Squire</a>
+				<ul>
+					<li>
+						<a href="#">Soldier</a>
+						<ul>
+							<li>
+								<a href="#">Knight</a>
+								<ul>
+									<li>
+										<a href="#">Warden</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Cavalier</a>
+								<ul>
+									<li>
+										<a href="#">Marshall</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Archer</a>
+						<ul>
+							<li>
+								<a href="#">Knight</a>
+								<ul>
+									<li>
+										<a href="#">Warden</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Sharpshooter</a>
+							</li>
+							<li>
+								<a href="#">Ranger</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+			<li>
+				<a href="#">Brawler</a>
+				<ul>
+					<li>
+						<a href="#">Hunter</a>
+						<ul>
+							<li>
+								<a href="#">Ranger</a>
+							</li>
+							<li>
+								<a href="#">Druid</a>
+							</li>
+							<li>
+								<a href="#">Assassin</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Mercenary</a>
+						<ul>
+							<li>
+								<a href="#">Cavalier</a>
+								<ul>
+									<li>
+										<a href="#">Marshall</a>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">Assassin</a>
+								<ul>
+									<li>
+										<a href="#">Warden</a>
+									</li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
 		</ul>
 	</li>
 </ul>
