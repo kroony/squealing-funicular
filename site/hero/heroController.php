@@ -141,12 +141,23 @@ class heroController
 	{
 		$rate = (float)$rate;
 		$db = DB::GetConn();
-		$getQuery = "UPDATE Hero
-			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * $rate)
+		$healLivingQuery = "UPDATE Hero
+			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * $rate)
 			WHERE CurrentHP > 0 AND CurrentHP < MaxHP";
 
-		$getResult=$db->query($getQuery);//execute query
-		return $getResult;
+		$healLivingResult=$db->query($healLivingQuery);//execute query
+		
+		$healUnconciousQuery = "UPDATE Hero
+			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.001, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * ($rate / 20))
+			WHERE CurrentHP <= 0 AND CurrentHP > -Con";
+
+		$healUnconciousResult=$db->query($healUnconciousQuery);//execute query
+		
+		if($healLivingResult && $healUnconciousResult)
+		{
+			return true;
+		}
+		return false;
 	}
 }
 
