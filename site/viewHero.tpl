@@ -59,7 +59,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 <br />Kills: {$hero->Kills}
 <br />
 <br /><strong>Debug</strong>
-<br />DOB: {$hero->DateofBirth}
+<br />DOB: {$hero->DateOfBirth}
 <br />Status: {$hero->Status}
 <br />StatusTime: {$hero->StatusTime}
 
