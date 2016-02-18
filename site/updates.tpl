@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/02/18 - Unconscious Heroes heal at a slow rate.</li>
 	<li>2016/02/11 - Weapons are only looted sometimes and gold loot is increased.</li>
 	<li>2016/02/10 - Added Help button and Hero kill count.</li>
 	<li>2016/02/07 - Added 1st round of class descriptions from creative writer.</li>
