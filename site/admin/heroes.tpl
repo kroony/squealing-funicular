@@ -3,6 +3,7 @@
 <table class='table table-hover'>
 	<thead>
 		<tr>
+			<th>User</th>
 			<th>Name</th>
 			<th>Type</th>
 			<th>HP</th>
@@ -14,6 +15,7 @@
 			<th>Int</th>
 			<th>Wis</th>
 			<th>Cha</th>
+			<th>Fte</th>
 			<th>Weapon</th>
 			<th>DOB</th>
 		</tr>
@@ -21,6 +23,7 @@
 	<tbody>
 		{foreach from=$Heros item=Hero}
 		<tr>
+			<td>{if !empty($Hero->GetOwner())}{$Hero->GetOwner()->username}{else}Owner Unknown (ID: {$Hero->OwnerID}){/if}</td>
 			<td><a href='viewHero.php?ID={$Hero->ID}'>{str_replace("'", "", $Hero->Name)}</a></td>
 			<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
 			<td>
@@ -46,8 +49,9 @@
 			<td>{$Hero->Intel}</td>
 			<td>{$Hero->Wis}</td>
 			<td>{$Hero->Cha}</td>
+			<td>{$Hero->Fte}</td>
 			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}
-			{if $Hero->Weapon->ID < 10 || $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
+			{if $Hero->Weapon->ID < 10}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>{$Hero->DateOfBirth->format('Y-m-d H:i:s')}</td>
 		</tr>
 		{/foreach}
