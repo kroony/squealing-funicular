@@ -33,6 +33,22 @@ class heroController
 		return $returnHeroes;
 	}
 	
+	function getAll()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Hero`;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnHeroes = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnHeroes, Hero::loadHeroFromObject($obj));
+		}
+		return $returnHeroes;
+	}
+	
 	function countAllForUser($userID)
 	{
 		$db = DB::GetConn();
