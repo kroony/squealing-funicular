@@ -90,7 +90,7 @@ class Hero
 		$returnHero->StatusTime = $obj->StatusTime;
 		$returnHero->DateOfBirth = $obj->DateOfBirth;
 		
-		$now = new DateTime("Y-m-d H:i:s");
+		$now = new DateTime('now');
 		$returnHero->Age = $returnHero->DateOfBirth->diff($now)->format('%d');
 		
 		return $returnHero;
@@ -150,7 +150,7 @@ class Hero
 		$this->Kills = 0;
 		
 		//dob
-		$this->DateOfBirth = new DateTime("Y-m-d H:i:s");
+		$this->DateOfBirth = new DateTime('now');
 	}
 	
 	function generateStartingWeapon()
