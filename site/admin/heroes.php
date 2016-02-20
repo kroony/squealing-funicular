@@ -19,9 +19,9 @@ $Heros = $heroController->getAll();
 //set dob
 $now = new DateTime('now');
 echo $now->format('Y-m-d H:i:s');
-foreach($Heros as $hero)
+foreach($Heros as &$hero)
 {
-	$hero->DateofBirth = new DateTime('now');
+	$hero->DateOfBirth = new DateTime('now');
 	$hero->SaveHero();
 }
 
