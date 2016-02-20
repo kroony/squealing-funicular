@@ -15,6 +15,16 @@ $smarty->display("menu.tpl");
 
 /*********  show all Hero  ***********/
 $Heros = $heroController->getAll();
+
+//set dob
+
+foreach($Heros as $hero)
+{
+	$hero->DateofBirth = new DateTime('now');
+	$hero->SaveHero();
+}
+
+
 $smarty->assign("Heros",$Heros);
 $smarty->assign("totalHeros",count($Heros));
 $smarty->display("admin/heroes.tpl");
