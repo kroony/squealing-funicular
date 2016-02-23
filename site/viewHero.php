@@ -21,7 +21,7 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 //Class Tree Diagram
 $baseClass = $hero->HeroClass;
 $childClasses = array();
-if($baseClass->NextClass != null $$ $baseClass->NextClass != "")
+if($baseClass->NextClass != null && $baseClass->NextClass != "")
 {
 	$childClassIDs = explode("|", $baseClass->NextClass);
 	foreach($childClassIDs as $childClassID)
