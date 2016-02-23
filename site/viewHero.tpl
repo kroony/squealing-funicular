@@ -56,14 +56,15 @@ Intelligence: {$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon gl
 Wisdom: {$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom increased when levelling up!{/if}<br />
 Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma increased when levelling up!{/if}<br />
 <br /><strong>Statistics</strong>
+<br />Age: {$hero->Age} years
 <br />Kills: {$hero->Kills}
 <br />
 <br /><strong>Debug</strong>
-<br />DOB: {$hero->DateOfBirth->format('Y-m-d H:i:s')}
-<br />Age: {$hero->Age} years
 <br />Status: {$hero->Status}
 <br />StatusTime: {$hero->StatusTime}
-
+<br />
+{include file='classtreeSmall.tpl'}
+<br />
 <div class="row">
 	<div class="col-sm-4" >
 		<div class="panel panel-default">

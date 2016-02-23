@@ -6,9 +6,9 @@ include_once("hero/weaponController.php");
 
 $smarty->display("css/css.tpl");
 
-$smarty->assign("help","Hero and weapon names can be edited by click the <span class='glyphicon glyphicon-edit'></span> button.
+$smarty->assign("help","Hero and weapon names can be edited by clicking the edit button located next to the respective name.
 					    Equipped weapons can be changed if you have unused weapons in your inventory.
-					    When a hero gains a level they increase their Max HP and sometimes increase an attribute. This is shown with the <span class='glyphicon glyphicon-arrow-up' style='color: limegreen;'></span> icon.");
+					    When a hero gains a level they increase their Max HP and sometimes increase an attribute. This is shown with the green up arrow icon.");
 $smarty->assign("helpTitle","Hero Page Help");
 $smarty->display("menu.tpl");
 
@@ -18,6 +18,21 @@ $weaponController = new weaponController();
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 
+//Class Tree Diagram
+$baseClass = $hero->HeroClass;
+$childClasses = array();
+if($baseClass->NextClass != null $$ $baseClass->NextClass != "")
+{
+	$childClassIDs = explode("|", $baseClass->NextClass);
+	foreach($childClassIDs as $childClassID)
+	{
+		array_push($childClasses, HeroClass::loadHeroClass($childClassID);
+	}
+}
+$smarty->assign("baseClass", $baseClass);
+$smarty->assign("childClasses", $childClasses);
+
+//Weapon
 $allWeapons = $weaponController->getAllForUser($currentUID);
 $unequipedWeapons = array();
 foreach($allWeapons as $weapon)
