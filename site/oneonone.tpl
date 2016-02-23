@@ -4,7 +4,7 @@
 			{assign var="hero" value=$hero1}
 			{include file='displayHeroCombat.tpl'}
 		</div>
-		<div class="col-sm-6 pre-scrollable">
+		<div class="col-sm-6 pre-scrollable" style="max-height: 100%;">
 			{$log->show()}
 			
 			{if $hero1->CurrentHP lt (0 - $hero1->Con)}
