@@ -99,7 +99,7 @@ body {
 		<a href="#">
 			{$baseClass->Name}
 			<br />Max Level: {$baseClass->LevelCap}
-			{if $baseClass->Name != "Commoner"}<br />Favoured Attribute: {$baseClass->FavouredAttribute}
+			{if $baseClass->Name != "Commoner"}<br />Favoured Attribute: {$baseClass->FavouredAttribute}{/if}
 		</a>
 		{if count($childClasses) > 0}
 			<ul>
