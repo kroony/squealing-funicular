@@ -26,7 +26,7 @@ if($baseClass->NextClass != null && $baseClass->NextClass != "")
 	$childClassIDs = explode("|", $baseClass->NextClass);
 	foreach($childClassIDs as $childClassID)
 	{
-		array_push($childClasses, HeroClass::loadHeroClass($childClassID);
+		array_push($childClasses, HeroClass::loadHeroClass($childClassID));
 	}
 }
 $smarty->assign("baseClass", $baseClass);
