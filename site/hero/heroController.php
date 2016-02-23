@@ -139,7 +139,7 @@ class heroController
 		$low_level = $Hero->Level - 1;
 		$high_level = $Hero->Level + 2;
 		$db = DB::GetConn();
-		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` = `MaxHP` AND (`Level` BETWEEN $low_level AND $high_level OR `Level` = -1) ORDER BY RAND();";
+		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `OwnerID` <> $id AND `Status = "" AND `CurrentHP` = `MaxHP` AND (`Level` BETWEEN $low_level AND $high_level OR `Level` = -1) ORDER BY RAND();";
 
 		$res = $db->query($getQuery);
 
