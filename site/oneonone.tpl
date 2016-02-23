@@ -1,10 +1,10 @@
 <div class="container-fluid">
 	<div class="row">
-		<div class="col-sm-4" >
+		<div class="col-sm-3" >
 			{assign var="hero" value=$hero1}
 			{include file='displayHeroCombat.tpl'}
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-6">
 			{$log->show()}
 			
 			{if $hero1->CurrentHP lt (0 - $hero1->Con)}
@@ -35,7 +35,7 @@
 			
 			<a href="home.php">Return</a>
 		</div>
-		<div class="col-sm-4">
+		<div class="col-sm-3">
 			{assign var="hero" value=$hero2}
 			{include file='displayHeroCombat.tpl'}
 		</div>
