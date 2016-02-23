@@ -54,7 +54,7 @@ Strength: {$hero->Str}
 	{if $hero->Status == ""}
 		<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp</a>
 	{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
-		Currently training, <span id="StrStatusCountdown"></span> Remaining
+		Currently training, <span id="StrStatusCountdown"></span> remaining.
 		<script type="text/javascript">
 			countdown( "StrStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
 		</script>

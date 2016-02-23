@@ -163,7 +163,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->Status = "Train Str";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1))));
 					$hero->SaveHero();
-					$hero = $hero->loadHero($_REQUEST['ID']);
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
 					$smarty->assign("hero",$hero);
@@ -174,6 +174,34 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$smarty->assign("hero",$hero);
 				}
 			}
+		}
+		else if($_REQUEST['action'] == "FinishTrain")
+		{
+			if($hero->StatusETA == 'None')
+			{
+				if($_REQUEST['increase'] == "Str" && $hero->Status == "Train Str")
+				{
+					$hero->Str++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their strength training.");
+					$smarty->assign("StrIncrease", true);
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					$smarty->assign("error","A problem occurred attempting to finish training");
+					$smarty->assign("hero",$hero);
+				}
+			}
+			else
+			{
+				$smarty->assign("error","Have not finished training time");
+				$smarty->assign("hero",$hero);
+			}
+			FinishTrain&increase=Str
 		}
 	}
 	else// we are just viewing hero
