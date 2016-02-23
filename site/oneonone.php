@@ -12,14 +12,14 @@ $hero1 = new Hero();
 $hero1 = $hero1->loadHero($_REQUEST['ID1']);
 
 $smarty->assign("divFloatRight","False");
-$smarty->assign("displayHero",$hero1);
+$smarty->assign("hero",$hero1);
 $smarty->display("displayHeroCombat.tpl");
 
 $hero2 = new Hero();
 $hero2 = $hero2->loadHero($_REQUEST['ID2']);
 
 $smarty->assign("divFloatRight","True");
-$smarty->assign("displayHero",$hero2);
+$smarty->assign("hero",$hero2);
 $smarty->display("displayHeroCombat.tpl");
 
 $log = $pit->oneOnOne($hero1, $hero2);
@@ -34,7 +34,6 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 {
 	//weapon Loot
 	$weaponLootRoll = rand(1, 100);
-	$smarty->assign("weaponLootRoll", $weaponLootRoll . " Goal " . $hero1->Fte);
 	if($weaponLootRoll <= $hero1->Fte && $hero2->OwnerID == 146 && $hero2->Name != "Black Ninja")//only loot weapon sometimes
 	{
 		$hero2->Weapon->UserID = $hero1->OwnerID;

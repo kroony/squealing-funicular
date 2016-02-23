@@ -1,19 +1,18 @@
 <div class="container-fluid">
-<div style="display:inline-block; vertical-align: top;{if $divFloatRight == "True"} float: right;{/if}">
-<h2>{$displayHero->Name}</h2>
-{$displayHero->Race->Name} {$displayHero->HeroClass->Name}<br />
-<div class="progress">
-  <div class="progress-bar {if $displayHero->CurrentHP == $displayHero->MaxHP} progress-bar-success {elseif $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP} progress-bar-warning {/if}" 
-  role="progressbar" aria-valuenow="{$displayHero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$displayHero->MaxHP}" style="width:{$displayHero->CurrentHP/$displayHero->MaxHP*100}%">
-	<span>{$displayHero->CurrentHP}HP/{$displayHero->MaxHP}HP</span>
-  </div>
-</div><br />
-<div class="progress">
-  <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$displayHero->CurrentXP}"
-  aria-valuemin="0" aria-valuemax="{$displayHero->LevelUpXP}" style="width:{$displayHero->CurrentXP/$displayHero->LevelUpXP*100}%">
-    {if $divFloatRight != "True"}<span>{$displayHero->CurrentXP}XP/{$displayHero->LevelUpXP}XP</span>{/if}
-  </div>
-</div>
-<br />
-</div>
+	<div style="display:inline-block; vertical-align: top;{if $divFloatRight == "True"} float: right;{/if}">
+		<h2>{$hero->Name}</h2>
+		{include file='portraits/kobold.html'}
+		{$hero->Race->Name} {$hero->HeroClass->Name} - {if !empty($hero->GetOwner())}{$hero->GetOwner()->username}{else}Owner Unknown (ID: {$hero->OwnerID}){/if}<br />
+		<div class="progress">
+		<div class="progress-bar {if $hero->CurrentHP == $hero->MaxHP} progress-bar-success {elseif $hero->CurrentHP < $hero->Con} progress-bar-danger {elseif $hero->CurrentHP < $hero->MaxHP} progress-bar-warning {/if}" 
+		role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
+			<span>{$hero->CurrentHP}HP/{$hero->MaxHP}HP</span>
+		</div>
+	</div>
+	<br />
+	<div class="progress">
+		<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}" aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" style="width:{$hero->CurrentXP/$hero->LevelUpXP*100}%">
+			{if $divFloatRight != "True"}<span>{$hero->CurrentXP}XP/{$hero->LevelUpXP}XP</span>{/if}
+		</div>
+	</div>
 </div>
