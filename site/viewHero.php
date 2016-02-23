@@ -148,7 +148,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		}
 		else if($_REQUEST['action'] == "Train")
 		{
-			//load User
+			//load User for gold spending
 			include_once("user/user.php");
 			$user = new User();
 			$user = $user->load($currentUID);
@@ -201,7 +201,6 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("error","Have not finished training time");
 				$smarty->assign("hero",$hero);
 			}
-			FinishTrain&increase=Str
 		}
 	}
 	else// we are just viewing hero
