@@ -15,7 +15,7 @@ $smarty->display("menu.tpl");
 $heroController = new heroController();
 $weaponController = new weaponController();
 
-$currentTime = date("Y-m-d H:m:s");
+$currentTime = new DateTime('now');
 $smarty->assign("currentTime", $currentTime);
 
 $hero = new Hero();
@@ -161,7 +161,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Str";
-					$hero->StatusTime = date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1)));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1))));
 					$hero->SaveHero();
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
