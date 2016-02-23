@@ -51,13 +51,32 @@ UpdateBar("XPBar", 0, {$hero->CurrentXP});
 <br />
 Strength: {$hero->Str}{if isset($StrIncrease)} 
 	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if} 
-	<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp</a>
+	{if $hero->Status = ""}
+		<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp</a>
+	{elseif $hero->Status = "Train Str" && $hero->StatusETA != 'None'}
+		Currently training, <span id="StrStatusCountdown"></span> Remaining
+		<script type="text/javascript">
+			countdown( "StrStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+		</script>
+	{elseif $hero->Status = "Train Str" && $hero->StatusETA == 'None'}
+		<a href="viewHero.php?action=FinishTrain&increase=Str&ID={$hero->ID}">Complete Training!</a>
+	{/if}
 <br />
-Dexterity: {$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}<br />
-Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}<br />
-Intelligence: {$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence increased when levelling up!{/if}<br />
-Wisdom: {$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom increased when levelling up!{/if}<br />
-Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma increased when levelling up!{/if}<br />
+Dexterity: {$hero->Dex}{if isset($DexIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}
+<br />
+Constitution: {$hero->Con}{if isset($ConIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}
+<br />
+Intelligence: {$hero->Intel}{if isset($IntelIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence increased when levelling up!{/if}
+<br />
+Wisdom: {$hero->Wis}{if isset($WisIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom increased when levelling up!{/if}
+<br />
+Charisma: {$hero->Cha}{if isset($ChaIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma increased when levelling up!{/if}
+<br />
 <br /><strong>Statistics</strong>
 <br />Age: {$hero->Age} years
 <br />Kills: {$hero->Kills}
