@@ -98,7 +98,7 @@ body {
 <div class="tree">
 <ul>
 	<li>
-		<a href="#">Commoner</a>
+		<a href="#">Commoner<br />Level 1- 5</a>
 		<ul>
 			<li>
 				<a href="#">Acolyte</a>
@@ -210,7 +210,7 @@ body {
 				</ul>
 			</li>
 			<li>
-				<a href="#">Squire</a>
+				<a href="#">Squire<br />Level 6 - 10<br />Requires Intel 8<br />Strength Based</a>
 				<ul>
 					<li>
 						<a href="#">Soldier</a>
