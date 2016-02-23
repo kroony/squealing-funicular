@@ -1,5 +1,5 @@
 <div class="container-fluid">
-	<div style="display:inline-block; vertical-align: top;{if $divFloatRight == "True"} float: right;{/if}">
+	<div style="display:inline-block; vertical-align: top;">
 		<h2>{$hero->Name}</h2>
 		{include file='portraits/kobold.html'}
 		<br />

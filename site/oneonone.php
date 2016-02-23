@@ -11,16 +11,8 @@ $pit = new PitController();
 $hero1 = new Hero();
 $hero1 = $hero1->loadHero($_REQUEST['ID1']);
 
-$smarty->assign("divFloatRight","False");
-$smarty->assign("hero",$hero1);
-$smarty->display("displayHeroCombat.tpl");
-
 $hero2 = new Hero();
 $hero2 = $hero2->loadHero($_REQUEST['ID2']);
-
-$smarty->assign("divFloatRight","True");
-$smarty->assign("hero",$hero2);
-$smarty->display("displayHeroCombat.tpl");
 
 $log = $pit->oneOnOne($hero1, $hero2);
 
