@@ -52,7 +52,7 @@ UpdateBar("XPBar", 0, {$hero->CurrentXP});
 Strength: {$hero->Str}
 	{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if} 
 	{if $hero->Status == ""}
-		<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp</a>
+		<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp</a>
 	{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
 		Currently training, <span id="StrStatusCountdown"></span> remaining.
 		<script type="text/javascript">
