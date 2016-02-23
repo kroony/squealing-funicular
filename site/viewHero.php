@@ -20,6 +20,9 @@ $smarty->assign("currentTime", $currentTime);
 
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
+$StatusETA = $hero->StatusTime->diff($currentTime);
+$smarty->assign("StatusETA", $StatusETA->format('%d days, %h hours, %i minutes'));
+
 
 //Class Tree Diagram
 $baseClass = $hero->HeroClass;
