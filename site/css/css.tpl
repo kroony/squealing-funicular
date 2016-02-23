@@ -65,7 +65,7 @@
 				element.innerHTML = "Done";
 			} else {
 				time = new Date( msLeft );
-				days = time.getUTCDay();
+				days = days = Math.floor(msLeft / 1000 / 60 / 60 / 24);
 				hours = time.getUTCHours();
 				mins = time.getUTCMinutes();
 				element.innerHTML = (days ? days + " days " + hours + ':' : hours + ':') + twoDigits(mins) + ':' + twoDigits( time.getUTCSeconds() );
