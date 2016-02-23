@@ -3,7 +3,7 @@
 		<div class="row">
 			<div class="col-sm-4" >
 				{assign var="hero" value=$hero1}
-				{include file='portraits/kobold.html'}
+				{include file='displayHeroCombat.tpl'}
 			</div>
 			<div class="col-sm-4">
 				{$log->show()}
@@ -38,7 +38,7 @@
 			</div>
 			<div class="col-sm-4">
 				{assign var="hero" value=$hero2}
-				{include file='portraits/kobold.html'}
+				{include file='displayHeroCombat.tpl'}
 			</div>
 		</div>
 	</div>
