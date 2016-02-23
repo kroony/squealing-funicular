@@ -2,6 +2,7 @@
 	<div style="display:inline-block; vertical-align: top;{if $divFloatRight == "True"} float: right;{/if}">
 		<h2>{$hero->Name}</h2>
 		{include file='portraits/kobold.html'}
+		<br />
 		{$hero->Race->Name} {$hero->HeroClass->Name} - {if !empty($hero->GetOwner())}{$hero->GetOwner()->username}{else}Owner Unknown (ID: {$hero->OwnerID}){/if}<br />
 		<div class="progress">
 		<div class="progress-bar {if $hero->CurrentHP == $hero->MaxHP} progress-bar-success {elseif $hero->CurrentHP < $hero->Con} progress-bar-danger {elseif $hero->CurrentHP < $hero->MaxHP} progress-bar-warning {/if}" 
