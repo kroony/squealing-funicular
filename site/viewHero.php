@@ -165,6 +165,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
+					$smarty->assign("hero",$hero);
 				}
 				else
 				{
