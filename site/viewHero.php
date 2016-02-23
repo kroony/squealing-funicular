@@ -20,8 +20,6 @@ $smarty->assign("currentTime", $currentTime);
 
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
-$StatusETA = $hero->StatusTime->diff($currentTime);
-$smarty->assign("StatusETA", $StatusETA->format('%R%a days, %H:%I:%S'));
 
 //Class Tree Diagram
 $baseClass = $hero->HeroClass;
@@ -165,6 +163,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->Status = "Train Str";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1))));
 					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
 					$smarty->assign("hero",$hero);

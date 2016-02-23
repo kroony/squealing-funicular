@@ -35,6 +35,7 @@ class Hero
 	public $StatusTime;
 	public $DateOfBirth;
 	public $Age;
+	public $StatusETA;
 
 	function __construct()
 	{
@@ -91,7 +92,13 @@ class Hero
 		$returnHero->DateOfBirth = new DateTime($obj->DateOfBirth);
 		
 		$now = new DateTime('now');
-		$returnHero->Age = $returnHero->DateOfBirth->diff($now)->format('%d');
+		$returnHero->Age = $returnHero->DateOfBirth->diff($now)->format('%a');
+		
+		$returnHero->StatusETA = $returnHero->StatusTime->diff($now)->format('%R%a days, %H:%I:%S');
+		if{substr($returnHero->StatusETA, 0, 1) == '+')
+		{
+			$returnHero->StatusETA = "None";
+		}
 		
 		return $returnHero;
 	}
