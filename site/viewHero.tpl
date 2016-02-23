@@ -50,7 +50,7 @@ UpdateBar("XPBar", 0, {$hero->CurrentXP});
 {/if}
 <br />
 Strength: {$hero->Str}
-	{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if} 
+	{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength has increased!{/if} 
 	{if $hero->Status == ""}
 		<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp</a>
 	{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
@@ -63,19 +63,19 @@ Strength: {$hero->Str}
 	{/if}
 <br />
 Dexterity: {$hero->Dex}
-	{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}
+	{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity has increased!{/if}
 <br />
 Constitution: {$hero->Con}
-	{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}
+	{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution has increased!{/if}
 <br />
 Intelligence: {$hero->Intel}
-	{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence increased when levelling up!{/if}
+	{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence has increased!{/if}
 <br />
 Wisdom: {$hero->Wis}
-	{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom increased when levelling up!{/if}
+	{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom has increased!{/if}
 <br />
 Charisma: {$hero->Cha}
-	{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma increased when levelling up!{/if}
+	{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma has increased!{/if}
 <br />
 <br /><strong>Statistics</strong>
 <br />Age: {$hero->Age} years

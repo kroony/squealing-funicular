@@ -305,7 +305,7 @@ class Hero
 	
 	function calculateAttributeUpgradeCost($attribute)
 	{
-		return ($attribute + 1) * 5;//increase to 100 after testing
+		return ($attribute + 1) * 100;
 	}
 	
 	function calculateRunawayLimit()
