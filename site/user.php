@@ -23,30 +23,76 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 {
 	if($_REQUEST['action'] == "changePassword")
 	{
-		if($_REQUEST['ID'] != $currentUID)
+		if($_REQUEST['oldpassword'] != "pass")
 		{
-			$smarty->assign("error","Don't change other peoples passwords.");
-		}
-		else if ($_REQUEST['password1'] != $_REQUEST['password2'])
-		{
-			$smarty->assign("error","The passwords you entered do not match.");
-		}
-		else if ($_REQUEST['password1'] == "" || $_REQUEST['password1'] == null)
-		{
-			$smarty->assign("error","Your new password can not be blank.");
+			if(password_verify($_REQUEST['oldpassword'], $user->password))
+			{
+				if($_REQUEST['ID'] != $currentUID)
+				{
+					$smarty->assign("error","Don't change other peoples passwords.");
+				}
+				else if ($_REQUEST['password1'] != $_REQUEST['password2'])
+				{
+					$smarty->assign("error","The passwords you entered do not match.");
+				}
+				else if ($_REQUEST['password1'] == "" || $_REQUEST['password1'] == null)
+				{
+					$smarty->assign("error","Your new password can not be blank.");
+				}
+				else
+				{
+					$passwordHash = password_hash($_REQUEST['password1'], PASSWORD_DEFAULT);
+					if($passwordHash == false)
+					{
+						$smarty->assign("error","There was an error changing your password.");
+					}
+					else
+					{
+						$user->password = $passwordHash;
+						$user->Save();
+						$smarty->assign("message", "Your password has been changed");
+					}
+				}
+			}
+			else
+			}
+				$smarty->assign("error","Your current password does not match");
+			{
 		}
 		else
 		{
-			$passwordHash = password_hash($_REQUEST['password1'], PASSWORD_DEFAULT);
-			if($passwordHash == false)
+			if($user->password == $_REQUEST['oldpassword'])
 			{
-				$smarty->assign("error","There was an error changing your password.");
+				if($_REQUEST['ID'] != $currentUID)
+				{
+					$smarty->assign("error","Don't change other peoples passwords.");
+				}
+				else if ($_REQUEST['password1'] != $_REQUEST['password2'])
+				{
+					$smarty->assign("error","The passwords you entered do not match.");
+				}
+				else if ($_REQUEST['password1'] == "" || $_REQUEST['password1'] == null)
+				{
+					$smarty->assign("error","Your new password can not be blank.");
+				}
+				else
+				{
+					$passwordHash = password_hash($_REQUEST['password1'], PASSWORD_DEFAULT);
+					if($passwordHash == false)
+					{
+						$smarty->assign("error","There was an error changing your password.");
+					}
+					else
+					{
+						$user->password = $passwordHash;
+						$user->Save();
+						$smarty->assign("message", "Your password has been changed");
+					}
+				}
 			}
 			else
 			{
-				$user->password = $passwordHash;
-				$user->Save();
-				$smarty->assign("message", "Your password has been changed");
+				$smarty->assign("error","Your current password does not match");
 			}
 		}
 	}
