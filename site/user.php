@@ -55,9 +55,9 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 				}
 			}
 			else
-			}
-				$smarty->assign("error","Your current password does not match");
 			{
+				$smarty->assign("error","Your current password does not match");
+			}
 		}
 		else
 		{
