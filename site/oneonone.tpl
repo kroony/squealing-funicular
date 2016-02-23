@@ -27,8 +27,10 @@
 	{if isset($WeaponLost)}
 		{$hero2_name} looted {$WeaponLost->Name} from {$hero1_name}<br />
 	{/if}
-	<br />
-	{$weaponLootRoll}
+	
+	{if isset($weaponLootRoll)}
+	<br />{$weaponLootRoll}<br />
+	{/if}
 	
 	<a href="home.php">Return</a>
 </div>
