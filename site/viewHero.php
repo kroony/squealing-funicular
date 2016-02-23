@@ -143,6 +143,33 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				$smarty->assign("hero",$hero);
 			}
 		}
+		else if($_REQUEST['action'] == "Train")
+		{
+			//load User
+			include_once("user/user.php");
+			$user = new User();
+			$user = $user->load($currentUID);
+
+			if($_REQUEST['increase'] == "Str")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Str);
+					$user->Save();
+					
+					$hero->Status = "Train Str";
+					$hero->StatusTime = date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1)));
+					$hero->SaveHero();
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Strength");
+					$smarty->assign("hero",$hero);
+				}
+			}
+		}
 	}
 	else// we are just viewing hero
 	{

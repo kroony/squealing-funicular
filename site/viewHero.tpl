@@ -49,7 +49,10 @@ UpdateBar("XPBar", 0, {$hero->CurrentXP});
 </script>
 {/if}
 <br />
-Strength: {$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if}<br />
+Strength: {$hero->Str}{if isset($StrIncrease)} 
+	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if} 
+	<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp
+<br />
 Dexterity: {$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}<br />
 Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}<br />
 Intelligence: {$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence increased when levelling up!{/if}<br />
