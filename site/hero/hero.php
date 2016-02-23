@@ -102,6 +102,12 @@ class Hero
 		
 		return $returnHero;
 	}
+	
+	function getStatusCountdownJSArgs()
+	{
+		$now = new DateTime('now');
+		return $this->StatusTime->diff($now)->format('%a, %H, %I, %S');
+	}
 
 	function GenerateHero($level)
 	{

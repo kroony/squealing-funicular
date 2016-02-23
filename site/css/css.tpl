@@ -48,6 +48,35 @@
     $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 
     });
+	
+	function countdown( elementName, days, hours, minutes, seconds )
+	{
+		var element, endTime, days, hours, mins, msLeft, time;
+
+		function twoDigits( n )
+		{
+			return (n <= 9 ? "0" + n : n);
+		}
+
+		function updateTimer()
+		{
+			msLeft = endTime - (+new Date)
+			if ( msLeft < 1000 ) {
+				element.innerHTML = "Done";
+			} else {
+				time = new Date( msLeft );
+				days = time.getUTCDay();
+				hours = time.getUTCHours();
+				mins = time.getUTCMinutes();
+				element.innerHTML = (days ? days + " days " + hours + ':' : hours + ':') + twoDigits(mins) + ':' + twoDigits( time.getUTCSeconds() );
+				setTimeout( updateTimer, time.getUTCMilliseconds() + 500 );
+			}
+		}
+
+		element = document.getElementById( elementName );
+		endTime = (+new Date) + 1000 * (24*60*60*days + 60*60*hours + 60*minutes + seconds) + 500;
+		updateTimer();
+	}
 	</script>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1">
