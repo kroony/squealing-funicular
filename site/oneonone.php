@@ -35,7 +35,7 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	//weapon Loot
 	$weaponLootRoll = rand(1, 100);
 	$smarty->assign("weaponLootRoll", $weaponLootRoll . " Goal " . $hero1->Fte);
-	if($weaponLootRoll <= $hero1->Fte && $hero2->OwnerID != 146 && $hero2->Name != "Black Ninja")//only loot weapon sometimes
+	if($weaponLootRoll <= $hero1->Fte && $hero2->OwnerID == 146 && $hero2->Name != "Black Ninja")//only loot weapon sometimes
 	{
 		$hero2->Weapon->UserID = $hero1->OwnerID;
 		$hero2->Weapon->save();
