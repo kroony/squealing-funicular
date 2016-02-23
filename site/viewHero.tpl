@@ -51,7 +51,7 @@ UpdateBar("XPBar", 0, {$hero->CurrentXP});
 <br />
 Strength: {$hero->Str}{if isset($StrIncrease)} 
 	<span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength increased when levelling up!{/if} 
-	<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp
+	<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {$hero->calculateAttributeUpgradeCost($hero->Str)}gp</a>
 <br />
 Dexterity: {$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity increased when levelling up!{/if}<br />
 Constitution: {$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution increased when levelling up!{/if}<br />
@@ -64,7 +64,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 <br />
 <br /><strong>Debug</strong>
 <br />Status: {$hero->Status}
-<br />StatusTime: {$hero->StatusTime}
+<br />StatusTime: {$hero->StatusTime->format('Y-m-d H:i:s')}
 <br />
 {include file='classtreeSmall.tpl'}
 <br />
