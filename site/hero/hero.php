@@ -87,7 +87,7 @@ class Hero
 		$returnHero->Weapon = Weapon::loadWeapon($obj->WeaponID);
 		$returnHero->Kills = $obj->Kills;
 		$returnHero->Status = $obj->Status;
-		$returnHero->StatusTime = $obj->StatusTime;
+		$returnHero->StatusTime = new DateTime($obj->StatusTime);
 		$returnHero->DateOfBirth = new DateTime($obj->DateOfBirth);
 		
 		$now = new DateTime('now');
