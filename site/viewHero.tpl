@@ -69,7 +69,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 {if $hero->StatusETA != 'None'}
 	<br />Live Difference: <div id="StatusCountdown"></div>
 	<script type="text/javascript">
-		countdown( "StatusCountdown", {$hero->getStatusCountdownJSArgs} );
+		countdown( "StatusCountdown", {$hero->getStatusCountdownJSArgs()} );
 	</script>
 {/if}
 <br />Difference: {$hero->StatusETA}
