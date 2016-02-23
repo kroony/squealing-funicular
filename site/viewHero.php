@@ -15,6 +15,9 @@ $smarty->display("menu.tpl");
 $heroController = new heroController();
 $weaponController = new weaponController();
 
+$currentTime = date("Y-m-d H:m:s");
+$smarty->assign("currentTime", $currentTime);
+
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 

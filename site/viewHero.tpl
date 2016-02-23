@@ -64,7 +64,7 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 <br />
 <br /><strong>Debug</strong>
 <br />Status: {$hero->Status}
-<br />StatusTime: {$hero->StatusTime->format('Y-m-d H:i:s')} NOW: {date("Y-m-d H:m:s")->format("Y-m-d H:m:s")}
+<br />StatusTime: {$hero->StatusTime->format('Y-m-d H:i:s')} NOW: {$currentTime->format("Y-m-d H:m:s")}
 <br />
 {include file='classtreeSmall.tpl'}
 <br />
