@@ -67,12 +67,11 @@ Charisma: {$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-
 <br />StatusTime: {$hero->StatusTime->format('Y-m-d H:i:s')}
 <br />NOW: {$currentTime->format("Y-m-d H:m:s")}
 {if $hero->StatusETA != 'None'}
-	<br />Live Difference: <div id="StatusCountdown"></div>
+	<br />Difference: <span id="StatusCountdown"></span>
 	<script type="text/javascript">
 		countdown( "StatusCountdown", {$hero->getStatusCountdownJSArgs()} );
 	</script>
 {/if}
-<br />Difference: {$hero->StatusETA}
 <br />
 {include file='classtreeSmall.tpl'}
 <br />
