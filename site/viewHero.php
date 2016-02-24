@@ -166,12 +166,10 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
-					$smarty->assign("hero",$hero);
 				}
 				else
 				{
 					$smarty->assign("error","Can not afford to increase Strength");
-					$smarty->assign("hero",$hero);
 				}
 			}
 			else if($_REQUEST['increase'] == "Dex")
@@ -187,12 +185,86 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
 					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . ($hero->Dex + 1) . " hours to complete.");
-					$smarty->assign("hero",$hero);
 				}
 				else
 				{
 					$smarty->assign("error","Can not afford to increase Dexterity");
-					$smarty->assign("hero",$hero);
+				}
+			}
+			else if($_REQUEST['increase'] == "Con")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Con);
+					$user->Save();
+					
+					$hero->Status = "Train Con";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Con + 1))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Constitution. It will take " . ($hero->Con + 1) . " hours to complete.");
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Constitution");
+				}
+			}
+			else if($_REQUEST['increase'] == "Intel")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Intel);
+					$user->Save();
+					
+					$hero->Status = "Train Intel";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Intel + 1))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Intelligence. It will take " . ($hero->Intel + 1) . " hours to complete.");
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Intelligence");
+				}
+			}
+			else if($_REQUEST['increase'] == "Wis")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Wis);
+					$user->Save();
+					
+					$hero->Status = "Train Wis";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Wis + 1))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Wisdom. It will take " . ($hero->Wis + 1) . " hours to complete.");
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Wisdom");
+				}
+			}
+			else if($_REQUEST['increase'] == "Cha")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Cha);
+					$user->Save();
+					
+					$hero->Status = "Train Cha";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Cha + 1))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Charisma. It will take " . ($hero->Cha + 1) . " hours to complete.");
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Charisma");
 				}
 			}
 		}
@@ -207,9 +279,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					
 					//outputs
-					$smarty->assign("message", $hero->Name . " has finished their strength training.");
+					$smarty->assign("message", $hero->Name . " has finished their Strength training.");
 					$smarty->assign("StrIncrease", true);
-					$smarty->assign("hero",$hero);
 				}
 				else if($_REQUEST['increase'] == "Dex" && $hero->Status == "Train Dex")
 				{
@@ -218,20 +289,57 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					
 					//outputs
-					$smarty->assign("message", $hero->Name . " has finished their dexterity training.");
+					$smarty->assign("message", $hero->Name . " has finished their Dexterity training.");
 					$smarty->assign("DexIncrease", true);
-					$smarty->assign("hero",$hero);
+				}
+				else if($_REQUEST['increase'] == "Con" && $hero->Status == "Train Con")
+				{
+					$hero->Con++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their Constitution training.");
+					$smarty->assign("ConIncrease", true);
+				}
+				else if($_REQUEST['increase'] == "Intel" && $hero->Status == "Train Intel")
+				{
+					$hero->Intel++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their Intelligence training.");
+					$smarty->assign("IntelIncrease", true);
+				}
+				else if($_REQUEST['increase'] == "Wis" && $hero->Status == "Train Wis")
+				{
+					$hero->Wis++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their Wisdom training.");
+					$smarty->assign("WisIncrease", true);
+				}
+				else if($_REQUEST['increase'] == "Cha" && $hero->Status == "Train Cha")
+				{
+					$hero->Cha++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their Charisma training.");
+					$smarty->assign("ChaIncrease", true);
 				}
 				else
 				{
 					$smarty->assign("error","A problem occurred attempting to finish training");
-					$smarty->assign("hero",$hero);
 				}
 			}
 			else
 			{
 				$smarty->assign("error","Have not finished training time");
-				$smarty->assign("hero",$hero);
 			}
 		}
 	}
@@ -239,10 +347,12 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 	{
 		$smarty->assign("hero",$hero);
 	}
+	$smarty->assign("hero",$hero);
 }
 else
 {
 	$smarty->assign("error","This hero does not belong to you");
+	$smarty->assign("hero",null);
 }
 
 $smarty->display("viewHero.tpl");
