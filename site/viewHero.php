@@ -174,6 +174,27 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$smarty->assign("hero",$hero);
 				}
 			}
+			else if($_REQUEST['increase'] == "Dex")
+			{
+				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex)))
+				{
+					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Dex);
+					$user->Save();
+					
+					$hero->Status = "Train Dex";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Dex + 1))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . ($hero->Dex + 1) . " hours to complete.");
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					$smarty->assign("error","Can not afford to increase Dexterity");
+					$smarty->assign("hero",$hero);
+				}
+			}
 		}
 		else if($_REQUEST['action'] == "FinishTrain")
 		{

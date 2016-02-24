@@ -64,6 +64,16 @@ Strength: {$hero->Str}
 <br />
 Dexterity: {$hero->Dex}
 	{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity has increased!{/if}
+	{if $hero->Status == ""}
+		<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp</a>
+	{elseif $hero->Status == "Train Dex" && $hero->StatusETA != 'None'}
+		Currently training, <span id="DexStatusCountdown"></span> remaining.
+		<script type="text/javascript">
+			countdown( "DexStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+		</script>
+	{elseif $hero->Status == "Train Dex" && $hero->StatusETA == 'None'}
+		<a href="viewHero.php?action=FinishTrain&increase=Dex&ID={$hero->ID}">Complete Training!</a>
+	{/if}
 <br />
 Constitution: {$hero->Con}
 	{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution has increased!{/if}
