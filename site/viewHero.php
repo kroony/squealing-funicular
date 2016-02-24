@@ -211,6 +211,17 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$smarty->assign("StrIncrease", true);
 					$smarty->assign("hero",$hero);
 				}
+				else if($_REQUEST['increase'] == "Dex" && $hero->Status == "Train Dex")
+				{
+					$hero->Dex++;
+					$hero->Status = "";
+					$hero->SaveHero();
+					
+					//outputs
+					$smarty->assign("message", $hero->Name . " has finished their dexterity training.");
+					$smarty->assign("DexIncrease", true);
+					$smarty->assign("hero",$hero);
+				}
 				else
 				{
 					$smarty->assign("error","A problem occurred attempting to finish training");
