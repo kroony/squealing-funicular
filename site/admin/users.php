@@ -6,7 +6,7 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("UPDATE `AdvClass` SET `NextClass` = '16' WHERE `AdvClass`.`ID` = 10;"));
+//print_r($db->query("UPDATE `AdvClass` SET `NextClass` = '16' WHERE `AdvClass`.`ID` = 10;"));
 
 include_once("user/userController.php");
 include_once("hero/heroController.php");
