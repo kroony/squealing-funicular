@@ -52,7 +52,16 @@
 				{if $Hero->Status == "" || $Hero->Status == null}
 					{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>{/if}
 				{else}
-					{$Hero->Status}
+					{if $Hero->StatusETA != 'None'}
+						{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+						<script type="text/javascript">
+							countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
+						</script>
+					{else}
+						{$Hero->Status}
+					{/if}
+					
+					
 				{/if}
 				</td>
 		</tr>
