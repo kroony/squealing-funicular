@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/02/26 - Fixed hero generation, heroes can be generated again.</li>
 	<li>2016/02/23 - Fixed weapon drop, now weapons will drop around 10% of the time.</li>
 	<li>2016/02/21 - All heroes given Date of Birth. Heroes will die of old age.</li>
 	<li>2016/02/18 - Unconscious Heroes heal at a slow rate.</li>
