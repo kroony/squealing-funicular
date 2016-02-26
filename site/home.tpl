@@ -22,7 +22,7 @@
 		{foreach from=$userHeros item=Hero}
 		<tr>
 			<td><a href='viewHero.php?ID={$Hero->ID}'>{str_replace("'", "", $Hero->Name)}</a></td>
-			<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
+			<td><span data-toggle="tooltip" title="This is {str_replace("'", "", $Hero->Name)}'s Race ({$Hero->Race->Name}) and Class ({$Hero->HeroClass->Name})">{$Hero->Race->Name} {$Hero->HeroClass->Name}</span></td>
 			<td>
 				<div class="progress">
 					<div class="progress-bar {if $Hero->CurrentHP == $Hero->MaxHP} progress-bar-success {elseif $Hero->CurrentHP < $Hero->Con} progress-bar-danger {elseif $Hero->CurrentHP < $Hero->MaxHP} progress-bar-warning {/if}" 
