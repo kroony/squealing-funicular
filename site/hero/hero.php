@@ -165,7 +165,8 @@ class Hero
 		//dob
 		$this->DateOfBirth = new DateTime('now');
 		
-		//status time has to be a datetime to save
+		//status time has to be a datetime to save and Status is empty
+		$this->Status = "";
 		$this->StatusTime = new DateTime('now');
 	}
 	
