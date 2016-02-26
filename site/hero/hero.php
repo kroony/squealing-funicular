@@ -164,6 +164,9 @@ class Hero
 		
 		//dob
 		$this->DateOfBirth = new DateTime('now');
+		
+		//status time has to be a datetime to save
+		$this->StatusTime = new DateTime('now');
 	}
 	
 	function generateStartingWeapon()
