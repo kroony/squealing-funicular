@@ -16,7 +16,7 @@
 		<td><a href="oneonone.php?ID1={$hero->ID}&ID2={$ag->ID}">{$ag->Name}</a></td>
 		<td>
 			{if $ag->Level < 0}
-				Unknown
+				<span data-toggle="tooltip" title="The corpses of the undead are a far too wretched and twisted sight to behold. Identifying their Level by sight is almost impossible. Some clues can be gained by their obvious class at the time of death, but even then their true hidden strength is unknown.">Unknown</span>
 			{else}
 				Level 
 				{if $hero->rollSeekLevel() > $ag->rollHideLevel()}
