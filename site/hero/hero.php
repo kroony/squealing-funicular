@@ -214,6 +214,24 @@ class Hero
 		$log->log("New XP: " . $this->CurrentXP . "<br />");
 	}
 
+	function canLevelUp()
+	{
+		if($this->CurrentXP >= $this->LevelUpXP)
+		{
+			if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
+			{
+				if($this->HeroClass->qualifyForNewClass($this))
+				{
+					return true;//at class cap and meet prereq for a next class
+				}
+			}
+			else
+			{
+				return true; //have enough XP and not at class cap
+			}
+		}
+		return false;
+	}
 	function levelUP()
 	{
 		//returns true if it worked
@@ -403,6 +421,23 @@ class Hero
 		if ($this->CurrentHP <= 0 && $this->CurrentHP >= -$this->Con) {
 			$this->CurrentHP = 1;
 		}
+	}
+	
+	function isAlive()
+	{
+		if ($this->CurrentHP <= -$this->Con) {
+			return false;
+		}
+		return true;
+	}
+	
+	function canFight()
+	{
+		if (!$this->isAlive()) {return false;}//are they alive?
+		if ($this->CurrentHP <= 0) {return false;}//are they concious?
+		if ($this->Status != "") {return false;}//are they doing anything time based?
+		
+		return true;
 	}
 
 	function GenerateAtribute($bonus)

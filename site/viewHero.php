@@ -107,12 +107,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		}
 		else if($_REQUEST['action'] == "levelUp")
 		{
-			if($hero->CurrentXP < $hero->LevelUpXP)
-			{
-				$smarty->assign("error","Not Enough XP to level up.");
-				$smarty->assign("hero",$hero);
-			}
-			else
+			if($hero->canLevelUp())
 			{
 				if($hero->Status == "")
 				{
@@ -132,6 +127,19 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				else
 				{
 					$smarty->assign("error","Hero is busy, cant level up at this time.");
+					$smarty->assign("hero",$hero);
+				}
+			}
+			else
+			{
+				if ($hero->CurrentXP < $hero->LevelUpXP)
+				{
+					$smarty->assign("error","Not Enough XP to level up.");
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					$smarty->assign("error","No class beyond this can be taken at this time.");
 					$smarty->assign("hero",$hero);
 				}
 			}

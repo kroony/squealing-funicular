@@ -60,6 +60,38 @@ class HeroClass
 
 		return $ReturnClass;
 	}
+	
+	function qualifyForNewClass($Hero)
+	{
+		if($Hero->HeroClass->NextClass == null || $Hero->HeroClass->NextClass == "")//check there is another class to go to
+		{
+			return false;
+		}
+		
+		$NextClassIDs = explode("|", $Hero->HeroClass->NextClass);
+		//Get all classes listed in next class
+		$getQuery = 'SELECT * FROM `AdvClass` WHERE `ID` IN (' . implode(',', array_map('intval', $NextClassIDs)) . ')';
+
+		$db = DB::GetConn();
+		$getResult=$db->query($getQuery);
+
+		while($obj = $getResult->fetchObject())
+		{
+			if(($obj->PrerequisiteAttribute == "Str" && $obj->PrerequisiteTarget <= $Hero->Str) ||
+				($obj->PrerequisiteAttribute == "Dex" && $obj->PrerequisiteTarget <= $Hero->Dex) ||
+				($obj->PrerequisiteAttribute == "Con" && $obj->PrerequisiteTarget <= $Hero->Con) ||
+				($obj->PrerequisiteAttribute == "Intel" && $obj->PrerequisiteTarget <= $Hero->Intel) ||
+				($obj->PrerequisiteAttribute == "Wis" && $obj->PrerequisiteTarget <= $Hero->Wis) ||
+				($obj->PrerequisiteAttribute == "Cha" && $obj->PrerequisiteTarget <= $Hero->Cha) ||
+				($obj->PrerequisiteAttribute == "Fte" && $obj->PrerequisiteTarget <= $Hero->Fte)) {
+					return true;
+				}
+		}
+		//check age prereqs
+
+		//no new class, return false
+		return false;
+	}
 
 	function checkForNewClass($Hero)
 	{
