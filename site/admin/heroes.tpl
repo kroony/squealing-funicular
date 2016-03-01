@@ -61,7 +61,7 @@
 			</td>
 			<td>{$Hero->DateOfBirth->format('Y-m-d H:i:s')}</td>
 			<td>{if $Hero->Status == "" || $Hero->Status == null}
-					{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>{/if}
+					{if $Hero->CurrentHP > 0}No Status{/if}
 				{else}
 					{if $Hero->StatusETA != 'None'}
 						{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
