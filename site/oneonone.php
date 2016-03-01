@@ -1,8 +1,6 @@
 <?php
 
 include_once("bootstrap.php");
-$smarty->display("css/css.tpl");
-/*********Add XP*********/
 include_once("hero/pitController.php");
 include_once("user/user.php");
 
@@ -19,6 +17,8 @@ if($hero1->canFight() == false || $hero2->canFight() == false)
 	header( 'Location: home.php' );
 	exit(0);
 }
+
+$smarty->display("css/css.tpl");
 
 $log = $pit->oneOnOne($hero1, $hero2);
 
