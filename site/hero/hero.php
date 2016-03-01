@@ -232,10 +232,11 @@ class Hero
 		}
 		return false;
 	}
+	
 	function levelUP()
 	{
 		//returns true if it worked
-		if($this->CurrentXP >= $this->LevelUpXP)//we have enough XP
+		if($this->canLevelUp())
 		{
 			return $this->forceLevelUP();
 		}

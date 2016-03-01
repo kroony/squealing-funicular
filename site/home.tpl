@@ -36,7 +36,7 @@
 				<div class="progress">
 					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$Hero->CurrentXP}"
 					aria-valuemin="0" aria-valuemax="{$Hero->LevelUpXP}" style="width:{$Hero->CurrentXP / $Hero->LevelUpXP * 100}%">
-						<span{if $Hero->CurrentXP >= $Hero->LevelUpXP} style="font-weight: bold;"{/if}>{number_format($Hero->CurrentXP)}XP/{number_format($Hero->LevelUpXP)}XP</span>
+						<span{if $Hero->canLevelUp()} style="font-weight: bold;"{/if}>{number_format($Hero->CurrentXP)}XP/{number_format($Hero->LevelUpXP)}XP</span>
 					</div>
 				</div>
 			</td>
