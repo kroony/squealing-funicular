@@ -18,6 +18,7 @@
 			<th>Fte</th>
 			<th>Weapon</th>
 			<th>DOB</th>
+			<th>Status</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -50,9 +51,28 @@
 			<td>{$Hero->Wis}</td>
 			<td>{$Hero->Cha}</td>
 			<td>{$Hero->Fte}</td>
-			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}
-			{if $Hero->Weapon->ID < 10}<a href="../generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
+			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}
+				{if $Hero->Weapon->DamageOffset < 0}
+					{$Hero->Weapon->DamageOffset}
+				{elseif $Hero->Weapon->DamageOffset > 0}
+					+{$Hero->Weapon->DamageOffset}
+				{/if}
+				{if $Hero->Weapon->ID < 10}<a href="../generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
+			</td>
 			<td>{$Hero->DateOfBirth->format('Y-m-d H:i:s')}</td>
+			<td>{if $Hero->Status == "" || $Hero->Status == null}
+					{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>{/if}
+				{else}
+					{if $Hero->StatusETA != 'None'}
+						{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+						<script type="text/javascript">
+							countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
+						</script>
+					{else}
+						{$Hero->Status}
+					{/if}
+				{/if}
+			</td>
 		</tr>
 		{/foreach}
 	</tbody>
