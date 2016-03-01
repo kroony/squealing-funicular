@@ -32,7 +32,7 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
   role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
 	<span>
 		{$hero->CurrentHP}HP/{$hero->MaxHP}HP{if isset($HPIncrease)} <strong>+{$HPIncrease}</strong>{/if}
-		{if $hero->CurrentHP <= -$hero->Con} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a>{/if}
+		{if $hero->isAlive() == false} <a href='delete.php?ID={$hero->ID}'>Remove</a>{elseif $hero->CurrentHP <= 0} <a href='revive.php?ID={$hero->ID}'>Revive</a>{/if}
 	</span>
   </div>
 </div><br />
