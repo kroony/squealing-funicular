@@ -9,16 +9,9 @@ $heroController = new heroController();
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
 
-if($hero->Status != "" && $hero->Status != null)
+if(!$hero->canFight())
 {
 	//hero is doing something and cant fight
-	header( 'Location: home.php' );
-	exit(0);
-}
-
-if($hero->CurrentHP <= 0)
-{
-	//hero is unconscious and cant fight
 	header( 'Location: home.php' );
 	exit(0);
 }
