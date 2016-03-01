@@ -6,7 +6,7 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("ALTER TABLE `Hero` CHANGE `StatusTime` `StatusTime` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00';"));
+//print_r($db->query("ALTER TABLE `Hero` CHANGE `StatusTime` `StatusTime` TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00';"));
 
 include_once("user/userController.php");
 include_once("hero/heroController.php");
