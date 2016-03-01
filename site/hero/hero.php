@@ -410,16 +410,30 @@ class Hero
 
 	function rollInitiative($log)
 	{
+		$date = new DateTime();
+		$timeStamp = $date->getTimestamp();
+		$timeStamp = round($timeStamp / 60 / 60);//get hours 
+		srand($timeStamp); //seed random by hour so they get the same roll for an hour
+		
 		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Wis);
 		$log->logName($this->Name)
             ->log(" rolled " . $roll . " on initative.")
             ->br();
+		
+		srand();//reset random to "truer random"
 		return $roll;
 	}
 	
 	function rollHideLevel()
 	{
+		$date = new DateTime();
+		$timeStamp = $date->getTimestamp();
+		$timeStamp = round($timeStamp / 60 / 60);//get hours 
+		srand($timeStamp); //seed random by hour so they get the same roll for an hour
+		
 		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Cha) + 5;//defender gets +5 bonus
+		
+		srand();//reset random to "truer random"
 		return $roll;
 	}
 	
