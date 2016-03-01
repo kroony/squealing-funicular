@@ -165,6 +165,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 				
 				if($returnString == "Not Enough XP to level up")
 				{
+					$hero->Status = "";
+					$hero->SaveHero();
 					$smarty->assign("error","Not Enough XP to level up.");
 					$smarty->assign("hero",$hero);
 				}
