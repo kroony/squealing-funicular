@@ -201,17 +201,7 @@ class Hero
 
 	function addXP($log, $XP)
 	{
-		$log->log("Current XP: " . $this->CurrentXP . "<br />");
-		$log->log("Adding " . $XP . "XP<br />");
 		$this->CurrentXP += $XP;//add the XP
-
-		if($this->CurrentXP > $this->LevelUpXP)
-		{
-			//$this->CurrentXP = $this->LevelUpXP; //removed for leader board purposes 
-			$log->log("Time to try leveling up!<br />");
-		}
-
-		$log->log("New XP: " . $this->CurrentXP . "<br />");
 	}
 
 	function canLevelUp()
