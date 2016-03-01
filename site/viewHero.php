@@ -107,42 +107,78 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		}
 		else if($_REQUEST['action'] == "levelUp")
 		{
-			$preStr = $hero->Str;
-			$preDex = $hero->Dex;
-			$preCon = $hero->Con;
-			$preIntel = $hero->Intel;
-			$preWis = $hero->Wis;
-			$preCha = $hero->Cha;
-			$preLevel = $hero->Level;
-			$preClass = $hero->HeroClass->Name;
-			$preHP = $hero->MaxHP;
-			$preXP = $hero->CurrentXP;
-			
-			$returnString = $hero->LevelUP();
-			
-			if($returnString == "Not Enough XP to level up")
+			if($hero->CurrentXP < $hero->LevelUpXP)
 			{
 				$smarty->assign("error","Not Enough XP to level up.");
 				$smarty->assign("hero",$hero);
 			}
 			else
 			{
-				if($preStr < $hero->Str){$smarty->assign("StrIncrease", true);}
-				if($preDex < $hero->Dex){$smarty->assign("DexIncrease", true);}
-				if($preCon < $hero->Con){$smarty->assign("ConIncrease", true);}
-				if($preIntel < $hero->Intel){$smarty->assign("IntelIncrease", true);}
-				if($preWis < $hero->Wis){$smarty->assign("WisIncrease", true);}
-				if($preCha < $hero->Cha){$smarty->assign("ChaIncrease", true);}
+				if($hero->Status == "Level Up")
+				{
+					$hero->Status = "Level Up";
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Level + 1)*2.5))));
+					$hero->SaveHero();
+					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
+					
+					$smarty->assign("message", $hero->Name . " has begun the process of Levelling up. It will take " . ($hero->Level + 1)*2.5) . " minutes to complete.");
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					$smarty->assign("error","The level up process has already begun.");
+					$smarty->assign("hero",$hero);
+				}
+			}
+		}
+		else if($_REQUEST['action'] == "FinishlevelUp")
+		{
+			if($hero->StatusETA == 'None' && $hero->Status == "Level Up")
+			{
+				$hero->Status = "";
 				
-				if($preLevel < $hero->Level){$smarty->assign("LevelIncrease", true);}
-				if($preClass != $hero->HeroClass->Name){$smarty->assign("ClassChange", $preClass);}
-				if($preHP < $hero->MaxHP){$smarty->assign("HPIncrease", $hero->MaxHP - $preHP);}
-				if($preXP == 0){$smarty->assign("OldXP", $preXP);}
+				$preStr = $hero->Str;
+				$preDex = $hero->Dex;
+				$preCon = $hero->Con;
+				$preIntel = $hero->Intel;
+				$preWis = $hero->Wis;
+				$preCha = $hero->Cha;
+				$preLevel = $hero->Level;
+				$preClass = $hero->HeroClass->Name;
+				$preHP = $hero->MaxHP;
+				$preXP = $hero->CurrentXP;
 				
-				$smarty->assign("message", $returnString);
-				// if we levelled up then we can save hero
-				$hero->SaveHero();
+				$returnString = $hero->LevelUP();
 				
+				if($returnString == "Not Enough XP to level up")
+				{
+					$smarty->assign("error","Not Enough XP to level up.");
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					if($preStr < $hero->Str){$smarty->assign("StrIncrease", true);}
+					if($preDex < $hero->Dex){$smarty->assign("DexIncrease", true);}
+					if($preCon < $hero->Con){$smarty->assign("ConIncrease", true);}
+					if($preIntel < $hero->Intel){$smarty->assign("IntelIncrease", true);}
+					if($preWis < $hero->Wis){$smarty->assign("WisIncrease", true);}
+					if($preCha < $hero->Cha){$smarty->assign("ChaIncrease", true);}
+					
+					if($preLevel < $hero->Level){$smarty->assign("LevelIncrease", true);}
+					if($preClass != $hero->HeroClass->Name){$smarty->assign("ClassChange", $preClass);}
+					if($preHP < $hero->MaxHP){$smarty->assign("HPIncrease", $hero->MaxHP - $preHP);}
+					if($preXP == 0){$smarty->assign("OldXP", $preXP);}
+					
+					$smarty->assign("message", $returnString);
+					// if we levelled up then we can save hero
+					$hero->SaveHero();
+					
+					$smarty->assign("hero",$hero);
+				}
+			}
+			else
+			{
+				$smarty->assign("error","Have not finished levelling up");
 				$smarty->assign("hero",$hero);
 			}
 		}

@@ -40,13 +40,21 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" id="XPBar" style="width:{if isset($OldXP)}{$OldXP/$hero->LevelUpXP*100}{else}{$hero->CurrentXP/$hero->LevelUpXP*100}{/if}%">
-    <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP{if $hero->CurrentXP >= $hero->LevelUpXP} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
+    <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP{if $hero->CurrentXP >= $hero->LevelUpXP && $hero->Status == ""} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
 </div>
 {if isset($OldXP)}
-<script type="text/javascript">
-UpdateBar("XPBar", 0, {$hero->CurrentXP});
-</script>
+	<script type="text/javascript">
+		UpdateBar("XPBar", 0, {$hero->CurrentXP});
+	</script>
+{/if}
+{if $hero->Status == "Level Up" && $hero->StatusETA != 'None'}
+	Currently levelling up, <span id="LevelStatusCountdown"></span> remaining.
+	<script type="text/javascript">
+		countdown( "LevelStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+	</script>
+{elseif $hero->Status == "Level Up" && $hero->StatusETA == 'None'}
+	<a href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}">Complete Level Up!</a>
 {/if}
 <br />
 Strength: {$hero->Str}
