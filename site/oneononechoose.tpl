@@ -14,7 +14,18 @@
 {foreach item=ag from=$against}
 	<tr>
 		<td><a href="oneonone.php?ID1={$hero->ID}&ID2={$ag->ID}">{$ag->Name}</a></td>
-		<td>{if $ag->Level < 0}Unknown{else}Level {$ag->Level}{/if}</td>
+		<td>
+			{if $ag->Level < 0}
+				Unknown
+			{else}
+				Level 
+				{if $hero->rollSeekLevel() > $ag->rollHideLevel()}
+					{$ag->Level}
+				{else}
+					<span data-toggle="tooltip" title="Its not clear what level this potential enemy is, try training Intelligence to increase your chances of discerning enemy levels.">???</span>
+				{/if}
+			{/if}
+		</td>
 		<td>{if $ag->Level < 0}Undead {/if}{$ag->Race->Name} {$ag->HeroClass->Name}</td>
 		<td>{if !empty($ag->GetOwner())}{$ag->GetOwner()->username}{else}Owner Unknown (ID: {$ag->OwnerID}){/if}</td>
 	</tr>

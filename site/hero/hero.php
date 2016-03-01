@@ -416,6 +416,18 @@ class Hero
             ->br();
 		return $roll;
 	}
+	
+	function rollHideLevel()
+	{
+		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Cha) + 5;//defender gets +5 bonus
+		return $roll;
+	}
+	
+	function rollSeekLevel()
+	{
+		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Intel);
+		return $roll;
+	}
 
 	function revive()
 	{
@@ -434,9 +446,9 @@ class Hero
 	
 	function canFight()
 	{
-		if (!$this->isAlive()) {return false;}//are they alive?
-		if ($this->CurrentHP <= 0) {return false;}//are they concious?
-		if ($this->Status != "") {return false;}//are they doing anything time based?
+		if (!$this->isAlive()) {return false;}//are they alive
+		if ($this->CurrentHP <= 0) {return false;}//are they concious
+		if ($this->Status != "") {return false;}//are they doing anything time based
 		
 		return true;
 	}
