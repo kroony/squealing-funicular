@@ -121,7 +121,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun the process of Levelling up. It will take " . ($hero->Level + 1)*2.5) . " minutes to complete.");
+					$smarty->assign("message", $hero->Name . " has begun the process of Levelling up. It will take " . (($hero->Level + 1)*2.5) . " minutes to complete.");
 					$smarty->assign("hero",$hero);
 				}
 				else if($hero->Status == "Level Up")
