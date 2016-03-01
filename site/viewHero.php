@@ -212,11 +212,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Str";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Str + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Str + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . ($hero->Str + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Strength. It will take " . (($hero->Str + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
@@ -231,11 +231,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Dex";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Dex + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Dex + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . ($hero->Dex + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . (($hero->Dex + 1) * 10) . " hours to complete.");
 				}
 				else
 				{
@@ -250,11 +250,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Con";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Con + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Con + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Constitution. It will take " . ($hero->Con + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Constitution. It will take " . (($hero->Con + 1) * 10) . " hours to complete.");
 				}
 				else
 				{
@@ -269,11 +269,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Intel";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Intel + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Intel + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Intelligence. It will take " . ($hero->Intel + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Intelligence. It will take " . (($hero->Intel + 1) * 10) . " hours to complete.");
 				}
 				else
 				{
@@ -288,11 +288,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Wis";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Wis + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes",($hero->Wis + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Wisdom. It will take " . ($hero->Wis + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Wisdom. It will take " . (($hero->Wis + 1) * 10) . " hours to complete.");
 				}
 				else
 				{
@@ -307,11 +307,11 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->Save();
 					
 					$hero->Status = "Train Cha";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d hours", $hero->Cha + 1))));
+					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Cha + 1) * 10))));
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Charisma. It will take " . ($hero->Cha + 1) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Charisma. It will take " . (($hero->Cha + 1) * 10) . " hours to complete.");
 				}
 				else
 				{
