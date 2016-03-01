@@ -1,7 +1,6 @@
 <?php
 
 include_once("bootstrap.php");
-
 include_once("hero/hero.php");
 
 //@TODO add undead races to DB and change current race to matching Undead Race
@@ -11,7 +10,7 @@ $Hero = $Hero->loadHero($_REQUEST['ID']);
 
 if($Hero->GetOwner()->ID == $currentUID)
 {
-	if($Hero->CurrentHP <= -$Hero->Con)
+	if(!$Hero->isAlive())
 	{
 		$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
 
