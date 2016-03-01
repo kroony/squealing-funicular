@@ -114,7 +114,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			}
 			else
 			{
-				if($hero->Status == "Level Up")
+				if($hero->Status == "")
 				{
 					$hero->Status = "Level Up";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Level + 1)*2.5))));
@@ -124,9 +124,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$smarty->assign("message", $hero->Name . " has begun the process of Levelling up. It will take " . ($hero->Level + 1)*2.5) . " minutes to complete.");
 					$smarty->assign("hero",$hero);
 				}
-				else
+				else if($hero->Status == "Level Up")
 				{
 					$smarty->assign("error","The level up process has already begun.");
+					$smarty->assign("hero",$hero);
+				}
+				else
+				{
+					$smarty->assign("error","Hero is busy, cant level up at this time.");
 					$smarty->assign("hero",$hero);
 				}
 			}
