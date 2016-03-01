@@ -37,7 +37,7 @@ class heroController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Hero`;";
+		$getQuery = "SELECT * FROM `Hero` ORDER BY `OwnerID` DESC;";
 
 		$res=$db->query($getQuery);//execute query
 		
