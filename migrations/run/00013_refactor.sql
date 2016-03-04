@@ -1,0 +1,1 @@
+ALTER TABLE `User` ADD `deaths` INT NOT NULL ;
