@@ -9,6 +9,7 @@ class User
 	public $salt;
 	public $gold;
 	public $active;
+	public $deaths
 
 	function __construct()
 	{
@@ -38,6 +39,7 @@ class User
 		$returnUser->salt = $obj->salt;
 		$returnUser->gold = $obj->gold;
 		$returnUser->active = $obj->active;
+		$returnUser->deaths = $obj->deaths;
 		
 		return $returnUser;
 	}
@@ -62,7 +64,8 @@ class User
 				"password"=>$this->password,
 				"salt"=>$this->salt,
 				"gold"=>$this->gold,
-				"active"=>$this->active);
+				"active"=>$this->active,
+				"deaths"=>$this->deaths);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("User", $row, $where);
@@ -79,7 +82,8 @@ class User
 				"password"=>$this->password,
 				"salt"=>$this->salt,
 				"gold"=>$this->gold,
-				"active"=>$this->active);
+				"active"=>$this->active,
+				"deaths"=>$this->deaths);
 			
 			try {
 				$db->insert("User",$row);

@@ -17,6 +17,7 @@
 <br />
 Email: {$user->email}<br />
 Gold: {number_format($user->gold)}gp<br />
+Deaths: {$user->deaths}<br />
 <br />
 
 
