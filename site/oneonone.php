@@ -28,9 +28,6 @@ $smarty->assign("hero1_name",$hero1->displayName(true));
 $smarty->assign("hero2",$hero2);
 $smarty->assign("hero2_name",$hero2->displayName(false));
 
-
-
-
 if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, loot their weapon
 {
 	//weapon Loot
@@ -85,14 +82,23 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 $smarty->display("oneonone.tpl");
 
 //check for kills
+$deathUser = new User();
 if($hero1->CurrentHP < (0 - $hero1->Con))
 {
-	$hero2->Kills++;
+	$hero2->Kills++;//add kill to hero
+	//add death to user
+	$deathUser->load($hero2->OwnerID);
+	$deathUser->deaths++;
+	$deathUser->Save();
 }
 if($hero2->CurrentHP < (0 - $hero2->Con))
 {
-	$hero1->Kills++;
-}//we save both lower
+	$hero1->Kills++;//add kill to hero
+	//add death to user
+	$deathUser->load($hero1->OwnerID);
+	$deathUser->deaths++;
+	$deathUser->Save();
+}
 
 //save heroes
 $hero1->SaveHero();
