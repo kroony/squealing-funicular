@@ -6,7 +6,7 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("ALTER TABLE `User` ADD `deaths` INT NOT NULL ;"));
+//print_r($db->query("ALTER TABLE `User` ADD `deaths` INT NOT NULL ;"));
 
 include_once("user/userController.php");
 include_once("hero/heroController.php");
