@@ -9,6 +9,7 @@
 			<th>gold</th>
 			<th>active</th>
 			<th>heroes</th>
+			<th>deaths</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,6 +22,7 @@
 			<td>{$iUser->gold}</td>
 			<td>{$iUser->active}</td>
 			<td>{$heroController->countAllForUser($iUser->ID)}</td>
+			<td>{$iUser->deaths}</td>
 		</tr>
 		{/foreach}
 	</tbody>
