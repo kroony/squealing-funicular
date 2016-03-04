@@ -9,7 +9,7 @@ class User
 	public $salt;
 	public $gold;
 	public $active;
-	public $deaths
+	public $deaths;
 
 	function __construct()
 	{
