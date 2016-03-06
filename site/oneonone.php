@@ -87,7 +87,7 @@ if($hero1->CurrentHP < (0 - $hero1->Con))
 {
 	$hero2->Kills++;//add kill to hero
 	//add death to user
-	$deathUser->load($hero2->OwnerID);
+	$deathUser=User::load($hero1->OwnerID);
 	$deathUser->deaths++;
 	$deathUser->Save();
 }
@@ -95,7 +95,7 @@ if($hero2->CurrentHP < (0 - $hero2->Con))
 {
 	$hero1->Kills++;//add kill to hero
 	//add death to user
-	$deathUser->load($hero1->OwnerID);
+	$deathUser=User::load($hero2->OwnerID);
 	$deathUser->deaths++;
 	$deathUser->Save();
 	//if hero 2 is monster and dead drop their level
