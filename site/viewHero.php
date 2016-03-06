@@ -235,7 +235,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . (($hero->Dex + 1) * 10) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Dexterity. It will take " . (($hero->Dex + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
@@ -254,7 +254,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Constitution. It will take " . (($hero->Con + 1) * 10) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Constitution. It will take " . (($hero->Con + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
@@ -273,7 +273,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Intelligence. It will take " . (($hero->Intel + 1) * 10) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Intelligence. It will take " . (($hero->Intel + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
@@ -292,7 +292,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Wisdom. It will take " . (($hero->Wis + 1) * 10) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Wisdom. It will take " . (($hero->Wis + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
@@ -311,7 +311,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
-					$smarty->assign("message", $hero->Name . " has begun training their Charisma. It will take " . (($hero->Cha + 1) * 10) . " hours to complete.");
+					$smarty->assign("message", $hero->Name . " has begun training their Charisma. It will take " . (($hero->Cha + 1) * 10) . " minutes to complete.");
 				}
 				else
 				{
