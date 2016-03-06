@@ -98,6 +98,12 @@ if($hero2->CurrentHP < (0 - $hero2->Con))
 	$deathUser->load($hero1->OwnerID);
 	$deathUser->deaths++;
 	$deathUser->Save();
+	//if hero 2 is monster and dead drop their level
+	$hero2->LevelUpXP = max($hero2->LevelUpXP - 200, 100);//drop their max HP
+	$hero2->CurrentXP = 0;//reset their current XP
+	$hero2->CurrentHP = 0;//reset hp to 0
+	$hero2->MaxHP = max($hero2->MaxHP - $hero2->HeroClass->HD, $hero2->HeroClass->HD);//decrease their max HP
+	$hero2->SaveHero();
 }
 
 //save heroes
