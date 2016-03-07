@@ -83,7 +83,7 @@ $smarty->display("oneonone.tpl");
 
 //check for kills
 $deathUser = new User();
-if($hero1->CurrentHP < (0 - $hero1->Con))
+if(!$hero1->isAlive())
 {
 	$hero2->Kills++;//add kill to hero
 	//add death to user
@@ -91,7 +91,7 @@ if($hero1->CurrentHP < (0 - $hero1->Con))
 	$deathUser->deaths++;
 	$deathUser->Save();
 }
-if($hero2->CurrentHP < (0 - $hero2->Con))
+if(!$hero2->isAlive())
 {
 	$hero1->Kills++;//add kill to hero
 	//add death to user
