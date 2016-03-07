@@ -120,7 +120,7 @@ class Weapon
 	
 	function calcCritChanceUpgradeCost()
 	{
-		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1);
+		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1) * 3.33;//crit is a little too cheap
 	}
 	
 	function getScrapValue()
