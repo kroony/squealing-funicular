@@ -83,24 +83,44 @@ class Weapon
 		$this->DamageAttribute = $DamageAttribute;
 	}
 	
+	function calcWeaponUpgradeCost($DamQuant, $DamDie, $DamOff, $Crit)
+	{
+		//get pre totals
+		$preAverageDam = $this->DamageQuantity * ($this->DamageDie / 2 + 0.5) + $this->DamageOffset;
+		$preMinDam = $this->DamageQuantity + $this->DamageOffset;
+		$preMaxDam = $this->DamageQuantity * $this->DamageDie + $this->DamageOffset;
+		$preTotal = $preAverageDam + $preMinDam + $preMaxDam;
+		$preTotal = $preTotal * ($DamQuant + $Crit / 100);//times total by 1.$crit 
+		
+		//get post totals		
+		$postAverageDam = $DamQuant * ($DamDie / 2 + 0.5) + $DamOff;
+		$postMinDam = $DamQuant + $DamOff;
+		$postMaxDam = $DamQuant * $DamDie + $DamOff;
+		$postTotal = $postAverageDam + $postMinDam + $postMaxDam;
+		$postTotal = $postTotal * ($DamQuant + $Crit / 100);//times total by 1.$crit 
+		
+		$difference = $postTotal - $preTotal;
+		return ceil($postTotal * $difference) * 5;
+	}
+	
 	function calcDamageQuantityUpgradeCost()
 	{
-		return ceil(pow(($this->DamageQuantity + 1), ($this->DamageDie * 1.66)));
+		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity + 1, $this->DamageDie, $this->DamageOffset, $this->CritChance);
 	}
 	
 	function calcDamageDieUpgradeCost()
 	{
-		return ceil(pow($this->DamageDie, ($this->DamageQuantity * 3)));
+		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie + 1, $this->DamageOffset, $this->CritChance);
 	}
 	
 	function calcDamageOffsetUpgradeCost()
 	{
-		return ceil(pow((($this->DamageOffset + 3) * 1.77), (2 * $this->DamageQuantity)));
+		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset + 1, $this->CritChance);
 	}
 	
 	function calcCritChanceUpgradeCost()
 	{
-		return ceil(($this->DamageQuantity + $this->DamageDie + $this->CritChance + 1) * pow(2, $this->CritChance));
+		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1);
 	}
 	
 	function getScrapValue()
