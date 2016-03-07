@@ -90,7 +90,7 @@ class Weapon
 		$preMinDam = $this->DamageQuantity + $this->DamageOffset;
 		$preMaxDam = $this->DamageQuantity * $this->DamageDie + $this->DamageOffset;
 		$preTotal = $preAverageDam + $preMinDam + $preMaxDam;
-		$preTotal = $preTotal * ($DamQuant + $Crit / 100);//times total by 1.$crit 
+		$preTotal = $preTotal * ($this->DamageQuantity + $this->CritChance / 100);//times total by 1.$crit 
 		
 		//get post totals		
 		$postAverageDam = $DamQuant * ($DamDie / 2 + 0.5) + $DamOff;
