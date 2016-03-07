@@ -100,7 +100,7 @@ class Weapon
 		$postTotal = $postTotal * ($DamQuant + $Crit / 100);//times total by 1.$crit 
 		
 		$difference = $postTotal - $preTotal;
-		return ceil(($postTotal * $difference * 5) * ($DamQuant + $Crit / 100));
+		return ceil((ceil($postTotal * $difference) * 5) * ($DamQuant + $Crit / 100));
 	}
 	
 	function calcDamageQuantityUpgradeCost()
