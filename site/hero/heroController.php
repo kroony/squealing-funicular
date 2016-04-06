@@ -197,7 +197,7 @@ class heroController
 			//@TODO
 			
 			//assign to undead
-			$OldAgeHero.OwnerID = 146;
+			$OldAgeHero.GiveToUser(146);
 			//get new weapon
 			$OldAgeHero.generateStartingWeapon();
 			$OldAgeHero.SaveHero();
