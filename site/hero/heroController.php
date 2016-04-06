@@ -191,7 +191,7 @@ class heroController
 		$obj = $res->fetchObject();
 		$count = 0;
 		if(isset($obj->count)) {$count = $obj->count;}
-		echo date('Y-m-d H:i') . ' Found: ' . $obj->count . ' ';
+		echo date('Y-m-d H:i') . ' Found: ' . $count . ' ';
 		
 		while($obj = $res->fetchObject())
 		{
