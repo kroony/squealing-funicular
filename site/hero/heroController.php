@@ -187,11 +187,15 @@ class heroController
 		
 		
 		$res = $db->query($getDeadQuery);
+		$obj = $res->fetchObject();
 		
+		echo date('Y-m-d H:i') . ' Found: ' . $obj->count . ' ' . ;
 		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
 			$OldAgeHero = $OldAgeHero->loadHeroFromObject($obj);
+			
+			echo $OldAgeHero.Name . ' Aged: ' . $OldAgeHero.Age . '/' . $OldAgeHero.Race.OldAge . ' Player: ' . $OldAgeHero.GetOwner().username . ', ';
 			
 			//send message to user
 			//@TODO
@@ -202,6 +206,7 @@ class heroController
 			$OldAgeHero.generateStartingWeapon();
 			$OldAgeHero.SaveHero();
 		}
+		echo '<br />';
 		
 	}
 }
