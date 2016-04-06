@@ -1,6 +1,7 @@
 <?php
+include_once("hero/heroController.php");
 
-//call herocontroller.preformGlobalAge();
-
+$heroController = new heroController();
+$res = $heroController->preformGlobalAge();
 
 ?>

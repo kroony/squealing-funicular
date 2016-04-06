@@ -175,6 +175,35 @@ class heroController
 		}
 		return false;
 	}
+	
+	function preformGlobalAge()
+	{
+		$db = DB::GetConn();
+		//select heroes born on the hour, who's age is over the max age + Fte + D20
+		$getDeadQuery = "SELECT * FROM  `Hero` 
+						 INNER JOIN  `Race` ON  `Hero`.`Race` =  `Race`.`ID` 
+						 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
+						 AND HOUR( TIMEDIFF(  `Hero`.`DateOfBirth` , NOW( ) ) ) / 24 >  `Race`.`OldAge` + `Hero`.`Fte` + ROUND((RAND() * (20 - 1)) + 20);";
+		
+		
+		$res = $db->query($getDeadQuery);
+		
+		while($obj = $res->fetchObject())
+		{
+			$OldAgeHero = new Hero();
+			$OldAgeHero = $OldAgeHero->loadHeroFromObject($obj);
+			
+			//send message to user
+			//@TODO
+			
+			//assign to undead
+			$OldAgeHero.OwnerID = 146;
+			//get new weapon
+			$OldAgeHero.generateStartingWeapon();
+			$OldAgeHero.SaveHero();
+		}
+		
+	}
 }
 
 ?>
