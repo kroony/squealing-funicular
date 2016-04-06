@@ -187,9 +187,12 @@ class heroController
 		
 		
 		$res = $db->query($getDeadQuery);
-		$obj = $res->fetchObject();
 		
+		$obj = $res->fetchObject();
+		$count = 0;
+		if(isset($obj->count) {$count = $obj->count;}
 		echo date('Y-m-d H:i') . ' Found: ' . $obj->count . ' ';
+		
 		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
