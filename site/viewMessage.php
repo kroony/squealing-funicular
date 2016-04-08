@@ -12,7 +12,7 @@ $message = new Message();
 //check for ID
 if(isset($_REQUEST['ID']))
 {
-		$message->load($_REQUEST['ID']);
+		$message = $message->load($_REQUEST['ID']);
 		echo "ToID: " . $message->ToID . " Current User: " . $currentUID;
 		if($message->ToID == $currentUID)
 		{
