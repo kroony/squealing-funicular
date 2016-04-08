@@ -24,7 +24,7 @@ class userController
 	{
 		$db = DB::GetConn();
 		
-		$getQuery = "SELECT count(*) as count FROM `Message` WHERE `OwnerID` = $ID AND `IsRead` = 0;";
+		$getQuery = "SELECT count(*) as count FROM `Message` WHERE `ToID` = $ID AND `IsRead` = 0;";
 		$res=$db->query($getQuery);//execute query
 		$obj = $res->fetchObject();
 		
