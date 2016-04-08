@@ -1,14 +1,10 @@
 <?php
-
 include("bootstrap.php");
-
 //load User
 include_once("user/user.php");
-
 //include message class
 include_once("user/message.php");
 $message = new Message();
-
 //check for ID
 if(isset($_REQUEST['ID']))
 {
@@ -30,14 +26,11 @@ else
 {
 	$smarty->assign("error","Message not Found");
 }
-
 //Page Header
 $smarty->display("css/css.tpl");
 //menu
 $smarty->assign("currentpage","user");
 $smarty->display("menu.tpl");
-
-
 if(isset($_REQUEST['action']))//check if we are doing anything
 {
 	if($_REQUEST['action'] == "something")
@@ -45,8 +38,5 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 		//do something
 	}
 }
-
 $smarty->assign("message",$message);
-
 $smarty->display("viewMessage.tpl");
-

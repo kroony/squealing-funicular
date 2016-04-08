@@ -17,10 +17,19 @@ class Message
 	/*
 	@TODO
 	Delete
-	Read
 	Unread
 	Send
 	*/
+	
+	function Delete()
+	{
+		$db = DB::GetConn();
+		
+		$id_con = $db->quoteInto("ID = ?",$this->ID);
+		$getQuery = "DELETE FROM `Message` WHERE $id_con;";
+		return $db->query($getQuery);
+	}
+	
 	function Read()
 	{
 		if(!$this->IsRead)
