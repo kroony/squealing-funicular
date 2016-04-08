@@ -59,7 +59,7 @@ class Message
 				"FromID"=>$this->FromID,
 				"Subject"=>$this->Subject,
 				"Body"=>$this->Body,
-				"Sent"=>$this->Sent,
+				"Sent"=>$this->Sent->format('Y-m-d H:i:s'),
 				"IsRead"=>$this->IsRead);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
@@ -76,7 +76,7 @@ class Message
 				"FromID"=>$this->FromID,
 				"Subject"=>$this->Subject,
 				"Body"=>$this->Body,
-				"Sent"=>$this->Sent,
+				"Sent"=>$this->Sent->format('Y-m-d H:i:s'),
 				"IsRead"=>$this->IsRead);
 			
 			try {
