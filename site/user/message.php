@@ -44,7 +44,7 @@ class Message
 		$returnMessage->FromID =  $obj->FromID;
 		$returnMessage->Subject = $obj->Subject;
 		$returnMessage->Body = $obj->Body;
-		$returnMessage->Sent = $obj->Sent;
+		$returnMessage->Sent = new DateTime($obj->Sent);
 		$returnMessage->IsRead = $obj->IsRead;
 		
 		return $returnMessage;
