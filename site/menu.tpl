@@ -10,7 +10,7 @@
 		</div>
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
-				<li class="{if $currentpage == "user"}active{/if}"><a href="user.php">User{if isset($unreadMessages)}{if $unreadMessages > 0}<span class="badge">{$unreadMessages}</span>{/if}{/if}</a></li>
+				<li class="{if $currentpage == "user"}active{/if}"><a href="user.php">User{if isset($unreadMessages)}{if $unreadMessages > 0} <span class="badge">{$unreadMessages}</span>{/if}{/if}</a></li>
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Heroes<span class="caret"></span></a>
 					<ul class="dropdown-menu">
