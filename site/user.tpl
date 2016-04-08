@@ -31,7 +31,7 @@ Deaths: {$user->deaths}<br />
 	</thead>
 	<tbody>
 		{foreach from=$messages item=message}
-		<tr {if $message->IsRead} style="background-color: beige;"{/if}>
+		<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
 			<td><a href="viewMessage.php?ID={$message->ID}">{$message->Sent->format('Y-m-d H:i:s')}</a></td>
 			<td>{$tmpUser->load($message->FromID)->username}</td>
 			<td>{$message->Subject}</td>
