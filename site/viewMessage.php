@@ -10,7 +10,7 @@ include_once("user/message.php");
 $message = new Message();
 
 //check for ID
-if(isset($_REQUEST['ID'])
+if(isset($_REQUEST['ID']))
 {
 		$message->load($_REQUEST['ID']);
 		if($message->ToID == $currentUID)
