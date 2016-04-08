@@ -8,8 +8,8 @@ class userController
 	{
 		$db = DB::GetConn();
 		
-		$id_con = $db->quoteInto("ID = ?",$ID);
-		$getQuery = "SELECT * FROM `Message` WHERE $id_con;"; //@TODO Order by Date
+		$ToID_con = $db->quoteInto("ToID = ?",$ID);
+		$getQuery = "SELECT * FROM `Message` WHERE $ToID_con;"; //@TODO Order by Date
 		$res=$db->query($getQuery);//execute query
 		
 		$returnMessages = array();
