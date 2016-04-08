@@ -36,7 +36,7 @@ Deaths: {$user->deaths}<br />
 			<td><a href="viewMessage.php?ID={$message->ID}">{$message->Sent->format('Y-m-d H:i:s')}</a></td>
 			<td>{$tmpUser->load($message->FromID)->username}</td>
 			<td>{$message->Subject}</td>
-			<td><a href="user.php?MsgID={$message->ID}$action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a></td>
+			<td><a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a></td>
 			
 		</tr>
 		{/foreach}
