@@ -13,10 +13,10 @@
 {/if}
 
 <br />
-Sent: {$message->Sent->format('Y-m-d H:i:s')}
+Sent: {$message->Sent->format('Y-m-d H:i:s')}<br />
 From: {$fromUser->username}<br />
 Subject: {$message->Subject}gp<br /><br />
-Body:<br />
+<strong>Body</strong><br />
 {$message->Body}
 <br />
 

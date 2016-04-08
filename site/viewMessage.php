@@ -13,7 +13,6 @@ $message = new Message();
 if(isset($_REQUEST['ID']))
 {
 		$message = $message->load($_REQUEST['ID']);
-		echo "ToID: " . $message->ToID . " Current User: " . $currentUID;
 		if($message->ToID == $currentUID)
 		{
 			$message->Read();//no problems to set it to Read 
