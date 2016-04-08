@@ -21,6 +21,14 @@ class Message
 	Unread
 	Send
 	*/
+	function Read()
+	{
+		if(!$this->IsRead)
+		{
+			$this->IsRead = true;
+			$this->Save();
+		}
+	}
 
 	//load Message from DB 
 	function load($ID)
