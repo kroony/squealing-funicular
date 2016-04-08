@@ -11,6 +11,10 @@ $user = $user->load($currentUID);
 include_once("hero/heroController.php");
 $heroController = new heroController();
 
+//Create User Controller 
+include_once("user/userController.php");
+$userController = new userController();
+
 //Page Header
 $smarty->display("css/css.tpl");
 
@@ -104,5 +108,12 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 }
 
 $smarty->assign("user",$user);
+
+//get messages
+$messages = $userController->getAllMessagesForUser($currentUID);
+$tmpUser = new User();
+$smarty->assign("tmpUser",$tmpUser);
+$smarty->assign("messages",$messages);
+
 $smarty->display("user.tpl");
 

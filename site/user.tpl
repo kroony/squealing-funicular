@@ -20,7 +20,28 @@ Gold: {number_format($user->gold)}gp<br />
 Deaths: {$user->deaths}<br />
 <br />
 
+<strong>Messages</strong><br />
+<table class='table table-condensed table-hover'>
+	<thead>
+		<tr>
+			<th>Sent</th>
+			<th>From</th>
+			<th>Subject</th>
+		</tr>
+	</thead>
+	<tbody>
+		{foreach from=$messages item=message}
+		<tr {if $message->IsRead} style="background-color: beige;"{/if}>
+			<td><a href="viewMessage.php?ID={$message->ID}">{$message->Sent->format('Y-m-d H:i:s')}</a></td>
+			<td>{$tmpUser->load($message->FromID)->username}</td>
+			<td>{$message->Subject}</td>
+		</tr>
+		{/foreach}
+	</tbody>
+</table>
 
+
+<br /><br />
 <strong>Change Password</strong>
 <form action="user.php" class="form-horizontal" role="form">
 	<input type="hidden" name="action" value="changePassword">

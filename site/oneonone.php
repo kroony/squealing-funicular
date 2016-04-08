@@ -3,6 +3,7 @@
 include_once("bootstrap.php");
 include_once("hero/pitController.php");
 include_once("user/user.php");
+include_once("user/userController.php");
 
 $pit = new PitController();
 
@@ -22,6 +23,11 @@ $smarty->display("css/css.tpl");
 
 $log = $pit->oneOnOne($hero1, $hero2);
 
+//send messages
+userController::sendMessage(($hero1->OwnerID, $hero2->OwnerID, "Your Hero " . $hero1->Name . " attacked " . $hero2->Name, $log->show());//aggressor
+userController::sendMessage(($hero2->OwnerID, $hero1->OwnerID, "Your Hero " . $hero2->Name . " was attacked by " . $hero1->Name, $log->show());//retaliator
+
+//assign to template
 $smarty->assign("log",$log);
 $smarty->assign("hero1",$hero1);
 $smarty->assign("hero1_name",$hero1->displayName(true));
@@ -66,18 +72,6 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 		$user->Save();
 	}
 }
-
-//if the attacker is knocked out by a defending PC, the winner loots the weapon
-/*if($hero1->CurrentHP <= 0 && $hero2->OwnerID != 146)
-{
-	$hero1->Weapon->UserID = $hero2->OwnerID;
-	$hero1->Weapon->save();
-	$smarty->assign("WeaponLost",$hero1->Weapon);
-	
-	$hero1->Weapon = Weapon::generateStartingWeapon($hero1->GetOwner()->ID, $hero1->getHighestWeaponStat());
-	$hero1->Weapon->save();		
-	$hero1->SaveHero();
-}*///commented out as it does not foster PVP
 
 $smarty->display("oneonone.tpl");
 
