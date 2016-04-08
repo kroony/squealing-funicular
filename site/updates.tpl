@@ -1,13 +1,20 @@
 <h2>Updates</h2>
 <ul>
-	<li>2016/02/26 - Level up is not longer instant.</li>
-	<li>2016/02/26 - Fixed hero generation, heroes can be generated again.</li>
-	<li>2016/02/23 - Fixed weapon drop, now weapons will drop around 10% of the time.</li>
-	<li>2016/02/21 - All heroes given Date of Birth. Heroes will die of old age.</li>
+	<li>2016/04/08 - Combat reports are now send to both parties involved in combats, they can be viewed on the User Tab.</li>
+	<li>2016/04/06 - Heroes will automatically die of old age.</li>
+	<li>2016/03/07 - Overhauled weapon upgrade costs.</li>
+	<li>2016/03/06 - Monsters drop a level when killed.</li>
+	<li>2016/03/04 - Started counting total hero deaths per user.</li>
+	<li>2016/03/01 - Seeing an enemy is now an opposed attribute test.</li>
+	<li>2016/03/01 - Inventory page help.</li>
 </ul>
 	<a href="#moreUpdates" data-toggle="collapse">More...</a>
 	<div id="moreUpdates" class="collapse">
 		<ul>
+			<li>2016/02/26 - Level up is not longer instant.</li>
+			<li>2016/02/26 - Fixed hero generation, heroes can be generated again.</li>
+			<li>2016/02/23 - Fixed weapon drop, now weapons will drop around 10% of the time.</li>
+			<li>2016/02/21 - All heroes given Date of Birth. Heroes will die of old age.</li>
 			<li>2016/02/18 - Unconscious Heroes heal at a slow rate.</li>
 			<li>2016/02/11 - Weapons are only looted sometimes and gold loot is increased.</li>
 			<li>2016/02/10 - Added Help button and Hero kill count.</li>
