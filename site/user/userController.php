@@ -20,6 +20,17 @@ class userController
 		return $returnMessages;
 	}
 	
+	function countUnreadForUser($ID)
+	{
+		$db = DB::GetConn();
+		
+		$getQuery = "SELECT count(*) as count FROM `Message` WHERE `OwnerID` = $ID AND `IsRead` = 0;";
+		$res=$db->query($getQuery);//execute query
+		$obj = $res->fetchObject();
+		
+		return $obj->count;
+	}
+	
 	function sendMessage($To, $From, $Subject, $Body)
 	{
 		$NewMessage = New Message();

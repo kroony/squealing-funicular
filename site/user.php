@@ -19,7 +19,10 @@ $userController = new userController();
 $smarty->display("css/css.tpl");
 
 //menu
+include_once("user/userController.php");
+$userController = new userController();
 $smarty->assign("currentpage","user");
+$smarty->assign("unreadMessages",$userController->countUnreadForUser($currentUID));
 $smarty->display("menu.tpl");
 
 
