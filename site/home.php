@@ -20,15 +20,12 @@ else
 	$heroController = new heroController();
 
 	//menu & help
-	include_once("user/userController.php");
-	$userController = new userController();
-	$smarty->assign("unreadMessages",$userController->countUnreadForUser($currentUID));
 	$smarty->assign("currentpage","home");
 	$smarty->assign("help","This page displays all the heroes you have in your guild. New heroes can be purchased using the 'hire new hero' link, provided you have enough gold.
 						  Clicking the Fight link on a heroes row will let you send them off to fight monsters and other players heroes.
 						  Clicking a heroes name will show more detailed information about that hero.");
 	$smarty->assign("helpTitle","Heroes Page Help");
-	$smarty->display("menu.tpl");
+	include_once("menu.php");
 
 	/*********  show all Hero  ***********/
 	$newHeroCost = $heroController->getCostForNextHero($currentUID);

@@ -30,7 +30,8 @@ else
 $smarty->display("css/css.tpl");
 //menu
 $smarty->assign("currentpage","user");
-$smarty->display("menu.tpl");
+include_once("menu.php");
+
 if(isset($_REQUEST['action']))//check if we are doing anything
 {
 	if($_REQUEST['action'] == "something")

@@ -7,7 +7,7 @@ $smarty->display("css/css.tpl");
 
 //menu
 $smarty->assign("currentpage","classtree");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 
 
 

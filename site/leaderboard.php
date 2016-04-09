@@ -12,7 +12,7 @@ $userController = new usercontroller();
 
 //menu
 $smarty->assign("currentpage","leaderboard");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 	  
 /*********  Get top 10 lists  ***********/
 

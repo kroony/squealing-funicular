@@ -16,7 +16,7 @@ $smarty->assign("help","This page displays all the weapon you have. Weapons can 
 					  Clicking the Weapon Name will allow you to upgrade and rename the weapon. 
 					  Clicking a heroes name will show more detailed information about that hero.");
 $smarty->assign("helpTitle","Weapons Page Help");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 	  
 if(isset($_REQUEST['action']))//check if we are doing anything
 {

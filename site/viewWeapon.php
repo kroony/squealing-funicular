@@ -10,7 +10,7 @@ $user = $user->load($currentUID);
 $smarty->assign("user",$user);
 
 $smarty->display("css/css.tpl");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 
 $weaponController = new weaponController();
 

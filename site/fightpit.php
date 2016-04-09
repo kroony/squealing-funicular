@@ -7,7 +7,7 @@ $smarty->display("css/css.tpl");
 
 //menu
 $smarty->assign("currentpage","fightpit");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 
 
 

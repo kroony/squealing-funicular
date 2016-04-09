@@ -10,7 +10,7 @@ $smarty->display("css/css.tpl");
 
 //menu
 $smarty->assign("currentpage","party");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 
 /*********  show all Party  ***********/
 //$userParties = $partyController->getAllForUser($currentUID);
