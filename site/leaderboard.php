@@ -22,7 +22,7 @@ $smarty->assign("KillHeroes", $heroController->getTop10ByKills());
 
 $smarty->assign("DeathUsers", $userController->getBottom10ByDeath());
 
-$smarty->assign("WealthUsers", $userController->getTop10ByGold(););
+$smarty->assign("WealthUsers", $userController->getTop10ByGold());
 
 /*********  Get top 10 lists  ***********/
 
