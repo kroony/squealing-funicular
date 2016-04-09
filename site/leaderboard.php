@@ -14,24 +14,18 @@ $userController = new usercontroller();
 $smarty->assign("currentpage","leaderboard");
 $smarty->display("menu.tpl");
 	  
-/*********  show all Hero  ***********/
+/*********  Get top 10 lists  ***********/
 
-$XPHeroes = $heroController->getTop10ByXP();
-$smarty->assign("XPHeroes",$XPHeroes);
+$smarty->assign("XPHeroes", $heroController->getTop10ByXP());
 
-$KillHeroes = $heroController->getTop10ByKills();
-$smarty->assign("KillHeroes",$KillHeroes);
+$smarty->assign("KillHeroes", $heroController->getTop10ByKills());
 
+$smarty->assign("DeathUsers", $userController->getBottom10ByDeath());
 
-$DeathUsers = $userController->getBottom10ByDeath();
-$smarty->assign("DeathUsers",$DeathUsers);
+$smarty->assign("WealthUsers", $userController->getTop10ByGold(););
 
-$WealthUsers = $userController->getTop10ByGold();
-$smarty->assign("WealthUsers",$WealthUsers);
+/*********  Get top 10 lists  ***********/
 
 $smarty->display("leaderboard.tpl");
-
-/*********  end show all Hero  ***********/
-
 
 ?>
