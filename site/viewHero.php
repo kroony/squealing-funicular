@@ -4,6 +4,12 @@ include("bootstrap.php");
 include_once("hero/heroController.php");
 include_once("hero/weaponController.php");
 
+//load User
+include_once("user/user.php");
+$user = new User();
+$user = $user->load($currentUID);
+$smarty->assign("user",$user);
+
 $smarty->display("css/css.tpl");
 
 $smarty->assign("help","Hero and weapon names can be edited by clicking the edit button located next to the respective name.
