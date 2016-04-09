@@ -1,6 +1,7 @@
 <h2>Updates</h2>
 <ul>
-	<li>2016/04/08 - Combat reports are now send to both parties involved in combats, they can be viewed on the User Tab.</li>
+	<li>2016/04/09 - Attribute training links are hidden on hero when you cant afford them.</li>
+	<li><strong>2016/04/08 - Combat reports are now send to both parties involved in combats, they can be viewed on the User Tab.</strong></li>
 	<li>2016/04/06 - Heroes will automatically die of old age.</li>
 	<li>2016/03/07 - Overhauled weapon upgrade costs.</li>
 	<li>2016/03/06 - Monsters drop a level when killed.</li>
