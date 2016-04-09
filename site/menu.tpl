@@ -23,6 +23,7 @@
 				<li class="{if $currentpage == "leaderboard"}active{/if}"><a href="leaderboard.php">Leaderboard</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li>{$currentUserGold} gp <span class="label label-warning">{$currentUserGold} gp</span></li>
 				{if isset($help)}
 					<li><a href="#" title="{$helpTitle}" data-toggle="popover" data-placement="left" data-trigger="focus" data-content="{$help}"><span class="glyphicon glyphicon-question-sign"></span> Page Help</a></li>
 				{/if}

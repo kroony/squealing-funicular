@@ -16,7 +16,7 @@ $smarty->assign("help","Hero and weapon names can be edited by clicking the edit
 					    Equipped weapons can be changed if you have unused weapons in your inventory.
 					    When a hero gains a level they increase their Max HP and sometimes increase an attribute. This is shown with the green up arrow icon.");
 $smarty->assign("helpTitle","Hero Page Help");
-$smarty->display("menu.tpl");
+include_once("menu.php");
 
 $heroController = new heroController();
 $weaponController = new weaponController();
