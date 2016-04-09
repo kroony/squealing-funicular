@@ -1,22 +1,22 @@
 <?php
 
-include("bootstrap.php");
-include_once("hero/heroController.php");
-include_once("hero/weaponController.php");
+include("../bootstrap.php");
+include_once("../hero/heroController.php");
+include_once("../hero/weaponController.php");
 
 //load User
-include_once("user/user.php");
+include_once("../user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
 $smarty->assign("user",$user);
 
-$smarty->display("css/css.tpl");
+$smarty->display("../css/css.tpl");
 
 $smarty->assign("help","Hero and weapon names can be edited by clicking the edit button located next to the respective name.
 					    Equipped weapons can be changed if you have unused weapons in your inventory.
 					    When a hero gains a level they increase their Max HP and sometimes increase an attribute. This is shown with the green up arrow icon.");
 $smarty->assign("helpTitle","Hero Page Help");
-include_once("menu.php");
+include_once("../menu.php");
 
 $heroController = new heroController();
 $weaponController = new weaponController();
