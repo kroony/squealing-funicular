@@ -21,7 +21,7 @@
 <input type="submit" value="Submit">
 </form>
 <br />
-{include file='portraits/kobold.html'}
+{include file='../portraits/kobold.html'}
 <br />
 Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}<br />
 Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
