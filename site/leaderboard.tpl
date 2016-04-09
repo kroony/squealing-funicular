@@ -137,7 +137,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{foreach from=$DeathUsers key=rank item=User}
+							{foreach from=$WealthUsers key=rank item=User}
 							<tr>
 								<td>{$rank + 1}</td>
 								<td>{$User->username}</td>
