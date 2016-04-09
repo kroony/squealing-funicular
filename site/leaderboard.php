@@ -16,8 +16,16 @@ $smarty->display("menu.tpl");
 
 $XPHeroes = $heroController->getTop10ByXP();
 $smarty->assign("XPHeroes",$XPHeroes);
+
 $KillHeroes = $heroController->getTop10ByKills();
 $smarty->assign("KillHeroes",$KillHeroes);
+
+$DeathUsers = getBottom10ByDeath();
+$smarty->assign("DeathUsers",$DeathUsers);
+
+$WealthUsers = getTop10ByGold();
+$smarty->assign("WealthUsers",$WealthUsers);
+
 $smarty->display("leaderboard.tpl");
 
 /*********  end show all Hero  ***********/

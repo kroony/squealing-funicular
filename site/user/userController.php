@@ -76,6 +76,22 @@ class userController
 		}
 		return $returnUsers;
 	}
+	
+	function getBottom10ByDeath()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `User` WHERE `ID` <> 146 ORDER BY `User`.`deaths` DESC LIMIT 10;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnUsers = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnUsers, User::loadUserFromObject($obj));
+		}
+		return $returnUsers;
+	}
 }
 
 ?>
