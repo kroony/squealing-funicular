@@ -4,10 +4,6 @@ chdir("../");
 
 include_once("bootstrap.php");
 
-$db = DB::GetConn();
-
-//print_r($db->query("ALTER TABLE `User` ADD `deaths` INT NOT NULL ;"));
-
 include_once("user/userController.php");
 include_once("hero/heroController.php");
 
@@ -15,7 +11,6 @@ include_once("hero/heroController.php");
 $smarty->display("css/css.tpl");
 
 $userController = new userController();
-
 $heroController = new heroController();
 
 //menu
