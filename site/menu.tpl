@@ -21,6 +21,7 @@
 				</li>
 				<li class="{if $currentpage == "inventory"}active{/if}"><a href="inventory.php">Inventory</a></li>
 				<li class="{if $currentpage == "leaderboard"}active{/if}"><a href="leaderboard.php">Leaderboard</a></li>
+				<li class="{if $currentpage == "bug"}active{/if}"><a href="bug.php">Bug/Suggestion</a></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><span class="label label-warning">Gold: {$currentUserGold} gp</span></li>
