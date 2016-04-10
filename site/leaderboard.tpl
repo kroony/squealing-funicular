@@ -103,7 +103,7 @@
 							</tr>
 						</thead>
 						<tbody>
-							{foreach from=$KillHeroes key=rank item=Hero}
+							{foreach from=$OldHeroes key=rank item=Hero}
 							<tr>
 								<td>{$rank + 1}</td>
 								<td>{str_replace("'", "", $Hero->Name)}</td>
