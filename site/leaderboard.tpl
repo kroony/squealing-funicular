@@ -1,4 +1,6 @@
 <div class="container-fluid">
+	
+	
 	<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
 			<div class="panel-heading">
@@ -8,7 +10,6 @@
 			</div>
 			<div id="collapse1" class="panel-collapse collapse in">
 				<div class="panel-body">
-			  
 					<table class='table table-condensed table-hover'>
 						<thead>
 							<tr>
@@ -40,7 +41,6 @@
 							{/foreach}
 						</tbody>
 					</table>
-			  
 				</div>
 			</div>
 		</div>
@@ -54,9 +54,6 @@
 			</div>
 			<div id="collapse2" class="panel-collapse collapse">
 				<div class="panel-body">
-					
-					
-					
 					<table class='table table-condensed table-hover'>
 						<thead>
 							<tr>
@@ -81,8 +78,6 @@
 							{/foreach}
 						</tbody>
 					</table>
-					
-					
 				</div>
 			</div>
 		</div>
@@ -91,10 +86,47 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Worst 10 By Hero Deaths</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse3">Top 10 by Age</a>
 				</h4>
 			</div>
 			<div id="collapse3" class="panel-collapse collapse">
+				<div class="panel-body">
+					<table class='table table-condensed table-hover'>
+						<thead>
+							<tr>
+								<th>Rank</th>
+								<th>Name</th>
+								<th>Type</th>
+								<th>Level</th>
+								<th>Age</th>
+								<th>User</th>
+							</tr>
+						</thead>
+						<tbody>
+							{foreach from=$KillHeroes key=rank item=Hero}
+							<tr>
+								<td>{$rank + 1}</td>
+								<td>{str_replace("'", "", $Hero->Name)}</td>
+								<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
+								<td>{$Hero->Level}</td>
+								<td>{$Hero->Age}</td>
+								<td>{if !empty($Hero->GetOwner())}{$Hero->GetOwner()->username}{else}Owner Unknown (ID: {$Hero->OwnerID}){/if}</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>					
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Worst 10 By Hero Deaths</a>
+				</h4>
+			</div>
+			<div id="collapse4" class="panel-collapse collapse">
 				<div class="panel-body">
 					<table class='table table-condensed table-hover'>
 						<thead>
@@ -122,10 +154,10 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse4">Top 10 by Wealth</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse5">Top 10 by Wealth</a>
 				</h4>
 			</div>
-			<div id="collapse4" class="panel-collapse collapse">
+			<div id="collapse5" class="panel-collapse collapse">
 				<div class="panel-body">
 					
 					<table class='table table-condensed table-hover'>

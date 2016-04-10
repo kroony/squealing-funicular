@@ -20,6 +20,8 @@ $smarty->assign("XPHeroes", $heroController->getTop10ByXP());
 
 $smarty->assign("KillHeroes", $heroController->getTop10ByKills());
 
+$smarty->assign("OldHeroes", $heroController->getTop10ByAge());
+
 $smarty->assign("DeathUsers", $userController->getBottom10ByDeath());
 
 $smarty->assign("WealthUsers", $userController->getTop10ByGold());
