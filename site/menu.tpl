@@ -13,7 +13,7 @@
 				<li class="{if $currentpage == "user"}active{/if}"><a href="user.php">User{if isset($unreadMessages)}{if $unreadMessages > 0} <span class="badge">{$unreadMessages}</span>{/if}{/if}</a></li>
 				<li class="{if $currentpage == "home"}active{/if}"><a href="home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>
 				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Comming Soon<span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Coming Soon<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li class="{if $currentpage == "party"}active{/if}"><a href="party.php">Parties</a></li>
 						<li class="{if $currentpage == "fightpit"}active{/if}"><a href="fightpit.php">Fight Pit</a></li>
