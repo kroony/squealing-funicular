@@ -18,8 +18,8 @@ if($Hero->GetOwner()->ID == $currentUID)
 		$Hero->CurrentHP = $Hero->MaxHP;
 		
 		//remove the old weapon
-		$Hero->Weapon->UserID = 0;
-		$Hero->Weapon->save();
+		//$Hero->Weapon->UserID = 0;
+		//$Hero->Weapon->save();
 		
 		//generate a new npc weapon
 		$Hero->Weapon = $Hero->Weapon->generateNPCWeapon(146, $Hero->getHighestWeaponStat());
