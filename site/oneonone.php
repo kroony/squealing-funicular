@@ -50,19 +50,25 @@ if($hero2->Level == -1 && $hero2->CurrentHP <= 0)//if we knock out a monster, lo
 	}
 	
 	//Gold Loot
-	$loot = $hero2->calculateAttributeBonus($hero2->Str);
-	$loot += $hero2->calculateAttributeBonus($hero2->Dex);
-	$loot += $hero2->calculateAttributeBonus($hero2->Con);
-	$loot += $hero2->calculateAttributeBonus($hero2->Intel);
-	$loot += $hero2->calculateAttributeBonus($hero2->Wis);
-	$loot += $hero2->calculateAttributeBonus($hero2->Cha);
-	$loot += $hero2->calculateAttributeBonus($hero2->Fte);
-	$loot += $hero2->calculateAttributeBonus($hero1->Fte);//add looters luck
+	$MaxLoot = $hero2->calculateAttributeBonus($hero2->Str);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Dex);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Con);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Intel);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Wis);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Cha);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero2->Fte);
+	$MaxLoot += $hero2->calculateAttributeBonus($hero1->Fte);//add looters luck
 	
-	if($loot > 0)
+	if($MaxLoot > 0)
 	{
 		$lootmod = $hero1->Fte / 10 + 1;
-		$loot = rand(1, $loot * $lootmod);
+		$loot = rand(1, $MaxLoot * $lootmod);
+		
+		if(!$hero2->isAlive())//if monster dies, roll loot twice
+		{
+			$loot += rand(1, $MaxLoot * $lootmod);
+		}
+		
 		$smarty->assign("GoldLoot",$loot);
 		
 		$user = new User();
