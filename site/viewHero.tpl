@@ -32,6 +32,7 @@
 		<strong>{$hero->HeroClass->Name}</strong><br />
 		{$hero->HeroClass->Description}<br />
 		<i>"{$hero->HeroClass->Quote}"</i><br />
+		<br />
 		Age: {$hero->Age} years<br />
 		Kills: {$hero->Kills}<br />
 	</div>
@@ -207,7 +208,7 @@
 	<div class="col-sm-4" >
 		<div class="panel panel-default">
 			<div class="panel-heading">
-				<div id="weaponNameDiv"><b>{$hero->Weapon->Name}</b> <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name"  onclick='document.getElementById("weaponNameDiv").style.display = "none"; document.getElementById("weaponEditNameForm").style.display = "block";' ></span></div>
+				<div id="weaponNameDiv">Weapon: <b>{$hero->Weapon->Name}</b> <span class="glyphicon glyphicon-edit" data-toggle="tooltip" title="Edit Name"  onclick='document.getElementById("weaponNameDiv").style.display = "none"; document.getElementById("weaponEditNameForm").style.display = "block";' ></span></div>
 				<form id="weaponEditNameForm" action="viewHero.php" style="display: none;">
 					<input type="hidden" name="action" value="editWeaponName">
 					<input type="hidden" name="ID" value="{$hero->ID}">
@@ -233,7 +234,7 @@
 						<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
 						{/foreach}
 					</select>
-					<input type="submit" value="Submit">
+					<input type="submit" value="Equip">
 				</form>
 				{/if}
 			</div>
@@ -242,6 +243,8 @@
 	<div class="col-sm-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">Armor</div>
+				Armor Value: <br />
+				Additional HP: 
 			<div class="panel-body">
 			</div>
 		</div>
