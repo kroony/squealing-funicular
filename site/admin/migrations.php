@@ -6,17 +6,8 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-/*print_r($db->query("CREATE TABLE IF NOT EXISTS `Message` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `ToID` int(11) NOT NULL,
-  `FromID` int(11) NOT NULL,
-  `Subject` text NOT NULL,
-  `Body` text NOT NULL,
-  `Sent` datetime NOT NULL,
-  `IsRead` tinyint(1) NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;"));
-*/
+print_r($db->query("UPDATE `User` SET  `password` =  'pass' WHERE  `User`.`ID` =148;"));
+
 
 
 //html header
