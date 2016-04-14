@@ -1,6 +1,6 @@
 <div class="container-fluid">
 <p>You have {$totalHeros}, {if isset($canAffordHero)}<a href="addNew.php?level=1">hire a new hero for {$newHeroCost}gp</a>{else}hire a new hero for {$newHeroCost}gp{/if}</p>
-{$currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
+{if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
 <table class='table table-hover'>
 	<thead>
 		<tr>
