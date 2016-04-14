@@ -37,6 +37,7 @@ else
 	}
 
 	$userHeros = $heroController->getAllForUser($currentUID);
+	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	$smarty->display("home.tpl");
