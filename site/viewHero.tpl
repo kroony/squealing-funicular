@@ -64,7 +64,7 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
 				<tr>
 					<th>Attribute</th>
 					<th>Value</th>
-					<th>Upgrade</th>
+					<th>Train</th>
 				</tr>
 			</thead>
 			<tbody>
