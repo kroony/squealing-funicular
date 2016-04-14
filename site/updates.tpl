@@ -1,5 +1,8 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/04/14 - View Hero page updates, more in-line with view weapon.</li>
+	<li>2016/04/12 - Stopped removing weapon from user when user removed dead hero. Future: May make victor always loot dead heroes weapon</li>
+	<li>2016/04/12 - Fixed spelling mistake, thanks El Mazgic</li>
 	<li>2016/04/10 - Added bug / suggestion submission form.</li>
 	<li>2016/04/10 - Added Top 10 oldest heroes leaderboard.</li>
 	<li>2016/04/09 - Attribute training links are hidden on hero when you cant afford them.</li>
