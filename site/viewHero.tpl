@@ -29,7 +29,11 @@
 		Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}<br />
 		Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
 		Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {$hero->Name} has advanced to <br />{/if}
-		<strong>{$hero->HeroClass->Name}</strong><br />{$hero->HeroClass->Description}<br /><i>"{$hero->HeroClass->Quote}"</i><br />
+		<strong>{$hero->HeroClass->Name}</strong><br />
+		{$hero->HeroClass->Description}<br />
+		<i>"{$hero->HeroClass->Quote}"</i><br />
+		Age: {$hero->Age} years<br />
+		Kills: {$hero->Kills}<br />
 	</div>
 </div>
 
@@ -182,10 +186,6 @@
 		{include file='classtreeSmall.tpl'}
 	</div>
 </div>
-	
-<br /><strong>Statistics</strong>
-<br />Age: {$hero->Age} years
-<br />Kills: {$hero->Kills}
 
 <!-- DEBUG STATUS
 	<br />
