@@ -20,13 +20,20 @@
 <input type="text" name="heroName" value="{$hero->Name}">
 <input type="submit" value="Submit">
 </form>
+
+<div class="row">
+	<div class="col-sm-4" >
+		{include file='portraits/kobold.html'}
+	</div>
+	<div class="col-sm-8" >
+		Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}<br />
+		Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
+		Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {$hero->Name} has advanced to <br />{/if}
+		<strong>{$hero->HeroClass->Name}</strong><br />{$hero->HeroClass->Description}<br /><i>"{$hero->HeroClass->Quote}"</i><br />
+	</div>
+</div>
+
 <br />
-{include file='portraits/kobold.html'}
-<br />
-Level: {$hero->Level}{if isset($LevelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}<br />
-Race: {$hero->Race->Name} - {$hero->Race->Description}<br />
-Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {$hero->Name} has advanced to <br />{/if}
-<strong>{$hero->HeroClass->Name}</strong><br />{$hero->HeroClass->Description}<br /><i>"{$hero->HeroClass->Quote}"</i><br />
 <div class="progress">
   <div class="progress-bar {if $displayHero->CurrentHP == $displayHero->MaxHP} progress-bar-success {elseif $displayHero->CurrentHP < $displayHero->Con} progress-bar-danger {elseif $displayHero->CurrentHP < $displayHero->MaxHP} progress-bar-warning {/if}" 
   role="progressbar" aria-valuenow="{$hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$hero->MaxHP}" style="width:{$hero->CurrentHP/$hero->MaxHP*100}%">
