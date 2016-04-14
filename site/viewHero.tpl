@@ -85,7 +85,10 @@
 					<td>{$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str))}<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str))}
+								<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Strength"></span></a>
+							{/if} 
+							Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp
 						{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
 							Currently training, <span id="StrStatusCountdown"></span> remaining.
 							<script type="text/javascript">
@@ -101,7 +104,10 @@
 					<td>{$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex))}<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex))}
+								<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Dexterity"></span></a>
+							{/if} 
+							Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp
 						{elseif $hero->Status == "Train Dex" && $hero->StatusETA != 'None'}
 							Currently training, <span id="DexStatusCountdown"></span> remaining.
 							<script type="text/javascript">
@@ -117,7 +123,10 @@
 					<td>{$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con))}<a href="viewHero.php?action=Train&increase=Con&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Con))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con))}
+								<a href="viewHero.php?action=Train&increase=Con&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Constitution"></span></a>
+							{/if} 
+							Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Con))}gp
 						{elseif $hero->Status == "Train Con" && $hero->StatusETA != 'None'}
 							Currently training, <span id="ConStatusCountdown"></span> remaining.
 							<script type="text/javascript">
@@ -133,7 +142,10 @@
 					<td>{$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel))}<a href="viewHero.php?action=Train&increase=Intel&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Intel))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel))}
+								<a href="viewHero.php?action=Train&increase=Intel&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Intelligence"></span></a>
+							{/if} 
+							Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Intel))}gp
 						{elseif $hero->Status == "Train Intel" && $hero->StatusETA != 'None'}
 							Currently training, <span id="IntelStatusCountdown"></span> remaining.
 							<script type="text/javascript">
@@ -149,7 +161,10 @@
 					<td>{$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis))}<a href="viewHero.php?action=Train&increase=Wis&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Wis))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis))}
+								<a href="viewHero.php?action=Train&increase=Wis&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Wisdom"></span></a>
+								{/if} 
+								Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Wis))}gp
 						{elseif $hero->Status == "Train Wis" && $hero->StatusETA != 'None'}
 							Currently training, <span id="WisStatusCountdown"></span> remaining.
 							<script type="text/javascript">
@@ -165,7 +180,10 @@
 					<td>{$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
-							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha))}<a href="viewHero.php?action=Train&increase=Cha&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Cha))}gp
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha))}
+								<a href="viewHero.php?action=Train&increase=Cha&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up" data-toggle="tooltip" title="Train Charisma"></span></a>
+							{/if} 
+							Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Cha))}gp
 						{elseif $hero->Status == "Train Cha" && $hero->StatusETA != 'None'}
 							Currently training, <span id="ChaStatusCountdown"></span> remaining.
 							<script type="text/javascript">
