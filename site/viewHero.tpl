@@ -82,7 +82,7 @@
 			<tbody>
 				<tr>
 					<td>Strength</td>
-					<td>{$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength has increased!{/if} </td>
+					<td>{$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str))}<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp
@@ -98,7 +98,7 @@
 				</tr>
 				<tr>
 					<td>Dexterity</td>
-					<td>{$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity has increased!{/if}</td>
+					<td>{$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
 						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex))}<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp
@@ -114,9 +114,8 @@
 				</tr>
 				<tr>
 					<td>Constitution</td>
-					<td>{$hero->Con}</td>
+					<td>{$hero->Con}{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
-						{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution has increased!{/if}
 						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con))}<a href="viewHero.php?action=Train&increase=Con&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Con))}gp
 						{elseif $hero->Status == "Train Con" && $hero->StatusETA != 'None'}
@@ -131,9 +130,8 @@
 				</tr>
 				<tr>
 					<td>Intelligence</td>
-					<td>{$hero->Intel}</td>
+					<td>{$hero->Intel}{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
-						{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence has increased!{/if}
 						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel))}<a href="viewHero.php?action=Train&increase=Intel&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Intel))}gp
 						{elseif $hero->Status == "Train Intel" && $hero->StatusETA != 'None'}
@@ -148,10 +146,9 @@
 				</tr>
 				<tr>
 					<td>Wisdom</td>
-					<td>{$hero->Wis}</td>
+					<td>{$hero->Wis}{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
-						{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom has increased!{/if}
-							{if $hero->Status == ""}
+						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis))}<a href="viewHero.php?action=Train&increase=Wis&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Wis))}gp
 						{elseif $hero->Status == "Train Wis" && $hero->StatusETA != 'None'}
 							Currently training, <span id="WisStatusCountdown"></span> remaining.
@@ -165,10 +162,9 @@
 				</tr>
 				<tr>
 					<td>Charisma</td>
-					<td>{$hero->Cha}</td>
+					<td>{$hero->Cha}{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span>{/if}</td>
 					<td>
-						{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma has increased!{/if}
-							{if $hero->Status == ""}
+						{if $hero->Status == ""}
 							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha))}<a href="viewHero.php?action=Train&increase=Cha&ID={$hero->ID}"><span class="glyphicon glyphicon-arrow-up"></span></a>{/if} Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Cha))}gp
 						{elseif $hero->Status == "Train Cha" && $hero->StatusETA != 'None'}
 							Currently training, <span id="ChaStatusCountdown"></span> remaining.
