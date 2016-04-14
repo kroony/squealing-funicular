@@ -243,9 +243,9 @@
 	<div class="col-sm-4">
 		<div class="panel panel-default">
 			<div class="panel-heading">Armor</div>
+			<div class="panel-body">
 				Armor Value: <br />
 				Additional HP: 
-			<div class="panel-body">
 			</div>
 		</div>
 	</div>
