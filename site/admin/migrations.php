@@ -6,7 +6,7 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("UPDATE `User` SET  `password` =  'pass' WHERE  `User`.`ID` =148;"));
+//print_r($db->query("UPDATE `User` SET  `password` =  'pass' WHERE  `User`.`ID` =148;"));
 
 
 
