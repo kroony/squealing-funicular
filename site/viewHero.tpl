@@ -57,84 +57,125 @@ Class: {if isset($ClassChange)} After mastering all that a {$ClassChange} can. {
 	<a href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}">Complete Level Up!</a>
 {/if}
 <br />
-Strength: {$hero->Str}
-	{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength has increased!{/if} 
-	{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str))}<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp</a>{/if}
-	{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
-		Currently training, <span id="StrStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "StrStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Str" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Str&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
-Dexterity: {$hero->Dex}
-	{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity has increased!{/if}
-	{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex))}<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp</a>{/if}
-	{elseif $hero->Status == "Train Dex" && $hero->StatusETA != 'None'}
-		Currently training, <span id="DexStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "DexStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Dex" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Dex&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
-Constitution: {$hero->Con}
-	{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution has increased!{/if}
-	{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con))}<a href="viewHero.php?action=Train&increase=Con&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Con))}gp</a>{/if}
-	{elseif $hero->Status == "Train Con" && $hero->StatusETA != 'None'}
-		Currently training, <span id="ConStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "ConStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Con" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Con&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
-Intelligence: {$hero->Intel}
-	{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence has increased!{/if}
-	{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel))}<a href="viewHero.php?action=Train&increase=Intel&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Intel))}gp</a>{/if}
-	{elseif $hero->Status == "Train Intel" && $hero->StatusETA != 'None'}
-		Currently training, <span id="IntelStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "IntelStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Intel" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Intel&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
-Wisdom: {$hero->Wis}
-	{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom has increased!{/if}
-		{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis))}<a href="viewHero.php?action=Train&increase=Wis&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Wis))}gp</a>{/if}
-	{elseif $hero->Status == "Train Wis" && $hero->StatusETA != 'None'}
-		Currently training, <span id="WisStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "WisStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Wis" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Wis&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
-Charisma: {$hero->Cha}
-	{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma has increased!{/if}
-		{if $hero->Status == ""}
-		{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha))}<a href="viewHero.php?action=Train&increase=Cha&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Cha))}gp</a>{/if}
-	{elseif $hero->Status == "Train Cha" && $hero->StatusETA != 'None'}
-		Currently training, <span id="ChaStatusCountdown"></span> remaining.
-		<script type="text/javascript">
-			countdown( "ChaStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
-		</script>
-	{elseif $hero->Status == "Train Cha" && $hero->StatusETA == 'None'}
-		<a href="viewHero.php?action=FinishTrain&increase=Cha&ID={$hero->ID}">Complete Training!</a>
-	{/if}
-<br />
+<div class="row">
+	<div class="col-sm-4" >
+		<table class='table table-hover'>
+			<thead>
+				<tr>
+					<th>Attribute</th>
+					<th>Value</th>
+					<th>Upgrade</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Strength</td>
+					<td>{$hero->Str}{if isset($StrIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Strength has increased!{/if} </td>
+					<td>
+						{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str))}<a href="viewHero.php?action=Train&increase=Str&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Str))}gp</a>{/if}
+						{elseif $hero->Status == "Train Str" && $hero->StatusETA != 'None'}
+							Currently training, <span id="StrStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "StrStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Str" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Str&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<td>Dexterity</td>
+					<td>{$hero->Dex}{if isset($DexIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Dexterity has increased!{/if}</td>
+					<td>
+						{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex))}<a href="viewHero.php?action=Train&increase=Dex&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Dex))}gp</a>{/if}
+						{elseif $hero->Status == "Train Dex" && $hero->StatusETA != 'None'}
+							Currently training, <span id="DexStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "DexStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Dex" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Dex&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<td>Constitution</td>
+					<td>{$hero->Con}</td>
+					<td>
+						{if isset($ConIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Constitution has increased!{/if}
+						{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con))}<a href="viewHero.php?action=Train&increase=Con&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Con))}gp</a>{/if}
+						{elseif $hero->Status == "Train Con" && $hero->StatusETA != 'None'}
+							Currently training, <span id="ConStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "ConStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Con" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Con&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<td>Intelligence</td>
+					<td>{$hero->Intel}</td>
+					<td>
+						{if isset($IntelIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Intelligence has increased!{/if}
+						{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel))}<a href="viewHero.php?action=Train&increase=Intel&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Intel))}gp</a>{/if}
+						{elseif $hero->Status == "Train Intel" && $hero->StatusETA != 'None'}
+							Currently training, <span id="IntelStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "IntelStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Intel" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Intel&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<td>Wisdom</td>
+					<td>{$hero->Wis}</td>
+					<td>
+						{if isset($WisIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Wisdom has increased!{/if}
+							{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis))}<a href="viewHero.php?action=Train&increase=Wis&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Wis))}gp</a>{/if}
+						{elseif $hero->Status == "Train Wis" && $hero->StatusETA != 'None'}
+							Currently training, <span id="WisStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "WisStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Wis" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Wis&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+				<tr>
+					<td>Charisma</td>
+					<td>{$hero->Cha}</td>
+					<td>
+						{if isset($ChaIncrease)} <span class="glyphicon glyphicon-arrow-up" style="color: limegreen;"> +1</span> Charisma has increased!{/if}
+							{if $hero->Status == ""}
+							{if $user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha))}<a href="viewHero.php?action=Train&increase=Cha&ID={$hero->ID}">Train for {number_format($hero->calculateAttributeUpgradeCost($hero->Cha))}gp</a>{/if}
+						{elseif $hero->Status == "Train Cha" && $hero->StatusETA != 'None'}
+							Currently training, <span id="ChaStatusCountdown"></span> remaining.
+							<script type="text/javascript">
+								countdown( "ChaStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
+							</script>
+						{elseif $hero->Status == "Train Cha" && $hero->StatusETA == 'None'}
+							<a href="viewHero.php?action=FinishTrain&increase=Cha&ID={$hero->ID}">Complete Training!</a>
+						{/if}
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col-sm-8">
+		{include file='classtreeSmall.tpl'}
+	</div>
+</div>
+	
 <br /><strong>Statistics</strong>
 <br />Age: {$hero->Age} years
 <br />Kills: {$hero->Kills}
@@ -150,7 +191,7 @@ Charisma: {$hero->Cha}
 	</script>
 {/if}
 <br />
-{include file='classtreeSmall.tpl'}
+
 <br />
 <div class="row">
 	<div class="col-sm-4" >
