@@ -9,12 +9,12 @@
 			<th>HP</th>
 			<th>Level</th>
 			<th>XP</th>
-			<th>Str</th>
+			<!--<th>Str</th>
 			<th>Dex</th>
 			<th>Con</th>
 			<th>Int</th>
 			<th>Wis</th>
-			<th>Cha</th>
+			<th>Cha</th>-->
 			<th>Weapon</th>
 			<th>Fight</th>
 		</tr>
@@ -41,12 +41,12 @@
 					</div>
 				</div>
 			</td>
-			<td>{$Hero->Str}</td>
+			<!--<td>{$Hero->Str}</td>
 			<td>{$Hero->Dex}</td>
 			<td>{$Hero->Con}</td>
 			<td>{$Hero->Intel}</td>
 			<td>{$Hero->Wis}</td>
-			<td>{$Hero->Cha}</td>
+			<td>{$Hero->Cha}</td>-->
 			<td><a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>
