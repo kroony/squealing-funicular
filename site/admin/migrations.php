@@ -6,7 +6,7 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("UPDATE `Weapon` SET  `UserID` =  '179' WHERE  `Weapon`.`ID` =1405;"));
+//print_r($db->query("UPDATE `Weapon` SET  `UserID` =  '179' WHERE  `Weapon`.`ID` =1405;"));
 
 //html header
 $smarty->display("css/css.tpl");
