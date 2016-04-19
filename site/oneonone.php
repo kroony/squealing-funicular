@@ -90,6 +90,18 @@ if(!$hero1->isAlive())
 	$deathUser=User::load($hero1->OwnerID);
 	$deathUser->deaths++;
 	$deathUser->Save();
+	
+	//loot weapon from players
+	if($hero1->OwnerID != 146)
+	{
+		$hero1->Weapon->UserID = $hero2->OwnerID;
+		$hero1->Weapon->save();
+		$smarty->assign("WeaponLoot",$hero1->Weapon);
+		
+		$hero1->Weapon = Weapon::generateNPCWeapon($hero1->GetOwner()->ID, $hero1->getHighestWeaponStat());
+		$hero1->Weapon->save();		
+		$hero1->SaveHero();
+	}
 }
 if(!$hero2->isAlive())
 {
@@ -99,6 +111,17 @@ if(!$hero2->isAlive())
 	$deathUser->deaths++;
 	$deathUser->Save();
 	
+	//loot weapon from players
+	if($hero2->OwnerID != 146)
+	{
+		$hero2->Weapon->UserID = $hero1->OwnerID;
+		$hero2->Weapon->save();
+		$smarty->assign("WeaponLoot",$hero2->Weapon);
+		
+		$hero2->Weapon = Weapon::generateNPCWeapon($hero2->GetOwner()->ID, $hero2->getHighestWeaponStat());
+		$hero2->Weapon->save();		
+		$hero2->SaveHero();
+	}
 	
 	//if hero 2 is monster and dead drop their level
 	if($hero2->Level == -1)
