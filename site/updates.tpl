@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/04/19 - Killing a players monster will loot their weapon.</li>
 	<li>2016/04/14 - View Hero page updates, more in-line with view weapon.</li>
 	<li>2016/04/12 - Stopped removing weapon from user when user removed dead hero. Future: May make victor always loot dead heroes weapon</li>
 	<li>2016/04/12 - Fixed spelling mistake, thanks El Mazgic</li>
