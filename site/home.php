@@ -40,7 +40,16 @@ else
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
-	$smarty->display("home.tpl");
+	
+	if(count($userHeros) == 0)//if they have no heroes show the intro page
+	{
+		$smarty->display("homeEmpty.tpl");
+	}
+	else
+	{
+		$smarty->display("home.tpl");
+	}
+	
 	/*********  end show all Hero  ***********/
 }
 ?>

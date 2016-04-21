@@ -13,7 +13,7 @@ include_once("menu.php");
 if(isset($_REQUEST['submit']))
 {
 	include_once("user/userController.php");
-	userController::sendMessage(1, $currentUID, '<span class="glyphicon glyphicon-asterisk">BUG/SUGGESTION ' . $_REQUEST['subject'], $_REQUEST['body']);
+	userController::sendMessage(1, $currentUID, '<span class="glyphicon glyphicon-asterisk"></span> BUG/SUGGESTION ' . $_REQUEST['subject'], $_REQUEST['body']);
 	
 	$smarty->assign("message", "Your Bug / Suggestion '" . $_REQUEST['subject'] . "' has been submitted");
 }
