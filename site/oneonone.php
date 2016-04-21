@@ -25,7 +25,7 @@ $log = $pit->oneOnOne($hero1, $hero2);
 
 //send messages
 userController::sendMessage($hero1->OwnerID, $hero2->OwnerID, "Your Hero " . $hero1->Name . " attacked " . $hero2->Name, $log->show());//aggressor
-userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, "Your Hero " . $hero2->Name . " was attacked by " . $hero1->Name, $log->show());//retaliator
+userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, '<span class="glyphicon glyphicon-alert"></span> Your Hero ' . $hero2->Name . " was attacked by " . $hero1->Name, $log->show());//retaliator
 
 //assign to template
 $smarty->assign("log",$log);
