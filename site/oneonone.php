@@ -24,8 +24,16 @@ $smarty->display("css/css.tpl");
 $log = $pit->oneOnOne($hero1, $hero2);
 
 //send messages
-userController::sendMessage($hero1->OwnerID, $hero2->OwnerID, "Your Hero " . $hero1->Name . " attacked " . $hero2->Name, $log->show());//aggressor
-userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, '<span class="glyphicon glyphicon-alert"></span> Your Hero ' . $hero2->Name . " was attacked by " . $hero1->Name, $log->show());//retaliator
+$atttackerSubject = "Your Hero, " . $hero1->Name . ", attacked " . $hero2->Name;
+$defenderSubject = '<span class="glyphicon glyphicon-alert"></span> Your Hero, ' . $hero2->Name . ", was attacked by " . $hero1->Name;
+//if either die put a icon in the subject
+if(!$hero1->isAlive() || !$hero2->isAlive())
+{
+	$atttackerSubject = '<span class="glyphicon glyphicon-eye-close"></span> ' . $atttackerSubject;
+	$defenderSubject = '<span class="glyphicon glyphicon-eye-close"></span> ' . $defenderSubject;
+}
+userController::sendMessage($hero1->OwnerID, $hero2->OwnerID, $atttackerSubject, $log->show());//aggressor
+userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, $defenderSubject, $log->show());//retaliator
 
 //assign to template
 $smarty->assign("log",$log);
