@@ -20,5 +20,10 @@ Subject: {$message->Subject}<br /><br />
 {$message->Body}
 <br />
 
+<div class="panel panel-default">
+  <div class="panel-heading">$message->Subject}</div>
+  <div class="panel-body">{$message->Body}</div>
+</div>
+
 
 <div>
