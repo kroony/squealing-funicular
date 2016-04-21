@@ -21,8 +21,13 @@ Subject: {$message->Subject}<br /><br />
 <br />
 
 <div class="panel panel-default">
-  <div class="panel-heading">$message->Subject}</div>
-  <div class="panel-body">{$message->Body}</div>
+	<div class="panel-heading">
+		<strong>{$message->Subject}</strong>
+		<div class="text-right">
+			<a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a>
+		</div>
+	</div>
+	<div class="panel-body">{$message->Body}</div>
 </div>
 
 
