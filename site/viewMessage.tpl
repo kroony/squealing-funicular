@@ -15,11 +15,6 @@
 <br />
 Sent: {$message->Sent->format('Y-m-d H:i:s')}<br />
 From: {$fromUser->username}<br />
-Subject: {$message->Subject}<br /><br />
-<strong>Body</strong><br />
-{$message->Body}
-<br />
-
 <div class="panel panel-default">
 	<div class="panel-heading">
 		<div class="row">
