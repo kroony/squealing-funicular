@@ -24,8 +24,8 @@ $smarty->display("css/css.tpl");
 $log = $pit->oneOnOne($hero1, $hero2);
 
 //send messages
-$atttackerSubject = "Your Hero, " . $hero1->Name . ", attacked " . $hero2->Name;
-$defenderSubject = '<span class="glyphicon glyphicon-alert"></span> Your Hero, ' . $hero2->Name . ", was attacked by " . $hero1->Name;
+$atttackerSubject = "Your Hero, " . $hero1->Name . " attacked " . $hero2->Name;
+$defenderSubject = '<span class="glyphicon glyphicon-alert"></span> Your Hero ' . $hero2->Name . ", was attacked by " . $hero1->Name;
 //if either die put a icon in the subject
 if(!$hero1->isAlive() || !$hero2->isAlive())
 {
