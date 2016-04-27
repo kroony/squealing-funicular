@@ -36,7 +36,13 @@
 										</div>
 									</div>
 								</td>
-								<td>{if !empty($Hero->GetOwner())}{$Hero->GetOwner()->username}{else}Owner Unknown (ID: {$Hero->OwnerID}){/if}</td>
+								<td>
+									{if !empty($Hero->GetOwner())}
+										<a href="viewUser.php?ID={$Hero->OwnerID}">{$Hero->GetOwner()->username}</a>
+									{else}
+										Owner Unknown (ID: {$Hero->OwnerID})
+									{/if}
+								</td>
 							</tr>
 							{/foreach}
 						</tbody>
@@ -73,7 +79,13 @@
 								<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
 								<td>{$Hero->Level}</td>
 								<td>{$Hero->Kills}</td>
-								<td>{if !empty($Hero->GetOwner())}{$Hero->GetOwner()->username}{else}Owner Unknown (ID: {$Hero->OwnerID}){/if}</td>
+								<td>
+									{if !empty($Hero->GetOwner())}
+										<a href="viewUser.php?ID={$Hero->OwnerID}">{$Hero->GetOwner()->username}</a>
+									{else}
+										Owner Unknown (ID: {$Hero->OwnerID})
+									{/if}
+								</td>
 							</tr>
 							{/foreach}
 						</tbody>
@@ -110,7 +122,13 @@
 								<td>{$Hero->Race->Name} {$Hero->HeroClass->Name}</td>
 								<td>{$Hero->Level}</td>
 								<td>{$Hero->Age}</td>
-								<td>{if !empty($Hero->GetOwner())}{$Hero->GetOwner()->username}{else}Owner Unknown (ID: {$Hero->OwnerID}){/if}</td>
+								<td>
+									{if !empty($Hero->GetOwner())}
+										<a href="viewUser.php?ID={$Hero->OwnerID}">{$Hero->GetOwner()->username}</a>
+									{else}
+										Owner Unknown (ID: {$Hero->OwnerID})
+									{/if}
+								</td>
 							</tr>
 							{/foreach}
 						</tbody>
@@ -140,7 +158,7 @@
 							{foreach from=$DeathUsers key=rank item=User}
 							<tr>
 								<td>{$rank + 1}</td>
-								<td>{$User->username}</td>
+								<td><a href="viewUser.php?ID={$User->ID}">{$User->username}</a></td>
 								<td>{$User->deaths}</td>
 							</tr>
 							{/foreach}
@@ -172,7 +190,7 @@
 							{foreach from=$WealthUsers key=rank item=User}
 							<tr>
 								<td>{$rank + 1}</td>
-								<td>{$User->username}</td>
+								<td><a href="viewUser.php?ID={$User->ID}">{$User->username}</a></td>
 								<td>{$User->gold}</td>
 							</tr>
 							{/foreach}

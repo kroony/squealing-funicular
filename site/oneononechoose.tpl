@@ -27,7 +27,13 @@
 			{/if}
 		</td>
 		<td>{if $ag->Level < 0}Undead {/if}{$ag->Race->Name} {$ag->HeroClass->Name}</td>
-		<td>{if !empty($ag->GetOwner())}{$ag->GetOwner()->username}{else}Owner Unknown (ID: {$ag->OwnerID}){/if}</td>
+		<td>
+			{if !empty($ag->GetOwner())}
+				<a href="viewUser.php?ID={$ag->OwnerID}">{$ag->GetOwner()->username}</a>
+			{else}
+				Owner Unknown (ID: {$ag->OwnerID})
+			{/if}
+		</td>
 	</tr>
 {/foreach}
 </tbody>
