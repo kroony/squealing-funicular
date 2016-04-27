@@ -244,11 +244,11 @@
 </div>
 
 <div id="StatsSection" class="container-fluid">
-	<!--<div class="row">
+	<div class="row">
 		<div class="col-sm-4"><div id="classpiechart" style="width: 900px; height: 500px;"></div></div>
 		<div class="col-sm-4"><div id="Racepiechart" style="width: 900px; height: 500px;"></div></div>
 	</div>
-	<div id="levelchart"></div>-->
+	<div id="levelchart"></div>
 </div>
 
   </body>
