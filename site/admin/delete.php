@@ -23,7 +23,7 @@ if($currentUID == 1)
 		
 		$Hero->SaveHero();
 
-		header("Location: admin/heroes.php");
+		header("Location: heroes.php");
 	}
 	else
 	{
