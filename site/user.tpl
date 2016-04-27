@@ -18,6 +18,7 @@
 Email: {$user->email}<br />
 Gold: {number_format($user->gold)}gp<br />
 Deaths: {$user->deaths}<br />
+Kills: {$user->kills}<br />
 <br />
 
 <strong>Messages</strong><br />

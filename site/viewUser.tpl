@@ -17,6 +17,7 @@
 <br />
 Heroes: {$heroCount}<br />
 Deaths: {$user->deaths}<br />
+Kills: {$user->kills}<br />
 <br />
 
 <div>

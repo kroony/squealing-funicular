@@ -94,6 +94,10 @@ $deathUser = new User();
 if(!$hero1->isAlive())
 {
 	$hero2->Kills++;//add kill to hero
+	$killUser=User::load($hero2->OwnerID);
+	$killUser->deaths++;
+	$killUser->Save();
+	
 	//add death to user
 	$deathUser=User::load($hero1->OwnerID);
 	$deathUser->deaths++;
@@ -114,6 +118,10 @@ if(!$hero1->isAlive())
 if(!$hero2->isAlive())
 {
 	$hero1->Kills++;//add kill to hero
+	$killUser=User::load($hero1->OwnerID);
+	$killUser->deaths++;
+	$killUser->Save();
+	
 	//add death to user
 	$deathUser=User::load($hero2->OwnerID);
 	$deathUser->deaths++;
