@@ -26,13 +26,13 @@ class Sale
 	
 	function loadSaleFromObject($obj)
   {
-		$returnSale = new Armor();
+		$returnSale = new Sale();
 		$returnSale->ID = $obj->ID;
 		$returnSale->SellerID = $obj->SellerID;
 		$returnSale->ItemType = $obj->ItemType;
 		$returnSale->ItemID = $obj->ItemID;
 		$returnSale->Price = $obj->Price;
-		$returnSale->Created = new DateTime($obj->Price);
+		$returnSale->Created = new DateTime($obj->Created);
 
 		return $returnSale;
 	}

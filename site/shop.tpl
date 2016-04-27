@@ -23,13 +23,36 @@
 	</thead>
 	<tbody>
 		{foreach from=$saleItems item=sale}
+		{if $sale->ItemType == "Weapon"}{$tmpWeapon->loadWeapon($sale->ItemID)}{/if}
 		<tr>
 			<td>{$sale->SellerID}</td>
-			<td>{$sale->ItemType}</td>
-			<td>{$sale->ItemID}</td>
+			<td>{$tmpWeapon->Name} {$tmpWeapon->DamageQuantity}d{$tmpWeapon->DamageDie}
+				{if $tmpWeapon->DamageOffset < 0}{$tmpWeapon->DamageOffset}{elseif $tmpWeapon->DamageOffset > 0}+{$tmpWeapon->DamageOffset}{/if}
+				({$tmpWeapon->CritChance}%)</td>
 			<td>{$sale->Price}gp</td>
+			<td>@TODO can afford checks</td>
 		</tr>
 		{/foreach}
+		<form action="shop.php?action=createSale">
+		<tr>
+			<td><strong>Sell Your Weapon</strong></td>
+			<td>
+				<select name="WeaponID">
+					<option>Select Weapon</option>
+					{foreach from=$unequipedWeapons item=weapon}
+					<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
+					{/foreach}
+				</select>
+			</td>
+			<td>
+				<input type="text" name="price" value="0">
+			</td>
+			<td>
+				<input type="submit" value="Submit">
+			</td>
+		</tr>
+		</form>
+			
 	</tbody>
 </table>
 </div>

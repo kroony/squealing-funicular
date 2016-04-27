@@ -42,15 +42,7 @@ $smarty->assign("baseClass", $baseClass);
 $smarty->assign("childClasses", $childClasses);
 
 //Weapon
-$allWeapons = $weaponController->getAllForUser($currentUID);
-$unequipedWeapons = array();
-foreach($allWeapons as $weapon)
-{
-	if(!is_numeric($weapon->GetHeroIDFromWeapon()))
-	{
-		array_push($unequipedWeapons, $weapon);
-	}
-}
+$unequipedWeapons = $weaponController->getAllForUnattendedForUser($currentUID);
 if(count($unequipedWeapons) > 0)
 {
 	$smarty->assign("unequipedWeapons", $unequipedWeapons);

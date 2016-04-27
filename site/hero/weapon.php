@@ -169,8 +169,26 @@ class Weapon
 			return "No ID";
 		}
 	}
+	
+	function GetSaleIDFromWeapon()
+	{
+		$db = DB::GetConn();
+		$weapon_con = $db->quoteInto("WeaponID = ?", $this->ID);
+		$sql = "select ID from Sale where $weapon_con limit 1";
+		$res = $db->query($sql);
+		$obj = $res->fetchObject();
+		if(is_object($obj))
+		{
+			return $obj->ID;
+		}
+		else
+		{
+			return "No ID";
+		}
+	}
 
 	//load Weapon from DB 
+	//could just be called load?! 
 	function loadWeapon($ID)
 	{
 		//check ID is not blank and exists and such

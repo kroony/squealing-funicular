@@ -23,7 +23,7 @@ class shopController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Sale` WHERE `SellerID` <> $id ORDER BY `SellerID` DESC;";
+		$getQuery = "SELECT * FROM `Sale` ORDER BY `Price` DESC;";
 
 		$res=$db->query($getQuery);//execute query
 		

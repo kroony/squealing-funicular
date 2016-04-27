@@ -4,6 +4,26 @@ include_once("hero/weapon.php");
 
 class weaponController
 {
+	function getAllForUnattendedForUser($id)
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Weapon` WHERE `UserID` = $id;";
+
+		$res=$db->query($getQuery);//execute query
+
+		$returnWeapons = array();
+		while($obj = $res->fetchObject())
+		{
+			$tmpWeapon = Weapon::loadWeaponFromObject($obj);
+			if(!is_numeric($tmpWeapon->GetHeroIDFromWeapon()) && !is_numeric($tmpWeapon->GetSaleIDFromWeapon()))
+			{
+				array_push($returnWeapons, Weapon::loadWeaponFromObject($obj));
+			}
+		}
+		return $returnWeapons;
+	}
+	
 	function getAllForUser($id)
 	{
 		$db = DB::GetConn();
