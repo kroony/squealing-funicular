@@ -17,6 +17,7 @@ if(count($unequipedWeapons) > 0)
 include_once("user/user.php");
 $user = new User();
 $user = $user->load($currentUID);
+$smarty->assign("user",$user);
 
 //html header
 $smarty->display("css/css.tpl");

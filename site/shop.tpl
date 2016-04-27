@@ -36,8 +36,14 @@
 					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if} ({$sale->Item->CritChance}%)
 				{/if}
 			</td>
-			<td>{$sale->Price}gp</td>
-			<td>@TODO can afford checks</td>
+			<td>{number_format($sale->Price)}gp</td>
+			<td>
+				{if $user->canAfford($sale->Price)}
+					<a href="#"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Purchase Item"></span></a>
+				{else}
+					<span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Can't Afford"></span>
+				{/if}
+			</td>
 		</tr>
 		{/foreach}
 		<form action="shop.php">
