@@ -1,5 +1,5 @@
 <?php
-include_once("/../hero/weapon.php");
+include_once("../hero/weapon.php");
 
 class Sale
 {
