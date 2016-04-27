@@ -108,6 +108,24 @@ class userController
 		}
 		return $returnUsers;
 	}
+	
+	function getTop10ByKillToDeathRatio()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT *, `kills` / (`deaths` + 1) AS KtoD FROM `User` WHERE `ID` <> 146 ORDER BY `KtoD` DESC LIMIT 10;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnUsers = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnUsers, User::loadUserFromObject($obj));
+		}
+		return $returnUsers;
+	}
+	
+	
 }
 
 ?>
