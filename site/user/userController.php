@@ -124,8 +124,6 @@ class userController
 		}
 		return $returnUsers;
 	}
-	
-	
 }
 
 ?>
