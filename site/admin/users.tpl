@@ -24,7 +24,7 @@
 			<td>{$heroController->countAllForUser($iUser->ID)}</td>
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
-			<td>{$iUser->kills / $iUser->deaths}</td>
+			<td>{if $iUser->deaths > 0){$iUser->kills / $iUser->deaths}{else}{$iUser->kills}{/if}</td>
 		</tr>
 		{/foreach}
 	</tbody>
