@@ -48,9 +48,6 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 		}
 	}
 }
-
-$tmpHero = new Hero();
-
 $saleItems = $shopController->getAllForBuyer($currentUID);
 
 $smarty->assign("saleItems",$saleItems);

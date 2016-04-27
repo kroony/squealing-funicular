@@ -1,5 +1,5 @@
 <?php
-include_once("sale/sale.php");
+include_once("shop/sale.php");
 
 class shopController
 {
