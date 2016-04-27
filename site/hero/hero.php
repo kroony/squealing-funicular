@@ -1,5 +1,4 @@
 <?php
-
 include_once("fightLog.php");
 include_once("race.php");
 include_once("heroClass.php");
