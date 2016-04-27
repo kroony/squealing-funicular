@@ -7,7 +7,7 @@ $db = DB::GetConn();
 
 /*print_r($db->query("ALTER TABLE `User` ADD `kills` INT NOT NULL ;"));
 echo "<br /><br />";*/
-print_r($db->query("CREATE TABLE IF NOT EXISTS `Sale` (
+/*print_r($db->query("CREATE TABLE IF NOT EXISTS `Sale` (
   `ID` int(11) NOT NULL AUTO_INCREMENT,
   `SellerID` int(11) NOT NULL,
   `ItemType` text NOT NULL,
@@ -15,7 +15,7 @@ print_r($db->query("CREATE TABLE IF NOT EXISTS `Sale` (
   `Price` int(11) NOT NULL,
   `Created` datetime NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;")); 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;")); */
 
 //html header
 $smarty->display("css/css.tpl");
