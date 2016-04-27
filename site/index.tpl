@@ -1,5 +1,21 @@
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+	<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+	<meta property="og:url"                content="http://amospheric.com/" />
+	<!--<meta property="og:type"               content="article" />-->
+	<meta property="og:title"              content="Manage a Guild of Heroes" />
+	<meta property="og:description"        content="How well can your guild fair the rest, and the dreaded scourge of the undead?" />
+	<!--<meta property="og:image"              content="" />-->
+	<!--<meta property="fb:app_id"             content="" />-->
+
+	<meta name="author" content="Trout-Slap" />
+	<meta name="keywords" content="Game, RPG, Text Based, Free, Multiplayer, Guild, Hero" />
+	<meta name="description" content="" />
+	<meta name="robots" content="all" />
+	<meta name="copyright" content="Trout-Slap" />
+	
+	<title>Squealing Funicular</title>
+	
 	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
