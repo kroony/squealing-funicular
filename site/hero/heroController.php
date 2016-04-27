@@ -1,7 +1,5 @@
 <?php
-
 include_once("hero/hero.php");
-
 
 class heroController
 {
