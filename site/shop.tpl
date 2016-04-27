@@ -24,7 +24,8 @@
 	<tbody>
 		{foreach from=$saleItems item=sale}
 		<tr>
-			<td>{if !empty($sale->GetOwner())}
+			<td>
+				{if !empty($sale->GetOwner())}
 					<a href="viewUser.php?ID={$sale->OwnerID}">{$sale->GetOwner()->username}</a>
 				{else}
 					Owner Unknown (ID: {$sale->OwnerID})

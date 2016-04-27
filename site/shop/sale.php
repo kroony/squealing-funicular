@@ -45,6 +45,15 @@ class Sale
 		return $returnSale;
 	}
 	
+	public function GetOwner()
+	{
+		$db = DB::GetConn();
+		$user_con = $db->quoteInto("ID = ?",$this->SellerID);
+		$sql = "select * from User where $user_con limit 1";
+		$res = $db->query($sql);
+		return $res->fetchObject();
+	}
+	
 	function save()
 	{
 		$db = DB::GetConn();
