@@ -1,12 +1,16 @@
 <?php
-
 chdir("../");
 
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-//print_r($db->query("UPDATE `Weapon` SET  `UserID` =  '179' WHERE  `Weapon`.`ID` =1405;"));
+print_r($db->query("ALTER TABLE `User` ADD `kills` INT NOT NULL ;"));
+echo "<br /><br />";
+print_r($db->query("UPDATE `User`,( SELECT OwnerID, sum(`Kills`) as mysum
+                   FROM Hero GROUP BY OwnerID) as s
+   SET `User`.`kills` = s.mysum
+  WHERE User.ID = s.OwnerID;"));
 
 //html header
 $smarty->display("css/css.tpl");

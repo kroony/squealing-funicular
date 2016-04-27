@@ -10,6 +10,7 @@ class User
 	public $gold;
 	public $active;
 	public $deaths;
+	public $kills;
 
 	function __construct()
 	{
@@ -40,6 +41,7 @@ class User
 		$returnUser->gold = $obj->gold;
 		$returnUser->active = $obj->active;
 		$returnUser->deaths = $obj->deaths;
+		$returnUser->kills = $obj->kills;
 		
 		return $returnUser;
 	}
@@ -65,7 +67,8 @@ class User
 				"salt"=>$this->salt,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
-				"deaths"=>$this->deaths);
+				"deaths"=>$this->deaths,
+				"kills"=>$this->kills);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("User", $row, $where);
@@ -83,7 +86,8 @@ class User
 				"salt"=>$this->salt,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
-				"deaths"=>$this->deaths);
+				"deaths"=>$this->deaths,
+				"kills"=>$this->kills);
 			
 			try {
 				$db->insert("User",$row);
@@ -96,7 +100,6 @@ class User
 				print_r($ex);
 			}
 		}
-
 		//some sort of try catch error detection
 	}
 }
