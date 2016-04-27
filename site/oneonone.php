@@ -95,7 +95,7 @@ if(!$hero1->isAlive())
 {
 	$hero2->Kills++;//add kill to hero
 	$killUser=User::load($hero2->OwnerID);
-	$killUser->deaths++;
+	$killUser->kills++;
 	$killUser->Save();
 	
 	//add death to user
@@ -119,7 +119,7 @@ if(!$hero2->isAlive())
 {
 	$hero1->Kills++;//add kill to hero
 	$killUser=User::load($hero1->OwnerID);
-	$killUser->deaths++;
+	$killUser->kills++;
 	$killUser->Save();
 	
 	//add death to user
