@@ -4,6 +4,12 @@ include_once("bootstrap.php");
 include_once("hero/weaponController.php");
 include_once("hero/heroController.php");
 include_once("user/user.php");
+$user = new User();
+$user = $user->load($currentUID);
+
+$heroController = new heroController();
+$userChaBonus = $heroController->getChaModForUser();
+$smarty->assign("userChaBonus",$userChaBonus);
 
 //html header
 $smarty->display("css/css.tpl");
@@ -27,14 +33,12 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 		{
 			if(!is_numeric($scrapWeapon->GetHeroIDFromWeapon()))
 			{
-				$user = new User();
-				$user = $user->load($currentUID);
-				$user->gold += $scrapWeapon->getScrapValue();
+				$user->gold += $scrapWeapon->getScrapValue($userChaBonus);
 				$user->Save();
 				
 				$scrapWeapon->delete();
 				
-				$smarty->assign("message", $scrapWeapon->Name . " has been scrapped for " . $scrapWeapon->getScrapValue() . "gp");
+				$smarty->assign("message", $scrapWeapon->Name . " has been scrapped for " . $scrapWeapon->getScrapValue($userChaBonus) . "gp");
 			}
 			else
 			{

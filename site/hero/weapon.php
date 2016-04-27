@@ -123,7 +123,7 @@ class Weapon
 		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1) * 3.33;//crit is a little too cheap
 	}
 	
-	function getScrapValue()
+	function getScrapValue($userChaBonus)
 	{
 		$scrapValue = 0;
 		
@@ -131,7 +131,9 @@ class Weapon
 		$scrapValue += $this->DamageOffset;
 		$scrapValue += $this->CritChance;
 		
-		return $scrapValue;
+		$multiplyer = 1 + ($userChaBonus / 100);
+		
+		return round($scrapValue * $multiplyer);
 	}
 	
 	function GetHeroNameFromWeapon()

@@ -60,6 +60,17 @@ class heroController
 		return $obj->count;
 	}
 	
+	function getChaModForUser($userID)
+	{
+		$db = DB::GetConn();
+		
+		$getQuery = "SELECT SUM(FLOOR((`Hero`.`Cha` - 10) / 2) + 1) AS `ModCha` FROM `Hero` where `OwnerID` = $userID;";
+		$res=$db->query($getQuery);//execute query
+		$obj = $res->fetchObject();
+		
+		return $obj->ModCha;
+	}
+	
 	function getTop10ByXP()
 	{
 		$db = DB::GetConn();
@@ -158,7 +169,6 @@ class heroController
 						 INNER JOIN  `Race` ON  `Hero`.`Race` =  `Race`.`ID` 
 						 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
 						 AND HOUR( TIMEDIFF(  `Hero`.`DateOfBirth` , NOW( ) ) ) / 24 >  `Race`.`OldAge` + `Hero`.`Fte` + ROUND((RAND() * (20 - 1)) + 20);";
-		
 		
 		$res = $db->query($getDeadQuery);
 		
