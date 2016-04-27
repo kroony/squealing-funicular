@@ -201,13 +201,45 @@
 		</div>
 		
 		
+		
 		<div class="panel panel-default">
 			<div class="panel-heading">
 				<h4 class="panel-title">
-					<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Top 10 by Wealth</a>
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse6">Top 10 By Kill to Death Ratio</a>
 				</h4>
 			</div>
 			<div id="collapse6" class="panel-collapse collapse">
+				<div class="panel-body">
+					<table class='table table-condensed table-hover'>
+						<thead>
+							<tr>
+								<th>Rank</th>
+								<th>Username</th>
+								<th>Kill:Death</th>
+							</tr>
+						</thead>
+						<tbody>
+							{foreach from=$KilltoDeathRatioUsers key=rank item=User}
+							<tr>
+								<td>{$rank + 1}</td>
+								<td><a href="viewUser.php?ID={$User->ID}">{$User->username}</a></td>
+								<td>{$User->kills / ($User->deaths + 1)}</td>
+							</tr>
+							{/foreach}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		
+		
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<h4 class="panel-title">
+					<a data-toggle="collapse" data-parent="#accordion" href="#collapse7">Top 10 by Wealth</a>
+				</h4>
+			</div>
+			<div id="collapse7" class="panel-collapse collapse">
 				<div class="panel-body">
 					
 					<table class='table table-condensed table-hover'>
