@@ -173,7 +173,7 @@ class Weapon
 	function GetSaleIDFromWeapon()
 	{
 		$db = DB::GetConn();
-		$weapon_con = $db->quoteInto("WeaponID = ?", $this->ID);
+		$weapon_con = $db->quoteInto("ItemID = ?", $this->ID);
 		$sql = "select ID from Sale where $weapon_con limit 1";
 		$res = $db->query($sql);
 		$obj = $res->fetchObject();
