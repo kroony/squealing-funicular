@@ -54,10 +54,7 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 		}
 	}
 }
-
-$tmpWeapon = new Weapon("", 0, 0, 0, 0, 0, "");
-$smarty->assign("tmpWeapon",$tmpWeapon);
-
+//get sale items to populate table
 $saleItems = $shopController->getAllForBuyer($currentUID);
 
 $smarty->assign("saleItems",$saleItems);
