@@ -15,7 +15,7 @@ print_r($db->query("CREATE TABLE IF NOT EXISTS `Sale` (
   `Price` int(11) NOT NULL,
   `Created` datetime NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;"); 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1;")); 
 
 //html header
 $smarty->display("css/css.tpl");
