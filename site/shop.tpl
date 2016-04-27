@@ -33,7 +33,8 @@
 			<td>@TODO can afford checks</td>
 		</tr>
 		{/foreach}
-		<form action="shop.php?action=createSale">
+		<form action="shop.php">
+		<input type="hidden" name="action" value="createSale">
 		<tr>
 			<td><strong>Sell Your Weapon</strong></td>
 			<td>
