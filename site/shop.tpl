@@ -27,9 +27,9 @@
 			<td>{$sale->SellerID}</td>
 			<td>
 				{if $sale->ItemType == "Weapon"}
-					{$tmpWeapon->loadWeapon($sale->ItemID)->Name} {$tmpWeapon->DamageQuantity}d{$tmpWeapon->DamageDie}
-					{if $tmpWeapon->DamageOffset < 0}{$tmpWeapon->DamageOffset}{elseif $tmpWeapon->DamageOffset > 0}+{$tmpWeapon->DamageOffset}{/if}
-					({$tmpWeapon->CritChance}%)
+					{$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}
+					{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if}
+					({$sale->Item->CritChance}%)
 				{/if}
 			</td>
 			<td>{$sale->Price}gp</td>

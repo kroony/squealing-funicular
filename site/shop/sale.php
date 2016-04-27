@@ -1,4 +1,5 @@
 <?php
+include_once("/../hero/weapon.php");
 
 class Sale
 {
@@ -8,6 +9,7 @@ class Sale
 	public $ItemID;
 	public $Price;
 	public $Created;
+	public $Item;
 
 	function __construct()
 	{
@@ -33,7 +35,13 @@ class Sale
 		$returnSale->ItemID = $obj->ItemID;
 		$returnSale->Price = $obj->Price;
 		$returnSale->Created = new DateTime($obj->Created);
-
+		
+		//load the actual object for sale
+		if($returnSale->ItemType  == "Weapon")
+		{
+			$returnSale->Item = Weapon::loadWeapon($returnSale->ItemID);
+		}
+		
 		return $returnSale;
 	}
 	
