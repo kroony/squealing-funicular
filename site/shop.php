@@ -39,14 +39,7 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			
 			if(is_numeric($_REQUEST['price']) && $_REQUEST['price'] > 0)
 			{
-				$newSale = new Sale();
-				
-				$newSale->SellerID = $currentUID;
-				$newSale->ItemType = "Weapon";
-				$newSale->ItemID = $saleWeapon->ID;
-				$newSale->Price = $_REQUEST['price'];
-				
-				$newSale->save();
+				$newSale = $shopController->createSale($currentUID, "Weapon", $saleWeapon->ID, $_REQUEST['price']);//add new sale
 		
 				$smarty->assign("message", $saleWeapon->Name . " has been listed for " . $scrapWeapon->getScrapValue($userChaBonus) . "gp");
 			}

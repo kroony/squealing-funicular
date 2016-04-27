@@ -46,6 +46,8 @@ class shopController
 		$NewSale->Created = new DateTime('now');
 		
 		$NewSale->save();
+		
+		return $NewSale;
 	}
 }
 
