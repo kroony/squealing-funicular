@@ -17,7 +17,7 @@
 			<th>Cha</th>
 			<th>Fte</th>
 			<th>Weapon</th>
-			<th>DOB</th>
+			<th>Age</th>
 			<th>Status</th>
 		</tr>
 	</thead>
@@ -52,14 +52,10 @@
 			<td>{$Hero->Cha}</td>
 			<td>{$Hero->Fte}</td>
 			<td>{$Hero->Weapon->Name} {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}
-				{if $Hero->Weapon->DamageOffset < 0}
-					{$Hero->Weapon->DamageOffset}
-				{elseif $Hero->Weapon->DamageOffset > 0}
-					+{$Hero->Weapon->DamageOffset}
-				{/if}
-				{if $Hero->Weapon->ID < 10}<a href="../generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
+				{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if}
+				({$Hero->Weapon->CritChance}%)
 			</td>
-			<td>{$Hero->DateOfBirth->format('Y-m-d H:i:s')}</td>
+			<td>{$Hero->Age}</td>
 			<td>{if $Hero->Status == "" || $Hero->Status == null}
 					{if $Hero->CurrentHP > 0}No Status{/if}
 				{else}
