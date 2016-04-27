@@ -27,9 +27,7 @@
 			<td>{$sale->SellerID}</td>
 			<td>
 				{if $sale->ItemType == "Weapon"}
-					{$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}
-					{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if}
-					({$sale->Item->CritChance}%)
+					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if}({$sale->Item->CritChance}%)
 				{/if}
 			</td>
 			<td>{$sale->Price}gp</td>
@@ -44,7 +42,7 @@
 				<select name="WeaponID">
 					<option>Select Weapon</option>
 					{foreach from=$unequipedWeapons item=weapon}
-					<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</option>
+					<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}({$weapon->CritChance}%)</option>
 					{/foreach}
 				</select>
 			</td>
