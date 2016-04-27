@@ -1,7 +1,7 @@
 <?php
 
-include_once("bootstrap.php");
-include_once("hero/hero.php");
+include_once("../bootstrap.php");
+include_once("../hero/hero.php");
 
 //@TODO add undead races to DB and change current race to matching Undead Race
 
