@@ -26,6 +26,8 @@ $smarty->assign("DeathUsers", $userController->getBottom10ByDeath());
 
 $smarty->assign("WealthUsers", $userController->getTop10ByGold());
 
+$smarty->assign("KillUsers", $userController->getTop10ByKills());
+
 /*********  Get top 10 lists  ***********/
 
 $smarty->display("leaderboard.tpl");
