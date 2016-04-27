@@ -8,7 +8,7 @@ $user = new User();
 $user = $user->load($currentUID);
 
 $heroController = new heroController();
-$userChaBonus = $heroController->getChaModForUser();
+$userChaBonus = $heroController->getChaModForUser($currentUID);
 $smarty->assign("userChaBonus",$userChaBonus);
 
 //html header
