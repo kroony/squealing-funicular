@@ -108,48 +108,6 @@ class heroController
 		return $returnHeroes;
 	}
 
-	function dropDownForUser($id)
-	{
-		$getQuery = "SELECT `ID`, `Name` FROM `Hero` WHERE `OwnerID` = $id AND `CurrentHP` > 0;";
-
-		$getResult=mysql_query($getQuery);//execute query
-		$totalHeros=mysql_numrows($getResult); 
-
-		$returnString = "";
-		$i=0;
-		while($i < $totalHeros)
-		{
-			$HeroID=mysql_result($getResult,$i,"ID");
-			$HeroName=mysql_result($getResult,$i,"Name");
-
-			$returnString .= "<option value='" . $HeroID . "'>" . $HeroName . "</option>";
-
-			$i++;
-		}
-		return $returnString;
-	}
-
-	function dropDownForUserEnemys($id)
-	{
-		$getQuery = "SELECT `ID`, `Name` FROM `Hero` WHERE `OwnerID` <> $id AND `CurrentHP` = `MaxHP`;";
-
-		$getResult=mysql_query($getQuery);//execute query
-		$totalHeros=mysql_numrows($getResult); 
-
-		$returnString = "";
-		$i=0;
-		while($i < $totalHeros)
-		{
-			$HeroID=mysql_result($getResult,$i,"ID");
-			$HeroName=mysql_result($getResult,$i,"Name");
-
-			$returnString .= "<option value='" . $HeroID . "'>" . $HeroName . "</option>";
-
-			$i++;
-		}
-		return $returnString;
-	}
-
 	function findEnemys($id, $Hero)
 	{
 		$low_level = $Hero->Level - 1;
