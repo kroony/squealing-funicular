@@ -41,7 +41,7 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			{
 				$newSale = $shopController->createSale($currentUID, "Weapon", $saleWeapon->ID, $_REQUEST['price']);//add new sale
 		
-				$smarty->assign("message", $saleWeapon->Name . " has been listed for " . $scrapWeapon->getScrapValue($userChaBonus) . "gp");
+				$smarty->assign("message", $saleWeapon->Name . " has been listed for " . $newSale->Price . "gp");
 			}
 			else
 			{

@@ -23,12 +23,15 @@
 	</thead>
 	<tbody>
 		{foreach from=$saleItems item=sale}
-		{if $sale->ItemType == "Weapon"}{$tmpWeapon->loadWeapon($sale->ItemID)}{/if}
 		<tr>
 			<td>{$sale->SellerID}</td>
-			<td>{$tmpWeapon->Name} {$tmpWeapon->DamageQuantity}d{$tmpWeapon->DamageDie}
-				{if $tmpWeapon->DamageOffset < 0}{$tmpWeapon->DamageOffset}{elseif $tmpWeapon->DamageOffset > 0}+{$tmpWeapon->DamageOffset}{/if}
-				({$tmpWeapon->CritChance}%)</td>
+			<td>
+				{if $sale->ItemType == "Weapon"}
+					{$tmpWeapon->loadWeapon($sale->ItemID)->Name} {$tmpWeapon->DamageQuantity}d{$tmpWeapon->DamageDie}
+					{if $tmpWeapon->DamageOffset < 0}{$tmpWeapon->DamageOffset}{elseif $tmpWeapon->DamageOffset > 0}+{$tmpWeapon->DamageOffset}{/if}
+					({$tmpWeapon->CritChance}%)
+				{/if}
+			</td>
 			<td>{$sale->Price}gp</td>
 			<td>@TODO can afford checks</td>
 		</tr>
