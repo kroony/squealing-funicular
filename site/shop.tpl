@@ -24,10 +24,15 @@
 	<tbody>
 		{foreach from=$saleItems item=sale}
 		<tr>
-			<td>{$sale->SellerID}</td>
+			<td>{if !empty($sale->GetOwner())}
+					<a href="viewUser.php?ID={$sale->OwnerID}">{$sale->GetOwner()->username}</a>
+				{else}
+					Owner Unknown (ID: {$sale->OwnerID})
+				{/if}
+			</td>
 			<td>
 				{if $sale->ItemType == "Weapon"}
-					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if}({$sale->Item->CritChance}%)
+					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if} ({$sale->Item->CritChance}%)
 				{/if}
 			</td>
 			<td>{$sale->Price}gp</td>
@@ -42,7 +47,7 @@
 				<select name="WeaponID">
 					<option>Select Weapon</option>
 					{foreach from=$unequipedWeapons item=weapon}
-					<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}({$weapon->CritChance}%)</option>
+					<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if} ({$weapon->CritChance}%)</option>
 					{/foreach}
 				</select>
 			</td>
