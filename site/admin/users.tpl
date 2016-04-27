@@ -7,10 +7,10 @@
 			<th>email</th>
 			<th>password</th>
 			<th>gold</th>
-			<th>active</th>
 			<th>heroes</th>
 			<th>deaths</th>
 			<th>kills</th>
+			<th>K:D Ratio</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,10 +21,10 @@
 			<td>{$iUser->email}</td>
 			<td>{if $iUser->password == "pass"}pass{else}Hashed{/if}</td>
 			<td>{$iUser->gold}</td>
-			<td>{$iUser->active}</td>
 			<td>{$heroController->countAllForUser($iUser->ID)}</td>
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
+			<td>{$iUser->kills / $iUser->deaths}</td>
 		</tr>
 		{/foreach}
 	</tbody>
