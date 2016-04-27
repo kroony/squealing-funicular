@@ -12,7 +12,7 @@ if(isset($_REQUEST['action']))
 		$unreadMessages--;
 	}
 }
-$smarty->assign("unreadMessages", $unreadMessages;);
+$smarty->assign("unreadMessages", $unreadMessages);
 $smarty->assign("currentUserGold",User::load($currentUID)->gold);
 $smarty->display("menu.tpl");
 
