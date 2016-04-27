@@ -195,7 +195,7 @@ class Hero
 	
 	function GiveToUser($UID)
 	{
-		//check user exists
+		//@ TODO check user exists
 		$this->OwnerID = $UID;
 	}
 
