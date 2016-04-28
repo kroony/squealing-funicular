@@ -38,7 +38,7 @@
 			</td>
 			<td>{number_format($sale->Price)}gp</td>
 			<td>
-				{if $sale->isSeller($currentUID)}
+				{if $sale->isSeller($user->ID)}
 					<a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Cancel Sale"></span></a>
 				{else}
 					{if $user->canAfford($sale->Price)}
