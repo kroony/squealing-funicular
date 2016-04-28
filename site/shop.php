@@ -54,6 +54,28 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			$smarty->assign("error","Unknown Sale Item");
 		}
 	}
+	else if($_REQUEST['action'] == "cancelSale")
+	{
+		if(isset($_REQUEST['ID']))
+		{
+			$cancelSale = Sale::loadSale($_REQUEST['ID']);
+			
+			if($cancelSale->isSeller($currentUID))
+			{
+				$cancelSale->delete();
+		
+				$smarty->assign("message", "Sale item deleted");
+			}
+			else
+			{
+				$smarty->assign("error","Not your Sale to cancel");
+			}
+		}
+		else
+		{
+			$smarty->assign("error","Unknown Sale Item");
+		}
+	}
 }
 //get sale items to populate table
 $saleItems = $shopController->getAllForBuyer($currentUID);
