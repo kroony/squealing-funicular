@@ -82,7 +82,7 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 		{
 			$buySale = Sale::loadSale($_REQUEST['ID']);
 			
-			if($buySale->isSeller($currentUID))
+			if(!$buySale->isSeller($currentUID))
 			{
 				if($user->canAfford($buySale->Price))
 				{
