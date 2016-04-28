@@ -76,6 +76,35 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			$smarty->assign("error","Unknown Sale Item");
 		}
 	}
+	else if($_REQUEST['action'] == "buy")
+	{
+		if(isset($_REQUEST['ID']))
+		{
+			$buySale = Sale::loadSale($_REQUEST['ID']);
+			
+			if($buySale->isSeller($currentUID))
+			{
+				if($user->canAfford($buySale->Price))
+				{
+					$shopController->completeSale($buySale->ID, $currentUID);
+		
+					$smarty->assign("message", "Item Purchased");
+				}
+				else
+				{
+					$smarty->assign("error","you cant afford that");
+				}
+			}
+			else
+			{
+				$smarty->assign("error","cant buy your own item");
+			}
+		}
+		else
+		{
+			$smarty->assign("error","Unknown Sale Item");
+		}
+	}
 }
 //get sale items to populate table
 $saleItems = $shopController->getAllForBuyer($currentUID);

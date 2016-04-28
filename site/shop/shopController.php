@@ -1,5 +1,6 @@
 <?php
 include_once("shop/sale.php");
+include_once("user/userController.php");
 
 class shopController
 {
@@ -48,6 +49,30 @@ class shopController
 		$NewSale->save();
 		
 		return $NewSale;
+	}
+	
+	function completeSale($saleID, $buyerID)
+	{
+		$sale = Sale::loadSale($saleID);
+		$buyer = User::load($buyerID);
+		$seller = User::load($sale->SellerID);
+		
+		if($sale->ItemType == "Weapon")
+		{
+			//spend money
+			$buyer->debit($sale->Price);
+			$seller->credit($sale->Price);
+			
+			//transfer Item			
+			$sale->Item->UserID = $buyerID;
+			$sale->Item->save();
+			
+			//send message to seller
+			userController::sendMessage($seller->ID, $buyer->ID, "Your shop item " . $sale->Item->Name . " sold to " . $buyer->username . " for " . $sale->Price . "gp.", $Body);
+			
+			//delete sale 
+			$sale->delete();
+		}
 	}
 }
 

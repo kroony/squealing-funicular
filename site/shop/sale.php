@@ -44,7 +44,7 @@ class Sale
 		
 		return $returnSale;
 	}
-	
+
 	function isSeller($id)
 	{
 		if($this->SellerID == $id)

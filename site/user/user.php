@@ -55,6 +55,18 @@ class User
 		return false;
 	}
 
+	function debit($amount)
+	{
+		$this->gold -= $amount;
+		$this->Save();
+	}
+	
+	function credit($amount)
+	{
+		$this->gold += $amount;
+		$this->Save();
+	}
+	
 	function Save()
 	{
 		$db = DB::GetConn();
