@@ -38,10 +38,14 @@
 			</td>
 			<td>{number_format($sale->Price)}gp</td>
 			<td>
-				{if $user->canAfford($sale->Price)}
-					<a href="#"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Purchase Item"></span></a>
+				{if $sale->isSeller($currentUID)}
+					<a href="#"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Cancel Sale"></span></a>
 				{else}
-					<span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Can't Afford"></span>
+					{if $user->canAfford($sale->Price)}
+						<a href="#"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Purchase Item"></span></a>
+					{else}
+						<span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Can't Afford"></span>
+					{/if}
 				{/if}
 			</td>
 		</tr>
