@@ -45,6 +45,15 @@ class Sale
 		return $returnSale;
 	}
 	
+	function isSeller($id)
+	{
+		if($this->SellerID == $id)
+		{
+			return true;
+		}
+		return false;
+	}
+	
 	public function GetOwner()
 	{
 		$db = DB::GetConn();
