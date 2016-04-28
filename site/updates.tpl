@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li><strong>2016/04/28 - Added Shop, Initially to sell weapons, will expand to heroes, armor, items</strong></li>
 	<li>2016/04/27 - Users have Total kill counts (only updated from current heroes, Kills on heroes that have died before today were not counted). Leaderboards added from this. </li>
 	<li>2016/04/27 - Scrapping weapons has a total hero Cha modifier applied to the gold returned. Thanks Joshua</li>
 	<li>2016/04/27 - Other user pages can be viewed. This will be where players can send messages to each other.</li>
