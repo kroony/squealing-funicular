@@ -245,7 +245,7 @@
 					<select name="WeaponID">
 						<option>Select Weapon</option>
 						{foreach from=$unequipedWeapons item=weapon}
-						<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}({$weapon->CritChance}%)</option>
+						<option value="{$weapon->ID}">{$weapon->Name} {$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if} ({$weapon->CritChance}%) {$hero->Weapon->DamageAttribute}</option>
 						{/foreach}
 					</select>
 					<input type="submit" value="Equip">

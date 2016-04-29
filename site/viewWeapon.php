@@ -42,8 +42,7 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 		{
 			if($user->canAfford($weapon->calcDamageQuantityUpgradeCost()))
 			{
-				$user->gold -= $weapon->calcDamageQuantityUpgradeCost();
-				$user->Save();
+				$user->debit($weapon->calcDamageQuantityUpgradeCost());
 				
 				$weapon->DamageQuantity++;
 				$weapon->save();
@@ -59,8 +58,7 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 		{
 			if($user->canAfford($weapon->calcDamageDieUpgradeCost()))
 			{
-				$user->gold -= $weapon->calcDamageDieUpgradeCost();
-				$user->Save();
+				$user->debit($weapon->calcDamageDieUpgradeCost());
 				
 				$weapon->DamageDie++;
 				$weapon->save();
@@ -76,8 +74,7 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 		{
 			if($user->canAfford($weapon->calcDamageOffsetUpgradeCost()))
 			{
-				$user->gold -= $weapon->calcDamageOffsetUpgradeCost();
-				$user->Save();
+				$user->debit($weapon->calcDamageOffsetUpgradeCost());
 				
 				$weapon->DamageOffset++;
 				$weapon->save();
@@ -93,8 +90,7 @@ if($weapon->UserID == $currentUID)//check weapon belongs to current user
 		{
 			if($user->canAfford($weapon->calcCritChanceUpgradeCost()))
 			{
-				$user->gold -= $weapon->calcCritChanceUpgradeCost();
-				$user->Save();
+				$user->debit($weapon->calcCritChanceUpgradeCost());
 				
 				$weapon->CritChance++;
 				$weapon->save();

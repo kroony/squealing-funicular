@@ -33,7 +33,7 @@
 			</td>
 			<td>
 				{if $sale->ItemType == "Weapon"}
-					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if} ({$sale->Item->CritChance}%)
+					Weapon - {$sale->Item->Name} {$sale->Item->DamageQuantity}d{$sale->Item->DamageDie}{if $sale->Item->DamageOffset < 0}{$sale->Item->DamageOffset}{elseif $sale->Item->DamageOffset > 0}+{$sale->Item->DamageOffset}{/if} ({$sale->Item->CritChance}%) {$sale->Item->DamageAttribute} 
 				{/if}
 			</td>
 			<td>{number_format($sale->Price)}gp</td>

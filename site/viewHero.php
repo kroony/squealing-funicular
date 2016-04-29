@@ -206,8 +206,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Str)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Str);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Str));
 					
 					$hero->Status = "Train Str";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Str + 1) * 10))));
@@ -225,8 +224,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Dex)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Dex);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Dex));
 					
 					$hero->Status = "Train Dex";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Dex + 1) * 10))));
@@ -244,8 +242,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Con)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Con);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Con));
 					
 					$hero->Status = "Train Con";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Con + 1) * 10))));
@@ -263,8 +260,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Intel)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Intel);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Intel));
 					
 					$hero->Status = "Train Intel";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Intel + 1) * 10))));
@@ -282,8 +278,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Wis)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Wis);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Wis));
 					
 					$hero->Status = "Train Wis";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes",($hero->Wis + 1) * 10))));
@@ -301,8 +296,7 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 			{
 				if($user->canAfford($hero->calculateAttributeUpgradeCost($hero->Cha)))
 				{
-					$user->gold -= $hero->calculateAttributeUpgradeCost($hero->Cha);
-					$user->Save();
+					$user->debit($hero->calculateAttributeUpgradeCost($hero->Cha));
 					
 					$hero->Status = "Train Cha";
 					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Cha + 1) * 10))));
