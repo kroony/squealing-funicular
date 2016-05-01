@@ -189,11 +189,7 @@ class heroController
 			userController::sendMessage($OldAgeHero.OwnerID, $OldAgeHero.OwnerID, $subject, $body);
 			userController::sendMessage(1, $OldAgeHero.OwnerID, $subject, $body);
 			
-			//assign to undead
-			$OldAgeHero.GiveToUser(146);
-			//get new weapon
-			$OldAgeHero.generateStartingWeapon();
-			$OldAgeHero.SaveHero();
+			$OldAgeHero.KillHero();
 		}
 		echo '<br />';
 	}

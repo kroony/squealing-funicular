@@ -566,11 +566,11 @@ class Hero
 
 	function KillHero()
 	{
-		/*@TODO
-		Change owner ID to that of the "Monster" user
-		Change race to undead equivalent of current race
-		If not equipped with a weapon, generate a new one
-		*/
+		//assign to undead
+		$this.GiveToUser(146);
+		//get new weapon
+		$this.generateStartingWeapon();
+		$this.SaveHero();
 	}
 
     function displayName($is_mine)
