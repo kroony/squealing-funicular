@@ -1,5 +1,6 @@
 <?php
 include_once("hero/hero.php");
+include_once("user/userController.php");
 
 class heroController
 {
@@ -183,7 +184,10 @@ class heroController
 			echo $OldAgeHero.Name . ' Aged: ' . $OldAgeHero.Age . '/' . $OldAgeHero.Race.OldAge . ' Player: ' . $OldAgeHero.GetOwner().username . ', ';
 			
 			//send message to user
-			//@TODO
+			$subject = $OldAgeHero.Name . " has passed away at the old age of " . $OldAgeHero.Age . ".";
+			$body = $OldAgeHero.Name . " the " . $OldAgeHero.Race.Name . " is survived by " . rand(2, $OldAgeHero.Fte) . " children and " . $OldAgeHero.Fte . " grand children.";
+			userController::sendMessage($OldAgeHero.OwnerID, $OldAgeHero.OwnerID, $subject, $body);
+			userController::sendMessage(1, $OldAgeHero.OwnerID, $subject, $body);
 			
 			//assign to undead
 			$OldAgeHero.GiveToUser(146);
@@ -192,7 +196,6 @@ class heroController
 			$OldAgeHero.SaveHero();
 		}
 		echo '<br />';
-		
 	}
 }
 
