@@ -1,0 +1,6 @@
+ALTER TABLE  `User` ADD  `created` TIMESTAMP NOT NULL ,
+ADD  `lastSeen` TIMESTAMP NOT NULL ;
+
+ALTER TABLE  `User` CHANGE  `created`  `created` TIMESTAMP NOT NULL DEFAULT  '0000-00-00 00:00:00';
+
+ALTER TABLE `User` DROP `salt`;
