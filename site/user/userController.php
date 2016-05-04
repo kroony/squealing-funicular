@@ -9,7 +9,7 @@ class userController
 		$db = DB::GetConn();
 		
 		$ToID_con = $db->quoteInto("ToID = ?",$ID);
-		$getQuery = "SELECT * FROM `Message` WHERE $ToID_con;"; //@TODO Order by Date
+		$getQuery = "SELECT * FROM `Message` WHERE $ToID_con ORDER BY `Sent` DESC;"; //@TODO Order by Date
 		$res=$db->query($getQuery);//execute query
 		
 		$returnMessages = array();
