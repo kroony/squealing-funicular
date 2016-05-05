@@ -10,6 +10,8 @@ class User
 	public $active;
 	public $deaths;
 	public $kills;
+	public $created;
+	public $lastSeen;
 
 	function __construct()
 	{
@@ -40,6 +42,8 @@ class User
 		$returnUser->active = $obj->active;
 		$returnUser->deaths = $obj->deaths;
 		$returnUser->kills = $obj->kills;
+		$returnUser->created = new DateTime($obj->created);
+		$returnUser->lastSeen = new DateTime($obj->lastSeen);
 		
 		return $returnUser;
 	}
@@ -77,7 +81,9 @@ class User
 				"gold"=>$this->gold,
 				"active"=>$this->active,
 				"deaths"=>$this->deaths,
-				"kills"=>$this->kills);
+				"kills"=>$this->kills,
+				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'));
+				
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("User", $row, $where);
@@ -95,7 +101,9 @@ class User
 				"gold"=>$this->gold,
 				"active"=>$this->active,
 				"deaths"=>$this->deaths,
-				"kills"=>$this->kills);
+				"kills"=>$this->kills,
+				"created"=>$this->created->format('Y-m-d H:i:s'),
+				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'));
 			
 			try {
 				$db->insert("User",$row);

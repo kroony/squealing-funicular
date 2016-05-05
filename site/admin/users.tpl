@@ -11,6 +11,8 @@
 			<th>deaths</th>
 			<th>kills</th>
 			<th>K:D Ratio</th>
+			<th>Created</th>
+			<th>Last Seen</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,6 +27,8 @@
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
 			<td>{$iUser->kills / ($iUser->deaths + 1)}</td>
+			<td>{$iUser->created->format('Y-m-d H:i:s')}</td>
+			<td>{$iUser->lastSeen->format('Y-m-d H:i:s')}</td>
 		</tr>
 		{/foreach}
 	</tbody>
