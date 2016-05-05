@@ -6,7 +6,6 @@ class User
 	public $username;
 	public $email;
 	public $password;
-	public $salt;
 	public $gold;
 	public $active;
 	public $deaths;
@@ -37,7 +36,6 @@ class User
 		$returnUser->username =  $obj->username;
 		$returnUser->email =  $obj->email;
 		$returnUser->password = $obj->password;
-		$returnUser->salt = $obj->salt;
 		$returnUser->gold = $obj->gold;
 		$returnUser->active = $obj->active;
 		$returnUser->deaths = $obj->deaths;
@@ -76,7 +74,6 @@ class User
 				"username"=>$this->username,
 				"email"=>$this->email,
 				"password"=>$this->password,
-				"salt"=>$this->salt,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
 				"deaths"=>$this->deaths,
@@ -95,7 +92,6 @@ class User
 			$row = array("username"=>$this->username,
 				"email"=>$this->email,
 				"password"=>$this->password,
-				"salt"=>$this->salt,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
 				"deaths"=>$this->deaths,
