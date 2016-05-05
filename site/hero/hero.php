@@ -205,18 +205,21 @@ class Hero
 
 	function canLevelUp()
 	{
-		if($this->CurrentXP >= $this->LevelUpXP)
+		if($this->isAlive())
 		{
-			if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
+			if($this->CurrentXP >= $this->LevelUpXP)
 			{
-				if($this->HeroClass->qualifyForNewClass($this))
+				if($this->Level == $this->HeroClass->LevelCap)//check if class is at Level cap
 				{
-					return true;//at class cap and meet prereq for a next class
+					if($this->HeroClass->qualifyForNewClass($this))
+					{
+						return true;//at class cap and meet prereq for a next class
+					}
 				}
-			}
-			else
-			{
-				return true; //have enough XP and not at class cap
+				else
+				{
+					return true; //have enough XP and not at class cap
+				}
 			}
 		}
 		return false;
