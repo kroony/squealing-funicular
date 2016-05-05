@@ -27,13 +27,12 @@
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
 			<td>{$iUser->kills / ($iUser->deaths + 1)}</td>
-			<td>{$iUser->created->format('Y-m-d H:i:s')}</td>
-			<td>{$iUser->lastSeen->format('Y-m-d H:i:s')}</td>
+			<td>{humanTiming($iUser->created)} ago</td>
+			<td>{humanTiming($iUser->lastSeen)} ago</td>
 		</tr>
 		{/foreach}
 	</tbody>
 </table>
-
 </div>
 
 
