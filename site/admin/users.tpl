@@ -27,8 +27,8 @@
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
 			<td>{$iUser->kills / ($iUser->deaths + 1)}</td>
-			<td>{humanTiming($iUser->created)} ago</td>
-			<td>{humanTiming($iUser->lastSeen)} ago</td>
+			<td>{if humanTiming($iUser->created) == "2017 years"}NA{else}{humanTiming($iUser->created)} ago{/if}</td>
+			<td>{if humanTiming($iUser->lastSeen) == "2017 years"}NA{else}{humanTiming($iUser->lastSeen)} ago{/if}</td>
 		</tr>
 		{/foreach}
 	</tbody>
