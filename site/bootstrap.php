@@ -16,7 +16,7 @@ if($currentUID == 1)
 function humanTiming ($time)
 {
 
-    $time = time() - DateTime::getTimestamp($time); // to get the time since that moment
+    $time = time() - $time->getTimestamp(); // to get the time since that moment
     $time = ($time<1)? 1 : $time;
     $tokens = array (
         31536000 => 'year',
