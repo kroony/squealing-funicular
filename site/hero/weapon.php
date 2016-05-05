@@ -278,6 +278,8 @@ class Weapon
 		$obj = $res->fetchObject();
 		
 		$rw = Weapon::generateWeapon($UserID, $obj->ID);
+		
+		$rw->DamageOffset = (rand(1, 3) + rand(1, 3) + rand(1, 3) + rand(1, 3) + rand(1, 3) + rand(1, 3)) / 2 - 6; //6d3/2 - 6
 		return $rw;
 	}
 	
