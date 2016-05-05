@@ -2,6 +2,8 @@
 
 include_once("bootstrap.php");
 
+include_once("user/UserController.php");
+
 $db = DB::GetConn();
 $Username = $db->quoteInto("`username` = ?",$_REQUEST['username']);
 

@@ -20,6 +20,13 @@ class userController
 		return $returnMessages;
 	}
 	
+	function loginUser($ID)
+	{
+		$user = User::load($ID);
+		$user->lastSeen = new DateTime(date("Y-m-d H:i:s");
+		$user->Save();
+	}
+	
 	function countUnreadForUser($ID)
 	{
 		$db = DB::GetConn();
