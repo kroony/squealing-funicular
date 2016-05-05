@@ -10,12 +10,13 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password']))
   $passwordHash = password_hash($_REQUEST['password'], PASSWORD_DEFAULT);
   if($passwordHash != false)
   {
+	$now = new DateTime(date("Y-m-d H:i:s"));
     $row = array("username"=>$_REQUEST['username'],
         "password"=>$passwordHash,
         "email"=>'',
-        "salt"=>0,
         "gold"=>0,
-        "active"=>1);
+        "active"=>1,
+		"created"=>$now->format('Y-m-d H:i:s'));
     try {
       $db->insert("User",$row);
       $id = $db->lastInsertId();
