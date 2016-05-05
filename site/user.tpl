@@ -34,7 +34,7 @@ Kills: {$user->kills}<br />
 	<tbody>
 		{foreach from=$messages item=message}
 		<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
-			<td><a href="viewMessage.php?ID={$message->ID}">{$message->Sent->format('Y-m-d H:i:s')}</a></td>
+			<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
 			<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
 			<td>{$message->Subject}</td>
 			<td><a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a></td>
