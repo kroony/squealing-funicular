@@ -2,7 +2,7 @@
 
 include_once("bootstrap.php");
 
-include_once("user/UserController.php");
+include_once("user/userController.php");
 
 $db = DB::GetConn();
 $Username = $db->quoteInto("`username` = ?",$_REQUEST['username']);
@@ -23,6 +23,7 @@ else
 			if(password_verify($_REQUEST['password'], $obj->password))
 			{
 				$_SESSION['userID'] = $obj->ID;
+				userController::loginUser($_SESSION['userID']);
 				$smarty->assign("result","success");
 				header( 'Location: home.php' );
 				exit(0);
@@ -32,6 +33,7 @@ else
 		{
 			//@TODO redirect to change password page, once noone has the password "pass" remove this check
 			$_SESSION['userID'] = $obj->ID;
+			userController::loginUser($_SESSION['userID']);
 			$smarty->assign("result","success");
 			header( 'Location: home.php' );
 			exit(0);
