@@ -1,23 +1,25 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/05/05 - Cant start level up process when hero is dead</li>
+	<li>2016/05/03 - Newest Messages now show on top of the list and sent time now shows elapsed time since receiving message.</li>
 	<li><strong>2016/04/28 - Added Shop, Initially to sell weapons, will expand to heroes, armor, items</strong></li>
 	<li>2016/04/27 - Users have Total kill counts (only updated from current heroes, Kills on heroes that have died before today were not counted). Leaderboards added from this. </li>
 	<li>2016/04/27 - Scrapping weapons has a total hero Cha modifier applied to the gold returned. Thanks Joshua</li>
 	<li>2016/04/27 - Other user pages can be viewed. This will be where players can send messages to each other.</li>
 	<li>2016/04/21 - Added Icons to Battle messages to easily show incoming attacks and deaths. Thanks The Eternal Exalted Emperor Of The Empty Empire</li>
 	<li>2016/04/19 - Killing a players hero will loot their weapon.</li>
-	<li>2016/04/14 - View Hero page updates, more in-line with view weapon.</li>
-	<li>2016/04/12 - Stopped removing weapon from user when user removed dead hero. Future: May make victor always loot dead heroes weapon</li>
-	<li>2016/04/12 - Fixed spelling mistake, thanks El Mazgic</li>
-	<li>2016/04/10 - Added bug / suggestion submission form.</li>
-	<li>2016/04/10 - Added Top 10 oldest heroes leaderboard.</li>
-	<li>2016/04/09 - Attribute training links are hidden on hero when you cant afford them.</li>
-	<li><strong>2016/04/08 - Combat reports are now send to both parties involved in combats, they can be viewed on the User Tab.</strong></li>
-	<li>2016/04/06 - Heroes will automatically die of old age.</li>
 </ul>
 	<a href="#moreUpdates" data-toggle="collapse">More...</a>
 	<div id="moreUpdates" class="collapse">
 		<ul>
+			<li>2016/04/14 - View Hero page updates, more in-line with view weapon.</li>
+			<li>2016/04/12 - Stopped removing weapon from user when user removed dead hero. Future: May make victor always loot dead heroes weapon</li>
+			<li>2016/04/12 - Fixed spelling mistake, thanks El Mazgic</li>
+			<li>2016/04/10 - Added bug / suggestion submission form.</li>
+			<li>2016/04/10 - Added Top 10 oldest heroes leaderboard.</li>
+			<li>2016/04/09 - Attribute training links are hidden on hero when you cant afford them.</li>
+			<li><strong>2016/04/08 - Combat reports are now send to both parties involved in combats, they can be viewed on the User Tab.</strong></li>
+			<li>2016/04/06 - Heroes will automatically die of old age.</li>
 			<li>2016/03/07 - Overhauled weapon upgrade costs.</li>
 			<li>2016/03/06 - Monsters drop a level when killed.</li>
 			<li>2016/03/04 - Started counting total hero deaths per user.</li>
