@@ -102,6 +102,30 @@ class Hero
 		return $returnHero;
 	}
 	
+	function startAttributeTrain($attribute)
+	{
+		$this->Status = "Train " . $attribute;
+		if($this->OwnerID != 146)
+		{
+			if($attribute == "Str"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Str + 1) * 10))));}
+			else if($attribute == "Dex"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Dex + 1) * 10))));}
+			else if($attribute == "Con"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Con + 1) * 10))));}
+			else if($attribute == "Intel"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Intel + 1) * 10))));}
+			else if($attribute == "Wis"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Wis + 1) * 10))));}
+			else if($attribute == "Cha"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($this->Cha + 1) * 10))));}
+		}
+		else
+		{
+			if($attribute == "Str"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Dex + 1))));}
+			else if($attribute == "Dex"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Dex + 1))));}
+			else if($attribute == "Con"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Con + 1))));}
+			else if($attribute == "Intel"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Intel + 1))));}
+			else if($attribute == "Wis"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Wis + 1))));}
+			else if($attribute == "Cha"){$this->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $this->Cha + 1))));}
+		}
+		$this->SaveHero();
+		return $this->loadHero($_REQUEST['ID']);//load to get the time 
+	}
 	function getStatusCountdownJSArgs()
 	{
 		$now = new DateTime('now');
