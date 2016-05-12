@@ -126,6 +126,21 @@ class Hero
 		$this->SaveHero();
 		return $this->loadHero($_REQUEST['ID']);//load to get the time 
 	}
+	
+	function finishAttributeTrain($attribute)
+	{
+		$this->Status = "";
+		
+		if($attribute == "Str"){$this->Str++;}
+		else if($attribute == "Dex"){$this->Dex++;}
+		else if($attribute == "Con"){$this->Con++;}
+		else if($attribute == "Intel"){$this->Intel++;}
+		else if($attribute == "Wis"){$this->Wis++;}
+		else if($attribute == "Cha"){$this->Cha++;}
+		
+		$this->SaveHero();
+	}
+	
 	function getStatusCountdownJSArgs()
 	{
 		$now = new DateTime('now');
