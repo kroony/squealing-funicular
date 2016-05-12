@@ -209,7 +209,15 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Str));
 					
 					$hero->Status = "Train Str";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Str + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Str + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Str + 1))));//faster for Monsters
+					}
+					
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
@@ -227,7 +235,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Dex));
 					
 					$hero->Status = "Train Dex";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Dex + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Dex + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Dex + 1))));//faster for Monsters
+					}
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
@@ -245,7 +260,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Con));
 					
 					$hero->Status = "Train Con";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Con + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Con + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Con + 1))));//faster for Monsters
+					}
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
@@ -263,7 +285,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Intel));
 					
 					$hero->Status = "Train Intel";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Intel + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Intel + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Intel + 1))));//faster for Monsters
+					}
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
@@ -281,7 +310,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Wis));
 					
 					$hero->Status = "Train Wis";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes",($hero->Wis + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Wis + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Wis + 1))));//faster for Monsters
+					}
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
@@ -299,7 +335,14 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 					$user->debit($hero->calculateAttributeUpgradeCost($hero->Cha));
 					
 					$hero->Status = "Train Cha";
-					$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Cha + 1) * 10))));
+					if($hero->OwnerID != 146)
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", ($hero->Cha + 1) * 10))));
+					}
+					else
+					{
+						$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d seconds", $hero->Cha + 1))));//faster for Monsters
+					}
 					$hero->SaveHero();
 					$hero = $hero->loadHero($_REQUEST['ID']);//load to get get the time 
 					
