@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/05/11 - The Black Ninja has been killed! Its fearsome undead Ninja cohort has been summoned.</li>
 	<li>2016/05/05 - Cant start level up process when hero is dead</li>
 	<li>2016/05/03 - Newest Messages now show on top of the list and sent time now shows elapsed time since receiving message.</li>
 	<li><strong>2016/04/28 - Added Shop, Initially to sell weapons, will expand to heroes, armor, items</strong></li>
