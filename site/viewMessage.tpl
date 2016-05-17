@@ -50,13 +50,13 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="subject">Subject</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="subject" name="subject" placeholder="Re: {htmlspecialchars($message->Subject)}">
+					<input type="text" class="form-control" id="subject" name="subject" value="Re: {htmlspecialchars($message->Subject)}">
 				</div>
 			</div>
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="body">Body:</label>
 				<div class="col-sm-10"> 
-					<textarea rows="4" cols="50" class="form-control" id="body" name="body" placeholder=""></textarea>
+					<textarea rows="4" cols="50" class="form-control" id="body" name="body"></textarea>
 				</div>
 			</div>
 			<div class="form-group"> 
