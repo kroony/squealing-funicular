@@ -8,19 +8,27 @@ $message = new Message();
 //check for ID
 if(isset($_REQUEST['ID']))
 {
-		$message = $message->load($_REQUEST['ID']);
-		if($message->ToID == $currentUID)
+	$message = $message->load($_REQUEST['ID']);
+	if($message->ToID == $currentUID)
+	{
+		$message->Read();//no problems to set it to Read 
+		
+		$fromUser = new User();//load the from user
+		$fromUser = $fromUser->load($message->FromID);
+		$smarty->assign("fromUser",$fromUser);
+	}
+	else
+	{
+		$smarty->assign("error","this does not belong to you");
+	}
+	
+	if(isset($_REQUEST['action']))
+	{
+		if($_REQUEST['action'] == "reply")
 		{
-			$message->Read();//no problems to set it to Read 
-			
-			$fromUser = new User();//load the from user
-			$fromUser = $fromUser->load($message->FromID);
-			$smarty->assign("fromUser",$fromUser);
+			$smarty->assign("reply",true);
 		}
-		else
-		{
-			$smarty->assign("error","this does not belong to you");
-		}
+	}
 }
 else
 {
