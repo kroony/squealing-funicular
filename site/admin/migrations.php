@@ -4,13 +4,13 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("UPDATE `User` SET  `active` =  '1' WHERE `User`.`ID` = 146;;"));
 echo "<br /><br />";
 
 print_r($db->query("ALTER TABLE `User` ADD `refererID` INT NOT NULL AFTER `active`;"));
 echo "<br /><br />";
-
+*/
 //html header
 $smarty->display("css/css.tpl");
 
