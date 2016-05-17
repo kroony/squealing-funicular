@@ -35,7 +35,7 @@
 				{elseif is_numeric($weapon->GetSaleIDFromWeapon())}
 					Listed in Shop
 				{else}
-					{$weapon->GetHeroIDFromWeapon()}
+					{$weapon->GetHeroNameFromWeapon()}
 				{/if}
 			</td>
 			<td>{if $weapon->isScrappable()}<a href="inventory.php?action=scrap&ID={$weapon->ID}">{$weapon->getScrapValue($userChaBonus)}gp - Scrap</a>{else}{$weapon->getScrapValue($userChaBonus)}gp{/if}</td>
