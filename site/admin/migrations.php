@@ -5,16 +5,11 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 
-print_r($db->query("ALTER TABLE `User` DROP `salt`;"));
+print_r($db->query("UPDATE `User` SET  `active` =  '1' WHERE `User`.`ID` = 146;;"));
 echo "<br /><br />";
 
-print_r($db->query("ALTER TABLE  `User` ADD  `created` TIMESTAMP NOT NULL , ADD  `lastSeen` TIMESTAMP NOT NULL ;"));
+print_r($db->query("ALTER TABLE `User` ADD `refererID` INT NOT NULL AFTER `active`;"));
 echo "<br /><br />";
-
-print_r($db->query("ALTER TABLE  `User` CHANGE  `created`  `created` TIMESTAMP NOT NULL DEFAULT  '0000-00-00 00:00:00';"));
-echo "<br /><br />";
-
-
 
 //html header
 $smarty->display("css/css.tpl");

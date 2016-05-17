@@ -8,6 +8,7 @@ class User
 	public $password;
 	public $gold;
 	public $active;
+	public $refererID;
 	public $deaths;
 	public $kills;
 	public $created;
@@ -40,6 +41,7 @@ class User
 		$returnUser->password = $obj->password;
 		$returnUser->gold = $obj->gold;
 		$returnUser->active = $obj->active;
+		$returnUser->refererID = $obj->refererID;
 		$returnUser->deaths = $obj->deaths;
 		$returnUser->kills = $obj->kills;
 		$returnUser->created = new DateTime($obj->created);
@@ -80,6 +82,7 @@ class User
 				"password"=>$this->password,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
+				"refererID"=>$this->refererID,
 				"deaths"=>$this->deaths,
 				"kills"=>$this->kills,
 				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'));
@@ -100,6 +103,7 @@ class User
 				"password"=>$this->password,
 				"gold"=>$this->gold,
 				"active"=>$this->active,
+				"refererID"=>$this->refererID,
 				"deaths"=>$this->deaths,
 				"kills"=>$this->kills,
 				"created"=>$this->created->format('Y-m-d H:i:s'),

@@ -7,6 +7,7 @@
 			<th>email</th>
 			<th>password</th>
 			<th>gold</th>
+			<th>refererID</th>
 			<th>heroes</th>
 			<th>deaths</th>
 			<th>kills</th>
@@ -23,6 +24,7 @@
 			<td>{$iUser->email}</td>
 			<td>{if $iUser->password == "pass"}pass{else}Hashed{/if}</td>
 			<td>{$iUser->gold}</td>
+			<td>{$iUser->refererID}</td>
 			<td>{$heroController->countAllForUser($iUser->ID)}</td>
 			<td>{$iUser->deaths}</td>
 			<td>{$iUser->kills}</td>
