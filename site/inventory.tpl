@@ -30,7 +30,14 @@
 			<td>{$weapon->DamageQuantity}d{$weapon->DamageDie}{if $weapon->DamageOffset < 0}{$weapon->DamageOffset}{elseif $weapon->DamageOffset > 0}+{$weapon->DamageOffset}{/if}</td>
 			<td>{$weapon->DamageAttribute}</td>
 			<td>{$weapon->CritChance}%</td>
-			<td>{if is_numeric($weapon->GetHeroIDFromWeapon())}<a href='viewHero.php?ID={$weapon->GetHeroIDFromWeapon()}'>{str_replace("'", "", $weapon->GetHeroNameFromWeapon())}</a>{else}{$weapon->GetHeroNameFromWeapon()}{/if}</td>
+			<td>{if is_numeric($weapon->GetHeroIDFromWeapon())}
+					<a href='viewHero.php?ID={$weapon->GetHeroIDFromWeapon()}'>{str_replace("'", "", $weapon->GetHeroNameFromWeapon())}</a>
+				{elseif is_numeric($weapon->GetSaleIDFromWeapon())}
+					Listed in Shop
+				{else}
+					{$weapon->GetHeroIDFromWeapon()}
+				{/if}
+			</td>
 			<td>{if $weapon->isScrappable()}<a href="inventory.php?action=scrap&ID={$weapon->ID}">{$weapon->getScrapValue($userChaBonus)}gp - Scrap</a>{else}{$weapon->getScrapValue($userChaBonus)}gp{/if}</td>
 		</tr>
 		{/foreach}
