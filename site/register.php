@@ -18,8 +18,8 @@ if (isset($_REQUEST['username']) && isset($_REQUEST['password']))
         "password"=>$passwordHash,
         "email"=>'',
         "gold"=>0,
-        "active"=>1
-        "refererID"=>$refererID ,
+        "active"=>1,
+        "refererID"=>$refererID,
         "created"=>$now->format('Y-m-d H:i:s'));
     try {
       $db->insert("User",$row);

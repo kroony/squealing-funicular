@@ -19,6 +19,7 @@ Email: {$user->email}<br />
 Gold: {number_format($user->gold)}gp<br />
 Deaths: {$user->deaths}<br />
 Kills: {$user->kills}<br />
+Recruitment Link: http://sf.amospheric.com/register.php?Referer={$user->ID}
 <br />
 
 <strong>Messages</strong><br />
