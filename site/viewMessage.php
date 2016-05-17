@@ -48,12 +48,5 @@ $smarty->display("css/css.tpl");
 $smarty->assign("currentpage","user");
 include_once("menu.php");
 
-if(isset($_REQUEST['action']))//check if we are doing anything
-{
-	if($_REQUEST['action'] == "something")
-	{
-		//do something
-	}
-}
 $smarty->assign("message",$message);
 $smarty->display("viewMessage.tpl");
