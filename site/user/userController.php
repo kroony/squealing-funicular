@@ -20,6 +20,15 @@ class userController
 		return $returnMessages;
 	}
 	
+	function deleteAllMessagesForUser($ID)
+	{
+		$db = DB::GetConn();
+		
+		$ToID_con = $db->quoteInto("ToID = ?",$ID);
+		$deleteQuery = "DELETE FROM `Message` WHERE $ToID_con;";
+		$res=$db->query($deleteQuery);//execute query
+	}
+	
 	function loginUser($ID)
 	{
 		$user = User::load($ID);

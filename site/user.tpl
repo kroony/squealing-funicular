@@ -22,7 +22,22 @@ Kills: {$user->kills}<br />
 Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user->ID}" target="_blank">http://sf.amospheric.com/register.php?Referer={$user->ID}</a> Users who register using this link will credit you a finders fee each time they pay to hire a new hero.<br />
 <br />
 
-<strong>Messages</strong><br />
+<strong>Messages</strong>
+<br />
+<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#deleteAllModal">Delete All Messages</button>
+<div class="modal fade" id="deleteAllModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-body">
+          <p><a href="user.php?action=deleteAllMessages">Click here to delete all your messages</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<br />
 <table class='table table-condensed table-hover'>
 	<thead>
 		<tr>

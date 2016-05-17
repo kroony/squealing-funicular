@@ -115,7 +115,11 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 			}
 		}
 	}
-	
+	else if($_REQUEST['action'] == "deleteAllMessages")
+	{
+		$userController->deleteAllMessagesForUser($currentUID);
+		$smarty->assign("message", "All messages have been deleted.");
+	}
 	if($_REQUEST['action'] == "expiredPassword")
 	{
 		$smarty->assign("message", "Your password has expired. Please change it.");
