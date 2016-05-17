@@ -19,7 +19,7 @@ Email: {$user->email}<br />
 Gold: {number_format($user->gold)}gp<br />
 Deaths: {$user->deaths}<br />
 Kills: {$user->kills}<br />
-Recruitment Link: http://sf.amospheric.com/register.php?Referer={$user->ID}
+Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user->ID}" target="_blank">http://sf.amospheric.com/register.php?Referer={$user->ID}</a> Users who register using this link will credit you a finders fee each time they pay to hire a new hero.<br />
 <br />
 
 <strong>Messages</strong><br />
