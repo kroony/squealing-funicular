@@ -38,15 +38,17 @@
 			</td>
 			<td>{number_format($sale->Price)}gp</td>
 			<td>
-				{if $sale->isSeller($user->ID)}
-					<a href="shop.php?action=cancelSale&ID={$sale->ID}"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Cancel Sale"></span></a>
-				{else}
-					{if $user->canAfford($sale->Price)}
-						<a href="shop.php?action=buy&ID={$sale->ID}"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Purchase Item"></span></a>
+				<div class="btn-group">
+					{if $sale->isSeller($user->ID)}
+						<button type="button" class="btn btn-default"><a href="shop.php?action=cancelSale&ID={$sale->ID}"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Cancel Sale"></span></a></button>
 					{else}
-						<span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Can't Afford"></span>
+						{if $user->canAfford($sale->Price)}
+							<button type="button" class="btn btn-default"><a href="shop.php?action=buy&ID={$sale->ID}"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Purchase Item"></span></a></button>
+						{else}
+							<button type="button" class="btn btn-default"><span class="glyphicon glyphicon-usd" data-toggle="tooltip" title="Can't Afford"></span></button>
+						{/if}
 					{/if}
-				{/if}
+				</div>
 			</td>
 		</tr>
 		{/foreach}
