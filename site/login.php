@@ -16,8 +16,8 @@ if(!is_object($obj))
 }
 else
 {
-	//if($obj->active == 1)
-	//{
+	if($obj->active == 1)
+	{
 		if($obj->password != "pass")
 		{
 			if(password_verify($_REQUEST['password'], $obj->password))
@@ -39,11 +39,11 @@ else
 			exit(0);
 		}
 		$smarty->assign("result","login_error");
-	/*}
+	}
 	else
 	{
 		$smarty->assign("result","activate");
-	}*/
+	}
 }
 
 $smarty->display("login.tpl");
