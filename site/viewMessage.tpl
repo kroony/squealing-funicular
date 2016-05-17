@@ -50,7 +50,7 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 			<div class="form-group">
 				<label class="control-label col-sm-2" for="subject">Subject</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="subject" name="subject" placeholder="Re: {htmlspecialchars($message->Subject})">
+					<input type="text" class="form-control" id="subject" name="subject" placeholder="Re: {htmlspecialchars($message->Subject)}">
 				</div>
 			</div>
 			<div class="form-group">
