@@ -34,7 +34,7 @@ if(isset($_REQUEST['ID']))
 			//@TODO check fields are not blank
 			$userController->sendMessage($_REQUEST['toID'], $currentUID, $_REQUEST['subject'], $_REQUEST['body']); // $To, $From, $Subject, $Body
 			
-			$smarty->assign("message","Reply sent.");
+			$smarty->assign("notification_message","Reply sent.");
 		}
 	}
 }
