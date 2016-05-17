@@ -1,5 +1,6 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/05/17 - Recruitment links. Users signed up with your link will earn you extra GP with each hero hire.</li>
 	<li>2016/05/11 - The Black Ninja has been killed! Its fearsome undead Ninja cohort has been summoned.</li>
 	<li>2016/05/05 - Cant start level up process when hero is dead</li>
 	<li>2016/05/03 - Newest Messages now show on top of the list and sent time now shows elapsed time since receiving message.</li>
