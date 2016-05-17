@@ -22,6 +22,7 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 			<div class="col-sm-4">
 				<div class="text-right">
 					<a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a>
+					<a href="viewMessage.php?MsgID={$message->ID}&action=reply"><span class="glyphicon glyphicon-share-alt icon-flipped" data-toggle="tooltip" title="Reply to Message"></span></a>
 				</div>
 			</div>
 		</div>		
