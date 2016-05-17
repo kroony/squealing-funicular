@@ -29,7 +29,6 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 	</div>
 	<div class="panel-body">{$message->Body}</div>
 </div>
-<br />
 {if isset($reply)}
 	<div class="panel panel-default">
 	<div class="panel-heading">
