@@ -1,7 +1,8 @@
 <?php
 include("bootstrap.php");
 //load User
-include_once("user/user.php");
+include_once("user/userController.php");
+$userController = new userController();
 //include message class
 include_once("user/message.php");
 $message = new Message();
@@ -27,6 +28,13 @@ if(isset($_REQUEST['ID']))
 		if($_REQUEST['action'] == "reply")
 		{
 			$smarty->assign("reply",true);
+		}
+		else if($_REQUEST['action'] == "sendReply")
+		{
+			//@TODO check fields are not blank
+			$userController->sendMessage($_REQUEST['toID'], $currentUID, $_REQUEST['subject'], $_REQUEST['body']); // $To, $From, $Subject, $Body
+			
+			$smarty->assign("message","Reply sent.");
 		}
 	}
 }
