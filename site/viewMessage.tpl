@@ -21,8 +21,10 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 			<div class="col-sm-8"><strong>{$message->Subject}</strong></div>
 			<div class="col-sm-4">
 				<div class="text-right">
-					<a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"> </span></a>
-					<a href="viewMessage.php?ID={$message->ID}&action=reply"><span class="glyphicon glyphicon-share-alt icon-flipped" data-toggle="tooltip" title="Reply to Message"></span></a>
+					<div class="btn-group">
+						<button type="button" class="btn btn-default"><a href="viewMessage.php?ID={$message->ID}&action=reply"><span class="glyphicon glyphicon-share-alt icon-flipped" data-toggle="tooltip" title="Reply to Message"></span></a></button>
+						<button type="button" class="btn btn-default"><a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"> </span></a></button>
+					</div>
 				</div>
 			</div>
 		</div>		
@@ -36,7 +38,9 @@ From: <a href="viewUser.php?ID={$fromUser->ID}">{$fromUser->username}</a><br />
 			<div class="col-sm-8"><strong>Reply to {$fromUser->username}</strong></div>
 			<div class="col-sm-4">
 				<div class="text-right">
-					Cancel
+					<div class="btn-group">
+						<button type="button" class="btn btn-default"><a href="viewMessage.php?ID={$message->ID}"><span class="glyphicon glyphicon-remove" data-toggle="tooltip" title="Cancel"></span></a></button>
+					</div>
 				</div>
 			</div>
 		</div>		
