@@ -29,7 +29,14 @@
 	
 	.progress
 	{
-    margin-bottom: 2px;
+		margin-bottom: 2px;
+	}
+	
+	.icon-flipped {
+		transform: scaleX(-1);
+		-moz-transform: scaleX(-1);
+		-webkit-transform: scaleX(-1);
+		-ms-transform: scaleX(-1);
 	}
 	</style>
 
