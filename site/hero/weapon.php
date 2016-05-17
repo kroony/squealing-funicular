@@ -186,6 +186,15 @@ class Weapon
 			return "No ID";
 		}
 	}
+	
+	function isScrappable()
+	{
+		if($this->GetHeroIDFromWeapon() == "No ID" && $this->GetSaleIDFromWeapon() == "No ID")
+		{
+			return true;
+		}
+		return false;
+	}
 
 	//load Weapon from DB 
 	//could just be called load?! 
