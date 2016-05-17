@@ -44,7 +44,7 @@ Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user-
 			<th>Sent</th>
 			<th>From</th>
 			<th>Subject</th>
-			<th>Delete</th>
+			<th>Action</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -53,7 +53,10 @@ Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user-
 			<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
 			<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
 			<td>{$message->Subject}</td>
-			<td><a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"></span></a></td>
+			<td>
+				<a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Delete Message"> </span></a>
+				<a href="viewMessage.php?ID={$message->ID}&action=reply"><span class="glyphicon glyphicon-share-alt icon-flipped" data-toggle="tooltip" title="Reply to Message"></span></a>
+			</td>
 			
 		</tr>
 		{/foreach}
