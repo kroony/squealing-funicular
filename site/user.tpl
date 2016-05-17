@@ -24,7 +24,7 @@ Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user-
 
 <strong>Messages</strong>
 <br />
-<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#deleteAllModal">Delete All Messages</button>
+<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
 <div class="modal fade" id="deleteAllModal" role="dialog">
     <div class="modal-dialog modal-sm">
       <div class="modal-content">
