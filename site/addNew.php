@@ -6,7 +6,8 @@ include_once("bootstrap.php");
 include_once("hero/heroController.php");
 $heroController = new heroController();
 
-include_once("user/user.php");
+include_once("user/userController.php");
+$userController = new userController();
 $user = new User();
 $user = $user->load($currentUID);
 
@@ -26,6 +27,18 @@ if($user->canAfford($newHeroCost))
 	$Hero->SaveHero();
 
 	/***********end generate Hero *********/
+	
+	//check for referer bonus
+	if($newHeroCost > 0 && $user->refererID != 0)
+	{
+		$refererUser = new User();
+		$refererUser = $refererUser->load($user->refererID);
+		
+		$recruitmentBonus = ceil($newHeroCost / 10);
+		$refererUser->credit($recruitmentBonus);
+		
+		$userController->sendMessage($refererUser->ID, $user->ID, "Recruitment Bonus of " . $recruitmentBonus . " gp", $user->username . " hired a new hero, earning you " . $recruitmentBonus . "gp");
+	}
 
 	header("Location: viewHero.php?ID=" . $Hero->ID);
 }

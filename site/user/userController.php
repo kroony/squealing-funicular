@@ -3,7 +3,7 @@ include_once("user/user.php");
 include_once("user/message.php");
 
 class userController
-{
+{	
 	function getAllMessagesForUser($ID)
 	{
 		$db = DB::GetConn();
