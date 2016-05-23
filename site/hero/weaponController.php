@@ -28,7 +28,7 @@ class weaponController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Weapon` WHERE `UserID` = $id;";
+		$getQuery = "SELECT * ,  `DamageDie` +  `DamageQuantity` +  `DamageOffset` +  `CritChance` AS `Total` FROM `Weapon` WHERE `UserID` = $id ORDER BY `Total` DESC;";
 
 		$res=$db->query($getQuery);//execute query
 
