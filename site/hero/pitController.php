@@ -76,7 +76,12 @@ class PitController
 			$aggressor = $target;
 			$roundCounter++;
 		}
-
+		
+		// add after combat cooldown
+		$hero1->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $roundCounter))));
+		
+		$hero2->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $roundCounter))));
+		
 		return $log;
 	}
 
