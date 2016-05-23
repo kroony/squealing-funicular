@@ -493,7 +493,10 @@ class Hero
 	{
 		if (!$this->isAlive()) {return false;}//are they alive
 		if ($this->CurrentHP <= 0) {return false;}//are they concious
-		if ($this->Status != "") {return false;}//are they doing anything time based
+		if ($this->Status != "")//are they doing anything time based
+		{
+			return false;
+		}
 		
 		return true;
 	}
