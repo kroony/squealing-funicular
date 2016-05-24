@@ -214,7 +214,6 @@ class Hero
 		//dob
 		$this->DateOfBirth = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("-%d days", rand(12, 15)))));
 		
-		
 		//status time has to be a datetime to save and Status is empty
 		$this->Status = "";
 		$this->StatusTime = new DateTime('now');

@@ -1,5 +1,8 @@
 <h2>Updates</h2>
 <ul>
+	<li>2016/05/24 - New heroes no longer start at age 0.</li>
+	<li>2016/05/23 - Fights now have a cooldown, each combat round adds 1 minute to cooldown.</li>
+	<li>2016/05/22 - Weapons in inventory are ordered by scrap value.</li>
 	<li>2016/05/17 - Ability to Reply to messages.</li>
 	<li>2016/05/17 - Recruitment links. Users signed up with your link will earn you extra GP with each hero hire.</li>
 	<li>2016/05/11 - The Black Ninja has been killed! Its fearsome undead Ninja cohort has been summoned.</li>
