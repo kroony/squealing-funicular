@@ -55,8 +55,8 @@ Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user-
 			<td>{$message->Subject}</td>
 			<td>
 				<div class="btn-group">
-					<a href="viewMessage.php?ID={$message->ID}&action=reply"><button type="button" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped" ></span></button></a>
-					<a href="user.php?MsgID={$message->ID}&action=DeleteMessage"><button type="button" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash" > </span></button></a>
+					<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+					<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
 				</div>
 			</td>
 			
