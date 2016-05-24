@@ -60,7 +60,9 @@ class Hero
 		$getQuery = "SELECT * FROM `Hero` WHERE $id_con limit 1;";
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
-        return Hero::loadHeroFromObject($obj);
+		$returnHero = Hero::loadHeroFromObject($obj);
+		$returnHero->checkFightCooldown();
+        return $returnHero;
     }
 
 	function loadHeroFromObject($obj)
@@ -100,6 +102,15 @@ class Hero
 		}
 		
 		return $returnHero;
+	}
+	
+	function checkFightCooldown()
+	{
+		if($this->StatusETA == "None" && $this->Status == "Fight Cooldown")
+		{
+			$this->Status = "";
+			$this->SaveHero();
+		}
 	}
 	
 	function startAttributeTrain($attribute)
