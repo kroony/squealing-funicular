@@ -24,19 +24,34 @@ Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user-
 
 <strong>Messages</strong>
 <br />
-<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
+<div class="btn-group">
+	<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
+	<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteMonsterModal"><span class="glyphicon glyphicon-trash"></span> Delete All Monster Messages</button>
+</div>
 <div class="modal fade" id="deleteAllModal" role="dialog">
     <div class="modal-dialog modal-sm">
-      <div class="modal-content">
-        <div class="modal-body">
-          <p><a href="user.php?action=deleteAllMessages">Click here to delete all your messages</a></p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-        </div>
-      </div>
+		<div class="modal-content">
+			<div class="modal-body">
+				<p><a href="user.php?action=deleteAllMessages">Click here to delete all your messages</a></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
     </div>
-  </div>
+</div>
+<div class="modal fade" id="deleteMonsterModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+		<div class="modal-content">
+			<div class="modal-body">
+				<p><a href="user.php?action=deleteMonsterMessages">Click here to delete all your messages from monster</a></p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+			</div>
+		</div>
+    </div>
+</div>
 <br />
 <table class='table table-condensed table-hover'>
 	<thead>

@@ -29,6 +29,16 @@ class userController
 		$res=$db->query($deleteQuery);//execute query
 	}
 	
+	function deleteMonsterMessagesForUser($ID)
+	{
+		$db = DB::GetConn();
+		
+		$ToID_con = $db->quoteInto("ToID = ?",$ID);
+		$MonsterID_con = $db->quoteInto("FromID = ?", 146);
+		$deleteQuery = "DELETE FROM `Message` WHERE $ToID_con AND $MonsterID_con;";
+		$res=$db->query($deleteQuery);//execute query
+	}
+	
 	function loginUser($ID)
 	{
 		$user = User::load($ID);
