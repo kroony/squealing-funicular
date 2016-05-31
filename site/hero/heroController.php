@@ -164,10 +164,10 @@ class heroController
 	{
 		$db = DB::GetConn();
 		//select heroes born on the hour, who's age is over the max age + Fte + D20
-		$getDeadQuery = "SELECT * FROM  `Hero` 
+		$getDeadQuery = "SELECT * FROM `Hero` 
 						 INNER JOIN  `Race` ON  `Hero`.`Race` =  `Race`.`ID` 
 						 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
-						 AND HOUR( TIMEDIFF(  `Hero`.`DateOfBirth` , NOW( ) ) ) / 24 >  `Race`.`OldAge` + `Hero`.`Fte` + ROUND((RAND() * (20 - 1)) + 20);";
+						 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `OldAge` +  `Fte` + ROUND( (RAND( ) * ( 20 -1 ) ) +20)";
 		
 		$res = $db->query($getDeadQuery);
 		
