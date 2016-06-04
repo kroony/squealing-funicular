@@ -6,26 +6,29 @@ No canvas no work</canvas>
 <script type="text/javascript" src="js/draw/face.js"></script>
 
 <script type="text/javascript">
-var hero_id    = {$hero->ID};
-var hero_race  = '{$hero->Race->Name}';
-
-var opts = make_head_opts(hero_id, hero_race);
-var width = Math.max(opts.top_width, opts.mid_width, opts.bot_width);
-var height = opts.top_height;
-var canvas = document.getElementById("heroPortrait{$hero->ID}");
-canvas.height = height * 2 + 50;
-
-
-setInterval(function() {
-  var ctx = canvas.getContext("2d");
-  ctx.save();
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.translate(canvas.width / 2 - width,height * 2 + 20);
-  ctx.scale(2,2);
-
-  draw(ctx, make_body(opts));
-
-  ctx.restore();
-}, 10);
+(function()
+{
+  var hero_id    = {$hero->ID};
+  var hero_race  = '{$hero->Race->Name}';
+  
+  var opts = make_head_opts(hero_id, hero_race);
+  var width = Math.max(opts.top_width, opts.mid_width, opts.bot_width);
+  var height = opts.top_height;
+  var canvas = document.getElementById("heroPortrait{$hero->ID}");
+  canvas.height = height * 2 + 50;
+  
+  
+  setInterval(function() {
+    var ctx = canvas.getContext("2d");
+    ctx.save();
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.translate(canvas.width / 2 - width,height * 2 + 20);
+    ctx.scale(2,2);
+  
+    draw(ctx, make_body(opts));
+  
+    ctx.restore();
+  }, 10);
+})();
 
 </script> 
