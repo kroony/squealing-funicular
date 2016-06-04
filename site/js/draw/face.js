@@ -64,8 +64,8 @@ function make_head(opts)
 				  , new Point(-opts.mid_width / 2,  -mid_height) ];
 
     c.fillStyle = opts.head_fill;
-    c.rotation  = Math.sin(ms / 500) * 0.10;
-    c.curvature = opts.curvature + Math.sin(ms / 800) * opts.curvature * 0.1;
+    c.rotation  = Math.sin(ms / opts.head_bob_speed) * 0.10;
+    c.curvature = opts.curvature + Math.sin(ms / opts.head_breathe_speed) * opts.curvature * 0.1;
 
     return c;
 }
@@ -119,6 +119,9 @@ function make_head_opts(hero_id, hero_race)
     , bot_width: randy.produce(34789, 5, 25)
     , curvature: 0.2
     , eye_rotation: 0.1
+    
+    , head_bob_speed: randy.produce(432789, 400, 800)
+    , head_breathe_speed: randy.produce(79834, 400, 800)
     }
 
     if (hero_race == "Human") {
