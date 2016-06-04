@@ -1,4 +1,4 @@
-<canvas id="heroPortrait{$hero->ID}" width="200" height="450">
+<canvas id="heroPortrait{$hero->ID}" width="200" height="250">
 No canvas no work</canvas>
 
 <script type="text/javascript" src="js/draw/base.js"></script>
@@ -15,14 +15,14 @@ No canvas no work</canvas>
   var width = Math.max(opts.top_width, opts.mid_width, opts.bot_width);
   var height = opts.top_height;
   var canvas = document.getElementById("heroPortrait{$hero->ID}");
-  canvas.height = height * 2 + 50;
+  //canvas.height = height * 2 + 50;
   
   
   setInterval(function() {
     var ctx = canvas.getContext("2d");
     ctx.save();
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.translate(canvas.width / 2 - width,height * 2 + 20);
+    ctx.translate(canvas.width / 2 - width, canvas.height);
     ctx.scale(2,2);
   
     draw(ctx, make_body(opts));
