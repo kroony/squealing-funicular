@@ -73,6 +73,8 @@ if($hero->GetOwner()->ID == $currentUID)//check hero belongs to current user
 		{
 			$weapon = Weapon::loadWeapon($_REQUEST['WeaponID']);
 			
+			// @TODO also check that weapon is currently unassigned,
+			// so people like me cannot cheat and assign a weapon twice
 			if($weapon->UserID == $currentUID)
 			{
 				$hero->Weapon = $weapon;
