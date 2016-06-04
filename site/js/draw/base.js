@@ -67,8 +67,6 @@ function rect_points(ul, dr)
 function draw(ctx, obj)
 {
 	ctx.fillStyle = obj.fillStyle;
-	if (obj.name)
-		console.log(obj.name);
 	var translation = obj.translation;
 	var rotation    = obj.rotation;
 	ctx.translate(translation.x, translation.y);
