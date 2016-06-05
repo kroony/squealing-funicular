@@ -223,7 +223,7 @@
 							<tr>
 								<td>{$rank + 1}</td>
 								<td><a href="viewUser.php?ID={$User->ID}">{$User->username}</a></td>
-								<td>{$User->kills / ($User->deaths + 1)}</td>
+								<td>{round($User->kills / ($User->deaths + 1), 2)}</td>
 							</tr>
 							{/foreach}
 						</tbody>
