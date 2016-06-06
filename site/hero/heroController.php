@@ -167,7 +167,7 @@ class heroController
 		$getDeadQuery = "SELECT * FROM `Hero` 
 						 INNER JOIN  `Race` ON  `Hero`.`Race` =  `Race`.`ID` 
 						 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
-						 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Fte` + ROUND(RAND() * (20 -1))
+						 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 -1))
 						 AND `OwnerID` <> 146;";
 		
 		$res = $db->query($getDeadQuery);
