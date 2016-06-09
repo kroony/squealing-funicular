@@ -15,11 +15,10 @@
 {/if}
 
 <br />
-Email: {$user->email}<br />
-Gold: {number_format($user->gold)}gp<br />
-Deaths: {$user->deaths}<br />
-Kills: {$user->kills}<br />
-Recruitment Link: <a href="http://sf.amospheric.com/register.php?Referer={$user->ID}" target="_blank">http://sf.amospheric.com/register.php?Referer={$user->ID}</a> Users who register using this link will credit you a finders fee each time they pay to hire a new hero.<br />
+<strong>Gold:</strong> {number_format($user->gold)}gp<br />
+<strong>Deaths:</strong> {$user->deaths}<br />
+<strong>Kills:</strong> {$user->kills}<br />
+<strong>Recruitment Link:</strong> <a href="http://sf.amospheric.com/register.php?Referer={$user->ID}" target="_blank">http://sf.amospheric.com/register.php?Referer={$user->ID}</a> Users who register using this link will credit you a finders fee each time they pay to hire a new hero.<br />
 <br />
 
 <strong>Messages</strong>
