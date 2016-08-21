@@ -174,20 +174,20 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 12 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 13 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
 			$OldAgeHero = $OldAgeHero->loadHero($obj->h.ID);
 			
-			echo $OldAgeHero.Name . ' Aged: ' . $OldAgeHero.Age . '/' . $OldAgeHero.Race.OldAge . ' Player: ' . $OldAgeHero.GetOwner().username . ', ';
+			echo $OldAgeHero->Name . ' Aged: ' . $OldAgeHero->Age . '/' . $OldAgeHero->Race->OldAge . ' Player: ' . $OldAgeHero->GetOwner()->username . ', ';
 			
 			//send message to user
-			$subject = $OldAgeHero.Name . " has passed away at the old age of " . $OldAgeHero.Age . ".";
-			$body = $OldAgeHero.Name . " the " . $OldAgeHero.Race.Name . " is survived by " . rand(2, $OldAgeHero.Fte) . " children and " . $OldAgeHero.Fte . " grand children.";
-			userController::sendMessage($OldAgeHero.OwnerID, $OldAgeHero.OwnerID, $subject, $body);
-			userController::sendMessage(1, $OldAgeHero.OwnerID, $subject, $body);
+			$subject = $OldAgeHero->Name . " has passed away at the old age of " . $OldAgeHero->Age . ".";
+			$body = $OldAgeHero->Name . " the " . $OldAgeHero->Race->Name . " is survived by " . rand(2, $OldAgeHero->Fte) . " children and " . $OldAgeHero->Fte . " grand children.";
+			userController::sendMessage($OldAgeHero->OwnerID, $OldAgeHero->OwnerID, $subject, $body);
+			userController::sendMessage(1, $OldAgeHero->OwnerID, $subject, $body);
 			
 			$OldAgeHero.KillHero();
 		}
