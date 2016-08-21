@@ -628,10 +628,10 @@ class Hero
 	function KillHero()
 	{
 		//assign to undead
-		$this.GiveToUser(146);
+		$this->GiveToUser(146);
 		//get new weapon
-		$this.generateStartingWeapon();
-		$this.SaveHero();
+		$this->generateStartingWeapon();
+		$this->SaveHero();
 	}
 
     function displayName($is_mine)
