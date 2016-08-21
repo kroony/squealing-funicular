@@ -174,7 +174,7 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 14 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 15 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		while($obj = $res->fetchObject())
 		{
@@ -189,7 +189,7 @@ class heroController
 			userController::sendMessage($OldAgeHero->OwnerID, $OldAgeHero->OwnerID, $subject, $body);
 			userController::sendMessage(1, $OldAgeHero->OwnerID, $subject, $body);
 			
-			$OldAgeHero.KillHero();
+			$OldAgeHero->KillHero();
 		}
 	}
 }
