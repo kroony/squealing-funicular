@@ -1,19 +1,22 @@
 <h2>Updates</h2>
 <ul>
-	<li>2016/05/05 - Both hero portraits correctly show on combat screen. Thanks amos.</li>
-	<li>2016/05/25 - Delete all messages from monster button added.</li>
-	<li>2016/05/24 - New heroes no longer start at age 0.</li>
-	<li>2016/05/23 - Fights now have a cooldown, each combat round adds 1 minute to cooldown.</li>
-	<li>2016/05/22 - Weapons in inventory are ordered by scrap value.</li>
-	<li>2016/05/17 - Ability to Reply to messages.</li>
-	<li>2016/05/17 - Recruitment links. Users signed up with your link will earn you extra GP with each hero hire.</li>
-	<li>2016/05/11 - The Black Ninja has been killed! Its fearsome undead Ninja cohort has been summoned.</li>
-	<li>2016/05/05 - Cant start level up process when hero is dead</li>
-	<li>2016/05/03 - Newest Messages now show on top of the list and sent time now shows elapsed time since receiving message.</li>
+	<li>2016/08/21 - Old age hero death might actually be working now. Weapons on those heroes will be kept in the players inventory.</li>
+	<li>2016/08/21 - Heroes who initiated an attack can attacked by other players while their health is not full and their cooldown timer is not complete.</li>
+	
 </ul>
 	<a href="#moreUpdates" data-toggle="collapse">More...</a>
 	<div id="moreUpdates" class="collapse">
 		<ul>
+			<li>2016/06/05 - Both hero portraits correctly show on combat screen. Thanks amos.</li>
+			<li>2016/05/25 - Delete all messages from monster button added.</li>
+			<li>2016/05/24 - New heroes no longer start at age 0.</li>
+			<li>2016/05/23 - Fights now have a cooldown, each combat round adds 1 minute to cooldown.</li>
+			<li>2016/05/22 - Weapons in inventory are ordered by scrap value.</li>
+			<li>2016/05/17 - Ability to Reply to messages.</li>
+			<li>2016/05/17 - Recruitment links. Users signed up with your link will earn you extra GP with each hero hire.</li>
+			<li>2016/05/11 - The Black Ninja has been killed! Its fearsome undead Ninja cohort has been summoned.</li>
+			<li>2016/05/05 - Cant start level up process when hero is dead</li>
+			<li>2016/05/03 - Newest Messages now show on top of the list and sent time now shows elapsed time since receiving message.</li>
 			<li><strong>2016/04/28 - Added Shop, Initially to sell weapons, will expand to heroes, armor, items</strong></li>
 			<li>2016/04/27 - Users have Total kill counts (only updated from current heroes, Kills on heroes that have died before today were not counted). Leaderboards added from this. </li>
 			<li>2016/04/27 - Scrapping weapons has a total hero Cha modifier applied to the gold returned. Thanks Joshua</li>
