@@ -173,17 +173,9 @@ class heroController
 		
 		$res = $db->query($getDeadQuery);
 		
-		$obj = $res->fetchObject();
-		$count = null;
-		if(isset($obj->count))
-		{
-			$count = $obj->count;
-		}
-		else
-		{
-			$count = "obj count not set";	
-		}
-		echo 'Arg 4 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		$count = $res->rowCount();
+		
+		echo 'Arg 5 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		/*while($obj = $res->fetchObject())
 		{
