@@ -171,13 +171,13 @@ class heroController
 		//select heroes born on the hour, who's age is over the max age + Fte + D20
 		$getDeadQuery = "SELECT * FROM `Hero` 
 				INNER JOIN  `Race` ON  `Hero`.`Race` = `Race`.`ID` 
-				WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) ;";
+				WHERE DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 - 1)) ;";
 		
 		$res = $db->query($getDeadQuery);
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 6 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 7 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		/*while($obj = $res->fetchObject())
 		{
