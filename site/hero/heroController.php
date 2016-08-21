@@ -179,9 +179,9 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 8 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 9 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
-		/*while($obj = $res->fetchObject())
+		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
 			$OldAgeHero = $OldAgeHero->loadHeroFromObject($obj);
@@ -195,7 +195,7 @@ class heroController
 			userController::sendMessage(1, $OldAgeHero.OwnerID, $subject, $body);
 			
 			$OldAgeHero.KillHero();
-		}*/
+		}
 	}
 }
 
