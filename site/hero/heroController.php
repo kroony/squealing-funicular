@@ -174,12 +174,12 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 13 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 14 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
-			$OldAgeHero = $OldAgeHero->loadHero($obj->h.ID);
+			$OldAgeHero = $OldAgeHero->loadHero($obj->ID);
 			
 			echo $OldAgeHero->Name . ' Aged: ' . $OldAgeHero->Age . '/' . $OldAgeHero->Race->OldAge . ' Player: ' . $OldAgeHero->GetOwner()->username . ', ';
 			
