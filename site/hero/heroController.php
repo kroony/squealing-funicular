@@ -169,15 +169,14 @@ class heroController
 	{
 		$db = DB::GetConn();
 		//select heroes born on the hour, who's age is over the max age + Fte + D20
-		$getDeadQuery = "SELECT * FROM `Hero` 
-						 INNER JOIN `Race` ON `Hero`.`Race` = `Race`.`ID` ;";
+		$getDeadQuery = "SELECT * FROM `Hero` ;";
 		
 		$res = $db->query($getDeadQuery);
 		
 		$obj = $res->fetchObject();
 		$count = 0;
 		if(isset($obj->count)) {$count = $obj->count;}
-		echo 'Arg 3 ' . date('Y-m-d H:i') . ' Found: ' . $count . ' \r\n';
+		echo 'Arg 4 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		/*while($obj = $res->fetchObject())
 		{
