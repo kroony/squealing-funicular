@@ -174,14 +174,14 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo '\n' . date('Y-m-d H:i') . ' Found: ' . $count . '   \n';
+		echo "\n" . date('Y-m-d H:i') . " Found: " . $count . "   \n";
 		
 		while($obj = $res->fetchObject())
 		{
 			$OldAgeHero = new Hero();
 			$OldAgeHero = $OldAgeHero->loadHero($obj->ID);
 			
-			echo $OldAgeHero->Name . ' Aged: ' . $OldAgeHero->Age . '/' . $OldAgeHero->Race->OldAge . ' Player: ' . $OldAgeHero->GetOwner()->username . ' \n';
+			echo $OldAgeHero->Name . ' Aged: ' . $OldAgeHero->Age . '/' . $OldAgeHero->Race->OldAge . ' Player: ' . $OldAgeHero->GetOwner()->username . " \n";
 			
 			//send message to user
 			$subject = $OldAgeHero->Name . " has passed away at the old age of " . $OldAgeHero->Age . ".";
