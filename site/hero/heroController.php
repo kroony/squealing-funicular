@@ -160,26 +160,21 @@ class heroController
 		return false;
 	}
 	
-	/*$getDeadQuery = "SELECT * FROM `Hero` 
-				 INNER JOIN  `Race` ON  `Hero`.`Race` = `Race`.`ID` 
-				 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
-				 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 - 1))
-				 AND `OwnerID` <> 146;";*/
 	function preformGlobalAge()
 	{
 		$db = DB::GetConn();
 		//select heroes born on the hour, who's age is over the max age + Fte + D20
-		$getDeadQuery = "SELECT * FROM `Hero` 
-				INNER JOIN  `Race` ON  `Hero`.`Race` = `Race`.`ID` 
-				 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
-				 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 - 1))
-				 AND `OwnerID` <> 146;";
+		$getDeadQuery = "SELECT `h`.*, `Race`.`OldAge` FROM `Hero` as h
+				INNER JOIN  `Race` ON  `h`.`Race` = `Race`.`ID` 
+				 WHERE HOUR( NOW( ) ) = HOUR(  `h`.`DateOfBirth` ) 
+				 AND DATEDIFF( NOW( ) ,  `h`.`DateOfBirth` ) >  `Race`.`OldAge` +  `h`.`Fte` + ROUND(RAND() * (20 - 1))
+				 AND `OwnerID` <> 146";
 		
 		$res = $db->query($getDeadQuery);
 		
 		$count = $res->rowCount();
 		
-		echo 'Arg 9 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
+		echo 'Arg 10 ' . date('Y-m-d H:i') . ' Found: ' . $count . '   ';
 		
 		while($obj = $res->fetchObject())
 		{
