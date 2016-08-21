@@ -80,7 +80,7 @@ class PitController
 		// add after combat cooldown
 		$cooldownTime = ceil($roundCounter / 2);
 		$hero1->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $cooldownTime))));
-		$hero1->Status = "Fight Cooldown";
+		$hero1->Status = "Fight Cooldown A";
 		$hero1->SaveHero();
 		
 		$hero2->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $cooldownTime))));

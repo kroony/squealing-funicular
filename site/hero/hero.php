@@ -506,7 +506,7 @@ class Hero
 		if ($this->CurrentHP <= 0) {return false;}//are they concious
 		if ($this->Status != "")//are they doing anything time based
 		{
-			if($this->Status == "Fight Cooldown" && $this->StatusETA == "None")
+			if(($this->Status == "Fight Cooldown" && $this->StatusETA == "None") || $this->Status == "Fight Cooldown A")
 			{
 				return true;
 			}

@@ -123,7 +123,7 @@ class heroController
 		$low_level = $Hero->Level - 1;
 		$high_level = $Hero->Level + 2;
 		$db = DB::GetConn();
-		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `OwnerID` <> $id AND (`Status` = '' OR `Status` = 'Fight Cooldown') AND `CurrentHP` = `MaxHP` AND (`Level` BETWEEN $low_level AND $high_level OR `Level` = -1) ORDER BY RAND();";
+		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `OwnerID` <> $id AND (`Status` = '' OR `Status` = 'Fight Cooldown' OR `Status` = 'Fight Cooldown A') AND `CurrentHP` = `MaxHP` AND (`Level` BETWEEN $low_level AND $high_level OR `Level` = -1) ORDER BY RAND();";
 
 		$res = $db->query($getQuery);
 
@@ -165,9 +165,9 @@ class heroController
 		$db = DB::GetConn();
 		//select heroes born on the hour, who's age is over the max age + Fte + D20
 		$getDeadQuery = "SELECT * FROM `Hero` 
-						 INNER JOIN  `Race` ON  `Hero`.`Race` =  `Race`.`ID` 
+						 INNER JOIN  `Race` ON  `Hero`.`Race` = `Race`.`ID` 
 						 WHERE HOUR( NOW( ) ) = HOUR(  `Hero`.`DateOfBirth` ) 
-						 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 -1))
+						 AND DATEDIFF( NOW( ) ,  `Hero`.`DateOfBirth` ) >  `Race`.`OldAge` +  `Hero`.`Fte` + ROUND(RAND() * (20 - 1))
 						 AND `OwnerID` <> 146;";
 		
 		$res = $db->query($getDeadQuery);
