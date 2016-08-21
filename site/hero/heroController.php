@@ -174,7 +174,7 @@ class heroController
 		
 		$count = $res->rowCount();
 		
-		echo "\n" . date('Y-m-d H:i') . " Found: " . $count . "   \n";
+		echo "\n " . date('Y-m-d H:i') . " Found: " . $count . "   \n";
 		
 		while($obj = $res->fetchObject())
 		{
