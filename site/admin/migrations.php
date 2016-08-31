@@ -4,10 +4,10 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("ALTER TABLE  `Message` ADD  `Type` INT NOT NULL ;"));
-echo "<br /><br />";
 
+print_r($db->query("Delete FROM `Message` WHERE `ToID` = 146;"));
+echo "<br /><br />";
+/*
 print_r($db->query("ALTER TABLE `User` ADD `refererID` INT NOT NULL AFTER `active`;"));
 echo "<br /><br />";
 */
