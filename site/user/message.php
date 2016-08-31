@@ -10,6 +10,13 @@ class Message
 	public $Sent;
 	public $IsRead;
 	public $Type;
+	/*
+	Type Key
+	0 = Attack
+	1 = Defence
+	2 = Message
+	3 = Admin
+	*/
 
 	function __construct()
 	{

@@ -31,13 +31,80 @@
   <li class="active"><a data-toggle="tab" href="#defender">Defender</a></li>
   <li><a data-toggle="tab" href="#attacker">Attacker</a></li>
   <li><a data-toggle="tab" href="#messages">Messages</a></li>
-  <li><a data-toggle="tab" href="#admin">Admin</a></li>
+  <!--<li><a data-toggle="tab" href="#admin">Admin</a></li>-->
 </ul>
+
+
+/*
+	Type Key
+	0 = Attack
+	1 = Defence
+	2 = Message
+	3 = Admin
+*/
+
 
 <div class="tab-content">
   <div id="defender" class="tab-pane fade in active">
-    <h3>Defender</h3>
-    <p>Some content.</p>
+  
+	<div class="btn-group">
+		<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
+		<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteMonsterModal"><span class="glyphicon glyphicon-trash"></span> Delete All Monster Messages</button>
+	</div>
+	<div class="modal fade" id="deleteAllModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p><a href="user.php?action=deleteAllMessages">Click here to delete all your messages</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="deleteMonsterModal" role="dialog">
+		<div class="modal-dialog modal-sm">
+			<div class="modal-content">
+				<div class="modal-body">
+					<p><a href="user.php?action=deleteMonsterMessages">Click here to delete all your messages from monster</a></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<br />
+	<table class='table table-condensed table-hover'>
+		<thead>
+			<tr>
+				<th>Sent</th>
+				<th>From</th>
+				<th>Subject</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$messages item=message}
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+				<td>{$message->Subject}</td>
+				<td>
+					<div class="btn-group">
+						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+					</div>
+				</td>
+				
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
+  
+  
+  
   </div>
   <div id="attacker" class="tab-pane fade">
     <h3>Attacker</h3>
@@ -47,71 +114,17 @@
     <h3>Messages</h3>
     <p>Some content in menu 2.</p>
   </div>
-  <div id="admin" class="tab-pane fade">
+  <!--<div id="admin" class="tab-pane fade">
     <h3>Admin</h3>
     <p>Some content in menu 2.</p>
-  </div>
+  </div>-->
 </div>
 
 
 
 
 <br />
-<div class="btn-group">
-	<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
-	<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteMonsterModal"><span class="glyphicon glyphicon-trash"></span> Delete All Monster Messages</button>
-</div>
-<div class="modal fade" id="deleteAllModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-body">
-				<p><a href="user.php?action=deleteAllMessages">Click here to delete all your messages</a></p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-    </div>
-</div>
-<div class="modal fade" id="deleteMonsterModal" role="dialog">
-    <div class="modal-dialog modal-sm">
-		<div class="modal-content">
-			<div class="modal-body">
-				<p><a href="user.php?action=deleteMonsterMessages">Click here to delete all your messages from monster</a></p>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-			</div>
-		</div>
-    </div>
-</div>
-<br />
-<table class='table table-condensed table-hover'>
-	<thead>
-		<tr>
-			<th>Sent</th>
-			<th>From</th>
-			<th>Subject</th>
-			<th>Action</th>
-		</tr>
-	</thead>
-	<tbody>
-		{foreach from=$messages item=message}
-		<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
-			<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
-			<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
-			<td>{$message->Subject}</td>
-			<td>
-				<div class="btn-group">
-					<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-					<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
-				</div>
-			</td>
-			
-		</tr>
-		{/foreach}
-	</tbody>
-</table>
+
 
 
 
