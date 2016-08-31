@@ -21,7 +21,41 @@
 <strong>Recruitment Link:</strong> <a href="http://sf.amospheric.com/register.php?Referer={$user->ID}" target="_blank">http://sf.amospheric.com/register.php?Referer={$user->ID}</a> Users who register using this link will credit you a finders fee each time they pay to hire a new hero.<br />
 <br />
 
+
+
+
 <strong>Messages</strong>
+
+
+<ul class="nav nav-tabs">
+  <li class="active"><a data-toggle="tab" href="#defender">Defender</a></li>
+  <li><a data-toggle="tab" href="#attacker">Attacker</a></li>
+  <li><a data-toggle="tab" href="#messages">Messages</a></li>
+  <li><a data-toggle="tab" href="#admin">Admin</a></li>
+</ul>
+
+<div class="tab-content">
+  <div id="defender" class="tab-pane fade in active">
+    <h3>Defender</h3>
+    <p>Some content.</p>
+  </div>
+  <div id="attacker" class="tab-pane fade">
+    <h3>Attacker</h3>
+    <p>Some content in menu 1.</p>
+  </div>
+  <div id="messages" class="tab-pane fade">
+    <h3>Messages</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+  <div id="admin" class="tab-pane fade">
+    <h3>Admin</h3>
+    <p>Some content in menu 2.</p>
+  </div>
+</div>
+
+
+
+
 <br />
 <div class="btn-group">
 	<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
@@ -78,6 +112,9 @@
 		{/foreach}
 	</tbody>
 </table>
+
+
+
 
 
 <br /><br />

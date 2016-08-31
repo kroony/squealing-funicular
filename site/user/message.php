@@ -9,6 +9,7 @@ class Message
 	public $Body;
 	public $Sent;
 	public $IsRead;
+	public $Type;
 
 	function __construct()
 	{
@@ -16,9 +17,7 @@ class Message
 	
 	/*
 	@TODO
-	Delete
-	Unread
-	Send
+	Send //is this not just save?
 	*/
 	
 	function Delete()
@@ -35,6 +34,15 @@ class Message
 		if(!$this->IsRead)
 		{
 			$this->IsRead = true;
+			$this->Save();
+		}
+	}
+	
+	function Unread()
+	{
+		if($this->IsRead)
+		{
+			$this->IsRead = false;
 			$this->Save();
 		}
 	}
@@ -63,6 +71,7 @@ class Message
 		$returnMessage->Body = $obj->Body;
 		$returnMessage->Sent = new DateTime($obj->Sent);
 		$returnMessage->IsRead = $obj->IsRead;
+		$returnMessage->Type = $obj->Type;
 		
 		return $returnMessage;
 	}
@@ -77,7 +86,8 @@ class Message
 				"Subject"=>$this->Subject,
 				"Body"=>$this->Body,
 				"Sent"=>$this->Sent->format('Y-m-d H:i:s'),
-				"IsRead"=>$this->IsRead);
+				"IsRead"=>$this->IsRead,
+				"Type"=>$this->Type);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Message", $row, $where);
@@ -94,7 +104,8 @@ class Message
 				"Subject"=>$this->Subject,
 				"Body"=>$this->Body,
 				"Sent"=>$this->Sent->format('Y-m-d H:i:s'),
-				"IsRead"=>$this->IsRead);
+				"IsRead"=>$this->IsRead,
+				"Type"=>$this->Type);
 			
 			try {
 				$db->insert("Message",$row);
