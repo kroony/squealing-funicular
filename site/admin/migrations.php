@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("Delete FROM `Message` WHERE `ToID` = 146;"));
 echo "<br /><br />";
 /*
