@@ -57,7 +57,7 @@ class userController
 		return $obj->count;
 	}
 	
-	function sendMessage($To, $From, $Subject, $Body)
+	function sendMessage($To, $From, $Subject, $Body, $Type)
 	{
 		$NewMessage = New Message();
 		
@@ -67,6 +67,7 @@ class userController
 		$NewMessage->Body = $Body;
 		$NewMessage->Sent = new DateTime('now');
 		$NewMessage->IsRead = false;
+		$NewMessage->Type = $Type;
 		
 		$NewMessage->Save();
 	}

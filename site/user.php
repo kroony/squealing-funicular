@@ -132,9 +132,35 @@ if(isset($_REQUEST['action']))//check if we are doing anything
 }
 
 $smarty->assign("user",$user);
+$messageAttack = array();
+$messageDefence = array();
+$messageMessage = array();
+$messageAdmin = array();
 
 //get messages
 $messages = $userController->getAllMessagesForUser($currentUID);
+//sort messages
+/*
+	Type Key
+	0 = Attack
+	1 = Defence
+	2 = Message
+	3 = Admin
+*/
+foreach($messages as $message)
+{
+	switch ($message->Type)
+	{
+		case 0:
+			$messageAttack[] = $message;
+		case 1:
+			$messageDefence[] = $message;
+		case 2:
+			$messageMessage[] = $message;
+		case 3:
+			$messageAdmin[] = $message;
+	}
+}
 $tmpUser = new User();
 $smarty->assign("tmpUser",$tmpUser);
 $smarty->assign("messages",$messages);

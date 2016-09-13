@@ -28,8 +28,8 @@
 
 
 <ul class="nav nav-tabs">
-  <li class="active"><a data-toggle="tab" href="#defender">Defender</a></li>
-  <li><a data-toggle="tab" href="#attacker">Attacker</a></li>
+  <li class="active"><a data-toggle="tab" href="#attacker">Attacker</a></li>
+  <li><a data-toggle="tab" href="#defender">Defender</a></li>
   <li><a data-toggle="tab" href="#messages">Messages</a></li>
   <!--<li><a data-toggle="tab" href="#admin">Admin</a></li>-->
 </ul>
@@ -45,7 +45,7 @@
 
 
 <div class="tab-content">
-  <div id="defender" class="tab-pane fade in active">
+  <div id="attacker" class="tab-pane fade in active">
   
 	<div class="btn-group">
 		<button type="button" class="btn btn-default btn-md" data-toggle="modal" data-target="#deleteAllModal"><span class="glyphicon glyphicon-trash"></span> Delete All Messages</button>
@@ -86,7 +86,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			{foreach from=$messages item=message}
+			{foreach from=$messageAttack item=message}
 			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
 				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
@@ -106,8 +106,8 @@
   
   
   </div>
-  <div id="attacker" class="tab-pane fade">
-    <h3>Attacker</h3>
+  <div id="defender" class="tab-pane fade">
+    <h3>Defender</h3>
     <p>Some content in menu 1.</p>
   </div>
   <div id="messages" class="tab-pane fade">
