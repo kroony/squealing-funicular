@@ -102,22 +102,34 @@
 			{/foreach}
 		</tbody>
 	</table>
-  
-  
-  
+	
+	
   </div>
+  
+  
+  
   <div id="defender" class="tab-pane fade">
     <h3>Defender</h3>
     <p>Some content in menu 1.</p>
   </div>
+  
+  
+  
   <div id="messages" class="tab-pane fade">
     <h3>Messages</h3>
     <p>Some content in menu 2.</p>
   </div>
-  <!--<div id="admin" class="tab-pane fade">
+  
+  
+  
+  {if $user->isAdmin()}
+  <div id="admin" class="tab-pane fade">
     <h3>Admin</h3>
     <p>Some content in menu 2.</p>
-  </div>-->
+  </div>
+  {/if}
+  
+  
 </div>
 
 

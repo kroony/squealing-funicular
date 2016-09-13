@@ -50,6 +50,15 @@ class User
 		return $returnUser;
 	}
 	
+	function isAdmin()
+	{
+    if($this->ID == 1)
+    {
+      return true;
+    }
+    return false;
+	}
+	
 	function canAfford($price)
     {
 		if($price <= $this->gold)
