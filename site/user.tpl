@@ -31,18 +31,8 @@
   <li class="active"><a data-toggle="tab" href="#attacker">Attacker</a></li>
   <li><a data-toggle="tab" href="#defender">Defender</a></li>
   <li><a data-toggle="tab" href="#messages">Messages</a></li>
-  <!--<li><a data-toggle="tab" href="#admin">Admin</a></li>-->
+  {if $user->isAdmin()}<li><a data-toggle="tab" href="#admin">Admin</a></li>{/if}
 </ul>
-
-
-/*
-	Type Key
-	0 = Attack
-	1 = Defence
-	2 = Message
-	3 = Admin
-*/
-
 
 <div class="tab-content">
   <div id="attacker" class="tab-pane fade in active">
