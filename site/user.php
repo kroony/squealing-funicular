@@ -163,7 +163,6 @@ foreach($messages as $message)
 }
 $tmpUser = new User();
 $smarty->assign("tmpUser",$tmpUser);
-$smarty->assign("messages",$messages);
 
 $smarty->assign("messageAttack",$messageAttack);
 $smarty->assign("messageDefence",$messageDefence);

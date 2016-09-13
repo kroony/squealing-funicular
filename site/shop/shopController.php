@@ -68,7 +68,7 @@ class shopController
 			$sale->Item->save();
 			
 			//send message to seller
-			userController::sendMessage($seller->ID, $buyer->ID, "Your shop item " . $sale->Item->Name . " sold to " . $buyer->username . " for " . $sale->Price . "gp.", "What if you need that later?");
+			userController::sendMessage($seller->ID, $buyer->ID, "Your shop item " . $sale->Item->Name . " sold to " . $buyer->username . " for " . $sale->Price . "gp.", "What if you need that later?", 2);
 			
 			//delete sale 
 			$sale->delete();
