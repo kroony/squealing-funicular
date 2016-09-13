@@ -196,8 +196,8 @@ class heroController
 			//send message to user
 			$subject = $OldAgeHero->Name . " has passed away at the old age of " . $OldAgeHero->Age . ".";
 			$body = $OldAgeHero->Name . " the " . $OldAgeHero->Race->Name . " is survived by " . rand(2, $OldAgeHero->Fte) . " children and " . $OldAgeHero->Fte . " grand children.";
-			userController::sendMessage($OldAgeHero->OwnerID, $OldAgeHero->OwnerID, $subject, $body);
-			userController::sendMessage(1, $OldAgeHero->OwnerID, $subject, $body);
+			userController::sendMessage($OldAgeHero->OwnerID, $OldAgeHero->OwnerID, $subject, $body, 2);
+			userController::sendMessage(1, $OldAgeHero->OwnerID, $subject, $body, 3);
 			
 			$OldAgeHero->KillHero();
 		}

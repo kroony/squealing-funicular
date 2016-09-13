@@ -32,8 +32,8 @@ if(!$hero1->isAlive() || !$hero2->isAlive())
 	$atttackerSubject = '<span class="glyphicon glyphicon-eye-close"></span> ' . $atttackerSubject;
 	$defenderSubject = '<span class="glyphicon glyphicon-eye-close"></span> ' . $defenderSubject;
 }
-userController::sendMessage($hero1->OwnerID, $hero2->OwnerID, $atttackerSubject, $log->show());//aggressor
-userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, $defenderSubject, $log->show());//retaliator
+userController::sendMessage($hero1->OwnerID, $hero2->OwnerID, $atttackerSubject, $log->show(), 0);//aggressor
+userController::sendMessage($hero2->OwnerID, $hero1->OwnerID, $defenderSubject, $log->show(), 1);//retaliator
 
 //assign to template
 $smarty->assign("log",$log);
