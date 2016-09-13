@@ -153,12 +153,16 @@ foreach($messages as $message)
 	{
 		case 0:
 			$messageAttack[] = $message;
+			break;
 		case 1:
 			$messageDefence[] = $message;
+			break;
 		case 2:
 			$messageMessage[] = $message;
+			break;
 		case 3:
 			$messageAdmin[] = $message;
+			break;
 	}
 }
 $tmpUser = new User();
