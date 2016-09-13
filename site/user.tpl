@@ -99,23 +99,95 @@
   
   
   <div id="defender" class="tab-pane fade">
-    <h3>Defender</h3>
-    <p>Some content in menu 1.</p>
+    <table class='table table-condensed table-hover'>
+		<thead>
+			<tr>
+				<th>Sent</th>
+				<th>From</th>
+				<th>Subject</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$messageDefence item=message}
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+				<td>{$message->Subject}</td>
+				<td>
+					<div class="btn-group">
+						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+					</div>
+				</td>
+				
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
   </div>
   
   
   
   <div id="messages" class="tab-pane fade">
-    <h3>Messages</h3>
-    <p>Some content in menu 2.</p>
+    <table class='table table-condensed table-hover'>
+		<thead>
+			<tr>
+				<th>Sent</th>
+				<th>From</th>
+				<th>Subject</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$messageMessage item=message}
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+				<td>{$message->Subject}</td>
+				<td>
+					<div class="btn-group">
+						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+					</div>
+				</td>
+				
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
   </div>
   
   
   
   {if $user->isAdmin()}
   <div id="admin" class="tab-pane fade">
-    <h3>Admin</h3>
-    <p>Some content in menu 2.</p>
+    <table class='table table-condensed table-hover'>
+		<thead>
+			<tr>
+				<th>Sent</th>
+				<th>From</th>
+				<th>Subject</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{foreach from=$messageAdmin item=message}
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+				<td>{$message->Subject}</td>
+				<td>
+					<div class="btn-group">
+						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+					</div>
+				</td>
+				
+			</tr>
+			{/foreach}
+		</tbody>
+	</table>
   </div>
   {/if}
   
