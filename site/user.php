@@ -165,5 +165,10 @@ $tmpUser = new User();
 $smarty->assign("tmpUser",$tmpUser);
 $smarty->assign("messages",$messages);
 
+$smarty->assign("messageAttack",$messageAttack);
+$smarty->assign("messageDefence",$messageDefence);
+$smarty->assign("messageMessage",$messageMessage);
+$smarty->assign("messageAdmin",$messageAdmin);
+
 $smarty->display("user.tpl");
 

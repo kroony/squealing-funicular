@@ -122,7 +122,7 @@
   
   
   
-  {if $user->isAdmin()}
+  {if $user->isAdmin}
   <div id="admin" class="tab-pane fade">
     <h3>Admin</h3>
     <p>Some content in menu 2.</p>
