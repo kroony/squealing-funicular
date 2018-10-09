@@ -122,7 +122,7 @@ class heroController
 	{
     $db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Race`;";
+		$getQuery = "SELECT `ID` FROM `Race`;";
 
 		$res=$db->query($getQuery);//execute query
 		
