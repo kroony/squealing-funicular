@@ -129,7 +129,7 @@ class heroController
 		$returnRaces = array();
 		while($obj = $res->fetchObject())
 		{
-			array_push($returnRaces, new Race($obj->Name, $obj->StrBon, $obj->DexBon, $obj->ConBon, $obj->IntelBon, $obj->WisBon, $obj->ChaBon, $obj->FteBon, $obj->OldAge, $obj->Description));
+			array_push($returnRaces, Race::loadRace($obj->ID));
 		}
 		return $returnRaces;
 	}
