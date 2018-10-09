@@ -4,13 +4,19 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("Delete FROM `Message` WHERE `ToID` = 146;"));
+
+print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Zombie', '0', '0', '0', '0', '0', '0', '2', '70', 'Zombies', '0');"));
 echo "<br /><br />";
-/*
-print_r($db->query("ALTER TABLE `User` ADD `refererID` INT NOT NULL AFTER `active`;"));
+
+print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Skeleton', '0', '0', '2', '0', '2', '-2', '0', '140', 'Skeletons', '0');"));
 echo "<br /><br />";
-*/
+
+print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Ghoul', '0', '2', '-2', '2', '0', '0', '0', '250', 'Ghouls', '0');"));
+echo "<br /><br />";
+
+print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Ghost', '-2', '2', '0', '0', '0', '2', '0', '100', 'Ghosts', '0');"));
+echo "<br /><br />";
+
 //html header
 $smarty->display("css/css.tpl");
 
