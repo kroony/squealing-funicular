@@ -24,23 +24,7 @@ include_once("menu.php");
 
 if(isset($_REQUEST['action']))//check if we are doing anything
 {
-	if($_REQUEST['action'] == "DeleteMessage")
-	{
-		//@TODO check message exists
-		
-		$deleteMessage = new Message();
-		$deleteMessage = $deleteMessage->load($_REQUEST['MsgID']);
-		
-		if($deleteMessage->ToID == $currentUID)//check user owns message
-		{
-			$deleteMessage->Delete();
-		}
-		else
-		{
-			$smarty->assign("error","That message does not belong to you, you cant delete it.");
-		}
-	}
-	else if($_REQUEST['action'] == "changePassword")
+	if($_REQUEST['action'] == "changePassword")
 	{
 		if($_REQUEST['oldpassword'] != "pass")
 		{
