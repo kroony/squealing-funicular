@@ -1,3 +1,18 @@
+<script>
+function deleteMessage(messsageID, tableID, row){
+  var DeleteMessageXML = new XMLHttpRequest();
+  DeleteMessageXML.open("POST", "xml/deleteMessage.php", true);
+  DeleteMessageXML.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  var params = "MsgID=" + messsageID;
+              
+  DeleteMessageXML.send(params);
+  DeleteMessageXML.onload = function() {
+    if(DeleteMessageXML.responseText == "Message Deleted") {
+      document.getElementById(tableID).deleteRow(row); }
+  }
+}
+</script>
+
 <div class="container-fluid">
 <h3>{$user->username}</h3>
 
@@ -231,17 +246,3 @@
 TODO: change email
 
 <div>
-
-<script>
-function deleteMessage(messsageID, tableID, row){
-  var DeleteMessageXML = new XMLHttpRequest();
-  DeleteMessageXML.open("POST", "xml/deleteMessage.php", true);
-  DeleteMessageXML.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-  var params = "MsgID=" + messsageID;
-              
-  DeleteMessageXML.send(params);
-  DeleteMessageXML.onload = function() {
-    if(DeleteMessageXML.responseText == "Message Deleted") {
-      document.getElementById(tableID).deleteRow(row); }
-  }
-}
