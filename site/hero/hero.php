@@ -634,12 +634,25 @@ class Hero
 		$this->SaveHero();
 	}
 
-    function displayName($is_mine)
-    {
-        $class = $is_mine ? "player" : "enemy";
-        return "<span class='$class'>" . $this->Name . "</span>";
-    }
-
+  function displayName($is_mine)
+  {
+      $class = $is_mine ? "player" : "enemy";
+      return "<span class='$class'>" . $this->Name . "</span>";
+  }
+  
+  function RemoveNPC()
+	{
+		$db = DB::GetConn();
+			
+		$where = array($db->quoteInto("ID = ?", $this->ID));
+		try {
+			$db->delete("Hero", $where);
+		}
+		catch(Exception $ex)
+		{
+			print_r($ex);
+		} 
+	}
 }
 
 ?>

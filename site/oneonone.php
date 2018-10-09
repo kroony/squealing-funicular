@@ -115,6 +115,7 @@ if(!$hero1->isAlive())
 		$hero1->SaveHero();
 	}
 }
+$removeNPC = false;
 if(!$hero2->isAlive())//if hero 2 dies
 {
 	$hero1->Kills++;//add kill to hero
@@ -147,6 +148,9 @@ if(!$hero2->isAlive())//if hero 2 dies
 		$hero2->CurrentHP = 0;//reset hp to 0
 		$hero2->MaxHP = max($hero2->MaxHP - $hero2->HeroClass->HD, $hero2->HeroClass->HD);//decrease their max HP
 		$hero2->SaveHero();
+		
+		//one in 10 chance this is deleted forever
+		if(rand(1, 10) == 1) { $removeNPC = true; }
 	}
 }
 
@@ -175,4 +179,6 @@ else //Monster AI
   }
   $hero2->SaveHero();
 }
+
+if($removeNPC) { $hero2->RemoveNPC(); }
 
