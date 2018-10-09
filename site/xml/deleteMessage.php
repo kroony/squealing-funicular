@@ -2,6 +2,7 @@
 chdir("../");
 include_once("bootstrap.php");
 include_once("user/user.php");
+include_once("user/message.php");
 $user = new User();
 $user = $user->load($currentUID);
 		
