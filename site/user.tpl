@@ -22,8 +22,6 @@
 <br />
 
 
-
-
 <strong>Messages</strong>
 
 
@@ -66,7 +64,7 @@
 		</div>
 	</div>
 	<br />
-	<table class='table table-condensed table-hover'>
+	<table class='table table-condensed table-hover' id="table-attacker">
 		<thead>
 			<tr>
 				<th>Sent</th>
@@ -76,19 +74,21 @@
 			</tr>
 		</thead>
 		<tbody>
+      {$rowCount = 0}
 			{foreach from=$messageAttack item=message}
-			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
-				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
-				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
-				<td>{$message->Subject}</td>
-				<td>
-					<div class="btn-group">
-						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
-					</div>
-				</td>
-				
-			</tr>
+        <tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+          <td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+          <td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+          <td>{$message->Subject}</td>
+          <td>
+            <div class="btn-group">
+              <a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, "table-attacker", {$rowCount});"><span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+          </td>
+          
+        </tr>
+        {$rowCount++}
 			{/foreach}
 		</tbody>
 	</table>
@@ -109,6 +109,7 @@
 			</tr>
 		</thead>
 		<tbody>
+      {$rowCount = 0}
 			{foreach from=$messageDefence item=message}
 			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
@@ -140,6 +141,7 @@
 			</tr>
 		</thead>
 		<tbody>
+      {$rowCount = 0}
 			{foreach from=$messageMessage item=message}
 			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
@@ -172,6 +174,7 @@
 			</tr>
 		</thead>
 		<tbody>
+      {$rowCount = 0}
 			{foreach from=$messageAdmin item=message}
 			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
@@ -191,18 +194,9 @@
   </div>
   {/if}
   
-  
 </div>
 
-
-
-
 <br />
-
-
-
-
-
 
 <br /><br />
 <strong>Change Password</strong>
@@ -234,7 +228,20 @@
 	</div>
 </form>
 
-
 TODO: change email
 
 <div>
+
+<script>
+function deleteMessage(messsageID, tableID, row){
+  var DeleteMessageXML = new XMLHttpRequest();
+  DeleteMessageXML.open("POST", "xml/deleteMessage.php", true);
+  DeleteMessageXML.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  var params = "MsgID=" + messsageID;
+              
+  DeleteMessageXML.send(params);
+  DeleteMessageXML.onload = function() {
+    if(DeleteMessageXML.responseText == "Message Deleted") {
+      document.getElementById(tableID).deleteRow(row); }
+  }
+}

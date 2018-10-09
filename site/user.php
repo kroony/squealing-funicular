@@ -173,5 +173,7 @@ $smarty->assign("messageDefence",$messageDefence);
 $smarty->assign("messageMessage",$messageMessage);
 $smarty->assign("messageAdmin",$messageAdmin);
 
+$smarty->assign("rowCount",0);
+
 $smarty->display("user.tpl");
 
