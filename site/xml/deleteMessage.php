@@ -1,4 +1,5 @@
 <?php
+chdir("../");
 include_once("bootstrap.php");
 include_once("user/user.php");
 $user = new User();
