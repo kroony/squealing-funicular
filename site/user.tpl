@@ -7,6 +7,7 @@ function deleteMessage(messsageID, tableID, row){
               
   DeleteMessageXML.send(params);
   DeleteMessageXML.onload = function() {
+    console.log(DeleteMessageXML.responseText);
     if(DeleteMessageXML.responseText == "Message Deleted") {
       document.getElementById(tableID).deleteRow(row); }
   }
@@ -103,7 +104,7 @@ function deleteMessage(messsageID, tableID, row){
           </td>
           
         </tr>
-        {$rowCount++}
+        {$rowCount = $rowCount + 1}
 			{/foreach}
 		</tbody>
 	</table>
