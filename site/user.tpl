@@ -7,7 +7,6 @@ function deleteMessage(messsageID, rowID){
               
   DeleteMessageXML.send(params);
   DeleteMessageXML.onload = function() {
-    console.log(DeleteMessageXML.responseText);
     if(DeleteMessageXML.responseText == "Message Deleted") {
       document.getElementById(rowID).style.display = 'none'; }
   }
