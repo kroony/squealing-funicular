@@ -126,18 +126,19 @@ function deleteMessage(messsageID, rowID){
 		<tbody>
       {$rowCount = 0}
 			{foreach from=$messageDefence item=message}
-			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
-				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
-				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
-				<td>{$message->Subject}</td>
-				<td>
-					<div class="btn-group">
-						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
-					</div>
-				</td>
-				
-			</tr>
+        <tr {if !$message->IsRead} style="background-color: beige;"{/if} id="dt-{$rowCount}">
+          <td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
+          <td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
+          <td>{$message->Subject}</td>
+          <td>
+            <div class="btn-group">
+              <a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
+              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'dt-{$rowCount}');"><span class="glyphicon glyphicon-trash"></span></a>
+            </div>
+          </td>
+          
+        </tr>
+        {$rowCount = $rowCount + 1}
 			{/foreach}
 		</tbody>
 	</table>
@@ -158,18 +159,19 @@ function deleteMessage(messsageID, rowID){
 		<tbody>
       {$rowCount = 0}
 			{foreach from=$messageMessage item=message}
-			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if} id="mt-{$rowCount}">
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
 				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
 				<td>{$message->Subject}</td>
 				<td>
 					<div class="btn-group">
 						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+						<a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'mt-{$rowCount}');"><span class="glyphicon glyphicon-trash"></span></a>
 					</div>
 				</td>
 				
 			</tr>
+			{$rowCount = $rowCount + 1}
 			{/foreach}
 		</tbody>
 	</table>
@@ -191,18 +193,19 @@ function deleteMessage(messsageID, rowID){
 		<tbody>
       {$rowCount = 0}
 			{foreach from=$messageAdmin item=message}
-			<tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+			<tr {if !$message->IsRead} style="background-color: beige;"{/if} id="admint-{$rowCount}">
 				<td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
 				<td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
 				<td>{$message->Subject}</td>
 				<td>
 					<div class="btn-group">
 						<a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-						<a href="user.php?MsgID={$message->ID}&action=DeleteMessage" class="btn btn-default" data-toggle="tooltip" title="Delete Message"><span class="glyphicon glyphicon-trash"></span></a>
+						<a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'admint-{$rowCount}');"><span class="glyphicon glyphicon-trash"></span></a>
 					</div>
 				</td>
 				
 			</tr>
+			{$rowCount = $rowCount + 1}
 			{/foreach}
 		</tbody>
 	</table>
