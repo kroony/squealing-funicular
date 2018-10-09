@@ -26,9 +26,9 @@
 		<tr>
 			<td>
 				{if !empty($sale->GetOwner())}
-					<a href="viewUser.php?ID={$sale->OwnerID}">{$sale->GetOwner()->username}</a>
+					<a href="viewUser.php?ID={$sale->SellerID}">{$sale->GetOwner()->username}</a>
 				{else}
-					Owner Unknown (ID: {$sale->OwnerID})
+					Owner Unknown (ID: {$sale->SellerID})
 				{/if}
 			</td>
 			<td>
