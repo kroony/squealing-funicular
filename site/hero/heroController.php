@@ -122,14 +122,14 @@ class heroController
 	{
     $db = DB::GetConn();
 
-		$getQuery = "SELECT 'ID' FROM `Race`;";
+		$getQuery = "SELECT * FROM `Race`;";
 
 		$res=$db->query($getQuery);//execute query
 		
 		$returnRaces = array();
 		while($obj = $res->fetchObject())
 		{
-			array_push($returnRaces, Race::loadRace($obj->ID));
+			array_push($returnRaces, new Race($obj->Name, $obj->StrBon, $obj->DexBon, $obj->ConBon, $obj->IntelBon, $obj->WisBon, $obj->ChaBon, $obj->FteBon, $obj->OldAge, $obj->Description));
 		}
 		return $returnRaces;
 	}

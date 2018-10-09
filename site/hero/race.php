@@ -106,10 +106,6 @@ class Race
 		return $this->makeParts($f_max, $f_pre, $f_mid, $f_suf)
 			. ' ' . 
 			$this->makeParts($l_max, $l_pre, $l_mid, $l_suf);
-
-		/*$fName = array("Throsgrulim", "Yundic", "Havuck", "Maghamli", "Toremrum");
-		  $lName = array("Snowfall", "Koboldmace", "Plateforge", "Oremace", "Merrymaker");
-		  return $fName[rand(0,4)] . " " . $lName[rand(0,4)];*/
 	}
 
 	function makeParts($max_mid, $prefixes, $mids, $suffixes) {
@@ -129,6 +125,7 @@ class Race
 
 		return $nm;
 	}
+	
 	function joinName($prefix, $suffix)
 	{
 		$a = substr($prefix, -1);
