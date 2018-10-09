@@ -117,6 +117,22 @@ class heroController
 		}
 		return $returnHeroes;
 	}
+	
+	function getAllRaces()
+	{
+    $db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Race`;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnRaces = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnRaces, Race::loadRaceFromObject($obj));
+		}
+		return $returnRaces;
+	}
 
 	function findEnemys($id, $Hero)
 	{
