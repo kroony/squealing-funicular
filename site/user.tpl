@@ -1,5 +1,5 @@
 <script>
-function deleteMessage(messsageID, tableID, row){
+function deleteMessage(messsageID, rowID){
   var DeleteMessageXML = new XMLHttpRequest();
   DeleteMessageXML.open("POST", "xml/deleteMessage.php", true);
   DeleteMessageXML.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -9,7 +9,7 @@ function deleteMessage(messsageID, tableID, row){
   DeleteMessageXML.onload = function() {
     console.log(DeleteMessageXML.responseText);
     if(DeleteMessageXML.responseText == "Message Deleted") {
-      document.getElementById(tableID).deleteRow(row); }
+      document.getElementById(rowID).style.display = 'none'; }
   }
 }
 </script>
@@ -92,17 +92,16 @@ function deleteMessage(messsageID, tableID, row){
 		<tbody>
       {$rowCount = 0}
 			{foreach from=$messageAttack item=message}
-        <tr {if !$message->IsRead} style="background-color: beige;"{/if}>
+        <tr {if !$message->IsRead} style="background-color: beige;"{/if} id="at-{$rowCount}">
           <td><a href="viewMessage.php?ID={$message->ID}">{humanTiming($message->Sent)} ago</a></td>
           <td><a href="viewUser.php?ID={$message->FromID}">{$tmpUser->load($message->FromID)->username}</a></td>
           <td>{$message->Subject}</td>
           <td>
             <div class="btn-group">
               <a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'table-attacker', {$rowCount});"><span class="glyphicon glyphicon-trash"></span></a>
+              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'at-{$rowCount}');"><span class="glyphicon glyphicon-trash"></span></a>
             </div>
           </td>
-          
         </tr>
         {$rowCount = $rowCount + 1}
 			{/foreach}
