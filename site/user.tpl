@@ -83,7 +83,7 @@
           <td>
             <div class="btn-group">
               <a href="viewMessage.php?ID={$message->ID}&action=reply" class="btn btn-default" data-toggle="tooltip" title="Reply to Message"><span class="glyphicon glyphicon-share-alt icon-flipped"></span></a>
-              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, "table-attacker", {$rowCount});"><span class="glyphicon glyphicon-trash"></span></a>
+              <a href="#" class="btn btn-default" data-toggle="tooltip" title="Delete Message" onclick="deleteMessage({$message->ID}, 'table-attacker', {$rowCount});"><span class="glyphicon glyphicon-trash"></span></a>
             </div>
           </td>
           
