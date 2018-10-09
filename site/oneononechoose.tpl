@@ -26,7 +26,7 @@
 				{/if}
 			{/if}
 		</td>
-		<td>{if $ag->Level < 0}Undead {/if}{$ag->Race->Name} {$ag->HeroClass->Name}</td>
+		<td>{$ag->Race->Name} {$ag->HeroClass->Name}</td>
 		<td>
 			{if !empty($ag->GetOwner())}
 				<a href="viewUser.php?ID={$ag->OwnerID}">{$ag->GetOwner()->username}</a>

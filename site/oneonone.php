@@ -46,7 +46,7 @@ if($hero2->OwnerID == 146 && $hero2->CurrentHP <= 0)//if we knock out a monster,
 {
 	//weapon Loot
 	$weaponLootRoll = rand(1, 100);
-	if($weaponLootRoll <= $hero1->Fte && $hero2->OwnerID == 146 && $hero2->Name != "Black Ninja")//only loot weapon sometimes
+	if($weaponLootRoll <= $hero1->Fte && $hero2->Name != "Black Ninja")//only loot weapon sometimes
 	{
 		$hero2->Weapon->UserID = $hero1->OwnerID;
 		$hero2->Weapon->save();
@@ -115,7 +115,7 @@ if(!$hero1->isAlive())
 		$hero1->SaveHero();
 	}
 }
-if(!$hero2->isAlive())
+if(!$hero2->isAlive())//if hero 2 dies
 {
 	$hero1->Kills++;//add kill to hero
 	$killUser=User::load($hero1->OwnerID);
