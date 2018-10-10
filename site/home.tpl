@@ -1,3 +1,27 @@
+<script>
+function updateHealthBar(heroID, maxHP)
+{
+  //xml get hp
+  var getHeroHealthXML = new XMLHttpRequest();
+  getHeroHealthXML.open("POST", "xml/getHeroHealth.php", true);
+  getHeroHealthXML.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  var params = "HeroID=" + heroID;
+              
+  getHeroHealthXML.send(params);
+  getHeroHealthXML.onload = function() {
+    console.log(getHeroHealthXML.responseText);
+    if(getHeroHealthXML.responseText == "Error") {
+      //display error
+    }else{
+      newHP = getHeroHealthXML.responseText;
+      document.getElementById('healthBar-' + heroID).style.width = ((newHP / maxHP) * 100) + '%';
+      document.getElementById('healthBar-' + heroID).innerHTML = newHP + 'HP/'+maxHP+'HP';
+      if(newHP < maxHP) { setTimeout(updateHealthBar(heroID, maxHP), 1000); }
+    }
+  }
+}
+</script>
+
 <div class="container-fluid">
 <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp"><span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp</a><br />
 {if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
@@ -9,12 +33,6 @@
 			<th>HP</th>
 			<th>Level</th>
 			<th>XP</th>
-			<!--<th>Str</th>
-			<th>Dex</th>
-			<th>Con</th>
-			<th>Int</th>
-			<th>Wis</th>
-			<th>Cha</th>-->
 			<th>Weapon</th>
 			<th>Fight</th>
 		</tr>
@@ -27,9 +45,10 @@
 			<td>
 				<div class="progress">
 					<div class="progress-bar {if $Hero->CurrentHP == $Hero->MaxHP} progress-bar-success {elseif $Hero->CurrentHP < $Hero->Con} progress-bar-danger {elseif $Hero->CurrentHP < $Hero->MaxHP} progress-bar-warning {/if}" 
-					role="progressbar" aria-valuenow="{$Hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$Hero->MaxHP}" style="width:{$Hero->CurrentHP/$Hero->MaxHP*100}%">
+					role="progressbar" aria-valuenow="{$Hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$Hero->MaxHP}" style="width:{$Hero->CurrentHP/$Hero->MaxHP*100}%" id="healthBar-{$Hero->ID}">
 						<span>{$Hero->CurrentHP}HP/{$Hero->MaxHP}HP{if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}</span>
 					</div>
+					{if $Hero->CurrentHP < $Hero->MaxHP}<script>updateHealthBar({$Hero->ID}, {$Hero->MaxHP});</script>{/if}
 				</div>
 			</td>
 			<td>{$Hero->Level}</td>
@@ -41,12 +60,6 @@
 					</div>
 				</div>
 			</td>
-			<!--<td>{$Hero->Str}</td>
-			<td>{$Hero->Dex}</td>
-			<td>{$Hero->Con}</td>
-			<td>{$Hero->Intel}</td>
-			<td>{$Hero->Wis}</td>
-			<td>{$Hero->Cha}</td>-->
 			<td><a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>
