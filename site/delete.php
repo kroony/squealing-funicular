@@ -14,7 +14,6 @@ if($Hero->GetOwner()->ID == $currentUID)
 	{
 		$Hero->GiveToUser(146);//give the Hero to the monster user @TODO stop using ID's 
 
-		$Hero->Level = -1;
 		$Hero->CurrentHP = $Hero->MaxHP;
 		
 		$newRace = Race::loadRace($Hero->Race->ID + 4); //pretty hacky
