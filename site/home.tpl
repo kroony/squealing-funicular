@@ -17,7 +17,7 @@ function updateHealthBar(heroID, maxHP)
       if(newHP < 1) { document.getElementById('healthBar-' + heroID).style.width = '0%'; }
       else { document.getElementById('healthBar-' + heroID).style.width = ((newHP / maxHP) * 100) + '%'; }
       document.getElementById('healthBar-' + heroID).innerHTML = newHP + 'HP/'+maxHP+'HP';
-      if(newHP < maxHP) { setTimeout(updateHealthBar(heroID, maxHP), 1000); }
+      if(newHP < maxHP) { setTimeout(function() { updateHealthBar(heroID, maxHP); }, 1000); }
     }
   }
 }
