@@ -16,7 +16,7 @@ function updateHealthBar(heroID, maxHP)
       newHP = getHeroHealthXML.responseText;
       if(newHP < 1) { document.getElementById('healthBar-' + heroID).style.width = '0%'; }
       else { document.getElementById('healthBar-' + heroID).style.width = ((newHP / maxHP) * 100) + '%'; }
-      document.getElementById('currentHPSpan-' + heroID).innerHTML = newHP;
+      document.getElementById('currentHPSpan-' + heroID).innerHTML = newHP+'HP/'+maxHP+'HP';
       if(newHP < maxHP) { setTimeout(function() { updateHealthBar(heroID, maxHP); }, 60000); }
     }
   }
@@ -47,7 +47,7 @@ function updateHealthBar(heroID, maxHP)
 				<div class="progress">
 					<div class="progress-bar {if $Hero->CurrentHP == $Hero->MaxHP} progress-bar-success {elseif $Hero->CurrentHP < $Hero->Con} progress-bar-danger {elseif $Hero->CurrentHP < $Hero->MaxHP} progress-bar-warning {/if}" 
 					role="progressbar" aria-valuenow="{$Hero->CurrentHP}" aria-valuemin="0" aria-valuemax="{$Hero->MaxHP}" style="width:{$Hero->CurrentHP/$Hero->MaxHP*100}%" id="healthBar-{$Hero->ID}">
-						<span><div id='currentHPSpan-{$Hero->ID}'>{$Hero->CurrentHP}</div>HP/{$Hero->MaxHP}HP{if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}</span>
+						<span id='currentHPSpan-{$Hero->ID}'>{$Hero->CurrentHP}HP/{$Hero->MaxHP}HP{if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}</span>
 					</div>
 					{if $Hero->CurrentHP < $Hero->MaxHP}<script>updateHealthBar({$Hero->ID}, {$Hero->MaxHP});</script>{/if}
 				</div>
