@@ -156,29 +156,16 @@ if(!$hero2->isAlive())//if hero 2 dies
 
 //save heroes
 $hero1->SaveHero();
-if ($hero2->Level != -1)
+
+if($hero2->CurrentXP >= $hero2->LevelUpXP)
 {
-	$hero2->SaveHero();
+  //level up
+  $preXP = $hero2->LevelUpXP;
+  $hero2->LevelUp();
+  $hero2->LevelUpXP = $preXP + 200;
 }
-else //Monster AI
-{
-  if($hero2->CurrentXP >= $hero2->LevelUpXP)
-  {
-	//level up
-	$preXP = $hero2->LevelUpXP;
-	$hero2->LevelUp();
-	$hero2->Level = -1;
-	$hero2->LevelUpXP = $preXP + 200;
-  }
-  else
-  {
-	/*if($hero2->CurrentHP > 0)//if still concious, heal
-	{
-		$hero2->CurrentHP = $hero2->MaxHP;
-	}*/
-  }
-  $hero2->SaveHero();
-}
+$hero2->SaveHero();
+
 
 if($removeNPC) { $hero2->RemoveNPC(); }
 
