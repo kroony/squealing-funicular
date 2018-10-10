@@ -9,7 +9,6 @@ function updateHealthBar(heroID, maxHP)
               
   getHeroHealthXML.send(params);
   getHeroHealthXML.onload = function() {
-    console.log(getHeroHealthXML.responseText);
     if(getHeroHealthXML.responseText == "Error") {
       //display error
     }else{
