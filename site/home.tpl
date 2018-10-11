@@ -64,7 +64,10 @@ function updateHealthBar(heroID, maxHP)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}</td>
 			<td>
 				{if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
-					{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>{/if}
+					{if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>
+					{else}
+            {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
+          {/if}
 				{else}
 					{if $Hero->StatusETA != 'None'}
 						{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
@@ -72,11 +75,7 @@ function updateHealthBar(heroID, maxHP)
 							countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
 						</script>
 					{else}
-						{if $Hero->Status == ''}
-              {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
-            {else}
-              {$Hero->Status}
-            {/if}
+            {$Hero->Status}
           {/if}
 				{/if}
 				</td>
