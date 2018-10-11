@@ -77,6 +77,7 @@ function updateHealthBar(heroID, maxHP)
             {else}
               {$Hero->Status}
             {/if}
+          {/if}
 				{/if}
 				</td>
 		</tr>
