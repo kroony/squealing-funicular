@@ -72,8 +72,11 @@ function updateHealthBar(heroID, maxHP)
 							countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
 						</script>
 					{else}
-						{$Hero->Status}
-					{/if}
+						{if $Hero->Status == ''}
+              {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
+            {else}
+              {$Hero->Status}
+            {/if}
 				{/if}
 				</td>
 		</tr>
