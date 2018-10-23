@@ -1,5 +1,5 @@
 <div style="display:inline-block; vertical-align: top;">
-	<h2>{$hero->Name}</h2>
+	<h2><a href='viewHero.php?ID={$hero->ID}'>{str_replace("'", "", $hero->Name)}</a></h2>
 	{include file='portraits/kobold.html'}
 	<br />
 	{$hero->Race->Name} {$hero->HeroClass->Name} - Level {$hero->Level}<br />
