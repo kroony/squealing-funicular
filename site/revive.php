@@ -10,4 +10,4 @@ $hero = $hero->loadHero($_REQUEST['ID']);
 $hero->revive();
 $hero->SaveHero();
 
-header("Location: home.php");
+header("Location: guild.php");
