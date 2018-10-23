@@ -13,6 +13,7 @@ class User
 	public $kills;
 	public $created;
 	public $lastSeen;
+	public $exploration;
 
 	function __construct()
 	{
@@ -46,6 +47,7 @@ class User
 		$returnUser->kills = $obj->kills;
 		$returnUser->created = new DateTime($obj->created);
 		$returnUser->lastSeen = new DateTime($obj->lastSeen);
+		$returnUser->exploration = $obj->exploration;
 		
 		return $returnUser;
 	}
@@ -60,7 +62,7 @@ class User
 	}
 	
 	function canAfford($price)
-    {
+  {
 		if($price <= $this->gold)
 		{
 			return true;
@@ -94,7 +96,8 @@ class User
 				"refererID"=>$this->refererID,
 				"deaths"=>$this->deaths,
 				"kills"=>$this->kills,
-				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'));
+				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'),
+				"exploration"=>$this->exploration);
 				
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
@@ -116,7 +119,8 @@ class User
 				"deaths"=>$this->deaths,
 				"kills"=>$this->kills,
 				"created"=>$this->created->format('Y-m-d H:i:s'),
-				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'));
+				"lastSeen"=>$this->lastSeen->format('Y-m-d H:i:s'),
+				"exploration"=>$this->exploration);
 			
 			try {
 				$db->insert("User",$row);

@@ -5,9 +5,9 @@ include_once("bootstrap.php");
 
 $db = DB::GetConn();
 /*
-print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Zombie', '0', '0', '0', '0', '0', '0', '2', '70', 'Zombies', '0');"));
+print_r($db->query("ALTER TABLE `User` ADD `exploration` BIGINT UNSIGNED NOT NULL DEFAULT '0' AFTER `lastSeen`;"));
 echo "<br /><br />";
-
+*/
 print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Skeleton', '0', '0', '2', '0', '2', '-2', '0', '140', 'Skeletons', '0');"));
 echo "<br /><br />";
 

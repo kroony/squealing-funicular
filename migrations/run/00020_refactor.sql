@@ -1,0 +1,1 @@
+ALTER TABLE `User` ADD `exploration` BIGINT UNSIGNED NOT NULL DEFAULT '0' AFTER `lastSeen`;
