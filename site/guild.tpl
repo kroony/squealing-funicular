@@ -77,7 +77,7 @@ function updateHealthBar(heroID, maxHP)
             {$Hero->Status}
           {/if}
 				{/if}
-				</td>
+			</td>
 		</tr>
 		{/foreach}
 	</tbody>
@@ -87,7 +87,26 @@ function updateHealthBar(heroID, maxHP)
   <div class="col-md-3 col-sm-6">
     {assign var="hero" value=$Hero}
     {include file='displayHeroLocation.tpl'}
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall</div>
+    <div class="weapon">Weapon - <a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
+			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
+    </div>
+    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall - 
+      {if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
+        {if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>
+        {else}
+          {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
+        {/if}
+      {else}
+        {if $Hero->StatusETA != 'None'}
+          {$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+          <script type="text/javascript">
+            countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
+          </script>
+        {else}
+          {$Hero->Status}
+        {/if}
+      {/if}
+    </div>
   </div>
 {/foreach}
 
