@@ -11,7 +11,7 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li class="{if $currentpage == "user"}active{/if}"><a href="/user.php">User{if isset($unreadMessages)}{if $unreadMessages > 0} <span class="badge">{$unreadMessages}</span>{/if}{/if}</a></li>
-				<li class="{if $currentpage == "home"}active{/if}"><a href="/home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>
+				{*<li class="{if $currentpage == "home"}active{/if}"><a href="/home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>*}
 				
 				
 				<li class="dropdown">
