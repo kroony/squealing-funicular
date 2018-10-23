@@ -20,11 +20,11 @@ else
 	$heroController = new heroController();
 
 	//menu & help
-	$smarty->assign("currentpage","home");
-	$smarty->assign("help","This page displays all the heroes you have in your guild. New heroes can be purchased using the 'hire new hero' link, provided you have enough gold.
+	$smarty->assign("currentpage","guild");
+	$smarty->assign("help","This page displays all the heroes you have resting in the guild house. New heroes can be purchased using the 'hire new hero' link, provided you have enough gold.
 						  Clicking the Fight link on a heroes row will let you send them off to fight monsters and other players heroes.
 						  Clicking a heroes name will show more detailed information about that hero.");
-	$smarty->assign("helpTitle","Heroes Page Help");
+	$smarty->assign("helpTitle","Guild Hall Page Help");
 	include_once("menu.php");
 
 	/*********  show all Hero  ***********/
