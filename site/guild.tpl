@@ -54,8 +54,7 @@ function updateHealthBar(heroID, maxHP)
 			<td>{$Hero->Level}</td>
 			<td>
 				<div class="progress">
-					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$Hero->CurrentXP}"
-					aria-valuemin="0" aria-valuemax="{$Hero->LevelUpXP}" style="width:{$Hero->CurrentXP / $Hero->LevelUpXP * 100}%">
+					<div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$Hero->CurrentXP}" aria-valuemin="0" aria-valuemax="{$Hero->LevelUpXP}" style="width:{$Hero->CurrentXP / $Hero->LevelUpXP * 100}%">
 						<span{if $Hero->canLevelUp()} style="font-weight: bold;"{/if}>{number_format($Hero->CurrentXP)}XP/{number_format($Hero->LevelUpXP)}XP</span>
 					</div>
 				</div>
@@ -85,17 +84,11 @@ function updateHealthBar(heroID, maxHP)
 </table>
 
 {foreach from=$userHeros item=Hero}
-<div class="col-md-3 col-sm-6">
-  <div class="">
-    <a class="image-thumb" href="" title="" style=""></a>
+  <div class="col-md-3 col-sm-6">
     {assign var="hero" value=$Hero}
-    {include file='displayHeroCombat.tpl'}
-    <div class="content">
-      <div class="details">Race | Class | Level | Status</div> 
-    </div>
+    {include file='displayHeroLocation.tpl'}
     <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall</div>
   </div>
-</div>
 {/foreach}
 
 
