@@ -23,6 +23,7 @@ function updateHealthBar(heroID, maxHP)
 </script>
 
 <div class="container-fluid">
+<h1>Guild Hall</h1>
 {if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
 
 
