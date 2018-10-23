@@ -37,6 +37,7 @@ else
 
 	$userHeros = $heroController->getAllForUserAtLocation($currentUID, "town");
 	$smarty->assign("currentUID",$currentUID);
+	$smarty->assign("exploration",$user->exploration);
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
