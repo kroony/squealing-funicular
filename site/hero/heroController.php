@@ -20,7 +20,7 @@ class heroController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` = $id AND `Location` = $locoation ORDER BY `ID` ASC;";
+		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` = $id AND `Location` = '$locoation' ORDER BY `ID` ASC;";
 
 		$res=$db->query($getQuery);//execute query
 		
