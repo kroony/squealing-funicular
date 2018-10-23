@@ -12,12 +12,34 @@
 			<ul class="nav navbar-nav">
 				<li class="{if $currentpage == "user"}active{/if}"><a href="/user.php">User{if isset($unreadMessages)}{if $unreadMessages > 0} <span class="badge">{$unreadMessages}</span>{/if}{/if}</a></li>
 				<li class="{if $currentpage == "home"}active{/if}"><a href="/home.php">Heroes<!-- <span class="badge">20@TODO make this actually dynamic</span>--></a></li>
+				
+				
 				<li class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Coming Soon<span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li class="{if $currentpage == "party"}active{/if}"><a href="/party.php">Parties</a></li>
-						<li class="{if $currentpage == "fightpit"}active{/if}"><a href="/fightpit.php">Fight Pit</a></li>
-					</ul>
+            <li class="{if $currentpage == "guild"}active{/if}"><a tabindex="-1" href="guild.php">Guild Hall</a></li>
+            <li class="{if $currentpage == "town"}active{/if}"><a tabindex="-1" href="Town">Town</a></li>
+            <li class="dropdown-submenu">
+              <a class="test" tabindex="-1" href="#">Coming Soon<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li class="{if $currentpage == "party"}active{/if}"><a tabindex="-1" href="/party.php">Parties</a></li>
+                <li class="{if $currentpage == "fightpit"}active{/if}"><a tabindex="-1" href="/fightpit.php">Fight Pit</a></li>
+                <li class="dropdown-submenu">
+                  <a class="test" href="#">Another dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">3rd level dropdown</a></li>
+                    <li><a href="#">3rd level dropdown</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+					
+					
+					
+					
+					
+					
 				</li>
 				<li class="{if $currentpage == "inventory"}active{/if}"><a href="/inventory.php">Inventory</a></li>
 				<li class="{if $currentpage == "leaderboard"}active{/if}"><a href="/leaderboard.php">Leaderboard</a></li>
@@ -46,3 +68,13 @@
 		</div>
 	</div>
 </nav>
+
+<script>
+$(document).ready(function(){
+  $('.dropdown-submenu a.test').on("click", function(e){
+    $(this).next('ul').toggle();
+    e.stopPropagation();
+    e.preventDefault();
+  });
+});
+</script>
