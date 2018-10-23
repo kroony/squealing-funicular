@@ -88,6 +88,8 @@ function updateHealthBar(heroID, maxHP)
 <div class="col-md-4 col-sm-6">
   <div class="">
     <a class="image-thumb" href="" title="" style=""></a>
+    {assign var="hero" value=$Hero}
+    {include file='displayHeroCombat.tpl'}
     <div class="content">
       <h2 class="title"><a href="#" title=""></a></h2>
       <div class="details">Race | Class | Level | Status</div> 
