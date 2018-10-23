@@ -36,7 +36,7 @@ else
 		$smarty->assign("canAffordHero", true);
 	}
 
-	$userHeros = $heroController->getAllForUser($currentUID);
+	$userHeros = $heroController->getAllForUserAtLocation($currentUID, "guild");
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));

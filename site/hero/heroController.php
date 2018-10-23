@@ -16,6 +16,23 @@ class heroController
 		return $cost;
 	}
 	
+	function getAllForUserAtLocation($id, $locoation)
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Hero` WHERE `OwnerID` = $id AND `Location` = $locoation ORDER BY `ID` ASC;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnHeroes = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnHeroes, Hero::loadHeroFromObject($obj));
+		}
+		return $returnHeroes;
+	}
+	
+	
 	function getAllForUser($id)
 	{
 		$db = DB::GetConn();
