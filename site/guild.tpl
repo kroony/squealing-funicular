@@ -113,4 +113,38 @@ function updateHealthBar(heroID, maxHP)
 {/foreach}
 
 
+
+
+
+
+
+  <div class="col-md-3 col-sm-6">
+    <div style="display:inline-block; vertical-align: top;">
+      <h2>Recruitment</h2>
+      <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp"><span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp</a>
+      <br />
+      {$hero->Race->Name} {$hero->HeroClass->Name} - Level {$hero->Level}<br />
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width:100%">
+          <span>?HP/?HP</span>
+        </div>
+      </div>
+      <br />
+      <div class="progress">
+        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width:100%">
+          <span>0XP/?XP</span>
+        </div>
+      </div>
+    </div>
+    <div class="weapon">Weapon - ???</div>
+    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Hire New Hero</div>
+  </div>
+
+
+
+
+
+
+
+
 </div>
