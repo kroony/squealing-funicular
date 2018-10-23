@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("ALTER TABLE `User` ADD `exploration` BIGINT UNSIGNED NOT NULL DEFAULT '0' AFTER `lastSeen`;"));
 echo "<br /><br />";
 /*
