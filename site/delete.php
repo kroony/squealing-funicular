@@ -25,7 +25,7 @@ if($Hero->GetOwner()->ID == $currentUID)
 		
 		$Hero->SaveHero();
 
-		header("Location: home.php");
+		header("Location: guild.php");
 	}
 	else
 	{
