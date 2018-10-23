@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("ALTER TABLE `Hero` ADD `Location` TINYTEXT NOT NULL AFTER `DateOfBirth`;"));
 echo "<br /><br />";
 /*
