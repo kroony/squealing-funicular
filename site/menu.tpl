@@ -17,8 +17,8 @@
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-            <li class="{if $currentpage == "guild"}active{/if}"><a tabindex="-1" href="guild.php">Guild Hall</a></li>
-            <li class="{if $currentpage == "town"}active{/if}"><a tabindex="-1" href="Town">Town</a></li>
+            <li class="{if $currentpage == "guild"}active{/if}"><a tabindex="-1" href="/guild.php">Guild Hall</a></li>
+            <li class="{if $currentpage == "town"}active{/if}"><a tabindex="-1" href="/town.php">Town</a></li>
             <li class="dropdown-submenu">
               <a class="test" tabindex="-1" href="#">Coming Soon<span class="caret"></span></a>
               <ul class="dropdown-menu">
