@@ -121,7 +121,9 @@ function updateHealthBar(heroID, maxHP)
   <div class="col-md-3 col-sm-6">
     <div style="display:inline-block; vertical-align: top;">
       <h2>Recruitment</h2>
-      <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp"><span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp</a>
+      <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp" style="width: 300px; height: 250px; display: table-cell;">
+        <span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp
+      </a>
       <br />
       {$hero->Race->Name} {$hero->HeroClass->Name} - Level {$hero->Level}<br />
       <div class="progress">
