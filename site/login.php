@@ -25,7 +25,7 @@ else
 				$_SESSION['userID'] = $obj->ID;
 				userController::loginUser($_SESSION['userID']);
 				$smarty->assign("result","success");
-				header( 'Location: home.php' );
+				header( 'Location: guild.php' );
 				exit(0);
 			}
 		}
@@ -35,7 +35,7 @@ else
 			$_SESSION['userID'] = $obj->ID;
 			userController::loginUser($_SESSION['userID']);
 			$smarty->assign("result","success");
-			header( 'Location: home.php' );
+			header( 'Location: guild.php' );
 			exit(0);
 		}
 		$smarty->assign("result","login_error");
