@@ -1,0 +1,1 @@
+ALTER TABLE `Hero` ADD `Location` TINYTEXT NOT NULL AFTER `DateOfBirth`;

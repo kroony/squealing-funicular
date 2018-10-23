@@ -4,8 +4,8 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("ALTER TABLE `User` ADD `exploration` BIGINT UNSIGNED NOT NULL DEFAULT '0' AFTER `lastSeen`;"));
+
+print_r($db->query("ALTER TABLE `Hero` ADD `Location` TINYTEXT NOT NULL AFTER `DateOfBirth`;"));
 echo "<br /><br />";
 /*
 print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Skeleton', '0', '0', '2', '0', '2', '-2', '0', '140', 'Skeletons', '0');"));

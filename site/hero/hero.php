@@ -35,6 +35,7 @@ class Hero
 	public $DateOfBirth;
 	public $Age;
 	public $StatusETA;
+	public $Location;
 
 	function __construct()
 	{
@@ -99,6 +100,14 @@ class Hero
 		if(substr($returnHero->StatusETA, 0, 1) == '+')
 		{
 			$returnHero->StatusETA = "None";
+		}
+		
+		$returnHero->Location = $obj->Location;
+		
+		if($returnHero->Location == "")
+		{
+      $returnHero->Location = "guild";
+      $returnHero->SaveHero();
 		}
 		
 		return $returnHero;
@@ -217,6 +226,7 @@ class Hero
 		//status time has to be a datetime to save and Status is empty
 		$this->Status = "";
 		$this->StatusTime = new DateTime('now');
+		$this->Location = "guild";
 	}
 	
 	function generateStartingWeapon()
@@ -577,7 +587,8 @@ class Hero
 				"Kills"=>$this->Kills,
 				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'),
 				"Status"=>$this->Status,
-				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'));
+				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'),
+				"Location"=>$this->Location);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Hero", $row, $where);
@@ -610,7 +621,8 @@ class Hero
 				"Kills"=>$this->Kills,
 				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'),
 				"Status"=>$this->Status,
-				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'));
+				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'),
+				"Location"=>$this->Location);
 			
 			try {
 				$db->insert("Hero",$row);
