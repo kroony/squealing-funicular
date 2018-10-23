@@ -85,16 +85,15 @@ function updateHealthBar(heroID, maxHP)
 </table>
 
 {foreach from=$userHeros item=Hero}
-<div class="col-md-4 col-sm-6">
+<div class="col-md-3 col-sm-6">
   <div class="">
     <a class="image-thumb" href="" title="" style=""></a>
     {assign var="hero" value=$Hero}
     {include file='displayHeroCombat.tpl'}
     <div class="content">
-      <h2 class="title"><a href="#" title=""></a></h2>
       <div class="details">Race | Class | Level | Status</div> 
     </div>
-    <div class="location"><i class="fa fa-fw fa-map-marker"></i> Location</div>
+    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall</div>
   </div>
 </div>
 {/foreach}
