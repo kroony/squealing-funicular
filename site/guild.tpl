@@ -25,6 +25,7 @@ function updateHealthBar(heroID, maxHP)
 <div class="container-fluid">
 <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp"><span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp</a><br />
 {if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
+{*
 <table class='table table-hover'>
 	<thead>
 		<tr>
@@ -82,6 +83,7 @@ function updateHealthBar(heroID, maxHP)
 		{/foreach}
 	</tbody>
 </table>
+*}
 
 {foreach from=$userHeros item=Hero}
   <div class="col-md-3 col-sm-6">
