@@ -23,7 +23,11 @@ function updateHealthBar(heroID, maxHP)
 </script>
 
 <div class="container-fluid">
-<h1>Town</h1>
+  <h1>Town</h1>
+  <div class="well">All your heroes exploring town help to finding new locations, but while in town they run the risk of being attacked.</div>
+</div>
+
+<div class="container-fluid">
 {if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
 <div class="col-md-12 col-sm-12">
   <div class="progress">

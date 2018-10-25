@@ -41,14 +41,14 @@ else
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
-	if(count($userHeros) == 0)//if they have no heroes show the intro page
+	/*if(count($userHeros) == 0)//if they have no heroes show the intro page
 	{
 		$smarty->display("guildEmpty.tpl");
 	}
 	else
-	{
+	{*/
 		$smarty->display("guild.tpl");
-	}
+	//}
 	
 	/*********  end show all Hero  ***********/
 }
