@@ -494,6 +494,12 @@ class Hero
 		$roll = rand(1,20) + $this->calculateAttributeBonus($this->Intel);
 		return $roll;
 	}
+	
+	function rollExplore()
+	{
+    $roll = rand(1,20) + $this->calculateAttributeBonus($this->Intel) + rand(1, max(1, $this->calculateAttributeBonus($this->Fte)));
+    return $roll;
+	}
 
 	function revive()
 	{

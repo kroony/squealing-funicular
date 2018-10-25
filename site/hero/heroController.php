@@ -181,6 +181,22 @@ class heroController
 		}
 		return $enemys;
 	}
+	
+	function getAllInTown()
+	{
+		$db = DB::GetConn();
+		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `Location` = 'town';"; 
+		$res = $db->query($getQuery);
+
+		$townies = array();
+		while($obj = $res->fetchObject())
+		{
+			$townie = new Hero();
+			$townie = $townie->loadHeroFromObject($obj);
+			$townies[] = $townie;
+		}
+		return $townies;
+	}
 
 	function performGlobalHealing($rate)
 	{

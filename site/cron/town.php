@@ -5,18 +5,31 @@ require_once("includes/database.class.php");
 include_once("hero/heroController.php");
 
 $heroController = new heroController();
+$userController = new userController();
+
+$townies = $heroController->getAllInTown(); //get all heroes in town
+
+$tmpUser = new User();
+
+foreach($townies as $hero)
+{
+  //TODO:make sure they are not travelling
+  
+  $randomOutcome = rand(1,100);
+  
+  if($randomOutcome <= 50)
+  {
+    //explore - perception check + luck add to user exploration
+    $tmpUser->load($hero->OwnerID);
+    $tmpUser->addExploration();
+  } else if($randomOutcome > 50 && $randomOutcome <= 60) {
+    //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
+  } else {
+    //nothing - nothing
+  }
+}
 
 /*
-find all heros in town
-
-calc instance -  reward 0.5 / fight 0.1 / nothing 0.4 
-
-reward - perception check + luck add to user exploration
-fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
-nothing - nothing
-
-
-/********************
   $Town = new Location();
   $Town->Name = "Town";
   $Town->Description = "The town where your guild is located.";

@@ -82,6 +82,13 @@ class User
 		$this->Save();
 	}
 	
+	function addExploration($amount)
+	{
+    $this->exploration += $amount;
+    $this->Save();
+    return $this;
+	}
+	
 	function Save()
 	{
 		$db = DB::GetConn();
