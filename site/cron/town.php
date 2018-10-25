@@ -21,7 +21,7 @@ foreach($townies as $hero)
   {
     //explore - perception check + luck add to user exploration
     $tmpUser->load($hero->OwnerID);
-    $tmpUser->addExploration($hero->rollExploration());
+    $tmpUser->addExploration($hero->rollExplore());
   } else if($randomOutcome > 50 && $randomOutcome <= 60) {
     //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
   } else {
