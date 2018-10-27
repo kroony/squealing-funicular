@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("UPDATE `Location` SET `distance` = '1' WHERE `Location`.`ID` = 3;"));
 echo "<br /><br />";
 /*
