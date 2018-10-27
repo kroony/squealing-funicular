@@ -55,7 +55,6 @@
     <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP{if $hero->CurrentXP >= $hero->LevelUpXP && ($hero->Status == "" || $hero->Status == "No Status") && $hero->Location == "guild"} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
   </div>
 </div>
-{print_r($hero->Status)}
 {if isset($OldXP)}
 	<script type="text/javascript">
 		UpdateBar("XPBar", 0, {$hero->CurrentXP});

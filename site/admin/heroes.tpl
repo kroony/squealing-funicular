@@ -58,9 +58,9 @@
 			</td>
 			<td>{$Hero->Age}</td>
 			<td>{$Hero->Location->Name}</td>
-			<td>{if $Hero->Status == "" || $Hero->Status == null}
-					{if $Hero->CurrentHP > 0}No Status{/if}
-				{else}
+			<td>{$Hero->Status} - {if $Hero->Status == "" || $Hero->Status == null}
+            {if $Hero->CurrentHP > 0}No Status{/if}
+          {else}
 					{if $Hero->StatusETA != 'None'}
 						{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
 						<script type="text/javascript">
