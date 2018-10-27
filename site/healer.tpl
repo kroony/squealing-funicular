@@ -22,8 +22,8 @@ function updateHealthBar(heroID, maxHP)
 }
 </script>
 <div class="container-fluid">
-  <h1>Guild Hall</h1>
-  <div class="well">All your heroes are safe in the guild hall, this is a good place to be while resting up for more adventuring.</div>
+  <h1>Healer</h1>
+  <div class="well">The town's local healer, heroes located at the healer will recover HP at twice the rate. Occasionally the Healer will ask for a donation, dismissing anyone that cant afford to pay.</div>
 </div>
 
 <div class="container-fluid">
@@ -60,32 +60,4 @@ function updateHealthBar(heroID, maxHP)
 {/foreach}
 
 
-
-
-
-
-
-  <div class="col-md-3 col-sm-6">
-    <div style="display:inline-block; vertical-align: top;">
-      <h2>Recruitment</h2>
-      <a href="addNew.php?level=1" class="btn btn-success {if !isset($canAffordHero)}disabled{/if}" data-toggle="tooltip" title="Hire a new hero for {$newHeroCost}gp" style="width: 300px; height: 250px; display: table-cell;">
-        <span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp
-      </a>
-      <br />
-      Random Race and Class - Level 1<br />
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width:100%">
-          <span>?HP/?HP</span>
-        </div>
-      </div>
-      <br />
-      <div class="progress">
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width:100%">
-          <span>0XP/?XP</span>
-        </div>
-      </div>
-    </div>
-    <div class="weapon">Weapon - ???</div>
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Hire New Hero</div>
-  </div>
 </div>
