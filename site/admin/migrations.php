@@ -4,16 +4,35 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("ALTER TABLE `Hero` ADD `Location` TINYTEXT NOT NULL AFTER `DateOfBirth`;"));
-echo "<br /><br />";
-/*
-print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Skeleton', '0', '0', '2', '0', '2', '-2', '0', '140', 'Skeletons', '0');"));
+
+print_r($db->query("CREATE TABLE `Location` (
+  `ID` int(11) NOT NULL,
+  `name` tinytext NOT NULL,
+  `description` text NOT NULL,
+  `requiredExploration` bigint(20) UNSIGNED NOT NULL,
+  `minLevel` tinyint(4) NOT NULL,
+  `maxLevel` tinyint(4) NOT NULL,
+  `rewardType` tinytext NOT NULL,
+  `rewardChance` decimal(10,0) NOT NULL,
+  `NPCFightChance` decimal(10,0) NOT NULL,
+  `NPCList` tinytext NOT NULL,
+  `distance` smallint(5) UNSIGNED NOT NULL,
+  `cost` smallint(6) NOT NULL,
+  `costChance` decimal(10,0) NOT NULL,
+  `linkHidden` tinyint(1) NOT NULL,
+  `URL` tinytext NOT NULL,
+  `pageName` tinytext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;"));
 echo "<br /><br />";
 
-print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Ghoul', '0', '2', '-2', '2', '0', '0', '0', '250', 'Ghouls', '0');"));
+print_r($db->query("ALTER TABLE `Location`
+  ADD PRIMARY KEY (`ID`);"));
 echo "<br /><br />";
 
+print_r($db->query("ALTER TABLE `Location`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;"));
+echo "<br /><br />";
+/*
 print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Ghost', '-2', '2', '0', '0', '0', '2', '0', '100', 'Ghosts', '0');"));
 echo "<br /><br />";
 */

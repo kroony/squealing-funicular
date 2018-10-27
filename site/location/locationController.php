@@ -21,8 +21,10 @@ class locationController
     $Guild->RewardType = "None";
     $Guild->RewardChance = 0;
     $Guild->NPCFightChance = 0;
+    $Guild->NPCList = '';
     $Guild->Distance = 0;
     $Guild->Cost = 0;
+    $Town->CostChance = 0;
     $Guild->Hidden = false;
     $Guild->Page = "guild.php";
     $Guild->PageName = "Guild Hall";
@@ -39,8 +41,10 @@ class locationController
     $Town->RewardType = "Town-Exploration";
     $Town->RewardChance = 0.5;
     $Town->NPCFightChance = 0.1;
+    $Guild->NPCList = '';
     $Town->Distance = 0;
     $Town->Cost = 0;
+    $Town->CostChance = 0;
     $Town->Hidden = false;
     $Town->Page = "town.php";
     $Town->PageName = "Town";
@@ -57,8 +61,10 @@ class locationController
     $Healer->RewardType = "None";
     $Healer->RewardChance = 0;
     $Healer->NPCFightChance = 0;
+    $Guild->NPCList = '';
     $Healer->Distance = 30;
     $Healer->Cost = 0;
+    $Town->CostChance = 0.1;
     $Healer->Hidden = false;
     $Healer->Page = "healer.php";
     $Healer->PageName = "Healer";
