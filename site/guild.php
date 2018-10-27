@@ -2,7 +2,7 @@
 
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
-include_once("hero/locationController.php");
+include_once("location/locationController.php");
 
 //check password is nolonger 'pass'
 include_once("user/user.php");
