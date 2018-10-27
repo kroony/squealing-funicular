@@ -21,6 +21,11 @@ include_once("location/locationController.php");
 $locationController = new locationController();
 $unlockedLocations = $locationController->getUnlockedLocations($user->exploration);
 
+if ($smarty->get_template_vars('currentpage') === null) 
+{
+   $smarty->assign('currentpage', '');
+}
+
 $smarty->assign("unlockedLocations", $unlockedLocations);
 $smarty->assign("unreadMessages", $unreadMessages);
 $smarty->assign("currentUserGold",User::load($currentUID)->gold);
