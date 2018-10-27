@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("ALTER TABLE `Location` CHANGE `NPCFightChance` `NPCFightChance` FLOAT NOT NULL;"));
 echo "<br /><br />";
 
