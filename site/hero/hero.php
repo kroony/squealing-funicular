@@ -63,8 +63,8 @@ class Hero
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 		$returnHero = Hero::loadHeroFromObject($obj);
-		$returnHero->checkFightCooldown();
-        return $returnHero;
+		$returnHero = $returnHero->checkFightCooldown();
+    return $returnHero;
     }
 
 	function loadHeroFromObject($obj)
@@ -110,8 +110,8 @@ class Hero
       $returnHero->Location = Location::load(1);
       $returnHero->SaveHero();
     }
-		
-		return $returnHero;
+    
+    $returnHero = $returnHero->checkStatus();
 	}
 	
 	function checkFightCooldown()
@@ -120,7 +120,9 @@ class Hero
 		{
 			$this->Status = "";
 			$this->SaveHero();
+			return loadHero($this->ID);
 		}
+		return $this;
 	}
 	
 	function startAttributeTrain($attribute)

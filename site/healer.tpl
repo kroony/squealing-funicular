@@ -38,12 +38,12 @@ function updateHealthBar(heroID, maxHP)
     <div class="weapon">Weapon - <a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
     </div>
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> {$Hero->Location->Name} - 
+    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall - 
       {if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
         {if $Hero->CurrentHP > 0}
           <a href='moveHero.php?ID={$Hero->ID}&dest=2'>Explore Town</a>
         {else}
-          {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{/if}
+          {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
