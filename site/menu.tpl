@@ -20,8 +20,6 @@
             {foreach $unlockedLocations as $location}
             <li{if $currentpage == $location->PageName} class="active"{/if}><a tabindex="-1" href="/{$location->URL}">{$location->Name}</a></li>
             {/foreach}
-            <li class="{if $currentpage == "guild"}active{/if}"><a tabindex="-1" href="/guild.php">Guild Hall</a></li>
-            <li class="{if $currentpage == "town"}active{/if}"><a tabindex="-1" href="/town.php">Town</a></li>
             <li class="dropdown-submenu">
               <a class="test" tabindex="-1" href="#">Coming Soon<span class="caret"></span></a>
               <ul class="dropdown-menu">
