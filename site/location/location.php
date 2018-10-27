@@ -37,7 +37,7 @@ class Location
 
 	function loadLocationFromObject($obj)
   {
-		$returnLocation = new User();
+		$returnLocation = new Location();
 		
 		$returnLocation->ID = $obj->ID;
 		$returnLocation->Name =  $obj->name;
