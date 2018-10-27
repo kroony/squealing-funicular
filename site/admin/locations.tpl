@@ -4,15 +4,19 @@
 		<tr>
       <th>ID</th>
 			<th>Name</th>
-      <th>StrBon</th>
-      <th>DexBon</th>
-      <th>ConBon</th>
-      <th>IntelBon</th>
-      <th>WisBon</th>
-      <th>ChaBon</th>
-      <th>FteBon</th>
-      <th>OldAge</th>
-      <th>Description</th>
+      <th>Explore</th>
+      <th>MinLvl</th>
+      <th>MaxLvl</th>
+      <th>RewardType</th>
+      <th>RewardChance</th>
+      <th>NPCFightChance</th>
+      <th>NPCList</th>
+      <th>Distance</th>
+      <th>Cost</th>
+      <th>CostChance</th>
+      <th>Hidden</th>
+      <th>URL</th>
+      <th>PageName</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -20,15 +24,19 @@
 		<tr>
       <td>{$Location->ID}</td>
 			<td>{$Location->Name}</td>
-      <td>{$Location->StrBon}</td>
-      <td>{$Location->DexBon}</td>
-      <td>{$Location->ConBon}</td>
-      <td>{$Location->IntelBon}</td>
-      <td>{$Location->WisBon}</td>
-      <td>{$Location->ChaBon}</td>
-      <td>{$Location->FteBon}</td>
-      <td>{$Location->OldAge}</td>
-      <td>{$Location->Description}</td>
+      <td>{$Location->RequiredExploration}</td>
+      <td>{$Location->MinLevel}</td>
+      <td>{$Location->MaxLevel}</td>
+      <td>{$Location->RewardType}</td>
+      <td>{$Location->RewardChance}</td>
+      <td>{$Location->NPCFightChance}</td>
+      <td>{$Location->NPCList}</td>
+      <td>{$Location->Distance}</td>
+      <td>{$Location->Cost}</td>
+      <td>{$Location->CostChance}</td>
+      <td>{$Location->Hidden}</td>
+      <td>{$Location->URL}</td>
+      <td>{$Location->PageName}</td>
 		</tr>
 		{/foreach}
 	</tbody>
