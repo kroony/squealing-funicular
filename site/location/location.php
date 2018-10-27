@@ -25,6 +25,10 @@ class Location
 	//load Location from DB 
 	function load($ID)
 	{
+    //fix
+    if($ID == "guild") { $ID = 1; }
+		if($ID == "town") { $ID = 2; }
+    
 		//check ID is not blank and exists and such
 		$db = DB::GetConn();
 

@@ -3,6 +3,7 @@ include_once("fightLog.php");
 include_once("race.php");
 include_once("heroClass.php");
 include_once("weapon.php");
+include_once("location/location.php");
 
 class Hero
 /*
@@ -102,20 +103,7 @@ class Hero
 			$returnHero->StatusETA = "None";
 		}
 		
-		$returnHero->Location = $obj->Location;
-		
-		if($returnHero->Location == "guild")
-		{
-      $returnHero->Location = 1;
-      $returnHero->SaveHero();
-		}
-		
-		if($returnHero->Location == "town")
-		{
-      $returnHero->Location = 2;
-      $returnHero->SaveHero();
-		}
-		
+		$returnHero->Location = Location::load($obj->Location);
 		
 		return $returnHero;
 	}
@@ -592,7 +580,7 @@ class Hero
 				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'),
 				"Status"=>$this->Status,
 				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'),
-				"Location"=>$this->Location);
+				"Location"=>$this->Location->ID);
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
 				$db->update("Hero", $row, $where);
@@ -626,7 +614,7 @@ class Hero
 				"DateOfBirth"=>$this->DateOfBirth->format('Y-m-d H:i:s'),
 				"Status"=>$this->Status,
 				"StatusTime"=>$this->StatusTime->format('Y-m-d H:i:s'),
-				"Location"=>$this->Location);
+				"Location"=>$this->Location->ID);
 			
 			try {
 				$db->insert("Hero",$row);
