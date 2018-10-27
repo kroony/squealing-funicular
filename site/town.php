@@ -35,7 +35,7 @@ else
 		$smarty->assign("canAffordHero", true);
 	}
 
-	$userHeros = $heroController->getAllForUserAtLocation($currentUID, "town");
+	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 2);
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("exploration",$user->exploration);
 	$smarty->assign("userHeros",$userHeros);
