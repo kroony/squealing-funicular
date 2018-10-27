@@ -24,7 +24,7 @@ foreach($townies as $hero)
       //explore - perception check + luck add to user exploration
       $tmpUser = $tmpUser->load($hero->OwnerID);
       $hero->addXP(0,1);//add 1XP for exploring
-      $hero = $hero->SaveHero();
+      $hero->SaveHero();
       $tmpUser = $tmpUser->addExploration($hero->rollExplore());
       
     } else if($randomOutcome > 50 && $randomOutcome <= 60) {
