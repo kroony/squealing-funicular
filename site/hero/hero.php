@@ -104,11 +104,18 @@ class Hero
 		
 		$returnHero->Location = $obj->Location;
 		
-		if($returnHero->Location == "")
+		if($returnHero->Location == "guild")
 		{
-      $returnHero->Location = "guild";
+      $returnHero->Location = 1;
       $returnHero->SaveHero();
 		}
+		
+		if($returnHero->Location == "town")
+		{
+      $returnHero->Location = 2;
+      $returnHero->SaveHero();
+		}
+		
 		
 		return $returnHero;
 	}
