@@ -14,6 +14,11 @@ $currentTime = new DateTime('now');
 
 $hero = new Hero();
 $hero = $hero->loadHero($_REQUEST['ID']);
+if($hero->Status != "")
+{
+  header("Location: guild.php?message=This hero is busy");
+  exit;
+}
 
 
 if(!isset($_REQUEST['dest']))
@@ -22,28 +27,38 @@ if(!isset($_REQUEST['dest']))
   exit;
 }
 
-$destination = $_REQUEST['dest'];
+include_once("location/locationController.php");
+$locationController = new LocationController();
 
-if($hero->Status != "")
+$destination = Location::load($_REQUEST['dest']);
+$unlockedLocations = $locationController->getUnlockedLocations($user->exploration);
+
+$found = false;
+foreach($unlockedLocations as $location)
 {
-  header("Location: guild.php?message=This hero is busy");
-  exit;
-} else {
-  //destination picker
-  if($destination == 2)
-  {
-    $hero->Location = 2;
-    $hero->SaveHero();
-    header("Location: town.php");
-    exit;
-  } else if($destination == 1) {
-    $hero->Location = 1;
-    $hero->SaveHero();
-    header("Location: guild.php");
-    exit;
-  }
-  header("Location: guild.php?message=Bad Destination");
+  if($location->ID == $destination->ID) { $found = true; }
+}
+
+if(!$found)
+{
+  header("Location: guild.php?message=Destination not Found");
   exit;
 }
+
+
+$travelDistance = max($hero->Location->Distance, $destination->Distance) - min($hero->Location->Distance, $destination->Distance);
+
+if($travelDistance > 0)
+{
+  $hero->Status = "Traveling";
+  $hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $travelDistance))));
+}
+
+
+$hero->Location = $destination;
+$hero->SaveHero();
+
+header("Location: " . $hero->Location->URL);
+exit;
 ?>
 
