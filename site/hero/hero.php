@@ -520,17 +520,8 @@ class Hero
 	{
 		if (!$this->isAlive()) {return false;}//are they alive
 		if ($this->CurrentHP <= 0) {return false;}//are they concious
-		if ($this->Status != "")//are they doing anything time based
-		{
-			if(($this->Status == "Fight Cooldown" && $this->StatusETA == "None") || $this->Status == "Fight Cooldown A")
-			{
-				return true;
-			}
-			
-			return false;
-		}
-		
-		return true;
+		if ($this->Location == "town" || $this->OwnerID == 146) { return true; }
+		return false;
 	}
 
 	function GenerateAtribute($bonus)

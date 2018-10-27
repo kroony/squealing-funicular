@@ -161,11 +161,7 @@ class heroController
                     WHERE `OwnerID` <> $id AND
                     `Location` = 'town' AND
                     `Level` BETWEEN $low_level AND $high_level AND
-                    (
-                      (`Status` = '' AND `CurrentHP` = `MaxHP`) OR 
-                      (`Status` = 'Fight Cooldown' AND  `CurrentHP` = `MaxHP`) OR 
-                      (`Status` = 'Fight Cooldown A' AND `CurrentHP` > 0)
-                    )
+                    `CurrentHP` > 0
                   )
                   UNION
                   (SELECT Hero.* FROM `Hero` WHERE `OwnerID` = 146 AND `CurrentHP` = `MaxHP` AND `Level` = -1 ORDER BY RAND() LIMIT 30)
