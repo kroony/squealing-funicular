@@ -61,7 +61,7 @@ class locationController
     $Healer->RewardType = "None";
     $Healer->RewardChance = 0;
     $Healer->NPCFightChance = 0;
-    $Guild->NPCList = '';
+    $Healer->NPCList = '';
     $Healer->Distance = 30;
     $Healer->Cost = 0;
     $Healer->CostChance = 0.1;

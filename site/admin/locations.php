@@ -1,6 +1,8 @@
 <?php
 chdir("../");
 
+include_once("bootstrap.php");
+
 $db = DB::GetConn();
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Guild Hall', 'All your heroes are safe in the guild hall, this is a good place to be while resting up for more adventuring.', '0', '0', '127', 'none', '0', '0', '', '0', '0', '0', '0', 'guild.php', 'guild');"));
 echo "<br /><br />";
