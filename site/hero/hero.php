@@ -120,7 +120,7 @@ class Hero
 		{
 			$this->Status = "";
 			$this->SaveHero();
-			return loadHero($this->ID);
+			return Hero::loadHero($this->ID);
 		}
 		return $this;
 	}
