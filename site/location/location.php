@@ -11,7 +11,7 @@ class Location
 	public $RewardChance;
 	public $NPCFightChance;
 	public $NPCList;
-	public $Distance; //distance from guild hall in seconds
+	public $Distance; //distance from guild hall in minutes
 	public $Cost;
 	public $CostChance;
 	public $LinkHidden;

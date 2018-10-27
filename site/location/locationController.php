@@ -16,11 +16,6 @@ class locationController
     //fight pits
 	}
 	
-	function isUnlockedForUser($locationName)
-	{
-    
-	}
-	
 	function getAllLocations()
 	{
 		$db = DB::GetConn();
