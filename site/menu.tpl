@@ -18,7 +18,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Locations<span class="caret"></span></a>
 					<ul class="dropdown-menu">
             {foreach $unlockedLocations as $location}
-            <li class="{if $currentpage == "{$location->PageName}"active{/if}"><a tabindex="-1" href="/{$location->URL}">{$location->Name}</a></li>
+            <li{if $currentpage == $location->PageName} class="active"{/if}><a tabindex="-1" href="/{$location->URL}">{$location->Name}</a></li>
             {/foreach}
             <li class="{if $currentpage == "guild"}active{/if}"><a tabindex="-1" href="/guild.php">Guild Hall</a></li>
             <li class="{if $currentpage == "town"}active{/if}"><a tabindex="-1" href="/town.php">Town</a></li>
