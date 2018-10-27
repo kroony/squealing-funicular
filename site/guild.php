@@ -2,6 +2,7 @@
 
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
+include_once("hero/locationController.php");
 
 //check password is nolonger 'pass'
 include_once("user/user.php");
@@ -41,14 +42,10 @@ else
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
-	/*if(count($userHeros) == 0)//if they have no heroes show the intro page
-	{
-		$smarty->display("guildEmpty.tpl");
-	}
-	else
-	{*/
-		$smarty->display("guild.tpl");
-	//}
+	$locationController = new locationController();
+	print_r($locationController->AllLocations);
+	
+	$smarty->display("guild.tpl");
 	
 	/*********  end show all Hero  ***********/
 }
