@@ -32,7 +32,7 @@ function updateHealthBar(heroID, maxHP)
 <div class="col-md-12 col-sm-12">
   <div class="progress">
     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$exploration}" aria-valuemin="0" aria-valuemax="5000" style="width:{$exploration / 5000 * 100}%">
-      <span>{$exploration}/5000</span>
+      <span>{number_format($exploration)}/5000</span>
     </div>
   </div>
 </div>
