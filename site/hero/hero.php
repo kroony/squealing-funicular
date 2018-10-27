@@ -111,7 +111,7 @@ class Hero
       $returnHero->SaveHero();
     }
     
-    $returnHero = $returnHero->checkStatus();
+    return $returnHero;
 	}
 	
 	function checkFightCooldown()
