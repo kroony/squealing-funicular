@@ -41,7 +41,7 @@ function updateHealthBar(heroID, maxHP)
     <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Guild Hall - 
       {if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
         {if $Hero->CurrentHP > 0}
-          <a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a> - <a href='moveHero.php?ID={$Hero->ID}&dest=town'>Explore Town</a>
+          <a href='moveHero.php?ID={$Hero->ID}&dest=town'>Explore Town</a>
         {else}
           {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
         {/if}

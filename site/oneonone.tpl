@@ -33,7 +33,7 @@
 				{$hero2_name} looted {$WeaponLost->Name} from {$hero1_name}<br />
 			{/if}
 			
-			<a href="guild.php">Return</a>
+			<a href="town.php">Return</a>
 		</div>
 		<div class="col-sm-3">
 			{assign var="hero" value=$hero2}
