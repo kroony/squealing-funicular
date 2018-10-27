@@ -72,7 +72,7 @@ function updateHealthBar(heroID, maxHP)
         <span class="glyphicon glyphicon-eye-open"></span> Hire Hero {$newHeroCost}gp
       </a>
       <br />
-      {$hero->Race->Name} {$hero->HeroClass->Name} - Level {$hero->Level}<br />
+      Random Race and Class - Level 1<br />
       <div class="progress">
         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="1" style="width:100%">
           <span>?HP/?HP</span>
