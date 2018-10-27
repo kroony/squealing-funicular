@@ -63,7 +63,6 @@ class Hero
 		$res = $db->query($getQuery);
 		$obj = $res->fetchObject();
 		$returnHero = Hero::loadHeroFromObject($obj);
-		$returnHero = $returnHero->checkFightCooldown();
     return $returnHero;
     }
 
@@ -110,6 +109,8 @@ class Hero
       $returnHero->Location = Location::load(1);
       $returnHero->SaveHero();
     }
+    
+    $returnHero = $returnHero->checkFightCooldown();
     
     return $returnHero;
 	}

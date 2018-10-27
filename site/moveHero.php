@@ -54,7 +54,6 @@ if($travelDistance > 0)
   $hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $travelDistance))));
 }
 
-
 $hero->Location = $destination;
 $hero->SaveHero();
 
