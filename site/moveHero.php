@@ -30,14 +30,14 @@ if($hero->Status != "")
   exit;
 } else {
   //destination picker
-  if($destination == "town")
+  if($destination == 2)
   {
-    $hero->Location = "town";
+    $hero->Location = 2;
     $hero->SaveHero();
     header("Location: town.php");
     exit;
-  } else if($destination == "guild") {
-    $hero->Location = "guild";
+  } else if($destination == 1) {
+    $hero->Location = 1;
     $hero->SaveHero();
     header("Location: guild.php");
     exit;
