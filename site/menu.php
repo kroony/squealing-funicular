@@ -19,7 +19,7 @@ $user = new User();
 $user = $user->load($currentUID);
 include_once("location/locationController.php");
 $locationController = new locationController();
-$unlockedLocations = $locationController->getUnlockedLocations($user->exploration)
+$unlockedLocations = $locationController->getUnlockedLocations($user->exploration);
 
 $smarty->assign("unlockedLocations", $unlockedLocations);
 $smarty->assign("unreadMessages", $unreadMessages);
