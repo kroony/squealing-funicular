@@ -6,7 +6,7 @@ class locationController
   public $AllLocations;
   public $UnlockedLocations;
   
-  function __construct($UserExploration)
+  function __construct()
 	{
     $AllLocations = array();
     $UnlockedLocations = array();

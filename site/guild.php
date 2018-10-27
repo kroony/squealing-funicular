@@ -42,7 +42,7 @@ else
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
-	$locationController = new locationController($user->exploration);
+	$locationController = new locationController();
 	
 	$smarty->display("guild.tpl");
 	
