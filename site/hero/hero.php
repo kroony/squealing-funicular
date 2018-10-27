@@ -521,7 +521,7 @@ class Hero
 	{
 		if (!$this->isAlive()) {return false;}//are they alive
 		if ($this->CurrentHP <= 0) {return false;}//are they concious
-		if ($this->Location == "town" || $this->OwnerID == 146) { return true; }
+		if ($this->Location->ID == 2|| $this->OwnerID == 146) { return true; }
 		return false;
 	}
 
