@@ -78,7 +78,7 @@ class Location
 				"costChance"=>$this->CostChance,
 				"linkHidden"=>$this->LinkHidden,
 				"URL"=>$this->URL,
-				"pageName"=>$this->PageName;
+				"pageName"=>$this->PageName);
 				
 			$where = array($db->quoteInto("ID = ?", $this->ID));
 			try {
