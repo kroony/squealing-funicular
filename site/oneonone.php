@@ -154,12 +154,15 @@ if(!$hero2->isAlive())//if hero 2 dies
 	}
 }
 
+//move to guild if unconcious
+if($hero1->isAlive() && $hero1->HP <= 0) { $hero1->Location = "guild"; }
+if($hero2->isAlive() && $hero2->HP <= 0) { $hero2->Location = "guild"; }
+
 //save heroes
 $hero1->SaveHero();
 
-if($hero2->CurrentXP >= $hero2->LevelUpXP)
+if($hero2->CurrentXP >= $hero2->LevelUpXP && $hero2->OwnerID == 146)//level up monster
 {
-  //level up
   $preXP = $hero2->LevelUpXP;
   $hero2->LevelUp();
   $hero2->LevelUpXP = $preXP + 200;
