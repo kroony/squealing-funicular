@@ -34,7 +34,7 @@
       <td>{$Location->Distance}</td>
       <td>{$Location->Cost}</td>
       <td>{$Location->CostChance}</td>
-      <td>{$Location->Hidden}</td>
+      <td>{$Location->LinkHidden}</td>
       <td>{$Location->URL}</td>
       <td>{$Location->PageName}</td>
 		</tr>
