@@ -103,14 +103,12 @@ class Hero
 			$returnHero->StatusETA = "None";
 		}
 		
-		if($obj->Location == null || "")
+		$returnHero->Location = Location::load($obj->Location);
+		
+		if($returnHero->Location->ID == null || "")
 		{ 
       $returnHero->Location = Location::load(1);
       $returnHero->SaveHero();
-    }
-    else
-    {
-      $returnHero->Location = Location::load($obj->Location);
     }
 		
 		return $returnHero;
