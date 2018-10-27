@@ -88,6 +88,38 @@ class locationController
 	{
     
 	}
+	
+	function getAllLocations()
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Locations` ORDER BY `ID` ASC;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnLocations = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnLocations, Location::loadLocationFromObject($obj));
+		}
+		return $returnLocations;
+	}
+	
+	function getUnlockedLocations($Exploration)
+	{
+		$db = DB::GetConn();
+
+		$getQuery = "SELECT * FROM `Locations` WHERE `requiredExploration` < $Exploration ORDER BY `ID` ASC;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$returnLocations = array();
+		while($obj = $res->fetchObject())
+		{
+			array_push($returnLocations, Location::loadLocationFromObject($obj));
+		}
+		return $returnLocations;
+	}
 }
 
 ?>
