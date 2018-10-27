@@ -33,7 +33,7 @@ class User
     }
 
 	function loadUserFromObject($obj)
-    {
+  {
 		$returnUser = new User();
 		
 		$returnUser->ID = $obj->ID;
