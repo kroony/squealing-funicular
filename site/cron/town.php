@@ -15,19 +15,23 @@ foreach($townies as $hero)
 {
   //TODO:make sure they are not travelling
   
-  $randomOutcome = rand(1,100);
-  
-  if($randomOutcome <= 50)
+  if($hero->canFight())//make sure they are concious and such
   {
-    //explore - perception check + luck add to user exploration
-    $tmpUser = $tmpUser->load($hero->OwnerID);
+    $randomOutcome = rand(1,100);
     
-    $tmpUser = $tmpUser->addExploration($hero->rollExplore());
-    
-  } else if($randomOutcome > 50 && $randomOutcome <= 60) {
-    //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
-  } else {
-    //nothing - nothing
+    if($randomOutcome <= 50)
+    {
+      //explore - perception check + luck add to user exploration
+      $tmpUser = $tmpUser->load($hero->OwnerID);
+      $hero->addXP(0,1);//add 1XP for exploring
+      $hero = $hero->SaveHero();
+      $tmpUser = $tmpUser->addExploration($hero->rollExplore());
+      
+    } else if($randomOutcome > 50 && $randomOutcome <= 60) {
+      //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
+    } else {
+      //nothing - nothing
+    }
   }
 }
 
