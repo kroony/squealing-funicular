@@ -155,8 +155,8 @@ if(!$hero2->isAlive())//if hero 2 dies
 }
 
 //move to guild if unconcious
-if($hero1->isAlive() && $hero1->HP <= 0) { $hero1->Location = "guild"; }
-if($hero2->isAlive() && $hero2->HP <= 0) { $hero2->Location = "guild"; }
+if($hero1->isAlive() && $hero1->hp <= 0) { $hero1->Location = "guild"; }
+if($hero2->isAlive() && $hero2->hp <= 0) { $hero2->Location = "guild"; }
 
 //save heroes
 $hero1->SaveHero();
