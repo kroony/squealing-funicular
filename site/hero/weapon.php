@@ -105,22 +105,42 @@ class Weapon
 	
 	function calcDamageQuantityUpgradeCost()
 	{
-		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity + 1, $this->DamageDie, $this->DamageOffset, $this->CritChance);
+		//return Weapon::calcWeaponUpgradeCost($this->DamageQuantity + 1, $this->DamageDie, $this->DamageOffset, $this->CritChance);
+		$aveDieDamage = ($this->DamageDie / 2) + 0.5;
+		$aveDamage = ($aveDieDamage * ($this->DamageQuantity + 1)) + $this->DamageOffset;
+		$ave100 = $aveDamage * (100 + $this->CritChance);
+		
+		return ceil($ave100);
 	}
 	
 	function calcDamageDieUpgradeCost()
 	{
-		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie + 1, $this->DamageOffset, $this->CritChance);
+		//return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie + 1, $this->DamageOffset, $this->CritChance);
+		$aveDieDamage = (($this->DamageDie + 1) / 2) + 0.5;
+		$aveDamage = ($aveDieDamage * $this->DamageQuantity) + $this->DamageOffset;
+		$ave100 = $aveDamage * (100 + $this->CritChance);
+		
+		return ceil($ave100);
 	}
 	
 	function calcDamageOffsetUpgradeCost()
 	{
-		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset + 1, $this->CritChance);
+		//return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset + 1, $this->CritChance);
+		$aveDieDamage = ($this->DamageDie / 2) + 0.5;
+		$aveDamage = ($aveDieDamage * $this->DamageQuantity) + ($this->DamageOffset + 1);
+		$ave100 = $aveDamage * (100 + $this->CritChance);
+		
+		return ceil($ave100);
 	}
 	
 	function calcCritChanceUpgradeCost()
 	{
-		return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1) * 3.33;//crit is a little too cheap
+		//return Weapon::calcWeaponUpgradeCost($this->DamageQuantity, $this->DamageDie, $this->DamageOffset, $this->CritChance + 1) * 3.33;//crit is a little too cheap
+		$aveDieDamage = ($this->DamageDie / 2) + 0.5;
+		$aveDamage = ($aveDieDamage * $this->DamageQuantity) + $this->DamageOffset;
+		$ave100 = $aveDamage * (100 + ($this->CritChance + 1));
+		
+		return ceil($ave100);
 	}
 	
 	function getScrapValue($userChaBonus)
