@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("CREATE TABLE `Location` (
   `ID` int(11) NOT NULL,
   `name` tinytext NOT NULL,
