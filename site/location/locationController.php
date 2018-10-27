@@ -3,11 +3,14 @@ include_once("location/location.php");
 
 class locationController
 {
-  public $AllLocations = array();
-  public $UnlockedLocations = array();
+  public $AllLocations;
+  public $UnlockedLocations;
   
   function __construct($UserExploration)
 	{
+    $AllLocations = array();
+    $UnlockedLocations = array()
+    
     //Guild Hall - default heros page
     $Guild = new Location();
     $Guild->Name = "Guild Hall";
