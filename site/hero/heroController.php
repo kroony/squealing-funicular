@@ -159,7 +159,7 @@ class heroController
 		$getQuery = "	(
                     SELECT Hero.* FROM `Hero` 
                     WHERE `OwnerID` <> $id AND
-                    `Location` = 'town' AND
+                    `Location` = '2' AND
                     `Level` BETWEEN $low_level AND $high_level AND
                     `CurrentHP` > 0
                   )
