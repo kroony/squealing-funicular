@@ -4,33 +4,14 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("CREATE TABLE `Location` (
-  `ID` int(11) NOT NULL,
-  `name` tinytext NOT NULL,
-  `description` text NOT NULL,
-  `requiredExploration` bigint(20) UNSIGNED NOT NULL,
-  `minLevel` tinyint(4) NOT NULL,
-  `maxLevel` tinyint(4) NOT NULL,
-  `rewardType` tinytext NOT NULL,
-  `rewardChance` decimal(10,0) NOT NULL,
-  `NPCFightChance` decimal(10,0) NOT NULL,
-  `NPCList` tinytext NOT NULL,
-  `distance` smallint(5) UNSIGNED NOT NULL,
-  `cost` smallint(6) NOT NULL,
-  `costChance` decimal(10,0) NOT NULL,
-  `linkHidden` tinyint(1) NOT NULL,
-  `URL` tinytext NOT NULL,
-  `pageName` tinytext NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;"));
+
+print_r($db->query("ALTER TABLE `Location` CHANGE `NPCFightChance` `NPCFightChance` FLOAT NOT NULL;"));
 echo "<br /><br />";
 
-print_r($db->query("ALTER TABLE `Location`
-  ADD PRIMARY KEY (`ID`);"));
+print_r($db->query("ALTER TABLE `Location` CHANGE `rewardChance` `rewardChance` FLOAT NOT NULL;"));
 echo "<br /><br />";
 
-print_r($db->query("ALTER TABLE `Location`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;"));
+print_r($db->query("ALTER TABLE `Location` CHANGE `costChance` `costChance` FLOAT NOT NULL;"));
 echo "<br /><br />";
 /*
 print_r($db->query("INSERT INTO `Race` (`ID`, `Name`, `StrBon`, `DexBon`, `ConBon`, `IntelBon`, `WisBon`, `ChaBon`, `FteBon`, `OldAge`, `Description`, `StarterRace`) VALUES (NULL, 'Ghost', '-2', '2', '0', '0', '0', '2', '0', '100', 'Ghosts', '0');"));
