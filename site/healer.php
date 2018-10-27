@@ -21,30 +21,17 @@ else
 	$heroController = new heroController();
 
 	//menu & help
-	$smarty->assign("currentpage","guild");
-	$smarty->assign("help","This page displays all the heroes you have resting in the guild house. New heroes can be purchased using the 'hire new hero' link, provided you have enough gold.
-						  Clicking the Fight link on a heroes row will let you send them off to fight monsters and other players heroes.
-						  Clicking a heroes name will show more detailed information about that hero.");
-	$smarty->assign("helpTitle","Guild Hall Page Help");
+	$smarty->assign("currentpage","healer");
+	$smarty->assign("help","Heal things.");
+	$smarty->assign("helpTitle","Healer Page Help");
 	include_once("menu.php");
 
 	/*********  show all Hero  ***********/
-	$newHeroCost = $heroController->getCostForNextHero($currentUID);
-	$smarty->assign("newHeroCost", $newHeroCost);
-
-	if($user->canAfford($newHeroCost))
-	{
-		$smarty->assign("canAffordHero", true);
-	}
-
-	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 1);
+	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 3);
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("userHeros",$userHeros);
-	$smarty->assign("totalHeros",count($userHeros));
 	
-	$locationController = new locationController();
-	
-	$smarty->display("guild.tpl");
+	$smarty->display("healer.tpl");
 	
 	/*********  end show all Hero  ***********/
 }
