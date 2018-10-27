@@ -57,7 +57,7 @@
 				({$Hero->Weapon->CritChance}%)
 			</td>
 			<td>{$Hero->Age}</td>
-			<td>{$Hero->Location->Name}</td>
+			<td>{$Hero->Location->Name}{print_r($Hero->Location)}</td>
 			<td>{if $Hero->Status == "" || $Hero->Status == null}
 					{if $Hero->CurrentHP > 0}No Status{/if}
 				{else}
