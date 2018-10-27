@@ -2,7 +2,7 @@
 chdir("../");
 
 include_once("bootstrap.php");
-
+/*
 $db = DB::GetConn();
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Guild Hall', 'All your heroes are safe in the guild hall, this is a good place to be while resting up for more adventuring.', '0', '0', '127', 'none', '0', '0', '', '0', '0', '0', '0', 'guild.php', 'guild');"));
 echo "<br /><br />";
@@ -13,7 +13,7 @@ echo "<br /><br />";
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Healer', 'The town\'s local healer, heroes located at the healer will recover HP at twice the rate. Occasionally the Healer will ask for a donation, dismissing anyone that cant afford to pay.', '5000', '0', '127', 'none', '0', '0', '', '30', '1', '0.1', '0', 'healer.php', 'healer');"));
 echo "<br /><br />";
 
-
+*/
 include_once("bootstrap.php");
 include_once("location/locationController.php");
 
