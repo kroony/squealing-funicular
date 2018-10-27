@@ -9,7 +9,7 @@ class locationController
   function __construct($UserExploration)
 	{
     $AllLocations = array();
-    $UnlockedLocations = array()
+    $UnlockedLocations = array();
     
     //Guild Hall - default heros page
     $Guild = new Location();
