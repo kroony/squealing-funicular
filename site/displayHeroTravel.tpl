@@ -5,7 +5,8 @@
       <select class="form-control" id="moveSel{$Hero->ID}" name="dest">
         {foreach $unlockedLocations as $location}
           {if $location->PageName != $currentpage}
-          <option value="{$location->ID}">{$location->Name}</option>
+            <option value="{$location->ID}">{$location->Name}</option>
+          {/if}
         {/foreach}
       </select>
     </div>
