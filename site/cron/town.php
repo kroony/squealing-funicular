@@ -45,10 +45,10 @@ foreach($townies as $hero)
       $NPCRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(6, 12), 1, 6, 12, 6, 2, 10, 8, 10, $NPCTownRatWeapon);
       
       $NPCSewerRatWeapon = new Weapon("Bite", 146, 6, 1, 2, 5, "Str");
-      $NPCSewerRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(8, 14), 1, 8, 12, 6, 2, 10, 8, 10, $NPCSewerRatWeapon);
+      $NPCSewerRat = Hero::makeNPC("Sewer Rat", $NPCRatRace, $NPCRatHeroClass, rand(8, 14), 1, 8, 12, 6, 2, 10, 8, 10, $NPCSewerRatWeapon);
       
       $NPCDireRatWeapon = new Weapon("Bite", 146, 4, 2, 2, 5, "Str");
-      $NPCDireRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(15, 22), 1, 12, 12, 6, 2, 10, 8, 10, $NPCDireRatWeapon);
+      $NPCDireRat = Hero::makeNPC("Dire Rat", $NPCRatRace, $NPCRatHeroClass, rand(15, 22), 1, 12, 12, 6, 2, 10, 8, 10, $NPCDireRatWeapon);
       
       $NPC;
       if($hero->Level == 1)       { $NPC = $NPCRat; }
