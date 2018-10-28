@@ -139,7 +139,7 @@ class Hero
 	
 	function checkFightCooldown()
 	{
-		if($this->StatusETA == "None" && ($this->Status == "Fight Cooldown" || $this->Status == "Fight Cooldown A"))
+		if($this->StatusETA == "None" && ($this->Status == "Fight Cooldown" || $this->Status == "Fight Cooldown A" || $this->Status == "Traveling"))
 		{
 			$this->Status = "";
 			$this->SaveHero();
