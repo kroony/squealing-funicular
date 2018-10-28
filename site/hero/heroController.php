@@ -200,13 +200,13 @@ class heroController
 		$db = DB::GetConn();
 		$healLivingQuery = "UPDATE Hero
 			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * $rate)
-			WHERE CurrentHP > 0 AND CurrentHP < MaxHP";
+			WHERE CurrentHP > 0 AND CurrentHP < MaxHP and Location == 1";//guild hall
 
 		$healLivingResult=$db->query($healLivingQuery);//execute query
 		
 		$healUnconciousQuery = "UPDATE Hero
 			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.001, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * ($rate / 20))
-			WHERE CurrentHP <= 0 AND CurrentHP > -Con";
+			WHERE CurrentHP <= 0 AND CurrentHP > -Con AND Location == 1";//guild hall
 
 		$healUnconciousResult=$db->query($healUnconciousQuery);//execute query
 		
