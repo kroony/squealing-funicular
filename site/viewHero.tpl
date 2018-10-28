@@ -52,7 +52,7 @@
 <div class="progress">
   <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$hero->CurrentXP}"
   aria-valuemin="0" aria-valuemax="{$hero->LevelUpXP}" id="XPBar" style="width:{if isset($OldXP)}{$OldXP/$hero->LevelUpXP*100}{else}{$hero->CurrentXP/$hero->LevelUpXP*100}{/if}%">
-    <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP{if $hero->CurrentXP >= $hero->LevelUpXP && ($hero->Status == "" || $hero->Status == null) && $hero->Location->PageName == "guild"} <a href="viewHero.php?action=levelUp&ID={$hero->ID}">Try Level up</a>{/if}</span>
+    <span>{number_format($hero->CurrentXP)}XP/{number_format($hero->LevelUpXP)}XP</span>
   </div>
 </div>
 {if isset($OldXP)}
@@ -65,8 +65,6 @@
 	<script type="text/javascript">
 		countdown( "LevelStatusCountdown", {$hero->getStatusCountdownJSArgs()} );
 	</script>
-{elseif $hero->Status == "Level Up" && $hero->StatusETA == 'None'}
-	<a href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}">Complete Level Up!</a>
 {/if}
 <br /><br />
 <div class="row">
