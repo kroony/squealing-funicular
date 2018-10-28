@@ -201,16 +201,24 @@ class heroController
 		$healLivingQuery = "UPDATE Hero
 			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * $rate)
 			WHERE CurrentHP > 0 AND CurrentHP < MaxHP AND Location = 1";//guild hall
-
 		$healLivingResult=$db->query($healLivingQuery);//execute query
 		
 		$healUnconciousQuery = "UPDATE Hero
 			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.001, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * ($rate / 20))
 			WHERE CurrentHP <= 0 AND CurrentHP > -Con AND Location = 1";//guild hall
-
 		$healUnconciousResult=$db->query($healUnconciousQuery);//execute query
 		
-		if($healLivingResult && $healUnconciousResult)
+		$healLivingHealerQuery = "UPDATE Hero
+			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.1, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * ($rate * 2))
+			WHERE CurrentHP > 0 AND CurrentHP < MaxHP AND Location = 3";//healer
+		$healLivingHealerResult=$db->query($healLivingHealerQuery);//execute query
+		
+		$healUnconciousHealerQuery = "UPDATE Hero
+			SET CurrentHP = LEAST(MaxHP, CurrentHP + GREATEST(0.001, (Level + GREATEST(0, FLOOR((Con - 10) / 2)))) * ($rate / 10))
+			WHERE CurrentHP <= 0 AND CurrentHP > -Con AND Location = 3";//healer
+		$healUnconciousHealerResult=$db->query($healUnconciousHealerQuery);//execute query
+		
+		if($healLivingResult && $healUnconciousResult && $healLivingHealerResult && $healUnconciousHealerResult)
 		{
 			return true;
 		}
