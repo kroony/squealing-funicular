@@ -1,5 +1,4 @@
 <?php
-
 include_once("bootstrap.php");
 include_once("hero/heroController.php");
 
@@ -26,30 +25,21 @@ else
 	$smarty->assign("helpTitle","Town Page Help");
 	include_once("menu.php");
 
-	/*********  show all Hero  ***********/
-	$newHeroCost = $heroController->getCostForNextHero($currentUID);
-	$smarty->assign("newHeroCost", $newHeroCost);
-
-	if($user->canAfford($newHeroCost))
-	{
-		$smarty->assign("canAffordHero", true);
-	}
+	/*********    show Town   ***********/
+  
+  include_once("location/locationController.php");
+  $locationController = new locationController();
+  $nextLocation = $locationController->getNextLocationExploration($user->exploration);
 
 	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 2);
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("exploration",$user->exploration);
+	$smarty->assign("nextExploration", min(1000000, $nextLocation->RequiredExploration);
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
-	if(count($userHeros) == 0)//if they have no heroes show the intro page
-	{
-		$smarty->display("townEmpty.tpl");
-	}
-	else
-	{
-		$smarty->display("town.tpl");
-	}
+	$smarty->display("town.tpl");
 	
-	/*********  end show all Hero  ***********/
+	/*********  end show Town  ***********/
 }
 ?>

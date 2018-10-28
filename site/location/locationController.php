@@ -47,6 +47,18 @@ class locationController
 		}
 		return $returnLocations;
 	}
-}
+	
+	function getNextLocationExploration($Exploration)
+	{
+		$db = DB::GetConn();
 
+		$getQuery = "SELECT * FROM `Location` WHERE `requiredExploration` > $Exploration ORDER BY `requiredExploration` ASC LIMIT 1;";
+
+		$res=$db->query($getQuery);//execute query
+		
+		$obj = $res->fetchObject();
+		
+		return	Location::loadLocationFromObject($obj);
+	}
+}
 ?>
