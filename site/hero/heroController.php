@@ -178,10 +178,10 @@ class heroController
 		return $enemys;
 	}
 	
-	function getAllInTown()
+	function getAllInLocation($locationID)
 	{
 		$db = DB::GetConn();
-		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `Location` = '2';"; 
+		$getQuery = "SELECT Hero.* FROM `Hero` WHERE `Location` = '$locationID';"; 
 		$res = $db->query($getQuery);
 
 		$townies = array();

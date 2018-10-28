@@ -3,14 +3,13 @@ set_include_path("..");
 require_once("includes/database.class.php");
 include_once("user/userController.php");
 include_once("hero/heroController.php");
+include_once("location/locationController.php");
 
 $heroController = new heroController();
 $userController = new userController();
 
-$townies = $heroController->getAllInTown(); //get all heroes in town
-
+$townies = $heroController->getAllInLocation(2); //get all heroes in town
 $tmpUser = new User();
-
 foreach($townies as $hero)
 {
   echo "<br /><br />";
@@ -70,21 +69,38 @@ foreach($townies as $hero)
     }
   }
 }
-
-/*
-  $Town = new Location();
-  $Town->Name = "Town";
-  $Town->Description = "The town where your guild is located.";
-  $Town->RequiredExploration = 0;
-  $Town->MinLevel = 0;
-  $Town->MaxLevel = 5;
-  $Town->RewardType = "Town-Exploration";
-  $Town->RewardChance = 0.5;
-  $Town->NPCFightChance = 0.1;
-  $Town->Distance = 0;
-  $Town->Cost = 0;
-  $Town->Hidden = false;
-  $Town->Page = "town.php";
-  $Town->PageName = "Town";
-*/
+echo "<br /><br />";
+echo "Healing";
+echo "<br /><br />";
+$currentLocation = Location::load(3);//load healer
+$healies = $heroController->getAllInLocation($currentLocation->ID); //get all heroes in healer
+$tmpUser = new User();
+foreach($townies as $hero)
+{
+  echo "<br /><br />";
+  echo $hero->Name;
+  //TODO:make sure they are not travelling
+  $randomOutcome = rand(1,100);
+  echo "<br />";
+  echo $randomOutcome;
+  
+  if($randomOutcome <= ($currentLocation->CostChance * 100))
+  {
+    echo "<br />pay";
+    $tmpUser = $tmpUser->load($hero->OwnerID);
+    
+    if($user->canAfford($currentLocation->Cost))
+    {
+      $user->debit($currentLocation->Cost);
+      //male some hero log entry now and then
+    } else {
+      //move back to guild hall cause they are poor
+      $hero->Status = "Traveling";
+      $hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", 1))));
+      
+      $hero->Location->ID = 1;
+      $hero->SaveHero();
+    }
+  }
+}
 ?>
