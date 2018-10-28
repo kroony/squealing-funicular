@@ -13,14 +13,19 @@ $tmpUser = new User();
 
 foreach($townies as $hero)
 {
+  echo "<br /><br />";
+  echo $hero->Name;
   //TODO:make sure they are not travelling
   
   if($hero->canFight())//make sure they are concious and such
   {
     $randomOutcome = rand(1,100);
+    echo "<br />";
+    echo $randomOutcome;
     
     if($randomOutcome <= 50)
     {
+      echo "<br />explore";
       //explore - perception check + luck add to user exploration
       $tmpUser = $tmpUser->load($hero->OwnerID);
       $hero->addXP(0,1);//add 1XP for exploring
@@ -28,6 +33,7 @@ foreach($townies as $hero)
       $tmpUser = $tmpUser->addExploration($hero->rollExplore());
       
     } else if($randomOutcome > 50 && $randomOutcome <= 60) {
+      echo "<br />fight";
       //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
       include_once("hero/pitController.php");
       $pit = new PitController();
@@ -75,6 +81,7 @@ foreach($townies as $hero)
       $hero->SaveHero();    
     } else {
       //nothing - nothing
+      echo "<br />nothing";
     }
   }
 }
