@@ -39,9 +39,9 @@ function updateHealthBar(heroID, maxHP)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
     </div>
     <div class="location"><i class="glyphicon glyphicon-map-marker"></i> {$Hero->Location->Name} - 
-      {if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
+      {if $Hero->Status == "" || $Hero->Status == null}
         {if $Hero->CurrentHP > 0}
-          <a href='moveHero.php?ID={$Hero->ID}&dest=2'>Explore Town</a>
+          {if $Hero->CurrentXP >= $Hero->LevelUpXP}<a href="viewHero.php?action=levelUp&ID={$Hero->ID}">Try Level up</a>{/if}
         {else}
           {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{/if}
         {/if}
