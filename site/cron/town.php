@@ -41,7 +41,7 @@ foreach($townies as $hero)
       $NPCRat = new Hero();
       $NPCRat->OwnerID = 146;
       $NPCRat->Name = "Town Rat";
-      $NPCRat->Race = new Race("Vermin", 0, 0, 0, 0, 0, 0, 0, 4, "Town Rat Description");
+      $NPCRat->Race = new Race("Vermin", 0, 0, 0, 0, 0, 0, 0, 4, "Town Vermin Description");
       $NPCRat->HeroClass = new HeroClass("Common", 4, "Str", 5, 0, "Str", 5, 1, "Found all over town", "Squeak");
       $NPCRat->MaxHP = rand(6,12);
       $NPCRat->CurrentHP = $NPCRat->MaxHP;
@@ -62,7 +62,7 @@ foreach($townies as $hero)
       $log = $pit->fightNPC($hero, $NPCRat);
       
       $msgSubject = "Your Hero, " . $hero->Name . " was attacked by a rat while exploring town.";
-      userController::sendMessage($hero->OwnerID, 146, $msgSubject, $log->show(), 0);//send message
+      userController::sendMessage($hero->OwnerID, 146, $msgSubject, $log->show(), 1);//send message
       
       if($hero->isAlive() && $hero->CurrentHP <= 0) { $hero->Location->ID = 1; }
       $hero->SaveHero();    
