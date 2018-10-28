@@ -61,6 +61,7 @@ function updateHealthBar(heroID, maxHP)
         {/if}
       {/if}
     </div>
+    {include file='displayHeroTravel.tpl'}
   </div>
 {/foreach}
 
