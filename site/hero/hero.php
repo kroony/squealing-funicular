@@ -252,7 +252,8 @@ class Hero
 		//status time has to be a datetime to save and Status is empty
 		$this->Status = "";
 		$this->StatusTime = new DateTime('now');
-		$this->Location = "guild";
+		$this->Location = new Location();
+		$this->Location->ID = 1;
 	}
 	
 	function generateStartingWeapon()
