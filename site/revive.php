@@ -15,7 +15,7 @@ $reviveCost = $hero->calculateReviveCost();
 if($user->canAfford($reviveCost))
 {
   $user->debit($reviveCost);
-  $hero = $hero->revive();
+  $hero->revive();
   $hero->SaveHero();
   
   header("Location: healer.php?message=" . $hero->Name . " has been revived.");
