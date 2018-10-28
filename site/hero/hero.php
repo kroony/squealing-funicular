@@ -41,7 +41,29 @@ class Hero
 	function __construct()
 	{
 	}
-
+	
+	function makeNPC($Name, $Race, $HeroClass, $MaxHP, $Level, $Str, $Dex, $Con, $Intel, $Wis, $Cha, $Fte, $Weapon)
+	{
+    $NPC = new Hero();
+    $NPC->OwnerID = 146;
+    $NPC->Name = $Name;
+    $NPC->Race = $Race;
+    $NPC->HeroClass = $HeroClass;
+    $NPC->MaxHP = $MaxHP;
+    $NPC->CurrentHP = $MaxHP;
+    $NPC->Level = $Level;
+    $NPC->CurrentXP = 0;
+    $NPC->LevelUpXP = 100;
+    $NPC->Str = $Str;
+    $NPC->Dex = $Dex;
+    $NPC->Con = $Con;
+    $NPC->Intel = $Intel;
+    $NPC->Wis = $Wis;
+    $NPC->Cha = $Cha;
+    $NPC->Fte = $Fte;
+    $NPC->Weapon = $Weapon;
+    return $NPC;
+	}
 	//@todo move this to a user class and just have this call the function on the user class
 	public function GetOwner()
 	{
