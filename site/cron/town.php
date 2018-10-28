@@ -37,31 +37,29 @@ foreach($townies as $hero)
       //fight - fight a pre determined NPC for location, move hero back to guild hall if unconcious
       include_once("hero/pitController.php");
       $pit = new PitController();
-
-      $NPCRat = new Hero();
-      $NPCRat->OwnerID = 146;
-      $NPCRat->Name = "Town Rat";
-      $NPCRat->Race = new Race("Vermin", 0, 0, 0, 0, 0, 0, 0, 4, "Town Vermin Description");
-      $NPCRat->HeroClass = new HeroClass("Common", 4, "Str", 5, 0, "Str", 5, 1, "Found all over town", "Squeak");
-      $NPCRat->MaxHP = rand(6,12);
-      $NPCRat->CurrentHP = $NPCRat->MaxHP;
-      $NPCRat->Level = 1;
-      $NPCRat->CurrentXP = 0;
-      $NPCRat->LevelUpXP = 100;
-      $NPCRat->Str = 4;
-      $NPCRat->Dex = 12;
-      $NPCRat->Con = 6;
-      $NPCRat->Intel = 2;
-      $NPCRat->Wis = 10;
-      $NPCRat->Cha = 8;
-      $NPCRat->Fte = 10;
-      $NPCRat->Weapon = new Weapon("Bite", 146, 4, 1, 1, 5, "Str");
-      $NPCRat->Kills = rand(10000, 100000);
-      $NPCRat->Age = 1;
       
-      $log = $pit->fightNPC($hero, $NPCRat);
+      $NPCRatRace = new Race("Vermin", 0, 0, 0, 0, 0, 0, 0, 4, "Town Vermin Description");
+      $NPCRatHeroClass = new HeroClass("Common", 4, "Str", 5, 0, "Str", 5, 1, "Found all over town", "Squeak");
       
-      $msgSubject = "Your Hero, " . $hero->Name . " was attacked by a rat while exploring town.";
+      $NPCTownRatWeapon = new Weapon("Bite", 146, 4, 1, 1, 5, "Str");
+      $NPCRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(6, 12), 1, 6, 12, 6, 2, 10, 8, 10, $NPCTownRatWeapon);
+      
+      $NPCSewerRatWeapon = new Weapon("Bite", 146, 6, 1, 2, 5, "Str");
+      $NPCSewerRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(8, 14), 1, 8, 12, 6, 2, 10, 8, 10, $NPCSewerRatWeapon);
+      
+      $NPCDireRatWeapon = new Weapon("Bite", 146, 4, 2, 2, 5, "Str");
+      $NPCDireRat = Hero::makeNPC("Town Rat", $NPCRatRace, $NPCRatHeroClass, rand(15, 22), 1, 12, 12, 6, 2, 10, 8, 10, $NPCDireRatWeapon);
+      
+      $NPC;
+      if($hero->Level == 1)       { $NPC = $NPCRat; }
+      else if($hero->Level <= 4) { $NPC = $NPCSewerRat; }
+      else                       { $NPC = $NPCDireRat; }
+      
+      
+      
+      $log = $pit->fightNPC($hero, $NPC);
+      
+      $msgSubject = "Your Hero, " . $hero->Name . " was attacked by a " . $NPC->Name . " while exploring town.";
       userController::sendMessage($hero->OwnerID, 146, $msgSubject, $log->show(), 1);//send message
       
       if($hero->isAlive() && $hero->CurrentHP <= 0) { $hero->Location->ID = 1; }
