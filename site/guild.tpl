@@ -52,7 +52,11 @@ function updateHealthBar(heroID, maxHP)
             countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
           </script>
         {else}
-          {$Hero->Status}
+          {if $hero->Status == "Level Up" && $hero->StatusETA == 'None'}
+            <a href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}">Complete Level Up!</a>
+          {else}
+            {$Hero->Status}
+          {/if}
         {/if}
       {/if}
     </div>
