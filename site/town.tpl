@@ -29,11 +29,11 @@ function updateHealthBar(heroID, maxHP)
 
 <div class="container-fluid">
 {if $currentUID == '146'}<a href="addNewMonster.php?level=5">Level 5</a>, <a href="addNewMonster.php?level=10">Level 10</a>, <a href="addNewMonster.php?level=15">Level 15</a>, <a href="addNewMonster.php?level=20">Level 20</a>{/if}
-<div class="col-md-8 col-sm-8">
+<div class="col-md-2 col-sm-6">
 Exploration required for next location:
 </div>
-<div class="col-md-8 col-sm-8">
-  <div class="progress">
+<div class="col-md-10 col-sm-6">
+  <div class="progress" style="width:100%;">
     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{$exploration}" aria-valuemin="0" aria-valuemax="{$nextExploration}" style="width:{$exploration / $nextExploration * 100}%">
       <span>{number_format($exploration)}/{number_format($nextExploration)}</span>
     </div>
