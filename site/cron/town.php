@@ -55,7 +55,7 @@ foreach($townies as $hero)
       $NPCRat->Wis = 10;
       $NPCRat->Cha = 8;
       $NPCRat->Fte = 10;
-      $NPCRat->Weapon;
+      $NPCRat->Weapon = new Weapon("Bite", 4, 1, 1, 1, 5, 5, "Str", "", "", 0);
       $NPCRat->Kills = rand(10000, 100000);
       $NPCRat->Age = 1;
       
