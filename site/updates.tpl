@@ -1,12 +1,14 @@
 <h2>Updates</h2>
 <ul>
-	<li>2016/08/21 - Old age hero death might actually be working now. Weapons on those heroes will be kept in the players inventory.</li>
-	<li>2016/08/21 - Heroes who initiated an attack can attacked by other players while their health is not full and their cooldown timer is not complete.</li>
-	
+	<li>2016/08/20 - Heroes can move to Town, in town they will passively search for new locations to unlock. You can look for fights in town with other heroes and random things might attack you.</li>
+	<li>2016/08/19 - Heroes start in the Guild hall, from here they can heal up, are safe from attacks, and are able to level up when they have earned enough XP.</li>
+  <li>2018/10/18 - Were back! A bunch of refactoring and UI changes, Starting to move away from huge tables of hero lists. HP live updates on pages.</li>
 </ul>
 	<a href="#moreUpdates" data-toggle="collapse">More...</a>
 	<div id="moreUpdates" class="collapse">
 		<ul>
+      <li>2016/08/21 - Old age hero death might actually be working now. Weapons on those heroes will be kept in the players inventory.</li>
+      <li>2016/08/21 - Heroes who initiated an attack can attacked by other players while their health is not full and their cooldown timer is not complete.</li>
 			<li>2016/06/05 - Both hero portraits correctly show on combat screen. Thanks amos.</li>
 			<li>2016/05/25 - Delete all messages from monster button added.</li>
 			<li>2016/05/24 - New heroes no longer start at age 0.</li>
