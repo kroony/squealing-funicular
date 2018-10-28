@@ -410,6 +410,15 @@ class Hero
 		return ($attribute + 1) * 25;
 	}
 	
+	function calculateReviveCost()
+	{
+		if($this->CurrentHP > 0) { return 0; }
+		
+		$hpDeficit = -1 * $this->CurrentHP;
+		$cost = $hpDeficit * $this->Level;
+		return $cost;
+	}
+	
 	function calculateRunawayLimit()
 	{
 		$limit = $this->calculateAttributeBonus($this->Cha);
