@@ -10,7 +10,7 @@
         {/foreach}
       </select>
     </div>
-    <input type="hidden" name="ID" value="$Hero->ID">
+    <input type="hidden" name="ID" value="{$Hero->ID}">
     <button type="submit" class="btn btn-default">Travel</button>
   </form>
 {/if}
