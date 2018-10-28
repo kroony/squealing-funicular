@@ -5,6 +5,83 @@ include_once("hero.php");
 
 class PitController
 {
+  function fightNPC($hero, $NPC)
+  {
+    $log = new FightLog();
+		if ($hero->CurrentHP <= 0) {
+			$log->log($hero->displayName(true) . " has no HP and is unable to battle!<br />");
+			return $log;
+		}
+		$log->log($hero->displayName(true) . " Level " . $hero->Level . " is fighting " . $NPC->displayName(false) . " Level " . $NPC->Level . "<br />");
+
+		$fighters = array(array($hero, 0), array($NPC, 0));
+		$aggressor = $this->chooseFirst($log, $hero, $NPC);
+
+		$log->log($this->displayFighter($fighters, $aggressor) . " is going 1st<br />");
+
+		$fighting = true;
+		$winner = null;
+		$roundCounter = 1;
+		while ($fighting) {
+			if($roundCounter % 2){
+				$log->log("<br />Round " . ceil($roundCounter / 2) . "<br />");
+			}
+		  
+			$target = ($aggressor + 1) % 2;
+
+			$calc = $fighters[$aggressor][0]->calcDamage($this->logof($log, $aggressor));
+		  
+			$damageDelt = $fighters[$target][0]->takeDamage($this->logof($log, $target), $calc);
+		  
+			//increase runaway possibility
+			if($damageDelt > $fighters[$target][0]->calculateAttributeBonus($fighters[$target][0]->Con))
+			{
+				if($fighters[$target][0]->Cha < $fighters[$aggressor][0]->Cha)
+				{
+					$fighters[$target][1] += 2;
+				}
+				else
+				{
+					$fighters[$target][1] += 1;
+				}
+				$log->log($this->displayFighter($fighters, $target) . "'s run away increased to " . $fighters[$target][1] . "<br />");
+			}
+		  
+			if ($fighters[$target][0]->CurrentHP <= 0) {
+				$winner = $fighters[$aggressor][0];
+				$fighting = false;
+				if ($fighters[$target][0]->CurrentHP <= 0 - $fighters[$target][0]->Con) {
+					$log->log("<b>" . $this->displayFighter($fighters, $target) . " died </b><br /><br />");
+				} else {
+					$log->log($this->displayFighter($fighters, $target) . " was knocked out <br /><br />");
+				}
+				$winner->addXP($this->logof($log, $aggressor), round($fighters[$target][0]->LevelUpXP / 3));
+				break;
+			}
+		  
+			if($fighters[$target][1] > $fighters[$target][0]->calculateRunawayLimit())
+			{
+				$winner = $fighters[$aggressor][0];
+				$fighting = false;
+				$log->log($this->displayFighter($fighters, $target) . " decided to run away <br /><br />");
+			
+				$winner->addXP($this->logof($log, $aggressor), round($fighters[$target][0]->LevelUpXP / 3));
+				break;
+			}
+		  
+			$aggressor = $target;
+			$roundCounter++;
+		}
+		
+		// add after combat cooldown
+		$cooldownTime = ceil($roundCounter / 2);
+		$hero->StatusTime = new DateTime(date("Y-m-d H:i:s", strtotime(sprintf("+%d minutes", $cooldownTime))));
+		$hero->Status = "Fight Cooldown A";
+		//TBD mark as attacker, dont hide attackers on display enemy screen.
+		$hero->SaveHero();
+		
+		return $log;
+  }
 	function oneOnOne($hero1, $hero2)
 	{
 		$log = new FightLog();
