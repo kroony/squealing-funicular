@@ -34,7 +34,7 @@ else
 	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 2);
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("exploration",$user->exploration);
-	$smarty->assign("nextExploration", min(1000000, $nextLocation->RequiredExploration);
+	$smarty->assign("nextExploration", min(1000000, $nextLocation->RequiredExploration));
 	$smarty->assign("userHeros",$userHeros);
 	$smarty->assign("totalHeros",count($userHeros));
 	
