@@ -2,7 +2,7 @@
 chdir("../");
 
 include_once("bootstrap.php");
-
+/*
 $db = DB::GetConn();
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Gold Mine', 'Heroes in the gold mine will slowly earn gold, but nasty creatures have been known to lurk in the mines', '100000', '5', '50', 'none', '0', '0.1', '', '30', '-1', '0.5', '0', 'mine.php', 'mine');"));
 echo "<br /><br />";
