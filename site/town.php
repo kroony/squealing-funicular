@@ -29,7 +29,7 @@ else
   
   include_once("location/locationController.php");
   $locationController = new locationController();
-  $nextLocation = $locationController->getNextLocationExploration($user->exploration);
+  $nextLocation = $locationController->getNextLocationExploration(min($user->exploration, 4999));
 
 	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 2);
 	$smarty->assign("currentUID",$currentUID);
