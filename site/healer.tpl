@@ -44,7 +44,7 @@ function updateHealthBar(heroID, maxHP)
         {else if $Hero->CurrentHP > 0}
           Resting
         {else}
-          {if $Hero->isAlive() && $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive for {Hero->calculateReviveCost()}gp</a>{/if}
+          {if $Hero->isAlive() && $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive for {$Hero->calculateReviveCost()}gp</a>{/if}
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
