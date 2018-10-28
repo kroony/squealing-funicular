@@ -45,7 +45,6 @@ if(!$found)
   exit;
 }
 
-
 $travelDistance = max($hero->Location->Distance, $destination->Distance) - min($hero->Location->Distance, $destination->Distance);
 
 if($travelDistance > 0)

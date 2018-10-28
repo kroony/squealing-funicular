@@ -89,9 +89,9 @@ foreach($townies as $hero)
     echo "<br />pay";
     $tmpUser = $tmpUser->load($hero->OwnerID);
     
-    if($user->canAfford($currentLocation->Cost))
+    if($tmpUser->canAfford($currentLocation->Cost))
     {
-      $user->debit($currentLocation->Cost);
+      $tmpUser->debit($currentLocation->Cost);
       //male some hero log entry now and then
     } else {
       //move back to guild hall cause they are poor
