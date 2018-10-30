@@ -25,11 +25,13 @@ foreach($townies as $hero)
     if($randomOutcome <= 50)
     {
       echo "<br />explore";
+      $tmpUser = $tmpUser->load($hero->OwnerID);
+      
       //explore - perception check + luck add to user exploration
       $locationController = new locationController();
-      $nextLocation = $locationController->getNextLocationExploration(min($user->exploration, 99999));
+      $nextLocation = $locationController->getNextLocationExploration(min($tmpUser->exploration, 99999));
   
-      $tmpUser = $tmpUser->load($hero->OwnerID);
+      
       $hero->addXP(0,1);//add 1XP for exploring
       $hero->SaveHero();
       $preExploration = $tmpUser->exploration;
