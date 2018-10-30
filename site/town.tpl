@@ -47,20 +47,19 @@ Exploration required for next location:
     <div class="weapon">Weapon - <a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
     </div>
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> Town - 
+    <div class="location">
       {if $Hero->Status == "" || $Hero->Status == null || ($Hero->Status == "Fight Cooldown" && $Hero->StatusETA == "None") || ($Hero->Status == "Fight Cooldown A" && $Hero->StatusETA == "None")}
-        {if $Hero->CurrentHP > 0}<a href='oneononechoose.php?ID={$Hero->ID}'>Fight!</a>
-        {else}
-          {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{elseif $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive</a>{/if}
+        {if $Hero->CurrentHP > 0}
+          <a class="btn btn-danger" href='oneononechoose.php?ID={$Hero->ID}'><i class="fas fa-fist-raised"></i> Fight</a>
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
-          {$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+          <button type="button" class="btn">{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span></button>
           <script type="text/javascript">
             countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
           </script>
         {else}
-          {$Hero->Status}
+          <button type="button" class="btn">{$Hero->Status}</button>
         {/if}
       {/if}
     </div>

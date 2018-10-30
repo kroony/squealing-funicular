@@ -55,7 +55,7 @@ function updateHealthBar(heroID, maxHP)
           {if $hero->Status == "Level Up" && $hero->StatusETA == 'None'}
             <a class="btn btn-info" href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}"><i class="fas fa-user-plus"></i> Complete Level Up!</a>
           {else}
-            {$Hero->Status}
+            <button type="button" class="btn">{$Hero->Status}</button>
           {/if}
         {/if}
       {/if}
