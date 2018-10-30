@@ -37,23 +37,23 @@ function updateHealthBar(heroID, maxHP)
     {include file='displayHeroLocation.tpl'}
     <div class="weapon">Weapon - <a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
     </div>
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> {$Hero->Location->Name} - 
+    <div class="location">
       {if $Hero->Status == "" || $Hero->Status == null}
         {if $Hero->CurrentHP == $Hero->MaxHP}
-          Healed!
+          <button type="button" class="btn">Healed!</button>
         {else if $Hero->CurrentHP > 0}
-          Resting
+          <button type="button" class="btn">Resting</button>
         {else}
-          {if $Hero->isAlive() && $Hero->CurrentHP <= 0} <a href='revive.php?ID={$Hero->ID}'>Revive for {$Hero->calculateReviveCost()}gp</a>{/if}
+          {if $Hero->isAlive() && $Hero->CurrentHP <= 0} <a class="btn btn-hp" href='revive.php?ID={$Hero->ID}'>Revive for {$Hero->calculateReviveCost()}gp</a>{/if}
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
-          {$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+          <button type="button" class="btn">{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span></button>
           <script type="text/javascript">
             countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
           </script>
         {else}
-          {$Hero->Status}
+          <button type="button" class="btn">{$Hero->Status}</button>
         {/if}
       {/if}
     </div>

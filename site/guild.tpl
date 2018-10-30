@@ -43,7 +43,7 @@ function updateHealthBar(heroID, maxHP)
         {if $Hero->CurrentHP > 0}
           {if $Hero->CurrentXP >= $Hero->LevelUpXP}<a class="btn btn-info" href="viewHero.php?action=levelUp&ID={$Hero->ID}"><i class="fas fa-user-plus"></i> Try Level up</a>{/if}
         {else}
-          {if $Hero->isAlive() == false} <a class="btn btn-danger" href='delete.php?ID={$Hero->ID}'><i class="fas fa-user-times"></i> Remove</a>{/if}
+          {if $Hero->isAlive() == false} <a class="btn btn-hp" href='delete.php?ID={$Hero->ID}'><i class="fas fa-user-times"></i> Remove</a>{/if}
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}

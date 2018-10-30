@@ -17,6 +17,12 @@
 	  width: 100%;
 	  color: black;
 	}
+	
+	.btn-hp {
+    color: #f00;
+    background-color: #fff;
+    border-color: #f00;
+  }
 
 	.player
 	{
@@ -39,18 +45,15 @@
 		-webkit-transform: scaleX(-1);
 		-ms-transform: scaleX(-1);
 	}
-	</style>
-	
-	<style>
-    .dropdown-submenu {
-      position: relative;
-    }
+  .dropdown-submenu {
+    position: relative;
+  }
 
-    .dropdown-submenu .dropdown-menu {
-      top: 0;
-      left: 100%;
-      margin-top: -1px;
-    }
+  .dropdown-submenu .dropdown-menu {
+    top: 0;
+    left: 100%;
+    margin-top: -1px;
+  }
   </style>
 
 
