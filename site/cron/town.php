@@ -26,10 +26,22 @@ foreach($townies as $hero)
     {
       echo "<br />explore";
       //explore - perception check + luck add to user exploration
+      $locationController = new locationController();
+      $nextLocation = $locationController->getNextLocationExploration(min($user->exploration, 99999));
+  
       $tmpUser = $tmpUser->load($hero->OwnerID);
       $hero->addXP(0,1);//add 1XP for exploring
       $hero->SaveHero();
+      $preExploration = $tmpUser->exploration;
       $tmpUser = $tmpUser->addExploration($hero->rollExplore());
+      
+      if($preExploration < $nextLocation->RequiredExploration && $nextLocation->RequiredExploration < $tmpUser->exploration)
+      {
+        //send message to user about new location
+        $subject = $hero->Name . " has discovered the " . $nextLocation->Name . " in town.";
+        $body = $nextLocation->Name . " - " . $nextLocation->Description;
+        userController::sendMessage($hero->OwnerID, $hero->OwnerID, $subject, $body, 2);
+      }
       
     } else if($randomOutcome > 50 && $randomOutcome <= 60) {
       echo "<br />fight";
