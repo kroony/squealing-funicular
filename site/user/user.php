@@ -7,6 +7,7 @@ class User
 	public $email;
 	public $password;
 	public $gold;
+	public $trainerLevel;
 	public $active;
 	public $refererID;
 	public $deaths;
@@ -41,6 +42,7 @@ class User
 		$returnUser->email =  $obj->email;
 		$returnUser->password = $obj->password;
 		$returnUser->gold = $obj->gold;
+		$returnUser->trainerLevel = $obj->trainerLevel;
 		$returnUser->active = $obj->active;
 		$returnUser->refererID = $obj->refererID;
 		$returnUser->deaths = $obj->deaths;
@@ -99,6 +101,7 @@ class User
 				"email"=>$this->email,
 				"password"=>$this->password,
 				"gold"=>$this->gold,
+				"trainerLevel"=>$this->trainerLevel,
 				"active"=>$this->active,
 				"refererID"=>$this->refererID,
 				"deaths"=>$this->deaths,
@@ -121,6 +124,7 @@ class User
 				"email"=>$this->email,
 				"password"=>$this->password,
 				"gold"=>$this->gold,
+				"trainerLevel"=>$this->trainerLevel,
 				"active"=>$this->active,
 				"refererID"=>$this->refererID,
 				"deaths"=>$this->deaths,
