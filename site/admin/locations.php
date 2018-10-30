@@ -2,7 +2,7 @@
 chdir("../");
 
 include_once("bootstrap.php");
-
+/*
 $db = DB::GetConn();
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Trainer', 'Heroes can train their stats higher, for a price.', '30000', '0', '127', 'none', '0', '0', '', '15', '0', '0', '0', 'trainer.php', 'trainer');"));
 echo "<br /><br />";
