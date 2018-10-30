@@ -2,9 +2,9 @@
 chdir("../");
 
 include_once("bootstrap.php");
-/*
+
 $db = DB::GetConn();
-print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Gold Mine', 'Heroes in the gold mine will slowly earn gold, but nasty creatures have been known to lurk in the mines', '100000', '5', '50', 'none', '0', '0.1', '', '30', '-1', '0.5', '0', 'mine.php', 'mine');"));
+print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Trainer', 'Heroes can train their stats higher, for a price.', '30000', '0', '127', 'none', '0', '0', '', '15', '0', '0', '0', 'trainer.php', 'trainer');"));
 echo "<br /><br />";
 /*
 print_r($db->query("INSERT INTO `Location` (`ID`, `name`, `description`, `requiredExploration`, `minLevel`, `maxLevel`, `rewardType`, `rewardChance`, `NPCFightChance`, `NPCList`, `distance`, `cost`, `costChance`, `linkHidden`, `URL`, `pageName`) VALUES (NULL, 'Town', 'All your heroes exploring town help to finding new locations, but while in town they run the risk of being attacked.', '0', '0', '127', 'Town-Exploration', '0.5', '0.1', '', '0', '0', '0', '0', 'town.php', 'town');"));
