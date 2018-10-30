@@ -38,22 +38,22 @@ function updateHealthBar(heroID, maxHP)
     <div class="weapon">Weapon - <a href="viewWeapon.php?ID={$Hero->Weapon->ID}" >{$Hero->Weapon->Name}</a> {$Hero->Weapon->DamageQuantity}d{$Hero->Weapon->DamageDie}{if $Hero->Weapon->DamageOffset < 0}{$Hero->Weapon->DamageOffset}{elseif $Hero->Weapon->DamageOffset > 0}+{$Hero->Weapon->DamageOffset}{/if} ({$Hero->Weapon->CritChance}%)
 			{if $Hero->OwnerID == 146}<a href="generateWeapon.php?ID={$Hero->ID}"> - Generate New</a>{/if}
     </div>
-    <div class="location"><i class="glyphicon glyphicon-map-marker"></i> {$Hero->Location->Name} - 
+    <div class="location"> 
       {if $Hero->Status == "" || $Hero->Status == null}
         {if $Hero->CurrentHP > 0}
-          {if $Hero->CurrentXP >= $Hero->LevelUpXP}<a href="viewHero.php?action=levelUp&ID={$Hero->ID}">Try Level up</a>{/if}
+          {if $Hero->CurrentXP >= $Hero->LevelUpXP}<a class="btn btn-info" href="viewHero.php?action=levelUp&ID={$Hero->ID}"><i class="fas fa-user-plus"></i> Try Level up</a>{/if}
         {else}
-          {if $Hero->isAlive() == false} <a href='delete.php?ID={$Hero->ID}'>Remove</a>{/if}
+          {if $Hero->isAlive() == false} <a class="btn btn-danger" href='delete.php?ID={$Hero->ID}'><i class="fas fa-user-times"></i> Remove</a>{/if}
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
-          {$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span>
+          {$Hero->Status}, <button type="button" class="btn"><span id="{$Hero->ID}StatusCountdown"></span></button>
           <script type="text/javascript">
             countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
           </script>
         {else}
           {if $hero->Status == "Level Up" && $hero->StatusETA == 'None'}
-            <a href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}">Complete Level Up!</a>
+            <a class="btn btn-info" href="viewHero.php?action=FinishlevelUp&ID={$hero->ID}"><i class="fas fa-user-plus"></i> Complete Level Up!</a>
           {else}
             {$Hero->Status}
           {/if}
