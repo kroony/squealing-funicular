@@ -19,9 +19,9 @@
 	}
 	
 	.btn-hp {
-    color: #f00;
+    color: #d9534f;
     background-color: #fff;
-    border-color: #f00;
+    border-color: #d9534f;
   }
 
 	.player
