@@ -11,6 +11,6 @@
       </select>
     </div>
     <input type="hidden" name="ID" value="{$Hero->ID}">
-    <button type="submit" class="btn btn-default">Travel</button>
+    <button type="submit" class="btn btn-default"><i class="fas fa-walking"></i> Travel To</button>
   </form>
 {/if}
