@@ -47,7 +47,7 @@ function updateHealthBar(heroID, maxHP)
         {/if}
       {else}
         {if $Hero->StatusETA != 'None'}
-          {$Hero->Status}, <button type="button" class="btn"><span id="{$Hero->ID}StatusCountdown"></span></button>
+          <button type="button" class="btn">{$Hero->Status}, <span id="{$Hero->ID}StatusCountdown"></span></button>
           <script type="text/javascript">
             countdown( "{$Hero->ID}StatusCountdown", {$Hero->getStatusCountdownJSArgs()} );
           </script>
