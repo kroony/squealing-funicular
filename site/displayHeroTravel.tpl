@@ -1,7 +1,8 @@
 {if $Hero->Status == ''}
   <form class="form-inline" action="/moveHero.php">
     <div class="form-group">
-      <label for="moveSel{$Hero->ID}">Move To:</label>
+      <input type="hidden" name="ID" value="{$Hero->ID}">
+      <button type="submit" class="btn btn-default"><i class="fas fa-walking"></i> Travel To</button>
       <select class="form-control" id="moveSel{$Hero->ID}" name="dest">
         {foreach $unlockedLocations as $location}
           {if $location->PageName != $currentpage}
@@ -10,7 +11,5 @@
         {/foreach}
       </select>
     </div>
-    <input type="hidden" name="ID" value="{$Hero->ID}">
-    <button type="submit" class="btn btn-default"><i class="fas fa-walking"></i> Travel To</button>
   </form>
 {/if}
