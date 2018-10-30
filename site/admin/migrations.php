@@ -4,7 +4,7 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-
+/*
 print_r($db->query("ALTER TABLE `User` ADD `trainerLevel` TINYINT UNSIGNED NOT NULL AFTER `gold`;"));
 echo "<br /><br />";
 /*
