@@ -4,8 +4,8 @@ chdir("../");
 include_once("bootstrap.php");
 
 $db = DB::GetConn();
-/*
-print_r($db->query("UPDATE `Location` SET `distance` = '1' WHERE `Location`.`ID` = 3;"));
+
+print_r($db->query("ALTER TABLE `User` ADD `trainerLevel` TINYINT UNSIGNED NOT NULL AFTER `gold`;"));
 echo "<br /><br />";
 /*
 print_r($db->query("ALTER TABLE `Location` CHANGE `rewardChance` `rewardChance` FLOAT NOT NULL;"));

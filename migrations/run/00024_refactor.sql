@@ -1,0 +1,1 @@
+ALTER TABLE `User` ADD `trainerLevel` TINYINT UNSIGNED NOT NULL AFTER `gold`;
