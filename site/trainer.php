@@ -31,8 +31,20 @@ else
 	
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("user",$user);
+	
+	
 	$smarty->assign("currentTrainerLevel", $user->trainerLevel);
-	;
+	/* 0 = mission for Strength
+	   1 = mission for Intellegence
+	   2 = mission for Dexterity
+	   3 = mission for Wisdom
+	   4 = mission for Constitution
+	   5 = mission for Charisma
+	   6 = all done
+	*/
+	
+	
+	
 	$smarty->assign("totalHeros",count($userHeros));
 	
 	$smarty->display("trainer.tpl");
