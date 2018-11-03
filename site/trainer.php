@@ -27,7 +27,7 @@ else
 
 	/*********    Show Trainer   ***********/
 	$userHeros = $heroController->getAllForUserAtLocation($currentUID, 5);
-	$smarty->assign("userHeros",$userHeros)
+	$smarty->assign("userHeros",$userHeros);
 	
 	$smarty->assign("currentUID",$currentUID);
 	$smarty->assign("user",$user);
