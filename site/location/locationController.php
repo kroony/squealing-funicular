@@ -36,7 +36,7 @@ class locationController
 	{
 		$db = DB::GetConn();
 
-		$getQuery = "SELECT * FROM `Location` WHERE `requiredExploration` < $Exploration ORDER BY `ID` ASC;";
+		$getQuery = "SELECT * FROM `Location` WHERE `requiredExploration` <= $Exploration ORDER BY `ID` ASC;";
 
 		$res=$db->query($getQuery);//execute query
 		
